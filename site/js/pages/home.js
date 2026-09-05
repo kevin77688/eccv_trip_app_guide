@@ -106,11 +106,8 @@
         dayLinkNode.setAttribute("aria-label", `查看 ${focus.day.date.slice(5)} ${bilingualText(focus.day.title)} 的完整行程`);
       }
       if (scheduleNode) {
-        scheduleNode.innerHTML = focus.schedule.slice(0, 3).map((item) => `
-          <li>
-            <span>${esc(item.time)}</span>
-            <strong>${esc(bilingualText(item.title))}</strong>
-          </li>`).join("");
+        scheduleNode.innerHTML = `<section class="now-next" data-now-next="${esc(key)}" aria-label="現在與下一步"></section>`;
+        window.ECCV_JOURNEY?.refresh();
       }
     };
 
@@ -356,9 +353,7 @@
             <a class="home-today-action" data-home-focus-day-link href="#" title="查看此日完整行程">開啟當日行程 <span aria-hidden="true">→</span></a>
           </div>
 
-          <ol class="home-focus-schedule" data-home-focus-schedule>
-            <li><span>-</span><strong>行程載入中…</strong></li>
-          </ol>
+          <div data-home-focus-schedule></div>
 
           <div class="home-focus-toolbar">
             <label for="home-focus-date">

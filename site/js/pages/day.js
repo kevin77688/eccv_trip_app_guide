@@ -139,6 +139,9 @@
     let mapLayer = null;
     let userLocationLayer = null;
     let currentActiveGroup = null;
+    section.closest('details')?.addEventListener('toggle', () => {
+      if (section.closest('details').open && map) requestAnimationFrame(() => { map.invalidateSize(); fitRouteBounds(); });
+    });
 
     function groupById(id) {
       return route.groups.find((group) => group.id === id) || route.groups[0];
@@ -499,9 +502,9 @@
     const placeId = schedulePlaceId(item, day);
     const [icon, iconLabel, tone] = scheduleIcon(item);
     const toneClass = tone ? `tone-${tone}` : "";
-    const ticketAction = item.ticketId ? `<div class="schedule-ticket-row"><button type="button" class="schedule-ticket-btn" data-ticket-action="open" data-ticket-id="${esc(item.ticketId)}"><span aria-hidden="true">🎫</span> 出示票券憑證</button></div>` : "";
-    const inner = `<span class="schedule-icon ${toneClass}" role="img" aria-label="${esc(iconLabel)}">${icon}</span><div class="schedule-copy"><div class="schedule-time"><span>時間</span><strong>${esc(item.time)}</strong>${placeId ? `<span class="schedule-jump" aria-hidden="true">↓</span>` : ""}</div><h3>${esc(bilingualText(item.title))}</h3><p>${esc(scheduleGuideText(item))}</p>${ticketAction}</div>`;
-    return `<li class="schedule-item ${stateClass} ${placeId ? "is-linked" : ""}">${placeId ? `<a class="schedule-card" href="#place-${esc(placeId)}" aria-label="${esc(bilingualText(item.title))}，前往下方地點筆記">${inner}</a>` : `<div class="schedule-card">${inner}</div>`}</li>`;
+    const journey = window.ECCV_JOURNEY;
+    const inner = `<span class="schedule-icon ${toneClass}" role="img" aria-label="${esc(iconLabel)}">${icon}</span><div class="schedule-copy"><div class="schedule-time"><strong>${esc(item.time)}</strong><span class="journey-status">${esc(journey.statusLabel(item))}</span></div><h3>${esc(bilingualText(item.title))}</h3><p>${esc(scheduleGuideText(item))}</p>${journey.actions(item, day, placeId)}${placeId ? `<a class="place-note-link" href="#place-${esc(placeId)}">地點筆記 ↓</a>` : ''}</div>`;
+    return `<li class="schedule-item ${stateClass}"><div class="schedule-card">${inner}</div></li>`;
   }
 
   function routeKind(step, index, lastIndex) {
@@ -612,27 +615,33 @@
 
     layout(`
       <div class="day-breadcrumb"><a href="${homeLink}">旅程總覽</a><span>›</span><span>${esc(bilingualText(day.city))}</span><span>›</span><strong>${esc(day.date.slice(5).replace("/", "."))}</strong></div>
+      <div class="day-heading"><h1>${esc(day.date.slice(5))} · ${esc(cityLabel(day.cityKey))}</h1><nav class="day-picker" aria-label="切換日期">${previous ? `<a href="${dayLink(previous)}" aria-label="上一天">←</a>` : '<span></span>'}<label><span class="sr-only">行程日期</span><select data-day-picker>${keys.map(k => `<option value="${esc(k)}" ${k === key ? 'selected' : ''}>${esc(k.replace('-', '/'))} · ${esc(trip.days[k].weekday)}</option>`).join('')}</select></label>${next ? `<a href="${dayLink(next)}" aria-label="下一天">→</a>` : '<span></span>'}</nav></div>
+      <section class="now-next" data-now-next="${esc(key)}" aria-label="現在與下一步"></section>
+      <details class="travel-details day-overview"><summary>當日重點與住宿</summary>
       <section class="day-hero tone-${esc(day.tone)}">
-        <div class="day-hero-copy"><div class="day-kicker"><span>${esc(day.weekday)}</span><span>${esc(cityLabel(day.cityKey))}</span></div><h1>${esc(bilingualText(day.title))}</h1><p>${esc(bilingualText(day.summary))}</p></div>
+        <div class="day-hero-copy"><div class="day-kicker"><span>${esc(day.weekday)}</span><span>${esc(cityLabel(day.cityKey))}</span></div><h2>${esc(bilingualText(day.title))}</h2><p>${esc(bilingualText(day.summary))}</p></div>
         <div class="day-date-badge"><small>SEP</small><strong>${esc(day.date.slice(-2))}</strong><span>${esc(bilingualText(day.city))}</span></div>
       </section>
       <div class="day-facts"><div><span>住宿</span><strong>${esc(bilingualText(day.stay))}</strong></div><div><span>交通量</span><strong>${esc(day.transport.duration)}</strong></div><div><span>今日重點</span><strong>${day.places.length ? esc(day.places.map((id) => trip.places[id]?.local || id).join("・")) : "移動與休息"}</strong></div></div>
-      <nav class="day-index-strip" aria-label="快速切換日期">${dayStrip}</nav>
+      </details>
       ${reservationReminder}
       ${dayTicketsBanner}
       <div class="day-layout">
         <main>
-          <section class="day-section"><div class="section-heading-row">${sectionHeading("TODAY'S ROUTE", "今天照這個順序走", day.splitPlan ? "時間在上、地點與下一步在下；13:00 再選 A 或 B 路線。點有箭頭的卡片可看地點筆記。" : "時間在上、地點與下一步在下；點有箭頭的卡片可直接查看地點筆記。")}</div><ol class="schedule-list">${day.schedule.map((item) => renderScheduleItem(item, day)).join("")}</ol></section>
+          <section class="day-section" id="day-schedule"><div class="section-heading-row">${sectionHeading("", "完整時間表", "時間依行程安排；出發前再確認班次與入口。")}</div><ol class="schedule-list">${day.schedule.map((item) => renderScheduleItem(item, day)).join("")}</ol></section>
           ${splitPlan}
-          ${orderedMap}
+          ${orderedMap ? `<details class="travel-details" data-route-details><summary>路線地圖與站點</summary>${orderedMap}</details>` : ''}
+          <details class="travel-details"><summary>交通步驟與提醒</summary>
           <section class="day-section transport-section"><div><div>${sectionHeading("MOVE SMART", "交通路線", "共同主線與下午分流都列清楚；地圖可切換 A／B。")}</div><ol class="route-list">${routeSteps}</ol><p class="route-note">${esc(bilingualText(day.transport.note))}</p></div><aside class="transport-tip"><span class="eyebrow">TRAVEL TIP</span><strong>${esc(day.transport.duration)}</strong><p>少轉一次車，通常比多省十分鐘更值得。</p></aside></section>
-          ${places ? `<section class="day-section place-notes-section"><div class="section-heading-row"><div>${sectionHeading("PLACE NOTES", "地點筆記", "上方有箭頭的行程卡會跳到這裡；需要時再看特色、停留時間與地圖。")}</div><a class="text-link" href="${placesLink}">完整景點頁 <span aria-hidden="true">→</span></a></div><div class="day-place-grid">${places}</div></section>` : ""}
+          </details>
+          ${places ? `<details class="travel-details"><summary>地點筆記</summary><section class="day-section place-notes-section"><a class="text-link" href="${placesLink}">查看所有景點 →</a><div class="day-place-grid">${places}</div></section></details>` : ""}
           <section class="day-note"><span aria-hidden="true">✦</span><div><span class="eyebrow">DAY NOTE</span><p>${esc(bilingualText(day.note))}</p></div></section>
         </main>
         <aside class="day-aside"><div class="aside-card"><span class="eyebrow light">QUICK LOOK</span><h3>今天前三件事</h3><ul>${day.schedule.slice(0, 3).map((item) => `<li><span>${esc(item.time)}</span><strong>${esc(bilingualText(item.title))}</strong></li>`).join("")}</ul><a class="button button-on-dark" href="${logisticsLink}">完整交通資訊 <span aria-hidden="true">→</span></a></div><div class="aside-card aside-card-light"><span class="eyebrow">STAY TONIGHT</span><h3>${esc(bilingualText(day.stay))}</h3><p>${esc(bilingualText(day.transport.note))}</p></div></aside>
       </div>
       <nav class="day-pagination" aria-label="前後日期導覽">${previous ? `<a href="${dayLink(previous)}"><small>上一天</small><strong>← ${esc(trip.days[previous].date.slice(5).replace("/", "."))} ${esc(bilingualText(trip.days[previous].city))}</strong></a>` : "<span></span>"}${next ? `<a class="next-day" href="${dayLink(next)}"><small>下一天</small><strong>${esc(trip.days[next].date.slice(5).replace("/", "."))} ${esc(bilingualText(trip.days[next].city))} →</strong></a>` : "<span></span>"}</nav>`);
     setupRouteMap(key);
+    document.querySelector('[data-day-picker]')?.addEventListener('change', event => { window.location.href = dayLink(event.target.value); });
   }
 
   window.ECCV_PAGES = window.ECCV_PAGES || {};

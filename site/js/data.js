@@ -1974,3 +1974,14 @@ window.TRIP.bilingualNames = {
   "Malmö": "馬爾默",
   "Paris": "巴黎"
 };
+
+// Explicit instants for flight segments whose departure and arrival use different zones.
+window.TRIP.scheduleTiming = {
+  '09-06': { 3: { start: '2026-09-06T23:50:00+08:00', end: '2026-09-07T04:35:00+04:00', timezone: 'Asia/Taipei' } },
+  '09-07': { 0: { timezone: 'Asia/Dubai' } },
+  '09-18': { 4: { start: '2026-09-18T15:35:00+02:00', end: '2026-09-19T01:10:00+04:00', timezone: 'Europe/Paris' } },
+  '09-19': {
+    0: { timezone: 'Asia/Dubai' },
+    1: { start: '2026-09-19T04:05:00+04:00', end: '2026-09-19T16:35:00+08:00', timezone: 'Asia/Dubai' }
+  }
+};

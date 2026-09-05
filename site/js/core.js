@@ -396,6 +396,17 @@
     setupSearch();
     setupImageFallbacks();
     setupAddressCopy();
+    const revealAnchor = () => {
+      let id;
+      try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+      const target = document.getElementById(id);
+      if (!target) return;
+      let parent = target.parentElement;
+      while (parent) { if (parent.tagName === 'DETAILS') parent.open = true; parent = parent.parentElement; }
+      requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+    };
+    window.addEventListener('hashchange', revealAnchor);
+    if (location.hash) requestAnimationFrame(revealAnchor);
   }
 
   function sectionHeading(kicker, title, text) {
@@ -693,9 +704,9 @@
         showPwaUpdateBanner(reg);
         return { supported: true, updated: true, message: "發現新版本，請點擊更新" };
       }
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-02）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-03）" };
     } catch (e) {
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-02）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-03）" };
     }
   }
 

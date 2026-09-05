@@ -36,4 +36,5 @@
   } else if (page === "day") {
     pages.day?.render?.(core.dayKey);
   }
+  window.ECCV_JOURNEY?.setup();
 })();
