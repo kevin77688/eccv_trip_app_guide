@@ -3,6 +3,21 @@
 > 給後續 agent 的精簡背景資料。最後同步：2026-09-05。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
 
+## 工具頁深色模式彈窗修復與 PWA 自適應更新架構升級（2026-09-05）
+
+- **修復深色模式白底白字缺陷**：
+  - 徹底移除工具頁舊有的瀏覽器原生 `confirm()` 與 `alert()`，避免行動端 Chromium/Android 在深色模式下將原生彈窗文字渲染為淺色而視窗容器底色仍為白色造成的嚴重「白底白字」可讀性故障。
+  - 於 `site/css/styles.css` 根層宣告 `color-scheme: light;` 與深色模式 `color-scheme: dark;`，並於全站 19 份 HTML `<head>` 注入 `<meta name="color-scheme" content="light dark" />`。
+  - 於 `site/js/core.js` 實作原生風格、主題自適應的 `core.confirmModal()` 與 `core.toast()` 元件，完全使用 CSS 變數 `--surface`, `--ink`, `--line`，在深淺色模式下皆提供完美對比度與動畫效果。
+- **Android 原生 APK 與 PWA 雙軌更新流程分流**：
+  - 透過 `window.ECCV_ANDROID?.isNative()` 精確判別當前運行環境：
+    - **Android 原生獨立 APK**：清楚標示本機為離線獨立打包架構，說明安裝檔內建全部資源，不會亦無法自動下載遠端 PWA 更新；快取按鈕修正為「清除暫存並重啟 App」，並引導下載最新 APK 覆蓋安裝。
+    - **PWA 網頁版**：切換為 PWA 專屬更新卡片，提供「🔄 檢查更新並重新整理」主動檢查遠端 GitHub Pages 發布，並提供「🧹 清除快取並強制重整」以清理舊快取重載最新資源（安全保留 localStorage 行李清單勾選狀態）。
+- **主動式 PWA 更新橫幅機制**：
+  - 在 `site/js/core.js` 中監聽 Service Worker 之 `onupdatefound`、`waiting` 與 `controllerchange` 事件；在 `site/sw.js` 新增 `SKIP_WAITING` 訊息協定。
+  - 當遠端檢測到新版本並在背景完成離線快取時，畫面底部自動彈出「🚀 ECCV 旅程指南有新版本 [立即套用]」更新橫幅，一鍵重整至最新版本。
+- **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-20`，全站 19 份 HTML 檔案、`site/sw.js` 與工具頁版本資訊同步更新。
+
 ## 伴手禮採買指南與圖鑑專區上線（2026-09-05）
 
 - **架構隔離與中性呈現**：

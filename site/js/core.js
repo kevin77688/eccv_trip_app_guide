@@ -527,12 +527,168 @@
     document.addEventListener("touchcancel", handleSwipeEnd, { passive: true });
   }
 
+  function toast(message, duration = 3200) {
+    const existing = document.querySelector(".app-toast");
+    if (existing) existing.remove();
+    const el = document.createElement("div");
+    el.className = "app-toast";
+    el.setAttribute("role", "status");
+    el.setAttribute("aria-live", "polite");
+    el.textContent = message;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => {
+      el.classList.add("is-visible");
+    });
+    setTimeout(() => {
+      el.classList.remove("is-visible");
+      setTimeout(() => el.remove(), 250);
+    }, duration);
+  }
+
+  function confirmModal({ title = "確認操作", message = "", confirmText = "確定", cancelText = "取消", danger = false }) {
+    return new Promise((resolve) => {
+      const existing = document.getElementById("eccv-confirm-modal");
+      if (existing) existing.remove();
+
+      const overlay = document.createElement("div");
+      overlay.id = "eccv-confirm-modal";
+      overlay.className = "confirm-modal-overlay";
+      overlay.innerHTML = `
+        <div class="confirm-modal-container" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+          <div class="confirm-modal-header">
+            <h3 id="confirm-modal-title">${esc(title)}</h3>
+          </div>
+          <div class="confirm-modal-body">
+            <p>${esc(message).replace(/\n/g, "<br>")}</p>
+          </div>
+          <div class="confirm-modal-actions">
+            <button type="button" class="button button-ghost confirm-modal-cancel">${esc(cancelText)}</button>
+            <button type="button" class="button ${danger ? "button-primary" : "button-secondary"} confirm-modal-ok">${esc(confirmText)}</button>
+          </div>
+        </div>
+      `;
+
+      let resolved = false;
+      const cleanup = (val) => {
+        if (resolved) return;
+        resolved = true;
+        overlay.classList.remove("is-active");
+        setTimeout(() => overlay.remove(), 200);
+        document.removeEventListener("keydown", onKeyDown);
+        resolve(val);
+      };
+
+      const onKeyDown = (e) => {
+        if (e.key === "Escape") cleanup(false);
+      };
+
+      overlay.querySelector(".confirm-modal-cancel").addEventListener("click", () => cleanup(false));
+      overlay.querySelector(".confirm-modal-ok").addEventListener("click", () => cleanup(true));
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) cleanup(false);
+      });
+      document.addEventListener("keydown", onKeyDown);
+
+      document.body.appendChild(overlay);
+      requestAnimationFrame(() => overlay.classList.add("is-active"));
+    });
+  }
+
+  let swRegistration = null;
+
+  function showPwaUpdateBanner(reg) {
+    if (document.getElementById("pwa-update-banner")) return;
+    const banner = document.createElement("aside");
+    banner.id = "pwa-update-banner";
+    banner.className = "pwa-update-banner";
+    banner.setAttribute("role", "alert");
+    banner.innerHTML = `
+      <div class="pwa-update-banner-content">
+        <span class="pwa-update-icon" aria-hidden="true">🚀</span>
+        <div class="pwa-update-text">
+          <strong>ECCV 旅程指南有新版本</strong>
+          <small>已下載最新離線資源，點擊立即更新。</small>
+        </div>
+      </div>
+      <div class="pwa-update-actions">
+        <button type="button" class="button button-primary button-sm pwa-update-btn">立即套用</button>
+        <button type="button" class="button button-ghost button-sm pwa-dismiss-btn" aria-label="稍後更新">✕</button>
+      </div>
+    `;
+
+    banner.querySelector(".pwa-update-btn").addEventListener("click", () => {
+      if (reg?.waiting) {
+        reg.waiting.postMessage({ type: "SKIP_WAITING" });
+      }
+      window.location.reload();
+    });
+
+    banner.querySelector(".pwa-dismiss-btn").addEventListener("click", () => {
+      banner.classList.remove("is-visible");
+      setTimeout(() => banner.remove(), 250);
+    });
+
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => banner.classList.add("is-visible"));
+  }
+
   function setupServiceWorker() {
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         const swUrl = page === "day" ? "../sw.js" : "./sw.js";
-        navigator.serviceWorker.register(swUrl).catch(() => {});
+        navigator.serviceWorker.register(swUrl).then((reg) => {
+          swRegistration = reg;
+          if (reg.waiting) {
+            showPwaUpdateBanner(reg);
+          }
+          reg.addEventListener("updatefound", () => {
+            const newWorker = reg.installing;
+            if (newWorker) {
+              newWorker.addEventListener("statechange", () => {
+                if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                  showPwaUpdateBanner(reg);
+                }
+              });
+            }
+          });
+          window.addEventListener("focus", () => {
+            reg.update().catch(() => {});
+          });
+        }).catch(() => {});
+
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
       });
+    }
+  }
+
+  async function checkPwaUpdate() {
+    if (!("serviceWorker" in navigator)) {
+      return { supported: false, updated: false, message: "此環境不支援 Service Worker" };
+    }
+    try {
+      const swUrl = page === "day" ? "../sw.js" : "./sw.js";
+      let reg = await navigator.serviceWorker.getRegistration();
+      if (!reg) {
+        reg = await navigator.serviceWorker.register(swUrl);
+      } else {
+        try {
+          await reg.update();
+        } catch (_) {}
+      }
+      swRegistration = reg;
+      if (reg.waiting) {
+        showPwaUpdateBanner(reg);
+        return { supported: true, updated: true, message: "發現新版本，請點擊更新" };
+      }
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260905-20）" };
+    } catch (e) {
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260905-20）" };
     }
   }
 
@@ -563,6 +719,9 @@
     footer: footer,
     setupSwipeNavigation: setupSwipeNavigation,
     setupServiceWorker: setupServiceWorker,
+    checkPwaUpdate: checkPwaUpdate,
+    toast: toast,
+    confirmModal: confirmModal,
     applyTheme: applyTheme,
     preferredTheme: preferredTheme
   };
