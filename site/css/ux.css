@@ -46,6 +46,21 @@ dialog.confirm-modal-overlay::backdrop { background: rgb(0 0 0 / .5); }
 .packing-bag-heading { min-height: 48px; }
 .packing-bag-heading-text > p { font-size: 14px; }
 .packing-flight-rules .boarding-rule { margin: 0 0 16px; }
+.logistics-day-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.logistics-day-heading h2 { margin: 0; font-size: 24px; }
+.logistics-day-heading select { min-height: 44px; padding: 8px; max-width: 230px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); }
+.logistics-today-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.today-info-card { padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.today-info-card h3 { margin: 0 0 12px; font-size: 18px; }
+.today-info-card p { font-size: 15px; }
+.logistics-nav-bar { margin-top: 10px; }
+.logistics-summary-chips { display: none; }
+@media (max-width: 680px) {
+  .logistics-today-grid { grid-template-columns: 1fr; }
+  .logistics-title-group h1 { font-size: 28px; }
+  .logistics-tabs-scroll { flex-wrap: wrap; overflow: visible; }
+  .logistics-tab { min-height: 44px; padding: 8px 10px; font-size: 13px; }
+}
 @media (max-width: 680px) {
   .packing-dashboard-title h1 { font-size: 28px; }
   .packing-dashboard-title .eyebrow, .packing-bag-heading-text .eyebrow { display: none; }

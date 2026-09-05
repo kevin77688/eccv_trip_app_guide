@@ -216,6 +216,7 @@
           </div>
         </div>
         <div class="logistics-tabs-scroll" role="tablist" aria-label="分類切換">
+          <button class="logistics-tab" type="button" data-logistics-filter="today">當日資訊</button>
           <button class="logistics-tab is-active" type="button" data-logistics-filter="all">全部</button>
           <button class="logistics-tab" type="button" data-logistics-filter="tickets">🎫 票券憑證 (${visibleTickets.length})</button>
           <button class="logistics-tab" type="button" data-logistics-filter="emergency">🚨 急難救助 (3國)</button>
@@ -228,6 +229,10 @@
       </section>
 
       <div class="logistics-page">
+        <section class="logistics-block" id="today" data-logistics-section="today">
+          <div class="logistics-day-heading"><h2>這天要用的資訊</h2><label>日期 <select data-logistics-date aria-label="選擇資訊日期">${Object.keys(trip.days).map(key => `<option value="${key}">${key.replace('-', '/')} · ${esc(core.cityLabel(trip.days[key].cityKey))}</option>`).join('')}</select></label></div>
+          <div data-logistics-today></div>
+        </section>
         <section class="logistics-block tickets-section" id="tickets" data-logistics-section="tickets">
           <div class="section-heading-row">${sectionHeading("TICKETS & PASSES", "票券與入場憑證", "包含航班登機證、景點預約、運河遊船與博物館通行證；點擊即可快速出示。")}</div>
           <section class="ticket-import-box"><h3>把票券帶到這台裝置</h3><p>選擇你的 .enc 票券檔，可一次匯入多份。檔案只存在這台裝置，出示時仍需密碼。</p><label class="button button-secondary ticket-import-label">匯入票券<input type="file" accept=".enc" multiple data-ticket-import /></label><p data-ticket-import-status role="status"></p></section>
@@ -258,7 +263,7 @@
           <div><span class="eyebrow light">BEFORE YOU GO</span><h2>出發前，再確認一次。</h2></div>
           <ul>
             <li>9/11 Malmö 到 Copenhagen 跨海列車可能受工程影響。</li>
-            <li>9/12 先在 København H 寄存行李，再輕裝看景點。</li>
+            <li>9/12 優先在 CPH 機場寄放行李，櫃位不足時才改用中央車站。</li>
             <li>9/18 去 CDG 要使用機場專用票。</li>
             <li>所有航班、營業時間與入口以官方最新資訊為準。</li>
           </ul>
@@ -270,14 +275,44 @@
   }
 
   function setupLogistics() {
+    const core = getCore();
+    const trip = window.TRIP;
+    const { esc } = core;
+    const saved = core.readViewState('logistics');
+    let currentFilter = saved.filter || 'today';
+    let currentDay = trip.days[saved.day] ? saved.day : window.ECCV_JOURNEY.automaticDay();
+    const remember = () => core.saveViewState('logistics', { filter: currentFilter, day: currentDay });
+    const dateSelect = document.querySelector('[data-logistics-date]');
+    const renderToday = () => {
+      const day = trip.days[currentDay];
+      const stay = window.ECCV_ESSENTIALS.stayForDay(currentDay);
+      const tickets = trip.tickets.filter(ticket => !ticket.hidden && ticket.targetDays?.includes(currentDay));
+      const flights = trip.flights.filter(flight => flight.date === currentDay.replace('-', '/'));
+      dateSelect.value = currentDay;
+      document.querySelector('[data-logistics-today]').innerHTML = `<p>${esc(core.bilingualText(day.city))} · <a class="place-note-link" href="${core.dayLink(currentDay)}">開啟當日行程 →</a></p><div class="logistics-today-grid">
+        <article class="today-info-card"><h3>當日票券</h3>${tickets.length ? `<div class="essential-tickets">${tickets.map(ticket => `<button type="button" data-ticket-action="open" data-ticket-id="${esc(ticket.id)}">${esc(ticket.title)} <span>出示 →</span></button>`).join('')}</div>` : '<p>這天沒有已加入的票券。</p>'}<a class="place-note-link" href="#tickets">所有票券與匯入 →</a></article>
+        <article class="today-info-card"><h3>當晚住宿</h3>${stay ? `<strong>${esc(stay.name)}</strong><p>${esc(stay.address)}</p><div class="journey-actions"><button type="button" class="button button-secondary" data-logistics-copy="${esc(stay.address)}">複製地址</button><a class="button button-secondary" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(stay.address)}" target="_blank" rel="noreferrer">導航 ↗</a>${stay.phone ? `<a class="button button-secondary" href="tel:${esc(stay.phone.replace(/[^+\d]/g, ''))}">致電住宿</a>` : ''}</div>` : `<p>${esc(day.stay)}</p>`}</article>
+        ${flights.length ? `<article class="today-info-card"><h3>當日航班</h3>${flights.map(flight => `<strong>${esc(flight.code)} · ${esc(flight.route)}</strong><p>${esc(flight.localTime)}</p>`).join('')}<a class="place-note-link" href="#flights">座位、行李與完整航班 →</a></article>` : ''}
+      </div>`;
+      remember();
+    };
+    dateSelect.addEventListener('change', () => { currentDay = dateSelect.value; renderToday(); });
+    document.querySelector('[data-logistics-today]').addEventListener('click', async event => {
+      const button = event.target.closest('[data-logistics-copy]');
+      if (button) button.textContent = await core.copyText(button.dataset.logisticsCopy) ? '已複製' : '請長按地址複製';
+    });
+    renderToday();
     const tabs = document.querySelectorAll("[data-logistics-filter]");
     const sections = document.querySelectorAll("[data-logistics-section]");
     if (!tabs.length) return;
 
     const applyFilter = (filterKey) => {
-      tabs.forEach((tab) => tab.classList.toggle("is-active", tab.dataset.logisticsFilter === filterKey));
+      if (![...tabs].some(tab => tab.dataset.logisticsFilter === filterKey)) filterKey = 'today';
+      currentFilter = filterKey;
+      remember();
+      tabs.forEach((tab) => { tab.classList.toggle("is-active", tab.dataset.logisticsFilter === filterKey); tab.setAttribute('role', 'tab'); tab.setAttribute('aria-selected', String(tab.dataset.logisticsFilter === filterKey)); });
       if (filterKey === "all") {
-        sections.forEach((sec) => (sec.hidden = false));
+        sections.forEach((sec) => (sec.hidden = sec.dataset.logisticsSection === 'today'));
       } else {
         sections.forEach((sec) => {
           sec.hidden = sec.dataset.logisticsSection !== filterKey && (filterKey !== "apps" || sec.dataset.logisticsSection !== "reminders");
@@ -288,15 +323,22 @@
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         applyFilter(tab.dataset.logisticsFilter);
+        history.replaceState(history.state, '', tab.dataset.logisticsFilter === 'all' ? location.pathname : `#${tab.dataset.logisticsFilter}`);
       });
     });
 
-    if (window.location.hash) {
+    const applyHash = () => {
       const hash = window.location.hash.replace("#", "");
-      if (["flights", "stays", "registration", "apps", "timezones", "tickets", "emergency"].includes(hash)) {
+      if (["today", "flights", "stays", "registration", "apps", "timezones", "tickets", "emergency"].includes(hash)) {
         applyFilter(hash);
+      } else if (hash.startsWith('ticket-')) {
+        applyFilter('tickets');
+      } else {
+        applyFilter(currentFilter);
       }
-    }
+    };
+    window.addEventListener('hashchange', applyHash);
+    applyHash();
   }
 
   window.ECCV_PAGES = window.ECCV_PAGES || {};
