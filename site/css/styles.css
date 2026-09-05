@@ -1382,6 +1382,23 @@ a.schedule-card { cursor: pointer; }
 .route-leaflet-optional { background: #9b7a2d; }
 .route-leaflet-transfer { background: #3c7397; }
 .route-leaflet-stay { background: var(--ink-strong); }
+.route-user-marker-shell { border: 0; background: transparent; }
+.route-user-marker { position: relative; width: 24px; height: 24px; display: grid; place-items: center; }
+.route-user-dot { position: relative; z-index: 2; width: 14px; height: 14px; border-radius: 50%; background: #1a73e8; border: 2.5px solid #ffffff; box-shadow: 0 1px 6px rgba(0,0,0,.35); }
+.route-user-pulse { position: absolute; inset: -5px; z-index: 1; border-radius: 50%; background: rgba(26,115,232,.35); animation: gps-pulse 2s infinite ease-out; pointer-events: none; }
+@keyframes gps-pulse { 0% { transform: scale(.6); opacity: .9; } 70% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1.6); opacity: 0; } }
+.route-map-locate-btn { position: absolute; top: 12px; right: 12px; z-index: 500; width: 42px; height: 42px; padding: 0; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--ink); box-shadow: 0 4px 14px rgba(10,31,37,.18); cursor: pointer; transition: transform .15s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease; }
+.route-map-locate-btn:hover { background: var(--surface-soft); color: #1a73e8; box-shadow: 0 6px 18px rgba(10,31,37,.24); }
+.route-map-locate-btn:active { transform: scale(.92); }
+.route-map-locate-btn svg { width: 20px; height: 20px; display: block; }
+.route-map-locate-btn.is-locating { color: #1a73e8; }
+.route-map-locate-btn.is-locating svg { animation: locate-spin 1.2s linear infinite; }
+.route-map-locate-btn.is-active { background: #1a73e8; color: #ffffff; border-color: #1a73e8; box-shadow: 0 4px 14px rgba(26,115,232,.35); }
+@keyframes locate-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.route-map-status-pill { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 500; max-width: calc(100% - 24px); padding: 6px 12px; display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); box-shadow: 0 4px 16px rgba(10,31,37,.2); font-size: 11px; font-weight: 800; animation: pill-fade-in .25s ease both; }
+.route-map-status-pill button { padding: 3px 8px; border: 0; border-radius: 999px; background: var(--teal); color: #fff; font-size: 10px; font-weight: 900; cursor: pointer; }
+.route-map-status-pill button:hover { background: #13554e; }
+@keyframes pill-fade-in { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }
 .route-map-popup { min-width: 150px; display: grid; gap: 2px; color: #172f36; }
 .route-map-popup small { color: #b84935; font-size: 10px; font-weight: 900; }
 .route-map-popup strong { font-size: 13px; line-height: 1.35; }
@@ -1678,6 +1695,10 @@ html[data-theme="dark"] .tool-europe-tab.is-active { background: #1a2c33; box-sh
 html[data-theme="dark"] .tool-europe-panel-stage { background: #1f343d; color: #8dd9cd; }
 html[data-theme="dark"] .route-map-canvas { background-color: #17272d; background-image: linear-gradient(rgba(124,202,188,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(124,202,188,.08) 1px, transparent 1px); }
 html[data-theme="dark"] .route-map-stop-number { border-color: var(--surface); }
+html[data-theme="dark"] .route-map-locate-btn { background: #1a2c33; border-color: var(--line); color: #d1e2e7; }
+html[data-theme="dark"] .route-map-locate-btn:hover { background: #243c45; color: #4da3ff; }
+html[data-theme="dark"] .route-map-locate-btn.is-active { background: #1a73e8; color: #ffffff; }
+html[data-theme="dark"] .route-map-status-pill { background: #1a2c33; border-color: var(--line); color: #e6f1f4; box-shadow: 0 4px 16px rgba(0,0,0,.45); }
 html[data-theme="dark"] .site-footer { background: #101c21; }
 html[data-theme="dark"] .ticket-card { background: var(--surface); border-color: var(--line); }
 html[data-theme="dark"] .ticket-card-details,
@@ -2149,6 +2170,7 @@ html[data-theme="dark"] .mobile-nav { border-top-color: var(--line); background:
   .route-map-single-label { align-self: flex-start; }
   .route-map-card { grid-template-columns: 1fr; border-radius: 17px; }
   .route-map-canvas { min-height: 380px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .route-map-locate-btn { top: 10px; right: 10px; width: 40px; height: 40px; }
   .route-map-panel { max-height: none; padding: 17px; }
   .route-map-panel-heading strong { font-size: 19px; }
   .route-map-stops { max-height: 430px; margin-right: 0; padding-right: 0; overflow-y: visible; }

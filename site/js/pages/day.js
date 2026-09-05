@@ -137,6 +137,8 @@
     const buttons = [...section.querySelectorAll("[data-route-group]")];
     let map = null;
     let mapLayer = null;
+    let userLocationLayer = null;
+    let currentActiveGroup = null;
 
     function groupById(id) {
       return route.groups.find((group) => group.id === id) || route.groups[0];
@@ -156,7 +158,18 @@
       });
     }
 
+    function fitRouteBounds(targetGroup) {
+      if (!map || !window.L) return;
+      const group = targetGroup || currentActiveGroup || initial;
+      const points = (group?.stops || [])
+        .filter((stop) => Number.isFinite(stop.lat) && Number.isFinite(stop.lng))
+        .map((stop) => [stop.lat, stop.lng]);
+      if (points.length === 1) map.setView(points[0], 14);
+      if (points.length > 1) map.fitBounds(window.L.latLngBounds(points), { padding: [34, 34], maxZoom: 14 });
+    }
+
     function drawGroup(group) {
+      currentActiveGroup = group;
       updateText(group);
       if (!map || !mapLayer || !window.L) return;
       mapLayer.clearLayers();
@@ -195,12 +208,12 @@
         if (leg.label) line.bindTooltip(esc(bilingualText(leg.label)), { sticky: true, direction: "top", opacity: .95 });
       });
 
-      if (points.length === 1) map.setView(points[0], 14);
-      if (points.length > 1) map.fitBounds(window.L.latLngBounds(points), { padding: [34, 34], maxZoom: 14 });
+      fitRouteBounds(group);
       window.setTimeout(() => map.invalidateSize(), 60);
     }
 
     const initial = groupById(route.defaultGroup);
+    currentActiveGroup = initial;
     updateText(initial);
     buttons.forEach((button) => button.addEventListener("click", () => drawGroup(groupById(button.dataset.routeGroup))));
 
@@ -209,11 +222,133 @@
         canvas.innerHTML = "";
         map = L.map(canvas, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
         mapLayer = L.layerGroup().addTo(map);
+        userLocationLayer = L.layerGroup().addTo(map);
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
           maxZoom: 19,
           attribution: "&copy; OpenStreetMap contributors"
         }).addTo(map);
         drawGroup(initial);
+
+        let currentUserLatLng = null;
+        let statusPill = null;
+        let pillTimer = null;
+
+        function showStatusPill(message, actionLabel, actionCallback) {
+          if (pillTimer) {
+            window.clearTimeout(pillTimer);
+            pillTimer = null;
+          }
+          if (!statusPill) {
+            statusPill = document.createElement("div");
+            statusPill.className = "route-map-status-pill";
+            canvas.appendChild(statusPill);
+          }
+          statusPill.innerHTML = `<span>${esc(message)}</span>${actionLabel ? `<button type="button">${esc(actionLabel)}</button>` : ""}`;
+          if (actionLabel && actionCallback) {
+            const pillBtn = statusPill.querySelector("button");
+            pillBtn?.addEventListener("click", (e) => {
+              e.stopPropagation();
+              actionCallback();
+            });
+          }
+          if (!actionLabel) {
+            pillTimer = window.setTimeout(() => {
+              statusPill?.remove();
+              statusPill = null;
+            }, 4500);
+          }
+        }
+
+        const locateControl = L.control({ position: "topright" });
+        locateControl.onAdd = function () {
+          const btn = L.DomUtil.create("button", "route-map-locate-btn");
+          btn.type = "button";
+          btn.setAttribute("aria-label", "顯示我的即時 GPS 位置");
+          btn.title = "顯示我的即時 GPS 位置";
+          btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3" fill="currentColor"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg>`;
+          L.DomEvent.disableClickPropagation(btn);
+          L.DomEvent.disableScrollPropagation(btn);
+
+          btn.addEventListener("click", () => {
+            if (!navigator.geolocation) {
+              showStatusPill("此裝置或瀏覽器不支援 GPS 定位");
+              return;
+            }
+
+            if (currentUserLatLng && !map.getBounds().contains(currentUserLatLng)) {
+              map.flyTo(currentUserLatLng, Math.max(map.getZoom(), 15), { duration: 0.8 });
+            }
+
+            btn.classList.add("is-locating");
+            navigator.geolocation.getCurrentPosition(
+              (pos) => {
+                btn.classList.remove("is-locating");
+                btn.classList.add("is-active");
+                const userLat = pos.coords.latitude;
+                const userLng = pos.coords.longitude;
+                const accuracy = pos.coords.accuracy || 15;
+                currentUserLatLng = [userLat, userLng];
+
+                userLocationLayer.clearLayers();
+
+                const userMarkerIcon = L.divIcon({
+                  className: "route-user-marker-shell",
+                  html: `<div class="route-user-marker" aria-label="目前 GPS 位置"><span class="route-user-pulse"></span><span class="route-user-dot"></span></div>`,
+                  iconSize: [24, 24],
+                  iconAnchor: [12, 12],
+                  popupAnchor: [0, -12]
+                });
+
+                const userMarker = L.marker([userLat, userLng], {
+                  icon: userMarkerIcon,
+                  keyboard: true,
+                  zIndexOffset: 1000
+                }).addTo(userLocationLayer);
+
+                L.circle([userLat, userLng], {
+                  radius: Math.max(accuracy, 10),
+                  color: "#1a73e8",
+                  weight: 1,
+                  opacity: 0.5,
+                  fillColor: "#1a73e8",
+                  fillOpacity: 0.12
+                }).addTo(userLocationLayer);
+
+                userMarker.bindPopup(`<div class="route-map-popup"><small>GPS 即時位置</small><strong>我的目前所在位置</strong><span>定位精確度約 ±${Math.round(accuracy)} 公尺</span></div>`);
+
+                const group = currentActiveGroup || initial;
+                const validStops = (group?.stops || []).filter((s) => Number.isFinite(s.lat) && Number.isFinite(s.lng));
+                let minDistanceMeters = Infinity;
+                validStops.forEach((s) => {
+                  const dist = L.latLng(userLat, userLng).distanceTo(L.latLng(s.lat, s.lng));
+                  if (dist < minDistanceMeters) minDistanceMeters = dist;
+                });
+
+                map.flyTo([userLat, userLng], Math.max(map.getZoom(), 15), { duration: 1.2 });
+
+                if (minDistanceMeters > 50000 && Number.isFinite(minDistanceMeters)) {
+                  const distKm = Math.round(minDistanceMeters / 1000);
+                  showStatusPill(`📍 已定位（距離今日行程約 ${distKm.toLocaleString()} 公里）`, "回到今日行程", () => {
+                    fitRouteBounds();
+                    statusPill?.remove();
+                    statusPill = null;
+                  });
+                } else {
+                  showStatusPill(`📍 已取得即時 GPS 定位（精確度 ±${Math.round(accuracy)}m）`);
+                }
+              },
+              (err) => {
+                btn.classList.remove("is-locating");
+                console.warn("GPS Geolocation error:", err.message);
+                showStatusPill("⚠️ 無法取得 GPS 定位：請檢查裝置定位與授權");
+              },
+              { timeout: 10000, enableHighAccuracy: true, maximumAge: 30000 }
+            );
+          });
+
+          return btn;
+        };
+        locateControl.addTo(map);
       }).catch(() => {
         canvas.classList.add("is-unavailable");
         canvas.innerHTML = `<div class="route-map-loading"><span aria-hidden="true">⌖</span><strong>互動底圖暫時無法載入</strong><small>請使用站點順序或 Google Maps 按鈕</small></div>`;

@@ -3,6 +3,17 @@
 > 給後續 agent 的精簡背景資料。最後同步：2026-09-05。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
 
+## 每日行程地圖 GPS 即時定位小藍點與多平台支援（2026-09-05）
+
+- **每日路線地圖 Google Maps 風格 GPS 定位藍點（`site/js/pages/day.js`、`site/css/styles.css`）**：
+  - 於每日行程頁面互動路線地圖（Leaflet）右上角加入一鍵定位按鈕（⌖）。
+  - 點擊按鈕直接觸發裝置原生 W3C Geolocation API（`navigator.geolocation.getCurrentPosition`），免用任何第三方付費或外部 API。
+  - **高質感藍點視覺**：在 Leaflet 地圖上繪製 Google Maps 風格的實心藍點、白邊陰影、外圍脈衝呼吸光環（`gps-pulse` 動畫）與半透明精確度半徑圓（`L.circle`）。
+  - **智慧距離偵測與視野回航**：當定位座標距離今日行程超過 50 公里時（如出發前在台灣測試），地圖平滑平移至目前位置並浮現「📍 已定位（距離今日行程約 X 公里）」與「回到今日行程」捷徑按鈕，點擊可秒級縮放回當日路線。
+  - **獨立圖層維護**：將使用者 GPS 標記維護在獨立的 `userLocationLayer`，切換同一天不同路線分組（如備援方案 A／方案 B）時，小藍點持續保留不被清除。
+  - **全平台原生支援**：Android APK（已具備 `ACCESS_FINE_LOCATION` 與 `ACCESS_COARSE_LOCATION` 權限）、iPhone Safari / PWA 與桌面瀏覽器全數相容。
+- **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-13`，全站 19 份 HTML 檔案、`site/sw.js` 與工具頁版本資訊同步更新。
+
 ## 歐洲急難救助整合、Android 定位權限與手機邊界白邊修復（2026-09-05）
 
 - **Android 定位權限配置（修復 APK 天氣 GPS 功能）**：
