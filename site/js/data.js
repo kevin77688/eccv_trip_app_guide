@@ -403,7 +403,16 @@ window.TRIP = {
     }
   ],
   stays: [
-    { city: "Malmö", date: "09/07 - 09/12", name: "First Camp Sibbarp-Malmö", address: "Strandgatan 101, Malmö", note: "9/12 11:00 前退房；日常以 Hyllie 作為交通中繼點。", fit: "已確認住宿。Sibbarp 靠海清靜，適合抵達後休息；以 Bus 9 接 Hyllie 即可前往會場、市中心、哥本哈根與機場。" },
+    {
+      city: "Malmö",
+      date: "09/07 - 09/12",
+      name: "First Camp Sibbarp-Malmö",
+      address: "Strandgatan 101, Vaster, 216 11 Malmö",
+      phone: "+46 40 15 51 65",
+      bookingRef: "5398****** (PIN: 5958)",
+      note: "09/07 15:00 起入住（已約定 18:00-19:00 抵達），09/12 11:00 前退房；退房前須自行完成清潔或付費清潔；日常以 Götgatan 搭 Bus 9 接 Hyllie。",
+      fit: "已確認住宿（4 位成人 1 棟 Cottage 獨立小木屋）。Sibbarp 靠海清靜，附小廚房、微波爐、露台與免費停車位；以 Bus 9 接 Hyllie 即可前往會場、市中心、哥本哈根與機場。"
+    },
     { city: "Beauvais", date: "09/12 - 09/13", name: "Hostellerie Saint Vincent Beauvais Aéroport", address: "241 Rue de Clermont, Beauvais", note: "抵達 Beauvais 後住一晚，隔天以 Beauvais SNCF 進巴黎。", fit: "已確認住宿。22:00 抵達 BVA，先在 Beauvais 過夜避免深夜拖行李進巴黎；隔天叫車至 Beauvais SNCF 再搭 TER。" },
     { city: "Paris", date: "09/13 - 09/18", name: "Sure Hotel by Best Western Paris Gare du Nord", address: "224 Rue du Faubourg Saint-Denis, Paris", note: "靠近 Gare du Nord；巴黎市區行程都從這裡出發。", fit: "已確認住宿。主要優勢在於交通：搭乘 Beauvais TER 抵達 Paris Nord 後方便入住，回程亦可由 Gare du Nord 搭 RER B 直達 CDG。" }
   ],
@@ -413,6 +422,7 @@ window.TRIP = {
       title: "阿聯酋官方電子登機證",
       subtitle: "台北 TPE → 杜拜 DXB → 哥本哈根 CPH (2 段雙頁完整憑證)",
       category: "flight",
+      badge: "登機證",
       dateLabel: "09/06 23:50 起飛 · 09/07 13:15 抵達",
       targetDays: ["09-06", "09-07"],
       encFile: "ek367-boarding-pass.enc",
@@ -433,6 +443,7 @@ window.TRIP = {
       title: "阿聯酋航空電子機票",
       subtitle: "台北 ⇄ 歐洲 全程 4 段官方機票",
       category: "flight",
+      badge: "電子機票",
       dateLabel: "09/06-07 去程 · 09/18-19 回程",
       targetDays: [],
       encFile: "emirates-flights.enc",
@@ -451,6 +462,7 @@ window.TRIP = {
       title: "哥本哈根經典運河遊船",
       subtitle: "Stromma Classic Canal Tour 門票",
       category: "attraction",
+      badge: "遊船門票",
       dateLabel: "09/12 15:00 - 16:00",
       targetDays: ["09-12"],
       encFile: "stromma-canal-tour.enc",
@@ -467,6 +479,7 @@ window.TRIP = {
       title: "救主堂螺旋尖塔登頂門票",
       subtitle: "Church of Our Saviour 螺旋塔門票",
       category: "attraction",
+      badge: "登頂門票",
       dateLabel: "09/12 16:30 - 17:15",
       targetDays: ["09-12"],
       encFile: "church-our-saviour.enc",
@@ -483,6 +496,7 @@ window.TRIP = {
       title: "瑞安航空登機證 (FR9267)",
       subtitle: "哥本哈根 CPH → 巴黎博韋 BVA (4 人已劃位)",
       category: "flight",
+      badge: "航班行程",
       dateLabel: "09/12 20:05 起飛",
       targetDays: ["09-12"],
       encFile: "ryanair-fr9267.enc",
@@ -500,6 +514,7 @@ window.TRIP = {
       title: "聖徒禮拜堂 4 人預約門票",
       subtitle: "Sainte-Chapelle 官方指定時段門票",
       category: "attraction",
+      badge: "預約門票",
       dateLabel: "09/14 15:00 - 16:05",
       targetDays: ["09-14"],
       encFile: "sainte-chapelle.enc",
@@ -516,6 +531,7 @@ window.TRIP = {
       title: "巴黎凱旋門 4 人預約門票",
       subtitle: "Arc de Triomphe 官方指定時段門票",
       category: "attraction",
+      badge: "預約門票",
       dateLabel: "09/16 10:50 - 12:00",
       targetDays: ["09-16"],
       encFile: "arc-de-triomphe.enc",
@@ -532,6 +548,7 @@ window.TRIP = {
       title: "羅浮宮 4 人預約門票",
       subtitle: "Musée du Louvre 官方指定時段門票",
       category: "attraction",
+      badge: "預約門票",
       dateLabel: "09/16 16:30 - 20:30",
       targetDays: ["09-16"],
       encFile: "louvre.enc",
@@ -548,6 +565,7 @@ window.TRIP = {
       title: "凡爾賽宮 Passport 全區門票",
       subtitle: "Château de Versailles Passport 門票",
       category: "attraction",
+      badge: "全區門票",
       dateLabel: "09/17 10:00 入場",
       targetDays: ["09-17"],
       encFile: "versailles.enc",
@@ -564,6 +582,7 @@ window.TRIP = {
       title: "K7 文化通行證 (Week 37)",
       subtitle: "K7 WEEK 2026 青年免費通行證",
       category: "attraction",
+      badge: "文化通行證",
       dateLabel: "09/07-09/13 (Week 37 全週有效)",
       targetDays: ["09-08", "09-11"],
       encFile: "k7-pass.enc",
@@ -574,6 +593,28 @@ window.TRIP = {
         { label: "有效期間", value: "2026/09/07 - 2026/09/13 (第 37 週)" },
         { label: "適用場館", value: "Malmö Museum、DAC @ BLOX、克里斯蒂安堡宮接待廳、圓塔等 250+ 館舍" },
         { label: "票券格式", value: "官方數位通行證 (含驗證 QR Code 與條碼)" }
+      ]
+    },
+    {
+      id: "first-camp",
+      title: "First Camp Sibbarp 住宿確認單",
+      subtitle: "馬爾默 5 晚小木屋預約憑證 (4 位成人)",
+      category: "hotel",
+      badge: "住宿憑證",
+      dateLabel: "09/07 15:00 起 (約定 18:00-19:00) · 09/12 11:00 前",
+      targetDays: ["09-07", "09-08", "09-09", "09-10", "09-11", "09-12"],
+      encFile: "first-camp.enc",
+      qrHint: "辦理入住、領取小木屋鑰匙或接待處確認時出示官方 PDF",
+      details: [
+        { label: "預訂編號", value: "5398****** (PIN: 5958)" },
+        { label: "預約期間", value: "2026/09/07 (週一) 15:00 起至 09/12 (週六) 11:00 前 (共 5 晚)" },
+        { label: "抵達約定", value: "已確認於 18:00 - 19:00 間抵達辦理入住 (接待處)" },
+        { label: "房型格局", value: "Cottage 獨立小木屋 (4 位成人，含露台、烹飪設備、微波爐、咖啡機、免費 WiFi 與 1 個車位)" },
+        { label: "退房清潔", value: "退房前須自行清潔小屋或現場加購清潔費；垃圾與碗盤需收拾" },
+        { label: "餐食規定", value: "房價不含餐點；早餐袋需提前預訂" },
+        { label: "聯絡電話", value: "+46 40 15 51 65" },
+        { label: "住宿地址", value: "Strandgatan 101, Vaster, 216 11 Malmö, Sweden" },
+        { label: "憑證格式", value: "Booking.com 官方訂房確認更新單 PDF" }
       ]
     }
   ],
@@ -642,8 +683,8 @@ window.TRIP = {
         { time: "04:35 - 08:20", icon: "✈", title: "杜拜 T3 轉機 (EK 151)", detail: "抵達杜拜 T3 後過轉機安檢，08:20 搭乘 EK 151 飛往哥本哈根；座位 25H（走道，Group 4，07:20 登機），出示電子登機證條碼登機。", tag: "轉機", ticketId: "ek367-boarding-pass" },
         { time: "13:15 - 14:15", icon: "⌖", title: "抵達哥本哈根機場 T3、入境與領行李", detail: "抵達 CPH T3 後辦理入境查驗並領取 20 kg 托運行李，順指標前往火車站月台。", tag: "入境" },
         { time: "14:15 - 14:35", icon: "🚆", title: "CPH Airport → Hyllie Station", detail: "使用 Skånetrafiken 購買跨境車票，搭乘 Øresundståg 跨越厄勒海峽大橋抵達瑞典 Hyllie。", tag: "跨海" },
-        { time: "14:35 - 15:00", icon: "🚌", title: "Hyllie → Bus 9 → First Camp Sibbarp", detail: "Hyllie 車站外轉乘 Bus 9 直達營區附近，步行至接待處登記入住。", tag: "公車" },
-        { time: "15:00 後", icon: "⌂", title: "入住、整理行李與海邊散步休息", detail: "辦理入住、放置行李與洗漱；傍晚可在 Sibbarp 海邊散步放鬆，調整時差。", tag: "休息" }
+        { time: "14:35 - 15:30", icon: "🚌", title: "Hyllie → Bus 9 → First Camp 周邊", detail: "Hyllie 車站外轉乘 Bus 9 直達營區附近（Götgatan），可先採買未來數日小木屋料理食材與生活用品。", tag: "公車" },
+        { time: "18:00 - 19:00", icon: "⌂", title: "辦理入住與領取小木屋鑰匙 (First Camp)", detail: "已約定 18:00 - 19:00 抵達辦理入住（15:00 起開放接待）；出示預訂憑證領取小木屋鑰匙，安頓行李並熟悉廚房設施，傍晚可在 Sibbarp 水岸散步放鬆。", tag: "入住", ticketId: "first-camp" }
       ],
       transport: { duration: "轉機、飛行與跨海交通約 15 小時", steps: ["杜拜 T3 轉機", "EK 151 → 哥本哈根 T3", "Øresundståg → Hyllie", "Bus 9 → First Camp Sibbarp"], note: "跨海火車班次密集，出站後以 Skånetrafiken App 購票最方便。" }, places: [], note: "抵達日不排密集景點，以順利入住與調整時差為主。"
     },
@@ -708,7 +749,7 @@ window.TRIP = {
       date: "2026/09/12", weekday: "週六", city: "Copenhagen → Beauvais", cityKey: "transfer", title: "大理石教堂、衛兵交接、運河船與救主堂", summary: "退房後先將托運行李送至 CPH 機場寄放（方案 B），走訪大理石教堂、衛兵交接、新港與運河船，登救主堂後搭 M2 直達機場搭乘 FR9267。", stay: "Hostellerie Saint Vincent Beauvais Aéroport", tone: "plum",
       reservationReminder: { countdown: "距離 09/14 還有 2 天", title: "留意聖母院 16:30 免費時段釋出", detail: "官方可能開始釋出 09/14 名額；若有 16:15 到 16:45 之間的時段即可直接領取。", url: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", cta: "前往官方免費預約" },
       schedule: [
-        { time: "08:00 - 08:45", icon: "☼", title: "早餐、退房與行李整理", detail: "完成行李打包封箱，核對護照與登機證；08:45 前離開營區。", tag: "退房" },
+        { time: "08:00 - 08:45", icon: "☼", title: "早餐、退房與行李整理", detail: "完成行李打包封箱；依訂房規定完成小木屋自行清潔（或付費清潔），11:00 前需退房，08:45 離開營區出發。", tag: "退房", ticketId: "first-camp" },
         { time: "08:45 - 09:05", icon: "↗", title: "First Camp → Malmö C", detail: "搭乘 Bus 9 或叫車前往 Malmö C。", tag: "交通" },
         { time: "09:05 - 09:35", icon: "🚆", title: "Malmö C → CPH Airport (直達)", detail: "搭乘 Re 1041 / Øresundståg 直達哥本哈根機場車站。", tag: "跨海" },
         { time: "09:35 - 10:15", icon: "▣", title: "CPH 機場行李寄放 (主方案 B)", detail: "於 Terminal 3 旁 P4/P7A 置物櫃寄放四件托運箱；隨身帶護照、電腦與小包。搭 M2 進市區轉 M3 到大理石教堂。", tag: "寄物" },

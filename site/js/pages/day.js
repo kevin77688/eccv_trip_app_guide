@@ -603,7 +603,7 @@
           </div>
         </div>
         <div class="day-tickets-chips">
-          ${dayTickets.map((t) => `<button type="button" class="day-ticket-chip" data-ticket-action="open" data-ticket-id="${esc(t.id)}"><span aria-hidden="true">🎫</span> ${esc(t.title)} (${esc(t.badge)})</button>`).join("")}
+          ${dayTickets.map((t) => `<button type="button" class="day-ticket-chip" data-ticket-action="open" data-ticket-id="${esc(t.id)}"><span aria-hidden="true">🎫</span> ${esc(t.title)}${t.badge ? ` (${esc(t.badge)})` : ""}</button>`).join("")}
         </div>
       </section>` : "";
     const routeSteps = (day.transport?.steps || []).map((step, index) => `<li><span class="route-step-number">${String(index + 1).padStart(2, "0")}</span><div><small>${routeKind(step, index, day.transport.steps.length - 1)}</small><strong>${esc(bilingualText(step))}</strong></div>${index < day.transport.steps.length - 1 ? `<span class="route-step-arrow" aria-hidden="true">↓</span>` : ""}</li>`).join("");

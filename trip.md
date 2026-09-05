@@ -3,6 +3,21 @@
 > 給後續 agent 的精簡背景資料。最後同步：2026-09-05。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
 
+## 馬爾默 First Camp Sibbarp 住宿確認更新與加密憑證整合（2026-09-05）
+
+- **First Camp Sibbarp-Malmö 訂房確認與時段約定**：
+  - 預訂確認編號：`5398******`（PIN 碼：`5958`），全額已付訖（SEK 5,036.25）。
+  - 入住期間：2026/09/07（週一）15:00 起開放入住，退房時間為 2026/09/12（週六）11:00 前（共 5 晚）。
+  - 抵達時間約定：已向住宿方預約確認於 18:00 - 19:00 間抵達辦理入住手續並領取小木屋鑰匙。
+  - 房型規格：1 棟獨立小木屋（Cottage 5 名成人規格，4 位成人入住），附專屬露台、小廚房、微波爐、爐具、咖啡機、免費 WiFi 與 1 個免費停車位。
+  - 重要規定：退房清潔不包含在房價內，退房前須自行將小屋清潔整理完畢（或現場付費購買清潔服務）；餐食不含早餐（早餐袋需提前預訂）。
+  - 聯絡電話：`+46 40 15 51 65`；地址：Strandgatan 101, Vaster, 216 11 Malmö, Sweden。
+- **官方訂單 PDF AES-256-GCM 驗證加密與憑證上線**：
+  - 將 Booking.com 官方訂單更新單 PDF（`pdf/2026-09-07_to_09-12_First-Camp-Sibbarp-Malmo_reservation.pdf`）納入 `scripts/encrypt_tickets.js`。
+  - 使用 20 碼高強度密碼（PBKDF2 600,000 次疊代計算衍生 256 位元金鑰）加密產出 `site/assets/tickets/first-camp.enc`。
+  - 於交通頁（`logistics.html`）與 09/07 入住日、09/12 退房日行程中整合「🎫 First Camp Sibbarp 住宿確認單」一鍵出示彈窗。
+- **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-18`，全站 19 份 HTML 檔案、`site/sw.js` 與工具頁版本資訊同步更新。
+
 ## 09/13 TER 09:40 改點與蒙馬特高地深度慢遊（2026-09-05）
 
 - **確認改搭 09:40 直達 TER 進巴黎**：
@@ -468,7 +483,7 @@
 
 | 日期 | 城市 | 住宿／預約 | 關鍵資訊 |
 | --- | --- | --- | --- |
-| 09/07-09/12 | Malmö | First Camp Sibbarp-Malmö | Strandgatan 101；09/12 11:00 前退房 |
+| 09/07-09/12 | Malmö | First Camp Sibbarp-Malmö | Strandgatan 101；09/07 15:00 起（約定 18:00-19:00 抵達），09/12 11:00 前退房；獨立小木屋 Cottage（4 人），退房前需自行清潔或付費清潔；聯絡電話 +46 40 15 51 65；訂單編號 5398****** (PIN: 5958) |
 | 09/12-09/13 | Beauvais | Hostellerie Saint Vincent Beauvais Aéroport | 241 Rue de Clermont；抵達法國後住一晚 |
 | 09/13-09/18 | Paris | Sure Hotel by Best Western Paris Gare du Nord | 224 Rue du Faubourg Saint-Denis；Gare du Nord 為主要交通基地 |
 | 09/15 19:00 | Paris | Francette | 1 Port de Suffren；4 位，已預約 |
@@ -480,7 +495,7 @@
 | 日期 | 地點 | 主行程 |
 | --- | --- | --- |
 | 09/06 | 台北 → 杜拜 | 23:50 搭 EK 367，純移動日 |
-| 09/07 | Copenhagen → Malmö | 13:15 抵達；CPH → Hyllie → First Camp；不排景點 |
+| 09/07 | Copenhagen → Malmö | 13:15 抵達；CPH → Hyllie → First Camp 周邊；18:00-19:00 辦理入住；不排景點 |
 | 09/08 | Malmö | 09:50 出發 → Malmöhus Castle／Aquarium／Art Museum（11:00 開館）→ 午餐 → Teknikens och Sjöfartens hus → Slottsträdgården；使用一日聯票 |
 | 09/09 | Malmö → Copenhagen → Malmö | 個人 Experimentarium 全日 → Malmö C → Turning Torso／Västra Hamnen 與朋友會合 |
 | 09/10 | Malmö | ECCV 2026 主會議、Expo；10:30 Poster Session 1／Poster #137 |

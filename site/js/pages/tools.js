@@ -1705,7 +1705,7 @@
       <section class="tools-block content-section tools-update-section" id="tools-update">
         <div class="section-heading-row">
           <div>${sectionHeading("APP MAINTENANCE", "版本更新與離線維護", "App 頁面內建於安裝檔中；若有最新修改可在此更新或清除舊快取。")}</div>
-          <span class="result-count">v20260905-17</span>
+          <span class="result-count">v20260905-18</span>
         </div>
         <div class="tools-update-card">
           <div class="tools-update-copy">

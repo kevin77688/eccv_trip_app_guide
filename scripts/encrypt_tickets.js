@@ -77,6 +77,12 @@ const TICKET_DEFINITIONS = [
     encFile: 'ek367-boarding-pass.enc',
     sourcePdf: '2026-09-06_to_09-07_EK367-EK151_TPE-DXB-CPH_boarding-passes.pdf',
     title: 'EK 367 / EK 151 台北至哥本哈根官方電子登機證'
+  },
+  {
+    id: 'first-camp',
+    encFile: 'first-camp.enc',
+    sourcePdf: '2026-09-07_to_09-12_First-Camp-Sibbarp-Malmo_reservation.pdf',
+    title: 'First Camp Sibbarp-Malmö 訂房確認單'
   }
 ];
 
