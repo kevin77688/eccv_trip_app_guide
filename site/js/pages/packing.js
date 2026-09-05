@@ -360,10 +360,10 @@
             </div>
 
             <div class="packing-bag-pills" role="tablist" aria-label="按包篩選行李清單">
-              <button class="packing-bag-pill is-active" type="button" data-bag-filter="all">全部 (<span data-bag-filter-count="all">0</span>)</button>
-              <button class="packing-bag-pill" type="button" data-bag-filter="tiny">① 小包 (<span data-bag-filter-count="tiny">0/0</span>)</button>
-              <button class="packing-bag-pill" type="button" data-bag-filter="backpack">② 後背包 (<span data-bag-filter-count="backpack">0/0</span>)</button>
-              <button class="packing-bag-pill" type="button" data-bag-filter="suitcase">③ 行李箱 (<span data-bag-filter-count="suitcase">0/0</span>)</button>
+              <button class="packing-bag-pill is-active" type="button" data-bag-filter="all">全部 <small><span data-bag-filter-count="all">0</span> 項</small></button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="tiny">小包 <small data-bag-filter-count="tiny">0/0</small></button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="backpack">後背包 <small data-bag-filter-count="backpack">0/0</small></button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="suitcase">行李箱 <small data-bag-filter-count="suitcase">0/0</small></button>
             </div>
 
             <details class="packing-options"><summary>編輯與備份</summary><div class="packing-toolbar-actions">
@@ -542,6 +542,9 @@
             const statusMatch = filter === "all" || (filter === "todo" && !isChecked);
             itemNode.hidden = !statusMatch;
             if (statusMatch) visible += 1;
+          });
+          section.querySelectorAll('.packing-group').forEach(group => {
+            group.hidden = filter === 'todo' && !group.querySelector('[data-packing-item]:not([hidden])');
           });
         });
 
@@ -1195,7 +1198,7 @@
           closeSyncModal();
           if (importInput) importInput.value = "";
           applyBtn.disabled = true;
-          core.toast("✓ 行李清單已成功同步至本裝置！");
+          core.toast("行李清單已匯入。");
         } catch (err) {
           core.toast("套用失敗：" + (err.message || "未知錯誤"));
         }
@@ -1218,7 +1221,7 @@
           const msg = `【行李清單同步】偵測到來自另一台裝置的同步資料：\n\n• 總物品數：${total} 項\n• 已勾選：${chk} 項\n\n是否立即套用此進度並覆蓋本機？`;
           if (await core.confirmModal({ title: '匯入行李清單', message: msg, confirmText: '套用清單' })) {
             applyPackingSyncPayload(payload);
-            core.toast("✓ 行李清單已成功同步！");
+            core.toast("行李清單已匯入。");
           }
         }
       } catch (err) {

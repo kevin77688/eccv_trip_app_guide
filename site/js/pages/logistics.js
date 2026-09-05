@@ -305,10 +305,16 @@
     const tabs = document.querySelectorAll("[data-logistics-filter]");
     const sections = document.querySelectorAll("[data-logistics-section]");
     if (!tabs.length) return;
+    const filterLabel = document.createElement('label');
+    filterLabel.className = 'logistics-mobile-filter';
+    filterLabel.innerHTML = `顯示 <select data-logistics-category aria-label="資訊分類">${[...tabs].map(tab => `<option value="${esc(tab.dataset.logisticsFilter)}">${esc(tab.textContent.replace(/^[^\p{L}\p{N}]+/u, '').trim())}</option>`).join('')}</select>`;
+    document.querySelector('.logistics-nav-bar').append(filterLabel);
+    const categorySelect = filterLabel.querySelector('select');
 
     const applyFilter = (filterKey) => {
       if (![...tabs].some(tab => tab.dataset.logisticsFilter === filterKey)) filterKey = 'today';
       currentFilter = filterKey;
+      categorySelect.value = filterKey;
       remember();
       tabs.forEach((tab) => { tab.classList.toggle("is-active", tab.dataset.logisticsFilter === filterKey); tab.setAttribute('role', 'tab'); tab.setAttribute('aria-selected', String(tab.dataset.logisticsFilter === filterKey)); });
       if (filterKey === "all") {
@@ -325,6 +331,10 @@
         applyFilter(tab.dataset.logisticsFilter);
         history.replaceState(history.state, '', tab.dataset.logisticsFilter === 'all' ? location.pathname : `#${tab.dataset.logisticsFilter}`);
       });
+    });
+    categorySelect.addEventListener('change', () => {
+      applyFilter(categorySelect.value);
+      history.replaceState(history.state, '', currentFilter === 'all' ? location.pathname : `#${currentFilter}`);
     });
 
     const applyHash = () => {

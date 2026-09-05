@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,6 +34,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Validate itinerary timing and private-file exclusions
+        run: npm test
 
       - name: Sync web assets to Android project
         run: npx cap sync android
@@ -61,10 +68,10 @@ jobs:
           cat > "${notes_file}" <<'EOF'
           ### ECCV 2026 歐洲旅程導覽 Android 離線 App (APK)
 
-          - 包含 14 天完整行程、航班、住宿、景點與 65 項行李清單
-          - App 內建網站，行程內容可完全離線開啟
-          - 支援暗色模式、離線匯率快取，以及由 [Google Translate](https://translate.google.com/) 提供技術支援、可預先下載的 ML Kit 離線文字／照片翻譯
-          - 安裝後請先連 Wi-Fi，在「小工具 → 翻譯」下載約 180 MB 離線語言包
+          - 14 天行程提供「現在的安排／接下來」、日期切換，以及票券和導航捷徑；時間依各地時區顯示。
+          - 「隨身資訊」集中放票券、住宿與緊急聯絡；行李清單有 67 項，預設顯示還沒收的物品。
+          - 行程內建於 APK。私人票券不附在安裝檔，請到「交通 → 票券」匯入自己的 .enc 檔，出示時仍需密碼。
+          - 「小工具 → 設定」可檢查離線準備。離線翻譯由 [Google Translate](https://translate.google.com/) 提供技術支援，請先連上 Wi-Fi，在「翻譯」下載約 180 MB 語言包。
 
           **下載方式**：點擊下方 Assets 中的 `ECCV-2026-Guide.apk` 即可直接在 Android 手機上下載並安裝。
           EOF

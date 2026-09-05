@@ -143,7 +143,11 @@ function run() {
     count++;
   }
 
-  console.log('[Encrypt] Complete! Successfully encrypted ' + count + ' authentic PDF ticket files.');
+  const digests = Object.fromEntries(fs.readdirSync(OUT_DIR).filter(name => name.endsWith('.enc')).map(name => [name, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT_DIR, name))).digest('hex')]));
+  const dataPath = path.join(__dirname, '../site/js/data.js');
+  const source = fs.readFileSync(dataPath, 'utf8');
+  fs.writeFileSync(dataPath, source.replace(/window\.TRIP\.ticketDigests = \{[\s\S]*?\};/, `window.TRIP.ticketDigests = ${JSON.stringify(digests, null, 2)};`));
+  console.log('[Encrypt] Complete. Encrypted ' + count + ' ticket files and updated their import checksums.');
 }
 
 run();

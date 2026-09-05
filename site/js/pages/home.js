@@ -77,6 +77,7 @@
     const formatScheduleDate = tools.formatScheduleDate || ((d) => d);
     const toolsLocations = tools.locations || (() => []);
     const fetchLocationWeather = tools.fetchLocationWeather;
+    const compactPlace = value => String(value).replace(/Malmö|Copenhagen|Beauvais|Paris/g, name => trip.bilingualNames?.[name] || name);
 
     if (!toolsFocusForDay || !automaticToolsDay) return;
 
@@ -99,7 +100,7 @@
       if (dateSelect) dateSelect.value = mode === "manual" ? key : "auto";
       if (autoButton) autoButton.hidden = mode !== "manual";
       if (modeNode) modeNode.textContent = modeText;
-      if (placeNode) placeNode.textContent = `${focus.day.date.slice(5).replace("/", ".")} · ${bilingualText(focus.placeLabel)}`;
+      if (placeNode) placeNode.textContent = `${focus.day.date.slice(5).replace("/", ".")} · ${compactPlace(focus.placeLabel)}`;
       if (metaNode) metaNode.textContent = `${formatScheduleDate(focus.day.date)} · ${bilingualText(focus.day.title)}`;
       if (dayLinkNode) {
         dayLinkNode.href = dayLink(key);
@@ -118,7 +119,7 @@
 
     const firstDay = Object.entries(trip.days || {})[0];
     if (dateSelect && firstDay) {
-      dateSelect.innerHTML = `<option value="auto">依今天日期自動選擇</option>${Object.entries(trip.days || {}).map(([key, day]) => `<option value="${esc(key)}">${esc(day.date.slice(5))} · ${esc(bilingualText(day.city))}</option>`).join("")}`;
+      dateSelect.innerHTML = `<option value="auto">依今天日期自動選擇</option>${Object.entries(trip.days || {}).map(([key, day]) => `<option value="${esc(key)}">${esc(day.date.slice(5))} · ${esc(compactPlace(day.city))}</option>`).join("")}`;
     }
     updateAutomaticSchedule();
 
@@ -357,7 +358,7 @@
 
           <div class="home-focus-toolbar">
             <label for="home-focus-date">
-              <span>查看其他日期</span>
+              <span>日期</span>
               <select id="home-focus-date" data-home-focus-date>
                 <option value="auto">依今天日期自動選擇</option>
               </select>

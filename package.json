@@ -8,7 +8,8 @@
     "build:apk": "npx cap sync android && cd android && ./gradlew assembleDebug",
     "encrypt-tickets": "node scripts/encrypt_tickets.js",
     "mcp:playwright": "playwright-mcp --headless --browser chromium --no-sandbox --caps=vision --allowed-hosts localhost,127.0.0.1",
-    "test": "echo \"ok\""
+    "test": "node scripts/journey-test.cjs && node scripts/privacy-test.cjs",
+    "test:ui": "node scripts/ux-smoke.cjs && node scripts/essentials-test.cjs && node scripts/offline-test.cjs && node scripts/places-test.cjs && node scripts/packing-test.cjs && node scripts/logistics-test.cjs && node scripts/platform-test.cjs"
   },
   "repository": {
     "type": "git",
