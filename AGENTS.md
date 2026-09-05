@@ -2,9 +2,10 @@
 
 ## Project memory
 
-- Read `trip.md` before planning, researching, designing, or changing this project. It contains the current trip, fixed bookings, traveler preferences, route logic, and unresolved choices.
+- Always read `trip.md` and repository memory `/memories/repo/workflow.md` before planning, researching, designing, or changing this project. No reminder is needed from the user.
 - The deployed static website lives in `site/`. Trip content is primarily stored in `site/js/data.js` and rendered through the HTML pages by `site/js/app.js`.
 - Treat `pdf/` as original booking evidence. Re-check official sources before changing volatile facts such as schedules, fares, opening hours, construction, entry rules, or baggage policies.
+- Security & Privacy: Never track `pdf/` or `site/assets/tickets/*.enc` in Git. Keep passwords and passenger PII strictly masked and out of the Git tree.
 
 ## Mandatory synchronization
 
