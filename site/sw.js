@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260906-04';
+const CACHE_NAME = 'eccv-guide-v20260906-05';
 
 const STATIC_ASSETS = [
   './',
@@ -22,6 +22,7 @@ const STATIC_ASSETS = [
   './js/pages/tools.js',
   './js/pages/day.js',
   './js/app.js',
+  './js/offline.js',
   './js/essentials.js',
   './js/ticket-store.js',
   './vendor/qr/qrcode.min.js',
@@ -108,7 +109,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(STATIC_ASSETS);
-    }).then(() => self.skipWaiting())
+    })
   );
 });
 
@@ -127,6 +128,13 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('message', (event) => {
+  if (event.data?.type === 'OFFLINE_STATUS' && event.ports?.[0]) {
+    event.waitUntil(caches.open(CACHE_NAME).then(async cache => {
+      const missing = [];
+      for (const path of STATIC_ASSETS) if (!(await cache.match(path))) missing.push(path);
+      event.ports[0].postMessage({ ready: missing.length === 0, missing, version: CACHE_NAME });
+    }));
+  }
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }

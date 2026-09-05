@@ -62,6 +62,30 @@ button, input, select, textarea { font: inherit; }
 .schedule-time > span.journey-status { display: inline; }
 .place-note-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; color: var(--coral-dark); font-size: 14px; font-weight: 700; }
 .home-today-card .now-next { margin-top: 16px; }
+.tools-title { margin: 8px 0 16px; font-size: 28px; }
+.tools-quick-reference { display: block; padding: 0; background: none; box-shadow: none; border: 0; }
+.tools-quick-copy { display: none; }
+.tools-quick-links { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.tools-quick-link { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 8px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 12px; }
+.tools-quick-link small, .tools-quick-link b, .tools-quick-icon { display: none; }
+.tools-quick-link strong { font-size: 14px; }
+.tools-quick-link[aria-selected="true"] { background: var(--coral-soft); color: var(--coral-dark); border-color: var(--coral); }
+.tools-block { margin-top: 22px; }
+.tools-block > .section-heading-row .eyebrow { display: none; }
+.tools-block > .section-heading-row h2 { font-size: 24px; }
+.translate-connection-details { margin-bottom: 12px; }
+.offline-readiness { padding: 20px; margin-bottom: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.offline-readiness-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.offline-readiness h3 { margin: 0; font-size: 20px; }
+.offline-readiness .button { min-height: 44px; width: auto; font-size: 14px; padding: 8px 12px; }
+.offline-readiness p { font-size: 14px; color: var(--muted); }
+.offline-readiness dl > div { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.offline-readiness dt { font-weight: 700; }
+.offline-readiness dd { margin: 4px 0 0; font-size: 15px; }
+@media (min-width: 841px) {
+  body[data-page="tools"] .page-shell { max-width: 1080px; }
+  .nav-wrap { grid-template-columns: auto minmax(0, 1fr) minmax(340px, 380px); }
+}
 @media (max-width: 840px) {
   .mobile-nav { position: fixed; inset: auto 0 0; z-index: 120; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 6px 8px max(8px, env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line); }
   .mobile-nav a { min-height: 52px; display: grid; align-content: center; justify-items: center; gap: 3px; border-radius: 12px; color: var(--muted); }

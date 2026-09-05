@@ -982,6 +982,9 @@
       }
       updateControls();
     };
+    document.addEventListener('toolchange', event => { if (event.detail !== 'tools-translate') stopCamera(); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stopCamera(); });
+    window.addEventListener('pagehide', stopCamera);
 
     const startCamera = async () => {
       if (busy || cameraStarting || cameraStream) return;
@@ -1416,7 +1419,7 @@
             if (core.toast) core.toast("發現新版本，正在套用更新…");
             setTimeout(() => window.location.reload(), 800);
           } else {
-            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260906-04）");
+            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260906-05）");
           }
         } catch (_) {
           if (core.toast) core.toast("檢查更新失敗，請確認網路連線");
@@ -1719,6 +1722,45 @@
     }
   }
 
+  function setupToolTabs() {
+    const security = document.getElementById('tools-security');
+    if (security) { security.classList.remove('tools-block'); document.getElementById('tools-update').append(security); }
+    const order = ['tools-translate', 'tools-exchange', 'tools-clocks', 'tools-apps', 'tools-update'];
+    const links = [...document.querySelectorAll('.tools-quick-links a')].sort((a, b) => order.indexOf(a.hash.slice(1)) - order.indexOf(b.hash.slice(1)));
+    links.forEach(link => document.querySelector('.tools-quick-links').append(link));
+    const panels = [...document.querySelectorAll('.tools-block')];
+    let selected;
+    try { selected = sessionStorage.getItem('eccv-selected-tool'); } catch (_) {}
+    const select = (id, navigate = false) => {
+      if (id === 'weather-gps') id = 'tools-clocks';
+      if (!panels.some(panel => panel.id === id)) id = 'tools-translate';
+      panels.forEach(panel => { panel.hidden = panel.id !== id; panel.setAttribute('role', 'tabpanel'); panel.setAttribute('aria-labelledby', `tab-${panel.id}`); });
+      links.forEach(link => {
+        const active = link.hash === `#${id}`;
+        link.setAttribute('role', 'tab');
+        link.id = `tab-${link.hash.slice(1)}`;
+        link.setAttribute('aria-controls', link.hash.slice(1));
+        link.setAttribute('aria-selected', String(active));
+        link.tabIndex = active ? 0 : -1;
+      });
+      try { sessionStorage.setItem('eccv-selected-tool', id); } catch (_) {}
+      document.dispatchEvent(new CustomEvent('toolchange', { detail: id }));
+      if (navigate) { history.replaceState(history.state, '', `#${id}`); window.scrollTo({ top: 0, behavior: 'instant' }); }
+    };
+    document.querySelector('.tools-quick-links').setAttribute('role', 'tablist');
+    links.forEach((link, index) => {
+      link.addEventListener('click', event => { event.preventDefault(); select(link.hash.slice(1), true); });
+      link.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? links.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + links.length) % links.length;
+        links[next].focus(); select(links[next].hash.slice(1), true);
+      });
+    });
+    window.addEventListener('hashchange', () => select(location.hash.slice(1)));
+    select(location.hash.slice(1) || selected);
+  }
+
   function renderTools() {
     const trip = window.TRIP || {};
     const core = getCore();
@@ -1740,6 +1782,7 @@
     const appCards = recommendedApps.map(toolsAppCardMarkup).join("");
 
     layout(`
+      <h1 class="tools-title">旅行小工具</h1>
       <section class="tools-quick-reference" aria-labelledby="tools-quick-title">
         <div class="tools-quick-copy"><span class="eyebrow light">QUICK REFERENCE</span><strong id="tools-quick-title">快速前往</strong></div>
         <nav class="tools-quick-links" aria-label="小工具快速前往">
@@ -1757,11 +1800,11 @@
           </a>
           <a class="tools-quick-link tools-quick-apps" href="#tools-apps">
             <span class="tools-quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></span>
-            <span><small>交通與登機</small><strong>推薦 App</strong></span><b aria-hidden="true">↓</b>
+            <span><small>交通與登機</small><strong>App</strong></span><b aria-hidden="true">↓</b>
           </a>
           <a class="tools-quick-link tools-quick-update" href="#tools-update">
             <span class="tools-quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg></span>
-            <span><small>${isNative ? "APK・快取" : "PWA・快取"}</small><strong>更新維護</strong></span><b aria-hidden="true">↓</b>
+            <span><small>${isNative ? "APK・快取" : "PWA・快取"}</small><strong>設定</strong></span><b aria-hidden="true">↓</b>
           </a>
         </nav>
       </section>
@@ -1792,7 +1835,7 @@
       </section>
 
       <section class="tools-block content-section translate-section" id="tools-translate">
-        <div class="section-heading-row"><div>${sectionHeading("TRAVEL TRANSLATOR", "文字或照片，直接翻譯。", "有網路時使用你自己的 VLM 連線設定；Android App 可預先下載 OCR 與翻譯語言包，在完全無網路時自動接手。")}</div><span class="result-count" data-translate-status>請先設定線上翻譯</span></div>
+        <div class="section-heading-row"><div>${sectionHeading("", "旅行翻譯", "拍下菜單、告示，或輸入文字。Android 可先下載語言包供離線使用。")}</div><span class="result-count" data-translate-status>請先設定線上翻譯</span></div>
         <details class="translate-connection-details" data-translate-connection-details>
           <summary class="translate-connection-summary">
             <div class="translate-connection-summary-left">
@@ -1946,12 +1989,12 @@
       <section class="tools-block content-section tools-update-section" id="tools-update">
         <div class="section-heading-row">
           <div>${sectionHeading(isNative ? "APP MAINTENANCE" : "PWA MAINTENANCE", isNative ? "Android 獨立 App 版本與維護" : "PWA 網頁版更新與離線維護", isNative ? "App 頁面內建於安裝檔中；若有最新修改可在此更新或清除舊快取。" : "支援 Service Worker 離線快取；若 GitHub 有發布更新可在此檢查或重整。")}</div>
-          <span class="result-count">${isNative ? "Android APK · v20260906-04" : "PWA 網頁版 · v20260906-04"}</span>
+          <span class="result-count">${isNative ? "Android APK · v20260906-05" : "PWA 網頁版 · v20260906-05"}</span>
         </div>
         <div class="tools-update-card">
           <div class="tools-update-copy">
             <strong>${isNative ? "Android 獨立 APK 離線維護說明" : "PWA 漸進式網頁版本與離線快取說明"}</strong>
-            <p>${isNative ? "本 App 為獨立打包，所有網頁與離線資源已內建於安裝檔中，無網路環境亦可隨時查閱。本機安裝檔不會自動下載遠端網頁更新。操作選項：" : "目前使用 PWA 網頁版。已將行程、離線地圖與工具快取於本機裝置，無網路時亦可瀏覽。操作選項："}</p>
+            <p>${isNative ? "行程隨 APK 安裝。功能或內容更新時，請下載新版 APK 覆蓋安裝；私人票券需另行匯入。" : "網站會在連線時儲存離線檔案。請以上方檢查結果確認是否完成，私人票券需另行匯入。"}</p>
             <ul>
               ${isNative ? `
                 <li><strong>安裝新版 APK 後快取異常</strong>：點擊「清除快取並重啟 App」，清除 WebView 暫存並重啟（保留行李勾選與設定）。</li>
@@ -1968,10 +2011,10 @@
               <button type="button" class="button button-secondary tools-cache-exit-btn" data-app-cache-exit>
                 <span aria-hidden="true">🔄</span> 清除快取並重啟 App
               </button>
-              <a class="button button-primary tools-apk-download-btn" href="https://github.com/kevin77688/eccv_trip_guide/releases/latest/download/ECCV-2026-Guide.apk" target="_blank" rel="noreferrer">
+              <a class="button button-primary tools-apk-download-btn" href="https://github.com/kevin77688/eccv_trip_app_guide/releases/latest/download/ECCV-2026-Guide.apk" target="_blank" rel="noreferrer">
                 <span aria-hidden="true">📥</span> 下載最新 APK 安裝檔
               </a>
-              <a class="button button-ghost tools-web-link-btn" href="https://kevin77688.github.io/eccv_trip_guide/" target="_blank" rel="noreferrer">
+              <a class="button button-ghost tools-web-link-btn" href="https://kevin77688.github.io/eccv_trip_app_guide/" target="_blank" rel="noreferrer">
                 <span aria-hidden="true">🌐</span> 開啟線上最新網頁版 ↗
               </a>
             ` : `
@@ -1981,7 +2024,7 @@
               <button type="button" class="button button-secondary tools-cache-exit-btn" data-app-cache-exit>
                 <span aria-hidden="true">🧹</span> 清除快取並強制重整
               </button>
-              <a class="button button-ghost tools-apk-download-btn" href="https://github.com/kevin77688/eccv_trip_guide/releases/latest/download/ECCV-2026-Guide.apk" target="_blank" rel="noreferrer">
+              <a class="button button-ghost tools-apk-download-btn" href="https://github.com/kevin77688/eccv_trip_app_guide/releases/latest/download/ECCV-2026-Guide.apk" target="_blank" rel="noreferrer">
                 <span aria-hidden="true">📥</span> 下載 Android APK 安裝檔
               </a>
             `}
@@ -1995,6 +2038,7 @@
     setupTranslator();
     setupBiometricTools();
     setupUpdateTools();
+    setupToolTabs();
   }
 
   window.ECCV_PAGES = window.ECCV_PAGES || {};

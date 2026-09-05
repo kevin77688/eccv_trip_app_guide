@@ -651,6 +651,10 @@
   }
 
   function setupServiceWorker() {
+    if (window.ECCV_ANDROID?.isNative()) {
+      navigator.serviceWorker?.getRegistrations().then(registrations => registrations.forEach(reg => reg.unregister())).catch(() => {});
+      return;
+    }
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         const swUrl = page === "day" ? "../sw.js" : "./sw.js";
@@ -674,7 +678,7 @@
           });
         }).catch(() => {});
 
-        let refreshing = false;
+        let refreshing = !navigator.serviceWorker.controller;
         navigator.serviceWorker.addEventListener("controllerchange", () => {
           if (!refreshing) {
             refreshing = true;
@@ -686,6 +690,7 @@
   }
 
   async function checkPwaUpdate() {
+    if (!navigator.onLine) return { supported: true, updated: false, message: '無法確認是否有新版，請連上網路後重試。' };
     if (!("serviceWorker" in navigator)) {
       return { supported: false, updated: false, message: "此環境不支援 Service Worker" };
     }
@@ -695,18 +700,30 @@
       if (!reg) {
         reg = await navigator.serviceWorker.register(swUrl);
       } else {
-        try {
-          await reg.update();
-        } catch (_) {}
+        await reg.update();
       }
       swRegistration = reg;
+      if (reg.installing) {
+        const worker = reg.installing;
+        await new Promise((resolve, reject) => {
+          const timer = setTimeout(() => { worker.removeEventListener('statechange', changed); reject(new Error('Update timed out')); }, 15000);
+          const changed = () => {
+            if (['installed', 'activated', 'redundant'].includes(worker.state)) {
+              clearTimeout(timer); worker.removeEventListener('statechange', changed);
+              worker.state === 'redundant' ? reject(new Error('Update failed')) : resolve();
+            }
+          };
+          worker.addEventListener('statechange', changed); changed();
+        });
+      }
       if (reg.waiting) {
         showPwaUpdateBanner(reg);
+        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
         return { supported: true, updated: true, message: "發現新版本，請點擊更新" };
       }
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-04）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-05）" };
     } catch (e) {
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-04）" };
+      return { supported: true, updated: false, message: "無法確認是否有新版，請連上網路後重試。" };
     }
   }
 
