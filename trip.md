@@ -70,15 +70,20 @@
 
 ## Android App 原生 Knox 指紋與跨平台 WebAuthn 生物辨識保險箱（2026-09-05）
 
+- **20 碼高強度密碼重新加密與 GitHub Pages 部署防護**：
+  - 票券加密全面更新為 20 碼高強度隨機密碼（含英數大小寫與特殊符號），透過 600,000 次 PBKDF2-HMAC-SHA256 疊代計算衍生 256 位元金鑰，並由 AES-256-GCM 進行驗證加密。
+  - `.gitignore` 解除 `site/assets/tickets/*.enc` 限制，使加密票券得以安全部署於 GitHub Pages 提供靜態線上開啟；本地端原始機密檔（`pdf/`、`raw_tickets/` 與 `*.pdf`）嚴格維持本機忽略，確保公開倉儲絕無原始明文洩漏。
+  - 即便攻擊者自公開 GitHub Pages 下載 `.enc` 檔案，在 600,000 次 PBKDF2 運算成本下，20 碼高強度隨機密碼於數學上無法被現代算力在旅程期間暴力破譯。
 - **雙軌生物辨識快速出示支援**：
   - **Android 原生 App（Samsung Knox）**：由 Android Keystore 與硬體安全晶片（TEE）生成硬體綁定金鑰，強制活體指紋授權驗證（BiometricPrompt CryptoObject）。
-  - **Apple 與現代瀏覽器（WebAuthn）**：支援 MacBook Touch ID、iPhone Face ID / Touch ID 透過安全隔離區（Secure Enclave）生成平台認證金鑰，以 PBKDF2 + AES-256-GCM 本機加密保管票券密碼，達成全平台指紋／臉部感應快速出示。
+  - **Apple 與現代瀏覽器（WebAuthn）**：支援 MacBook Touch ID、iPhone Face ID / Touch ID 透過安全隔離區（Apple Secure Enclave）生成平台認證金鑰，以 PBKDF2 + AES-256-GCM 本機加密保管票券密碼，達成全平台指紋／臉部感應快速出示。
+  - **動態設備適配介面**：彈窗與啟用提示卡片依裝置自動呈現專屬標題與圖示（如「MacBook Touch ID 快速出示」、「Apple Face ID / Touch ID 快速出示」與「Samsung S23 指紋快速出示」）。
 - **APK 與本機資安防護架構**：
   - **APK 零寫死密鑰**：APK 安裝檔、JavaScript 與 Java 原始碼中均不包含密碼或解密金鑰，無法藉由反編譯（decompile）取得通關密碼。
   - **Samsung Knox 硬體安全隔離**：首次由使用者在 App 內手動輸入正確密碼並成功解密後，使用者可自主選擇綁定指紋；密碼由 Android 系統 Keystore 在獨立安全晶片（TEE / Knox Secure Processor）內生成專屬 AES-256-GCM 硬體金鑰加密後存放於應用程式私有目錄，金鑰無法被匯出。
   - **硬體強制生物辨識驗證（`setUserAuthenticationRequired(true)`）**：Keystore 在硬體底層強制要求真實指紋授權驗證（BiometricPrompt CryptoObject），方允許執行解密運算；即便裝置遭 Root 或私有資料被複製，無活體指紋授權將直接被晶片拒絕解密。
   - **系統防篡改自毀機制（`setInvalidatedByBiometricEnrollment(true)`）**：若在 Android 系統設定中新增或變更其他指紋，Keystore 金鑰將自動永久作廢，系統自動清除儲存密文並退回手動輸入密碼，防止藉由新增指紋破解。
-- **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-03`，全站 19 份 HTML 檔案同步更新。
+- **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-12`，全站 19 份 HTML 檔案與 `site/sw.js` 同步更新。
 
 ## TPE 至 CPH 全程官方雙段電子登機證整合（2026-09-05）
 
