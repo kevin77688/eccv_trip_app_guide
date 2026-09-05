@@ -665,6 +665,17 @@
     const connectionClear = document.querySelector("[data-translate-connection-clear]");
     const connectionState = document.querySelector("[data-translate-connection-state]");
     const connectionHelp = document.querySelector("[data-translate-connection-help]");
+    const connectionDetails = document.querySelector("[data-translate-connection-details]");
+    const connectionToggleText = document.querySelector("[data-translate-connection-toggle-text]");
+    const offlineBadge = document.querySelector("[data-translate-offline-badge]");
+    const cameraTriggers = document.querySelector("[data-translate-camera-triggers]");
+    const retakeButton = document.querySelector("[data-translate-retake-camera]");
+    const fileSecondary = document.querySelector("[data-translate-file-secondary]");
+    const textClearButton = document.querySelector("[data-translate-text-clear]");
+    const copyButton = document.querySelector("[data-translate-copy]");
+    const modeTabs = document.querySelectorAll("[data-translate-mode-tab]");
+    const cameraPanelWrap = document.querySelector("[data-translate-panel='camera']");
+    const textPanelWrap = document.querySelector("[data-translate-panel='text']");
     if (!translator || !languages.length || !textInput || !targetSelect || !textButton || !imageButton || !imageInput || !cameraButton || !cameraPanel || !cameraVideo || !cameraShoot || !cameraClose || !resultNode || !endpointInput || !modelInput || !apiKeyInput || !connectionVerify || !connectionClear) return;
 
     targetSelect.innerHTML = languages.map((language) => `<option value="${esc(language.code)}">${esc(language.label)}</option>`).join("");
@@ -941,9 +952,11 @@
         preview.src = previewUrl;
         preview.alt = `待翻譯圖片：${selectedImage.name}`;
         previewWrap.hidden = false;
+        if (cameraTriggers) cameraTriggers.hidden = true;
         if (fileName) fileName.textContent = selectedImage.name;
-      } else if (previewWrap) {
-        previewWrap.hidden = true;
+      } else {
+        if (previewWrap) previewWrap.hidden = true;
+        if (cameraTriggers && !cameraStream) cameraTriggers.hidden = false;
       }
       updateControls();
       if (selectedImage) window.setTimeout(translateImage, 0);
@@ -956,12 +969,20 @@
       cameraStream = null;
       cameraVideo.srcObject = null;
       cameraPanel.hidden = true;
+      if (selectedImage && previewWrap) {
+        previewWrap.hidden = false;
+        if (cameraTriggers) cameraTriggers.hidden = true;
+      } else if (cameraTriggers) {
+        cameraTriggers.hidden = false;
+      }
       updateControls();
     };
 
     const startCamera = async () => {
       if (busy || cameraStarting || cameraStream) return;
       cameraPanel.hidden = false;
+      if (cameraTriggers) cameraTriggers.hidden = true;
+      if (previewWrap) previewWrap.hidden = true;
       if (cameraStatus) cameraStatus.textContent = "正在啟動後鏡頭…";
       cameraStarting = true;
       const requestId = ++cameraRequestId;
@@ -987,8 +1008,14 @@
         cameraStream?.getTracks().forEach((track) => track.stop());
         cameraStream = null;
         cameraVideo.srcObject = null;
-        if (cameraStatus) cameraStatus.textContent = "無法開啟相機。請允許相機權限，或改用上傳圖片。";
-        if (status) status.textContent = "相機無法使用 · 可改用上傳圖片";
+        cameraPanel.hidden = true;
+        if (selectedImage && previewWrap) {
+          previewWrap.hidden = false;
+        } else if (cameraTriggers) {
+          cameraTriggers.hidden = false;
+        }
+        if (cameraStatus) cameraStatus.textContent = "無法開啟相機。請允許相機權限，或改用選取相片。";
+        if (status) status.textContent = "相機無法使用 · 可改用選取相片";
       } finally {
         if (requestId === cameraRequestId) {
           cameraStarting = false;
@@ -1029,6 +1056,11 @@
         const file = await cameraFrameFile();
         stopCamera();
         chooseImage(file);
+        if (window.innerWidth <= 768 && resultNode) {
+          window.requestAnimationFrame(() => {
+            resultNode.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          });
+        }
       } catch (_) {
         if (cameraStatus) cameraStatus.textContent = "拍攝失敗，請等畫面穩定後再試一次。";
         updateControls();
@@ -1087,6 +1119,13 @@
         } catch (_) {}
 
         lastVerificationError = "";
+        if (connectionDetails) {
+          connectionDetails.open = false;
+          if (connectionToggleText) connectionToggleText.textContent = "展開設定 ▾";
+        }
+        if (core.toast) {
+          core.toast("API 連線驗證成功，設定已儲存！");
+        }
       } catch (err) {
         lastVerificationError = err.detail || err.message || "連線測試失敗";
       } finally {
@@ -1133,11 +1172,62 @@
       keyToggle.setAttribute("aria-label", reveal ? "隱藏 API Key" : "顯示 API Key");
       keyToggle.setAttribute("title", reveal ? "隱藏 API Key" : "顯示 API Key");
     });
+    connectionDetails?.addEventListener("toggle", () => {
+      if (connectionToggleText) {
+        connectionToggleText.textContent = connectionDetails.open ? "收合設定 ▴" : "展開設定 ▾";
+      }
+    });
+
+    // Translation Mode Switching
+    const setMode = (mode) => {
+      modeTabs.forEach((tab) => {
+        const isActive = tab.getAttribute("data-translate-mode-tab") === mode;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+      if (cameraPanelWrap) cameraPanelWrap.hidden = mode !== "camera";
+      if (textPanelWrap) textPanelWrap.hidden = mode !== "text";
+      if (mode !== "camera") {
+        stopCamera();
+      }
+    };
+    modeTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const mode = tab.getAttribute("data-translate-mode-tab");
+        if (mode) setMode(mode);
+      });
+    });
+
     targetSelect.addEventListener("change", updateControls);
     imageInput.addEventListener("change", () => {
       const file = imageInput.files?.[0] || null;
       imageInput.value = "";
       chooseImage(file);
+    });
+    fileSecondary?.addEventListener("change", () => {
+      const file = fileSecondary.files?.[0] || null;
+      fileSecondary.value = "";
+      chooseImage(file);
+    });
+    retakeButton?.addEventListener("click", () => {
+      if (previewWrap) previewWrap.hidden = true;
+      startCamera();
+    });
+    textClearButton?.addEventListener("click", () => {
+      textInput.value = "";
+      updateControls();
+      textInput.focus();
+    });
+    copyButton?.addEventListener("click", async () => {
+      const text = resultNode.textContent || "";
+      if (!text || text === "結果會顯示在這裡。" || text === "翻譯暫時失敗，請稍後再試。") return;
+      try {
+        await navigator.clipboard.writeText(text);
+        if (core.toast) core.toast("已複製翻譯結果至剪貼簿！");
+        else alert("已複製翻譯結果！");
+      } catch (_) {
+        // clipboard unavailable
+      }
     });
     textButton.addEventListener("click", () => {
       const text = textInput.value.trim();
@@ -1154,18 +1244,25 @@
     imageButton.addEventListener("click", translateImage);
     window.addEventListener("pagehide", stopCamera);
     if (offlineTranslator && offlinePanel && offlineButton && offlineStatus) {
-      offlinePanel.hidden = false;
-      if (offlineDisclaimer) offlineDisclaimer.hidden = false;
       const refreshOfflineStatus = async () => {
         try {
           const packStatus = await offlineTranslator.status();
           offlineReady = Boolean(packStatus.ready);
           const downloaded = Array.isArray(packStatus.downloadedLanguages) ? packStatus.downloadedLanguages.length : 0;
-          offlineStatus.textContent = offlineReady
-            ? "已準備完成。飛航模式下可翻譯文字，也可用相機辨識拉丁字母告示。"
-            : `尚未準備完成（${downloaded}/${packStatus.requiredCount || 6} 個語言包）。出發前請連上 Wi-Fi 下載。`;
-          offlineButton.textContent = offlineReady ? "離線翻譯已準備" : "下載離線語言包";
+          if (offlineBadge) {
+            offlineBadge.hidden = !offlineReady;
+          }
+          if (offlineReady) {
+            offlinePanel.hidden = true;
+            if (offlineDisclaimer) offlineDisclaimer.hidden = true;
+          } else {
+            offlinePanel.hidden = false;
+            if (offlineDisclaimer) offlineDisclaimer.hidden = false;
+            offlineStatus.textContent = `尚未準備完成（${downloaded}/${packStatus.requiredCount || 6} 個語言包）。出發前請連上 Wi-Fi 下載。`;
+            offlineButton.textContent = "下載離線語言包";
+          }
         } catch (_) {
+          offlinePanel.hidden = false;
           offlineStatus.textContent = "無法讀取離線語言包狀態，請重新開啟 App 再試。";
         }
         updateControls();
@@ -1179,9 +1276,12 @@
         try {
           await offlineTranslator.prepare({ wifiOnly: true });
           offlineReady = true;
-          offlineStatus.textContent = "下載完成。建議開啟飛航模式做一次文字與照片測試。";
-          offlineButton.textContent = "離線翻譯已準備";
+          if (offlineBadge) offlineBadge.hidden = false;
+          offlinePanel.hidden = true;
+          if (offlineDisclaimer) offlineDisclaimer.hidden = true;
+          if (core.toast) core.toast("離線翻譯語言包已下載完成！");
         } catch (_) {
+          offlinePanel.hidden = false;
           offlineStatus.textContent = "下載未完成。請確認正在使用 Wi-Fi、有足夠空間，然後再試一次。";
           offlineButton.textContent = "重新下載離線語言包";
         } finally {
@@ -1311,7 +1411,7 @@
             if (core.toast) core.toast("發現新版本，正在套用更新…");
             setTimeout(() => window.location.reload(), 800);
           } else {
-            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260905-20）");
+            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260905-21）");
           }
         } catch (_) {
           if (core.toast) core.toast("檢查更新失敗，請確認網路連線");
@@ -1688,46 +1788,125 @@
 
       <section class="tools-block content-section translate-section" id="tools-translate">
         <div class="section-heading-row"><div>${sectionHeading("TRAVEL TRANSLATOR", "文字或照片，直接翻譯。", "有網路時使用你自己的 VLM 連線設定；Android App 可預先下載 OCR 與翻譯語言包，在完全無網路時自動接手。")}</div><span class="result-count" data-translate-status>請先設定線上翻譯</span></div>
-        <section class="translate-connection-panel" aria-labelledby="translate-connection-title">
-          <div class="translate-connection-heading">
-            <div><span class="eyebrow">PRIVATE CONNECTION</span><strong id="translate-connection-title">設定自己的 API 連線</strong><p>Base URL／Endpoint、Model ID 與 API Key 只會儲存在這台裝置的網站／App 本機儲存空間，不會寫入網站檔案。點擊「驗證連線」確認可用後自動儲存。</p></div>
-            <span class="translate-connection-state" data-translate-connection-state>尚未設定</span>
+        <details class="translate-connection-details" data-translate-connection-details>
+          <summary class="translate-connection-summary">
+            <div class="translate-connection-summary-left">
+              <span class="translate-connection-icon" aria-hidden="true">⚙️</span>
+              <strong id="translate-connection-title">API 連線設定</strong>
+              <span class="translate-connection-state" data-translate-connection-state>尚未設定</span>
+              <span class="translate-offline-badge" data-translate-offline-badge hidden>● 離線模型已備妥</span>
+            </div>
+            <span class="translate-connection-toggle-text" data-translate-connection-toggle-text>展開設定 ▾</span>
+          </summary>
+          <div class="translate-connection-body">
+            <p class="translate-connection-desc">Base URL／Endpoint、Model ID 與 API Key 只儲存在這台裝置的本機空間，不會寫入網站檔案。點擊「驗證連線」確認可用後自動儲存並收合。</p>
+            <div class="translate-connection-fields">
+              <label><span>API Base URL / Endpoint</span><input type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="例如 https://api.openai.com/v1" data-translate-endpoint /></label>
+              <label><span>Model ID（留空使用預設，OpenAI 可填 gpt-4o-mini）</span><input type="text" autocomplete="off" spellcheck="false" placeholder="例如 gpt-4o-mini 或 ${esc((trip.tools?.translator || {}).model || "qwen3.6-35b-a3b-gmi-ray")}" data-translate-model-input /></label>
+              <label><span>API Key</span><span class="translate-key-field"><input type="password" autocomplete="off" spellcheck="false" placeholder="貼上你的 API Key" data-translate-api-key /><button type="button" data-translate-key-toggle aria-label="顯示 API Key" title="顯示 API Key">顯示</button></span></label>
+            </div>
+            <div class="translate-connection-actions">
+              <button class="button button-primary" type="button" data-translate-connection-verify>驗證連線</button>
+              <button class="button button-secondary" type="button" data-translate-connection-clear>清除設定</button>
+              <small data-translate-connection-help>支援 Base URL（如 https://api.openai.com/v1）或完整 endpoint；點擊「驗證連線」測試成功後自動儲存。</small>
+            </div>
           </div>
-          <div class="translate-connection-fields">
-            <label><span>API Base URL / Endpoint</span><input type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="例如 https://api.openai.com/v1" data-translate-endpoint /></label>
-            <label><span>Model ID（留空使用預設，OpenAI 可填 gpt-4o-mini）</span><input type="text" autocomplete="off" spellcheck="false" placeholder="例如 gpt-4o-mini 或 ${esc((trip.tools?.translator || {}).model || "qwen3.6-35b-a3b-gmi-ray")}" data-translate-model-input /></label>
-            <label><span>API Key</span><span class="translate-key-field"><input type="password" autocomplete="off" spellcheck="false" placeholder="貼上你的 API Key" data-translate-api-key /><button type="button" data-translate-key-toggle aria-label="顯示 API Key" title="顯示 API Key">顯示</button></span></label>
-          </div>
-          <div class="translate-connection-actions"><button class="button button-primary" type="button" data-translate-connection-verify>驗證連線</button><button class="button button-secondary" type="button" data-translate-connection-clear>清除設定</button><small data-translate-connection-help>支援 Base URL（如 https://api.openai.com/v1）或完整 endpoint；點擊「驗證連線」測試成功後自動儲存。</small></div>
-        </section>
+        </details>
         <div class="offline-translate-panel" data-offline-translate-panel hidden>
           <div><span class="eyebrow">ANDROID OFFLINE BACKUP</span><strong>出發前準備離線翻譯</strong><p data-offline-translate-status>正在檢查離線語言包…</p><a class="offline-translate-provider" href="https://translate.google.com/" target="_blank" rel="noreferrer">離線翻譯由 Google Translate 提供技術支援 ↗</a></div>
           <button class="button button-primary" type="button" data-offline-translate-prepare>下載離線語言包</button>
         </div>
+
         <div class="translate-tool-card">
-          <div class="translate-input-side">
-            <label class="translate-text-field"><span>輸入文字</span><textarea data-translate-input rows="7" placeholder="貼上菜單、告示或交通資訊…" aria-label="輸入要翻譯的文字"></textarea></label>
-            <div class="translate-input-meta"><span data-translate-count>0 字</span><span>自動偵測來源語言</span></div>
-            <div class="translate-target-row"><label><span>翻成</span><select data-translate-target aria-label="選擇翻譯目標語言"><option value="zh-Hant">繁體中文</option></select></label><button class="button button-primary" type="button" data-translate-text disabled>翻譯文字</button></div>
-            <div class="translate-or"><span>或</span></div>
-            <div class="translate-image-picker">
-              <span>選擇圖片來源</span>
-              <div class="translate-image-actions" role="group" aria-label="選擇拍照或上傳圖片">
-                <button class="button button-primary" type="button" data-translate-camera>開啟相機拍照</button>
-                <label class="button button-secondary translate-upload-button">上傳圖片<input type="file" accept="image/*" data-translate-file aria-label="從手機相簿或裝置上傳圖片" /></label>
-              </div>
-              <small>手機可直接在頁面內開啟後鏡頭，也可從相簿選擇圖片。有網路時圖片會傳送至翻譯服務；Android 離線備援只在裝置內進行 OCR 與翻譯。</small>
+          <div class="translate-top-bar">
+            <div class="translate-mode-tabs" role="tablist" aria-label="翻譯模式切換">
+              <button class="translate-mode-tab is-active" type="button" role="tab" aria-selected="true" data-translate-mode-tab="camera">
+                <span class="tab-icon" aria-hidden="true">📷</span>
+                <span>拍照・圖片</span>
+              </button>
+              <button class="translate-mode-tab" type="button" role="tab" aria-selected="false" data-translate-mode-tab="text">
+                <span class="tab-icon" aria-hidden="true">✍️</span>
+                <span>輸入文字</span>
+              </button>
             </div>
-            <div class="translate-camera-panel" data-translate-camera-panel hidden>
-              <video data-translate-camera-video autoplay muted playsinline aria-label="相機即時預覽"></video>
-              <p data-translate-camera-status aria-live="polite">正在啟動後鏡頭…</p>
-              <div class="translate-camera-actions"><button class="button button-primary" type="button" data-translate-camera-shoot disabled>拍攝並翻譯</button><button class="button button-secondary" type="button" data-translate-camera-close>關閉相機</button></div>
+            <div class="translate-target-row">
+              <label><span>翻成</span><select data-translate-target aria-label="選擇翻譯目標語言"><option value="zh-Hant">繁體中文</option></select></label>
             </div>
-            <button class="button button-secondary translate-image-button" type="button" data-translate-image disabled>重新翻譯圖片</button>
-            <div class="translate-preview" data-translate-preview-wrap hidden><img data-translate-preview alt="待翻譯圖片預覽" /><span data-translate-file-name></span></div>
           </div>
-          <div class="translate-result-panel" aria-live="polite"><div class="translate-result-heading"><span>翻譯結果</span><small data-translate-model>尚未翻譯</small></div><pre data-translate-result>結果會顯示在這裡。</pre><a class="google-translate-attribution" data-google-translate-attribution href="https://translate.google.com/" target="_blank" rel="noreferrer" hidden><img src="${assetPath("assets/powered-by-google-translate.png")}" alt="Powered by Google Translate" /></a></div>
+
+          <div class="translate-main-grid">
+            <div class="translate-input-side">
+              <!-- Camera / Photo Panel -->
+              <div class="translate-panel-camera" data-translate-panel="camera">
+                <div class="translate-camera-triggers" data-translate-camera-triggers>
+                  <button class="button button-primary translate-main-camera-btn" type="button" data-translate-camera>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    <span>開啟相機即時拍攝</span>
+                  </button>
+                  <label class="button button-secondary translate-upload-button">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span>選取相片</span>
+                    <input type="file" accept="image/*" data-translate-file aria-label="從手機相簿或裝置上傳圖片" />
+                  </label>
+                </div>
+
+                <div class="translate-camera-panel" data-translate-camera-panel hidden>
+                  <div class="translate-camera-frame">
+                    <video data-translate-camera-video autoplay muted playsinline aria-label="相機即時預覽"></video>
+                    <p data-translate-camera-status aria-live="polite">正在啟動後鏡頭…</p>
+                  </div>
+                  <div class="translate-camera-actions">
+                    <button class="button button-primary" type="button" data-translate-camera-shoot disabled>📸 拍攝並翻譯</button>
+                    <button class="button button-secondary" type="button" data-translate-camera-close>✕ 關閉相機</button>
+                  </div>
+                </div>
+
+                <div class="translate-preview-strip" data-translate-preview-wrap hidden>
+                  <div class="translate-preview-thumb-wrap">
+                    <img data-translate-preview alt="待翻譯圖片預覽" />
+                    <span data-translate-file-name></span>
+                  </div>
+                  <div class="translate-preview-actions">
+                    <button class="button button-secondary btn-sm" type="button" data-translate-retake-camera>📷 重新拍攝</button>
+                    <label class="button button-secondary btn-sm translate-upload-button">更換<input type="file" accept="image/*" data-translate-file-secondary aria-label="從手機相簿或裝置更換圖片" /></label>
+                    <button class="button button-secondary btn-sm" type="button" data-translate-image disabled hidden>重譯</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text Panel -->
+              <div class="translate-panel-text" data-translate-panel="text" hidden>
+                <label class="translate-text-field">
+                  <span>輸入文字</span>
+                  <textarea data-translate-input rows="4" placeholder="貼上菜單、告示或交通資訊…" aria-label="輸入要翻譯的文字"></textarea>
+                </label>
+                <div class="translate-text-toolbar">
+                  <span data-translate-count>0 字</span>
+                  <div class="translate-text-actions">
+                    <button class="button button-secondary btn-sm" type="button" data-translate-text-clear>清空</button>
+                    <button class="button button-primary btn-sm" type="button" data-translate-text disabled>翻譯文字</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Translation Result Panel -->
+            <div class="translate-result-panel" aria-live="polite">
+              <div class="translate-result-heading">
+                <div class="translate-result-title">
+                  <span>翻譯結果</span>
+                  <small data-translate-model>尚未翻譯</small>
+                </div>
+                <button class="translate-copy-btn" type="button" data-translate-copy title="複製翻譯結果" aria-label="複製翻譯結果">📋 複製</button>
+              </div>
+              <div class="translate-result-body">
+                <pre data-translate-result>結果會顯示在這裡。</pre>
+              </div>
+              <a class="google-translate-attribution" data-google-translate-attribution href="https://translate.google.com/" target="_blank" rel="noreferrer" hidden><img src="${assetPath("assets/powered-by-google-translate.png")}" alt="Powered by Google Translate" /></a>
+            </div>
+          </div>
         </div>
+
         <div class="translate-note"><span>翻譯順序與限制</span><p>有網路時先使用主要／備援 VLM；Android App 在斷網或線上服務失敗時自動改用裝置端 ML Kit。離線照片辨識適合英文、法文與北歐語言的拉丁字母印刷文字，手寫、特殊字型或模糊照片可能辨識不完整。</p></div>
         <details class="translate-disclaimer" data-offline-translate-disclaimer hidden><summary>Android 離線翻譯聲明</summary><p>THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p></details>
       </section>
@@ -1762,7 +1941,7 @@
       <section class="tools-block content-section tools-update-section" id="tools-update">
         <div class="section-heading-row">
           <div>${sectionHeading(isNative ? "APP MAINTENANCE" : "PWA MAINTENANCE", isNative ? "Android 獨立 App 版本與維護" : "PWA 網頁版更新與離線維護", isNative ? "App 頁面內建於安裝檔中；若有最新修改可在此更新或清除舊快取。" : "支援 Service Worker 離線快取；若 GitHub 有發布更新可在此檢查或重整。")}</div>
-          <span class="result-count">${isNative ? "Android APK · v20260905-20" : "PWA 網頁版 · v20260905-20"}</span>
+          <span class="result-count">${isNative ? "Android APK · v20260905-21" : "PWA 網頁版 · v20260905-21"}</span>
         </div>
         <div class="tools-update-card">
           <div class="tools-update-copy">
