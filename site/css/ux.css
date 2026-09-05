@@ -1,0 +1,36 @@
+/* Shared travel UI. Phone controls retain the same labels on every page. */
+[hidden] { display: none !important; }
+.search-toggle { display: none; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+button, input, select, textarea { font: inherit; }
+.button, button, summary, select { touch-action: manipulation; }
+.page-shell { overflow-wrap: anywhere; }
+@media (max-width: 840px) {
+  .mobile-nav { position: fixed; inset: auto 0 0; z-index: 120; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 6px 8px max(8px, env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line); }
+  .mobile-nav a { min-height: 52px; display: grid; align-content: center; justify-items: center; gap: 3px; border-radius: 12px; color: var(--muted); }
+  .mobile-nav a.is-active { color: var(--coral-dark); background: var(--coral-soft); }
+  .mobile-nav-icon { width: 24px; height: 24px; }
+  .mobile-nav-icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .mobile-nav small { font-size: 12px; }
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  html { scroll-padding-top: calc(80px + env(safe-area-inset-top)); }
+  .site-header { min-height: 0; }
+  .nav-wrap { width: calc(100% - 24px); min-height: 64px; padding: 8px 0; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto; gap: 8px; }
+  .brand-copy small { display: none; }
+  .header-tools { display: flex; gap: 6px; }
+  .theme-toggle { position: static; width: 44px; height: 44px; }
+  .search-toggle { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); font-size: 14px; }
+  .site-search { display: none; }
+  .search-expanded .nav-wrap { padding-bottom: 64px; }
+  .search-expanded .site-search { display: block; position: absolute; left: 12px; right: 12px; bottom: 8px; width: auto; }
+  .search-results { position: fixed; top: calc(120px + env(safe-area-inset-top)); left: 12px; right: 12px; width: auto; max-height: calc(100dvh - 210px); }
+  .packing-toolbar { top: calc(72px + env(safe-area-inset-top)); }
+  .home-journey-hero { padding-top: 20px; }
+  .home-journey-heading h1 { font-size: 28px; }
+  .home-utility-links { gap: 6px; }
+  .home-utility-links a { min-height: 44px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

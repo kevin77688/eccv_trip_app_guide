@@ -173,6 +173,7 @@
             <a class="${active === "tools" ? "is-active" : ""}" href="${toolsLink}">小工具</a>
           </nav>
           <div class="header-tools">
+            <button class="search-toggle" type="button" data-search-toggle aria-expanded="false" aria-controls="trip-search">⌕ <span>搜尋</span></button>
             <button class="theme-toggle" type="button" data-theme-toggle aria-label="切換色彩模式">
               <span class="theme-icon-sun" aria-hidden="true">☼</span>
               <span class="theme-icon-moon" aria-hidden="true">◐</span>
@@ -203,15 +204,6 @@
       };
       return `<span class="mobile-nav-icon" aria-hidden="true">${icons[name]}</span>`;
     };
-    if (page === "day") {
-      return `
-        <nav class="mobile-nav day-mobile-nav" aria-label="回到首頁">
-          <a class="day-home-btn" href="${homeLink}">
-            ${navIcon("home")}
-            <span>回到旅程總覽</span>
-          </a>
-        </nav>`;
-    }
     const active = page === "places" ? "places" : page === "logistics" ? "logistics" : page === "packing" ? "packing" : page === "tools" ? "tools" : "home";
     return `
       <nav class="mobile-nav" aria-label="手機快速導覽">
@@ -285,6 +277,7 @@
     const input = search?.querySelector("input");
     const results = search?.querySelector(".search-results");
     const clear = search?.querySelector(".search-clear");
+    const toggle = document.querySelector("[data-search-toggle]");
     if (!search || !input || !results || !clear) return;
 
     const entries = searchEntries().map((entry) => ({ ...entry, haystack: normalizeSearch(`${entry.title} ${entry.eyebrow} ${entry.text}`) }));
@@ -323,7 +316,20 @@
       results.hidden = true;
       input.setAttribute("aria-expanded", "false");
       search.classList.remove("is-open");
+      document.querySelector(".site-header")?.classList.remove("search-expanded");
+      toggle?.setAttribute("aria-expanded", "false");
     };
+
+    const open = () => {
+      document.querySelector(".site-header")?.classList.add("search-expanded");
+      toggle?.setAttribute("aria-expanded", "true");
+      input.focus();
+      update();
+    };
+    toggle?.addEventListener("click", () => {
+      if (toggle.getAttribute("aria-expanded") === "true") close();
+      else open();
+    });
 
     input.addEventListener("focus", update);
     input.addEventListener("input", update);
@@ -331,6 +337,7 @@
       if (event.key === "Escape") {
         close();
         input.blur();
+        toggle?.focus();
       }
       if (event.key === "Enter") {
         const first = results.querySelector("a");
@@ -346,15 +353,15 @@
       update();
     });
     document.addEventListener("click", (event) => {
-      if (!search.contains(event.target)) close();
+      if (!search.contains(event.target) && !toggle?.contains(event.target)) close();
     });
     document.addEventListener("keydown", (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
-        input.focus();
+        open();
       }
     });
-    document.querySelectorAll("[data-focus-search]").forEach((button) => button.addEventListener("click", () => input.focus()));
+    document.querySelectorAll("[data-focus-search]").forEach((button) => button.addEventListener("click", open));
   }
 
   function setupImageFallbacks() {
@@ -435,7 +442,7 @@
         return;
       }
 
-      if (e.target.closest(".route-map-canvas, .leaflet-container, input, textarea, select, pre, code, .ticket-modal-overlay, #ticket-modal-root, .ticket-pdf-viewport")) {
+      if (e.target.closest("a, button, summary, dialog, nav, .filter-row, .places-filter-toolbar, .packing-bag-pills, .logistics-tabs-scroll, .route-map-canvas, .leaflet-container, input, textarea, select, pre, code, .ticket-modal-overlay, #ticket-modal-root, .ticket-pdf-viewport")) {
         isIgnored = true;
         return;
       }
@@ -454,7 +461,7 @@
         const absY = Math.abs(deltaY);
         if (absX >= 8 || absY >= 8) {
           gestureDecided = true;
-          if (absX > absY * 0.9) {
+          if (absX > absY * 1.8) {
             isHorizontal = true;
           } else {
             isIgnored = true;
@@ -476,7 +483,7 @@
 
       isIgnored = true;
 
-      if (Math.abs(deltaX) < 30 || Math.abs(deltaX) < Math.abs(deltaY) * 0.9 || elapsed > 900) {
+      if (Math.abs(deltaX) < 80 || Math.abs(deltaX) < Math.abs(deltaY) * 1.8 || elapsed > 700) {
         return;
       }
 
@@ -524,7 +531,7 @@
     };
 
     document.addEventListener("touchend", handleSwipeEnd, { passive: true });
-    document.addEventListener("touchcancel", handleSwipeEnd, { passive: true });
+    document.addEventListener("touchcancel", () => { isIgnored = true; }, { passive: true });
   }
 
   function toast(message, duration = 3200) {
@@ -686,9 +693,9 @@
         showPwaUpdateBanner(reg);
         return { supported: true, updated: true, message: "發現新版本，請點擊更新" };
       }
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-01）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-02）" };
     } catch (e) {
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-01）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-02）" };
     }
   }
 

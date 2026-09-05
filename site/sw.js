@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260906-01';
+const CACHE_NAME = 'eccv-guide-v20260906-02';
 
 const STATIC_ASSETS = [
   './',
@@ -9,6 +9,7 @@ const STATIC_ASSETS = [
   './tools.html',
   './manifest.webmanifest',
   './css/styles.css',
+  './css/ux.css',
   './js/data.js',
   './js/android.js',
   './js/core.js',
