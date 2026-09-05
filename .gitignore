@@ -6,6 +6,7 @@ dist/
 pdf/
 raw_tickets/
 site/assets/tickets/*.enc
+*.pdf
 
 # Android build
 android/.gradle/
