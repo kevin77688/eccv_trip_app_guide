@@ -24,7 +24,8 @@
     const stayRows = (trip.stays || []).map((stay) => `<article class="stay-card"><div class="stay-card-top"><span class="eyebrow">${esc(stay.city)} · ${esc(stay.date)}</span><span aria-hidden="true">⌂</span></div><h3>${esc(stay.name)}</h3><p>${esc(stay.address)}</p><small>${esc(stay.note)}</small></article>`).join("");
     const appCards = (trip.transportApps || []).map((app) => `<article class="app-card"><span class="app-badge">${esc(app.name.slice(0, 1))}</span><div><span class="eyebrow">${esc(app.region)}</span><h3>${esc(app.name)}</h3><p>${esc(app.text)}</p></div></article>`).join("");
     const timeZoneCards = (trip.timeZones || []).map((zone) => `<article class="time-zone-card"><div><span>${esc(zone.label)}</span><strong>${esc(zone.offset)}</strong></div><h3>${esc(zone.cities)}</h3><p>${esc(zone.code)} · ${esc(zone.note)}</p></article>`).join("");
-    const ticketCards = (trip.tickets || []).map((t) => `
+    const visibleTickets = (trip.tickets || []).filter((t) => !t.hidden);
+    const ticketCards = visibleTickets.map((t) => `
       <article class="ticket-card" id="ticket-${esc(t.id)}">
         <div class="ticket-card-top">
           <div class="ticket-card-title-group">
@@ -207,7 +208,7 @@
             <h1>交通與旅程資訊</h1>
           </div>
           <div class="logistics-summary-chips" aria-label="重點摘要">
-            <span class="logistics-chip is-confirmed">🎫 ${(trip.tickets || []).length} 張票券憑證</span>
+            <span class="logistics-chip is-confirmed">🎫 ${visibleTickets.length} 張票券憑證</span>
             <span class="logistics-chip is-confirmed">🚨 急難專線</span>
             <span class="logistics-chip">✈ 5 段航班</span>
             <span class="logistics-chip">⌂ 3 處住宿</span>
@@ -216,7 +217,7 @@
         </div>
         <div class="logistics-tabs-scroll" role="tablist" aria-label="分類切換">
           <button class="logistics-tab is-active" type="button" data-logistics-filter="all">全部</button>
-          <button class="logistics-tab" type="button" data-logistics-filter="tickets">🎫 票券憑證 (${(trip.tickets || []).length})</button>
+          <button class="logistics-tab" type="button" data-logistics-filter="tickets">🎫 票券憑證 (${visibleTickets.length})</button>
           <button class="logistics-tab" type="button" data-logistics-filter="emergency">🚨 急難救助 (3國)</button>
           <button class="logistics-tab" type="button" data-logistics-filter="flights">✈ 航班 (5)</button>
           <button class="logistics-tab" type="button" data-logistics-filter="stays">⌂ 住宿 (3)</button>

@@ -442,7 +442,7 @@
     const orderedMap = routeMapMarkup(key);
     const reservationReminder = reservationReminderMarkup(day.reservationReminder);
     const splitPlan = splitPlanMarkup(day.splitPlan);
-    const dayTickets = (trip.tickets || []).filter((t) => t.targetDays?.includes(key));
+    const dayTickets = (trip.tickets || []).filter((t) => !t.hidden && t.targetDays?.includes(key));
     const dayTicketsBanner = dayTickets.length ? `
       <section class="day-tickets-strip" aria-label="當日適用票券憑證">
         <div class="day-tickets-strip-heading">

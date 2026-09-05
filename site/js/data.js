@@ -410,30 +410,31 @@ window.TRIP = {
   tickets: [
     {
       id: "ek367-boarding-pass",
-      title: "EK 367 官方電子登機證",
-      subtitle: "台北 TPE → 杜拜 DXB (座位 49C)",
+      title: "阿聯酋官方電子登機證",
+      subtitle: "台北 TPE → 杜拜 DXB → 哥本哈根 CPH (2 段雙頁完整憑證)",
       category: "flight",
-      dateLabel: "09/06 23:50 起飛",
+      dateLabel: "09/06 23:50 起飛 · 09/07 13:15 抵達",
       targetDays: ["09-06", "09-07"],
       encFile: "ek367-boarding-pass.enc",
-      qrHint: "機場櫃檯報到、托運、安檢出境與 49C 登機時出示",
+      qrHint: "桃機報到托運、EK 367 登機 (49C) 與杜拜轉機、EK 151 登機 (25H) 時出示",
       details: [
-        { label: "航班編號", value: "阿聯酋航空 EK 367 (TPE T2 → DXB T3)" },
+        { label: "去程第 1 段", value: "EK 367 (台北 23:50 → 杜拜 04:35+1 · 座位 49C · Group 6 · 23:05 登機)" },
+        { label: "去程第 2 段", value: "EK 151 (杜拜 08:20 → 哥本哈根 13:15 · 座位 25H · Group 4 · 07:20 登機)" },
         { label: "搭乘旅客", value: "旅客本人" },
-        { label: "劃位座位", value: "49C (經濟艙 Economy / 登機組別 Group 6)" },
-        { label: "報到狀態", value: "已完成報到 (登機門 23:05 開放)" },
-        { label: "電子票號", value: "176-********** (訂位代號: FH****)" },
-        { label: "時限提醒", value: "托運截止 22:20 / 安檢截止 22:50 / 登機門開放 23:05" },
-        { label: "憑證格式", value: "官方電子登機證 (含完整 2D 條碼)" }
+        { label: "訂位代號", value: "FH****" },
+        { label: "電子票號", value: "176-**********" },
+        { label: "轉機時限", value: "杜拜轉機安檢截止 07:20 / 登機門關閉 08:05" },
+        { label: "憑證格式", value: "官方電子登機證 (雙頁含兩段完整 2D 條碼)" }
       ]
     },
     {
       id: "emirates-flights",
+      hidden: true,
       title: "阿聯酋航空電子機票",
       subtitle: "台北 ⇄ 歐洲 全程 4 段官方機票",
       category: "flight",
       dateLabel: "09/06-07 去程 · 09/18-19 回程",
-      targetDays: ["09-07", "09-18", "09-19"],
+      targetDays: [],
       encFile: "emirates-flights.enc",
       qrHint: "機場櫃檯報到、托運或安檢時出示官方 PDF",
       details: [
@@ -633,7 +634,7 @@ window.TRIP = {
     "09-07": {
       date: "2026/09/07", weekday: "週一", city: "杜拜 → 哥本哈根 → Malmö", cityKey: "malmo", title: "抵達北歐，入住 Malmö", summary: "杜拜轉機後搭乘 EK 151 抵達哥本哈根，直接搭火車跨海前往 Malmö，搭 Bus 9 入住 First Camp Sibbarp。", stay: "First Camp Sibbarp-Malmö", tone: "teal",
       schedule: [
-        { time: "04:35 - 08:20", icon: "✈", title: "杜拜 T3 轉機 (EK 151)", detail: "抵達杜拜 T3 後過轉機安檢，08:20 搭乘 EK 151 飛往哥本哈根；座位 25H（走道）。", tag: "轉機", ticketId: "emirates-flights" },
+        { time: "04:35 - 08:20", icon: "✈", title: "杜拜 T3 轉機 (EK 151)", detail: "抵達杜拜 T3 後過轉機安檢，08:20 搭乘 EK 151 飛往哥本哈根；座位 25H（走道，Group 4，07:20 登機），出示電子登機證條碼登機。", tag: "轉機", ticketId: "ek367-boarding-pass" },
         { time: "13:15 - 14:15", icon: "⌖", title: "抵達哥本哈根機場 T3、入境與領行李", detail: "抵達 CPH T3 後辦理入境查驗並領取 20 kg 托運行李，順指標前往火車站月台。", tag: "入境" },
         { time: "14:15 - 14:35", icon: "🚆", title: "CPH Airport → Hyllie Station", detail: "使用 Skånetrafiken 購買跨境車票，搭乘 Øresundståg 跨越厄勒海峽大橋抵達瑞典 Hyllie。", tag: "跨海" },
         { time: "14:35 - 15:00", icon: "🚌", title: "Hyllie → Bus 9 → First Camp Sibbarp", detail: "Hyllie 車站外轉乘 Bus 9 直達營區附近，步行至接待處登記入住。", tag: "公車" },
@@ -837,16 +838,16 @@ window.TRIP = {
         { time: "08:00 - 09:30", icon: "☼", title: "早餐與行李打包封箱", detail: "確認護照、免稅單據、機票資料與電子設備，完成行李打包。", tag: "準備" },
         { time: "10:30 - 11:00", icon: "↗", title: "退房出發前往巴黎北站", detail: "辦理退房手續，步行前往 Gare du Nord 火車站。", tag: "出發" },
         { time: "11:00 - 12:00", icon: "🚆", title: "Gare du Nord → RER B → CDG Airport T2", detail: "購買機場專用車票，搭乘 RER B 直達戴高樂機場第二航廈 TGV 站，步行至 Terminal 2C。", tag: "火車" },
-        { time: "12:00 - 15:35", icon: "✈", title: "抵達 CDG T2C、退稅、托運與出境安檢", detail: "辦理海關退稅、行李托運與出境安檢；EK 74 於 15:35 起飛。", tag: "報到", ticketId: "emirates-flights" },
-        { time: "15:35", icon: "✈", title: "EK 74 起飛前往杜拜 (座位 62C)", detail: "巴黎 CDG 15:35 起飛（台灣時間 21:35），飛行約 7 小時 35 分，預計 09/19 01:10 抵達杜拜。", tag: "航班", ticketId: "emirates-flights" }
+        { time: "12:00 - 15:35", icon: "✈", title: "抵達 CDG T2C、退稅、托運與出境安檢", detail: "辦理海關退稅、行李托運與出境安檢；EK 74 於 15:35 起飛（起飛前 48 小時開放線上報到）。", tag: "報到" },
+        { time: "15:35", icon: "✈", title: "EK 74 起飛前往杜拜 (座位 62C)", detail: "巴黎 CDG 15:35 起飛（台灣時間 21:35），飛行約 7 小時 35 分，預計 09/19 01:10 抵達杜拜。", tag: "航班" }
       ],
       transport: { duration: "市區至 CDG 機場約 1 小時", steps: ["飯店", "步行 → Gare du Nord", "RER B → Aéroport CDG 2 TGV", "步行至 Terminal 2C"], note: "需購買機場專用車票；提早 3.5 小時抵達以預留退稅與安檢時間。" }, places: [], note: "目標約 12:00 抵達機場航廈，預留充足退稅與托運緩衝。"
     },
     "09-19": {
       date: "2026/09/19", weekday: "週六", city: "回到台灣", cityKey: "travel", title: "杜拜轉機，平安返抵台北", summary: "杜拜轉機後搭乘阿聯酋航空 EK 366 飛回台灣桃園機場，圓滿完成 14 天北歐與巴黎旅程。", stay: "家中", tone: "coral",
       schedule: [
-        { time: "01:10 - 04:05", icon: "✈", title: "杜拜 T3 轉機", detail: "抵達杜拜 T3 轉機區，前往 EK 366 登機門。", tag: "轉機", ticketId: "emirates-flights" },
-        { time: "04:05 - 16:35", icon: "✈", title: "EK 366 起飛飛往台北 (座位 47H)", detail: "杜拜 04:05 起飛（台灣時間 08:05），飛行約 8 小時 30 分，預計台灣時間 16:35 抵達桃園 T2。", tag: "航班", ticketId: "emirates-flights" },
+        { time: "01:10 - 04:05", icon: "✈", title: "杜拜 T3 轉機", detail: "抵達杜拜 T3 轉機區，前往 EK 366 登機門。", tag: "轉機" },
+        { time: "04:05 - 16:35", icon: "✈", title: "EK 366 起飛飛往台北 (座位 47H)", detail: "杜拜 04:05 起飛（台灣時間 08:05），飛行約 8 小時 30 分，預計台灣時間 16:35 抵達桃園 T2。", tag: "航班" },
         { time: "16:35", icon: "⌂", title: "平安抵達台北桃園機場 T2", detail: "完成入境、領取托運行李與返家，旅程圓滿結束。", tag: "抵達" }
       ],
       transport: { duration: "轉機與飛行約 12 小時 30 分", steps: ["杜拜 T3 轉機", "EK 366", "桃園機場 T2"], note: "航點時間均為當地時間。" }, places: [], note: "旅程資料可持續儲存作為個人旅行紀錄與回憶。"

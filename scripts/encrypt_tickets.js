@@ -75,8 +75,8 @@ const TICKET_DEFINITIONS = [
   {
     id: 'ek367-boarding-pass',
     encFile: 'ek367-boarding-pass.enc',
-    sourcePdf: '2026-09-06_23-50_EK367_TPE-DXB_boarding-pass.pdf',
-    title: 'EK 367 台北至杜拜電子登機證'
+    sourcePdf: '2026-09-06_to_09-07_EK367-EK151_TPE-DXB-CPH_boarding-passes.pdf',
+    title: 'EK 367 / EK 151 台北至哥本哈根官方電子登機證'
   }
 ];
 
