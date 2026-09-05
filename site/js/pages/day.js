@@ -458,28 +458,28 @@
 
   function scheduleIcon(item) {
     const text = `${item.title} ${item.tag}`;
-    if (/早餐|午餐|晚餐|吃|餐廳/.test(text)) return ["🍴", "用餐"];
-    if (/Tivoli/.test(text)) return ["🎡", "遊樂園"];
-    if (/Eiffel|鐵塔/.test(text)) return ["🗼", "地標"];
-    if (/Church|Notre-Dame|Sacré-Cœur/.test(text)) return ["⛪", "教堂"];
-    if (/Rosenborg|Versailles/.test(text)) return ["城堡", "城堡"];
-    if (/Experimentarium|科技|科學/.test(text)) return ["🔬", "科學體驗"];
-    if (/ECCV|Poster|Conference|Expo|badge/.test(text)) return ["🎓", "會議"];
-    if (/Canal Tour|候船|運河/.test(text)) return ["🚤", "船"];
-    if (/FR\d|EK \d|機場|起飛|飛行|CPH 取行李/.test(text)) return ["✈️", "航班或機場"];
-    if (/Taxi|叫車/.test(text)) return ["🚕", "計程車"];
-    if (/Bus|公車/.test(text)) return ["🚌", "公車"];
-    if (/RER|TER|Metro|M\d|S-tog|Øresund|火車|列車|København H|Malmö C/.test(text)) return ["🚆", "火車或捷運"];
-    if (/票|驗票|安檢|報到|Check-in|寄放/.test(text)) return ["🎟️", "票券或報到"];
-    if (/飯店|住宿|First Camp|入住/.test(text)) return ["🏨", "住宿"];
-    if (/花園|Gardens|Tuileries|Slottsträdgården/.test(text)) return ["🌳", "花園"];
-    if (/步行|散步|街道|Strøget|Champs-Élysées|Västra Hamnen/.test(text)) return ["🚶", "步行"];
-    if (/咖啡|甜點/.test(text)) return ["☕", "休息"];
-    if (/起床|準備|收行李|退房/.test(text)) return ["🎒", "準備"];
-    if (/休息|飛行中/.test(text)) return ["🌙", "休息"];
-    if (/會合|分流/.test(text)) return ["🤝", "集合"];
-    if (/Malmöhus|Palace|Musée|Museum|Rundetaarn|Arc de Triomphe|Louvre|Garnier|Trianon|Amalienborg|Marmorkirken/.test(text)) return ["🏛️", "景點"];
-    return ["🧭", "行程"];
+    if (/早餐|午餐|晚餐|吃|餐廳/.test(text)) return ["🍴", "用餐", "food"];
+    if (/Tivoli/.test(text)) return ["🎡", "遊樂園", "sight"];
+    if (/Eiffel|鐵塔/.test(text)) return ["🗼", "地標", "sight"];
+    if (/花園|Gardens|Tuileries|Slottsträdgården/.test(text)) return ["🌳", "花園", "nature"];
+    if (/Taxi|叫車/.test(text)) return ["🚕", "計程車", "transit"];
+    if (/Bus|公車/.test(text)) return ["🚌", "公車", "transit"];
+    if (/FR\d|EK \d|機場|起飛|飛行|轉機|CPH 取行李/.test(text)) return ["✈️", "航班或機場", "transit"];
+    if (/Canal Tour|候船|運河/.test(text)) return ["🚤", "船", "transit"];
+    if (/RER|TER|Metro|M\d|S-tog|Øresund|火車|列車|車站|Station|København H|Malmö C/.test(text)) return ["🚆", "火車或捷運", "transit"];
+    if (/票|驗票|安檢|安全檢查|證照查驗|報到|Check-in|寄放/.test(text)) return ["🎟️", "票券或報到", "ticket"];
+    if (/飯店|住宿|First Camp|入住/.test(text)) return ["🏨", "住宿", "prep"];
+    if (/步行|散步|街道|Strøget|Champs-Élysées|Västra Hamnen/.test(text)) return ["🚶", "步行", "transit"];
+    if (/Church|Notre-Dame|Sacré-Cœur|聖心堂|Sainte-Chapelle|聖徒禮拜堂/.test(text)) return ["⛪", "教堂", "sight"];
+    if (/Versailles|Rosenborg|城堡/.test(text)) return ["🏰", "城堡宮殿", "sight"];
+    if (/Experimentarium|科技|科學/.test(text)) return ["🔬", "科學體驗", "prep"];
+    if (/ECCV|Poster|Conference|Expo|badge/.test(text)) return ["🎓", "會議", "prep"];
+    if (/咖啡|甜點/.test(text)) return ["☕", "休息", "food"];
+    if (/起床|準備|收行李|退房/.test(text)) return ["🎒", "準備", "prep"];
+    if (/休息|飛行中/.test(text)) return ["🌙", "休息", "prep"];
+    if (/會合|分流/.test(text)) return ["🤝", "集合", "prep"];
+    if (/Christiansborg|克里斯蒂安堡|DAC|BLOX|建築中心|Malmöhus|Palace|Musée|Museum|Rundetaarn|Arc de Triomphe|Louvre|Garnier|Trianon|Amalienborg|Marmorkirken|Concorde|廣場|庭院/.test(text)) return ["🏛️", "景點", "sight"];
+    return ["🧭", "行程", "transit"];
   }
 
   function renderScheduleItem(item, day) {
@@ -488,9 +488,10 @@
     const bilingualText = core.bilingualText;
     const stateClass = /硬時間|固定|預約|目標班次/.test(item.tag) ? "is-fixed" : /優先購票|聯票/.test(item.tag) ? "is-ticket" : /optional|彈性/i.test(`${item.title} ${item.tag}`) ? "is-optional" : "";
     const placeId = schedulePlaceId(item, day);
-    const [icon, iconLabel] = scheduleIcon(item);
+    const [icon, iconLabel, tone] = scheduleIcon(item);
+    const toneClass = tone ? `tone-${tone}` : "";
     const ticketAction = item.ticketId ? `<div class="schedule-ticket-row"><button type="button" class="schedule-ticket-btn" data-ticket-action="open" data-ticket-id="${esc(item.ticketId)}"><span aria-hidden="true">🎫</span> 出示票券憑證</button></div>` : "";
-    const inner = `<span class="schedule-icon" role="img" aria-label="${esc(iconLabel)}">${icon}</span><div class="schedule-copy"><div class="schedule-time"><span>時間</span><strong>${esc(item.time)}</strong>${placeId ? `<span class="schedule-jump" aria-hidden="true">↓</span>` : ""}</div><h3>${esc(bilingualText(item.title))}</h3><p>${esc(scheduleGuideText(item))}</p>${ticketAction}</div>`;
+    const inner = `<span class="schedule-icon ${toneClass}" role="img" aria-label="${esc(iconLabel)}">${icon}</span><div class="schedule-copy"><div class="schedule-time"><span>時間</span><strong>${esc(item.time)}</strong>${placeId ? `<span class="schedule-jump" aria-hidden="true">↓</span>` : ""}</div><h3>${esc(bilingualText(item.title))}</h3><p>${esc(scheduleGuideText(item))}</p>${ticketAction}</div>`;
     return `<li class="schedule-item ${stateClass} ${placeId ? "is-linked" : ""}">${placeId ? `<a class="schedule-card" href="#place-${esc(placeId)}" aria-label="${esc(bilingualText(item.title))}，前往下方地點筆記">${inner}</a>` : `<div class="schedule-card">${inner}</div>`}</li>`;
   }
 

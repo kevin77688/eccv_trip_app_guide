@@ -1302,7 +1302,14 @@ body[data-page="places"] .map-button, body[data-page="places"] .ticket-button { 
 .schedule-item.is-linked:hover { border-color: var(--teal); box-shadow: var(--shadow-soft); transform: translateY(-1px); }
 .schedule-card { min-width: 0; padding: 16px 18px; display: grid; grid-template-columns: 72px minmax(0, 1fr); align-items: start; gap: 17px; color: inherit; }
 a.schedule-card { cursor: pointer; }
-.schedule-icon { width: 72px; height: 72px; display: grid; place-items: center; align-self: start; border: 1px solid var(--line); border-radius: 20px; background: var(--teal-soft); font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif; font-size: 34px; line-height: 1; }
+.schedule-icon { width: 72px; height: 72px; display: grid; place-items: center; align-self: start; border: 1px solid var(--line); border-radius: 20px; background: var(--teal-soft); font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif; font-size: 34px; line-height: 1; box-shadow: 0 4px 14px rgba(24, 48, 56, .05); transition: transform .18s ease, box-shadow .18s ease; }
+.schedule-icon.tone-sight { background: var(--plum-soft); }
+.schedule-icon.tone-nature { background: var(--teal-soft); }
+.schedule-icon.tone-food { background: var(--gold-soft); }
+.schedule-icon.tone-ticket { background: var(--coral-soft); }
+.schedule-icon.tone-transit { background: var(--surface-soft); border-color: rgba(24, 48, 56, .14); }
+.schedule-icon.tone-prep { background: var(--surface-soft); }
+.schedule-item.is-linked:hover .schedule-icon { transform: scale(1.03); }
 .schedule-copy { min-width: 0; }
 .schedule-time { min-width: 0; min-height: 26px; display: flex; align-items: center; gap: 8px; color: var(--coral-dark); font-variant-numeric: tabular-nums; }
 .schedule-time > span:first-child { flex: 0 0 auto; font-size: 9px; font-weight: 900; letter-spacing: .12em; }

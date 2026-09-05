@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260905-14';
+const CACHE_NAME = 'eccv-guide-v20260905-15';
 
 const STATIC_ASSETS = [
   './',
