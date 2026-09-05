@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260905-13';
+const CACHE_NAME = 'eccv-guide-v20260905-14';
 
 const STATIC_ASSETS = [
   './',
@@ -56,6 +56,7 @@ const STATIC_ASSETS = [
   './assets/places/canal.jpg',
   './assets/places/champs.jpg',
   './assets/places/christiansborg.jpg',
+  './assets/places/dac.jpg',
   './assets/places/disgusting.jpg',
   './assets/places/eccv.jpg',
   './assets/places/eiffel.jpg',

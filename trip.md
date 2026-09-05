@@ -3,6 +3,27 @@
 > 給後續 agent 的精簡背景資料。最後同步：2026-09-05。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
 
+## 09/11 哥本哈根行程重構：逆時針水岸老城環線與 K7 適用擴充（2026-09-05）
+
+- **動線重構為逆時針精華環線**：
+  - 移除原先往北折返的「羅森堡城堡（Rosenborg）」與「玻璃市集（TorvehallerneKBH）」，消除北走到 Nørreport 的折返路徑，總體步行更緊湊順暢。
+  - 羅森堡與玻璃市集仍保留在 `site/js/data.js` 的 `places` 字典中，於景點查找頁（`places.html`）自動歸類至「未排入備選」，保留彈性。
+  - 以哥本哈根中央車站為起訖點，形成逆時針水岸老城環線：中央車站 ➔ 水岸散步 ➔ 丹麥建築中心（DAC @ BLOX）➔ 克里斯蒂安堡宮 ➔ 老城午餐 ➔ 圓塔 ➔ Strøget 購物街 ➔ 市政廳廣場 ➔ 趣伏里花園（Tivoli）➔ 中央車站。
+- **K7 文化通行證（Week 37）在 09/11 效益極大化**：
+  - **丹麥建築中心（DAC @ BLOX）**：憑 K7 免費入場（0 元），參觀港灣永續建築展、體驗 4 層樓高（15 公尺長）室內巨型旋轉溜滑梯（BLOX Slide）與港灣露台。
+  - **克里斯蒂安堡宮（Christiansborg Palace）**：步行 5 分鐘過橋即達，憑 K7 免費入場（0 元）參觀金碧輝煌的皇家接待大廳（Royal Reception Rooms / Great Hall）與現代編織壁毯。
+  - **圓塔（Rundetaarn）**：憑 K7 免費入場（0 元），走平緩螺旋斜坡登頂 360 度俯瞰老城區紅瓦屋頂。
+- **老城特色午餐推薦**：
+  - **百年傳統 Smørrebrød 首選**：Slotskælderen hos Gitte Kik（克里斯蒂安堡宮正對面 Fortunstræde，1910 年開業老字號，品嚐經典丹麥開放式三明治）。
+  - **文藝復古圖書館咖啡館**：Paludan Bog & Café（圓塔旁 Fiolstræde，老書店挑高空間，供應大份量平價餐點）。
+  - **快速美食備選**：Gasoline Grill（圓塔旁美式漢堡）與 DØP（圓塔下方有機熱狗攤）。
+- **下午漫遊購物與 Tivoli 週五夜**：
+  - 15:30 - 17:30 漫步 Strøget 步行街：逛 HAY House、Illums Bolighus、LEGO 旗艦店，一路往西南走到市政廳廣場。
+  - 17:30 - 18:30 市政廳廣場周邊晚餐與小歇，儲備夜間體力。
+  - 18:30 - 21:45 Tivoli 花園（已購票）：欣賞 10 萬盞復古燈景與週五 Fredagsrock 露天音樂派對。
+  - 22:00 從中央車站搭乘跨海列車約 35 分鐘返回 Malmö。
+- **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-14`，全站 19 份 HTML 檔案、`site/sw.js` 與工具頁版本資訊同步更新。
+
 ## 每日行程地圖 GPS 即時定位小藍點與多平台支援（2026-09-05）
 
 - **每日路線地圖 Google Maps 風格 GPS 定位藍點（`site/js/pages/day.js`、`site/css/styles.css`）**：
@@ -118,7 +139,7 @@
 ## K7 文化通行證適用日程收斂與票券介面語意優化（2026-09-05）
 
 - **K7 文化通行證（Week 37）適用日程精確收斂**：
-  - K7 數位通行證（青年通行證）雖然有效期間為整週（2026/09/07 到 09/13），但僅於實際參訪 K7 合作館點的日期（`09/08` Malmö Museum、`09/11` Rosenborg 城堡）顯示票券橫幅與出示捷徑。
+  - K7 數位通行證（青年通行證）雖然有效期間為整週（2026/09/07 到 09/13），但僅於實際參訪 K7 合作館點的日期（`09/08` Malmö Museum、`09/11` DAC 建築中心、克里斯蒂安堡宮接待廳、圓塔）顯示票券橫幅與出示捷徑。
   - 於 ECCV 研討會全日或無 K7 景點的日程（如 `09/10`），隱藏 K7 票券區塊，保持行程介面乾淨。
 - **去除冗餘技術術語**：
   - 交通頁（`site/logistics.html`）與每日行程頁（`site/days/*.html`）移除「加密安全區」、「安全加密」、「解密出示」等字眼。
@@ -127,7 +148,7 @@
   - 按鈕文字由 `🔒 輸入密碼出示 QR` / `🔒 出示 QR 票券` 統一為 `🎫 出示票券憑證`。
   - 密碼驗證彈窗文案精簡為「票券驗證」與「出示憑證與 QR 碼」，去除長篇演算法技術說明。
 - **09/08 瑞典 Malmö Museum 關聯**：Malmö Museum（包含 Malmöhus 城堡、水族館、藝術館與科技海事館）為 K7 Week 37 合作館，18 到 27 歲青年出示 K7 通行證享免費入場；時間軸各站點直接關聯 K7 票券按鈕，滿 28 歲同行者現場購買 Kombibiljett（100 SEK）。
-- **09/11 丹麥 Rosenborg 城堡關聯**：依官方公告，Rosenborg 城堡在 K7 活動期間開放青年免費入場，時間軸相應關聯 K7 通行證按鈕，同行者維持持學生票（100 DKK）。
+- **09/11 丹麥 DAC、克里斯蒂安堡宮與圓塔關聯**：依官方公告，丹麥建築中心（DAC @ BLOX）、克里斯蒂安堡宮皇家接待大廳（Royal Reception Rooms）與圓塔在 K7 活動期間開放 18 到 27 歲青年憑通行證免費入場（0 元）；時間軸相應關聯 K7 通行證按鈕。同行滿 28 歲者現場購買門票。
 - **排隊／安檢按鈕去重**：針對 09/12 Nyhavn 3 候船、09/14 Sainte-Chapelle 集合安檢、09/16 凱旋門地下安檢與羅浮宮金字塔排隊、09/17 凡爾賽宮安檢等排隊等候項目，移除重複的「出示 QR 票券」按鈕；票券按鈕唯一呈現在實際入館參觀的主項目上。
 
 ## 小工具推薦 App 與交通快速導航（2026-09-04）
@@ -295,7 +316,7 @@
 - 地圖線條代表旅程先後與交通類型，不宣稱是即時道路或軌道幾何；精確月台、道路、臨時改道與即時班次以官方 App／Google Maps 當下導航為準。
 - 09/08 購買 Malmö Museum 一日 Kombibiljett，當天完成 Malmöhus Castle／Aquarium／Art Museum 與 Teknikens och Sjöfartens hus；2026/09/08 週二官方開放 11:00 到 17:00，一日聯票成人 100 SEK、學生 50 SEK；出發時間順延至 09:50，約 10:55 抵達吻合 11:00 開館。
 - 09/09 為子明學長的個人主行程：First Camp → Götgatan → Hyllie → København H → Hellerup → Experimentarium（約 5 小時）→ Malmö C → Turning Torso／Västra Hamnen 與朋友會合；Disgusting Food Museum 與 Malmö Saluhall 不放進個人當日路線。
-- 09/11 改為 Malmö C → København H → Rosenborg（10:15 到 12:15）→ Torvehallerne 午餐 → Rundetaarn（13:40 到 14:25）→ Strøget（Hay House／Illums Bolighus）／Christiansborg 周邊 → 快速晚餐 → 約 17:30 Tivoli → Malmö。Rosenborg 官方學生票目前 100 DKK（有效學生證、指定時段）；Rundetaarn 學生票 40 DKK、現場購票。Tivoli 已確認購買約 17:30 入園票以避開 18:00 後較高票價，實際入場依票面 QR code。
+- 09/11 改為 Malmö C → 09:15-10:00 København H → 10:00-11:30 水岸 DAC @ BLOX（體驗 4 層樓 BLOX Slide 巨型溜滑梯，憑 K7 免費）→ 11:45-13:00 克里斯蒂安堡宮皇家接待廳（憑 K7 免費）→ 13:00-14:15 老城區午餐（Slotskælderen 百年三明治或 Paludan 咖啡館）→ 14:30-15:30 圓塔登頂（憑 K7 免費）→ 15:30-17:30 Strøget 購物街（HAY House、Illums、LEGO 旗艦店）→ 17:30-18:30 市政廳廣場周邊晚餐／小歇 → 18:30-21:45 Tivoli 花園（已購票，賞復古夜景與週五 Fredagsrock）→ 22:00 中央車站搭火車回 Malmö。DAC、克里斯蒂安堡宮與圓塔三館青年均憑 K7 文化通行證免費入場（0 元）。
 - 09/12 改為退房 → Malmö C → CPH P4／P7A 機場寄放（方案 B，主方案）→ Marmorkirken → 12:00 Amalienborg 衛兵交接 → Nyhavn／Kongens Nytorv 午餐 → 15:00 到 16:00 Stromma Classic Canal Tour → 16:00 到 16:30 前往 Christianshavn → 16:30 到 17:15 救主堂螺旋塔 → 17:15 到 18:00 搭 M2 直達 CPH 取行李 → 18:00 前完成 bag drop → FR9267。ENIGMA 保留在景點總覽供參考；Experimentarium 已移到 09/09 個人主行程；機場櫃位尺寸／容量、15:00 船班與 Metro 狀況仍需出發前確認，中央站方案 A 作為備援。
 - 09/13 的「Check-in」定義為先到 Paris 飯店寄行李／若房間已準備好就入住；正式入住時間為 15:00 後。SNCF Connect 於 2026/08/30 查到 09/13 07:44 到 08:59 的 Beauvais → Paris Nord 直達 TER C17，作為目標班次，出發前一日複查。
 - 09/15 晚餐為 Francette 19:00 訂位；當天順序為 Musée de l’Armée → Musée Rodin／《沉思者》→ Eiffel Tower → Francette。
@@ -338,7 +359,7 @@
 - 景點依個人每日行程日期排序；已排入行程的卡片顯示日期並連結對應 `site/days/*` 頁，同一景點跨兩天會顯示兩個日期。未排入個人行程的景點統一放在最後並標示「未排入每日行程」。
 - 個人正式行程只由 `site/js/data.js` 的 `days` 與 `site/days/*` 顯示；景點總覽不建立替代行程。
 - 景點卡保留「為什麼推薦」、票務狀態、官方票務入口與 Google Maps；票務資訊集中在 `site/js/data.js` 的 `placeDetails`，畫面由 `site/js/app.js` 產生。
-- Copenhagen 景點資料包含 Rosenborg、Torvehallerne、Rundetaarn、Strøget、Christiansborg、Amalienborg、Marmorkirken、Nyhavn、Kongens Nytorv、運河遊船、救主堂與已排入 09/09 個人行程的 Experimentarium；ENIGMA 保留作未排入每日行程的參考。Paris 景點資料包含 Sainte-Chapelle、Pont de Bir-Hakeim、Sacré-Cœur／Montmartre、Grand Palais、Le Marais、Le Bon Marché。
+- Copenhagen 景點資料包含 DAC @ BLOX、Christiansborg、Rundetaarn、Strøget、Tivoli、Amalienborg、Marmorkirken、Nyhavn、Kongens Nytorv、運河遊船、救主堂與已排入 09/09 個人行程的 Experimentarium；Rosenborg、Torvehallerne 與 ENIGMA 保留作未排入每日行程的參考。Paris 景點資料包含 Sainte-Chapelle、Pont de Bir-Hakeim、Sacré-Cœur／Montmartre、Grand Palais、Le Marais、Le Bon Marché。
 - Disneyland 已從網站資料、景點頁、9/17 每日頁說明與圖片資產完全移除；不再作為備選。
 - 票務優先級：Eiffel Tower、Louvre、Palais Garnier、Sainte-Chapelle 與 Versailles 指定時段優先處理；Rosenborg、Tivoli、Stromma 運河遊船、Musée de l’Armée 與 Musée Rodin 建議日期確定後先買；Experimentarium 可先買線上票；Rundetaarn、Marmorkirken 教堂本體與 Sacré-Cœur 圓頂適合現場處理。
 - Notre-Dame 教堂本體免費，官方免費時段接近參觀日才釋出；不購買第三方普通入場票。Amalienborg 廣場與衛兵交接免費，博物館需票。Marmorkirken 教堂本體免費，圓頂最多 15 人且不可預訂。
@@ -412,7 +433,7 @@
 | 09/08 | Malmö | 09:50 出發 → Malmöhus Castle／Aquarium／Art Museum（11:00 開館）→ 午餐 → Teknikens och Sjöfartens hus → Slottsträdgården；使用一日聯票 |
 | 09/09 | Malmö → Copenhagen → Malmö | 個人 Experimentarium 全日 → Malmö C → Turning Torso／Västra Hamnen 與朋友會合 |
 | 09/10 | Malmö | ECCV 2026 主會議、Expo；10:30 Poster Session 1／Poster #137 |
-| 09/11 | Copenhagen | Malmö C → København H → Rosenborg → Torvehallerne 午餐 → Rundetaarn → Strøget／Christiansborg 周邊 → 快速晚餐 → 約 17:30-21:45 Tivoli → Malmö |
+| 09/11 | Copenhagen | Malmö C → 09:15-10:00 København H → 水岸散步至 DAC @ BLOX (溜滑梯) → 克里斯蒂安堡宮 → 老城午餐 → 圓塔 → Strøget 購物街 → 市政廳廣場晚餐 → 18:30-21:45 Tivoli 花園 → 22:00 火車回 Malmö |
 | 09/12 | Copenhagen → Beauvais | 退房 → Malmö C → CPH P4／P7A 寄行李（方案 B）→ Marmorkirken → 12:00 Amalienborg 衛兵交接 → Nyhavn／Kongens Nytorv 午餐 → 15:00-16:00 運河遊船 → 16:30-17:15 救主堂螺旋塔 → 17:15-18:00 M2 → CPH 取行李 → 18:00 前 bag drop → FR9267 |
 | 09/13 | Beauvais → Paris | 07:44 直達 TER → Paris Nord → 飯店寄行李／可入住就入住 → Palais Garnier → Sacré-Cœur／Montmartre |
 | 09/14 | Paris | RER B → Luxembourg／Panthéon／Latin Quarter → A 古監獄／B 咖啡分流 → 15:00 Sainte-Chapelle → 16:30 Notre-Dame |
@@ -438,8 +459,8 @@
 - 09/08 09:50 從 First Camp 出發，步行至 Götgatan 搭 Bus 9 轉火車至 Malmö C，約 10:55 步行到 Malmöhus 吻合 11:00 開館；一日聯票先走 Castle／Aquarium／Art Museum，再到相鄰的 Teknikens och Sjöfartens hus，閉館後逛 Slottsträdgården。
 - 09/09 個人主線為 First Camp → Götgatan → Bus 9 → Hyllie → Øresundståg → København H → S-tog → Hellerup → Experimentarium；下午原路回 København H → Malmö C，17:30 在 Turning Torso 與朋友會合，再走 Västra Hamnen。Hellerup → Experimentarium 優先搭 Bus 164，步行是備援；不再加 Copenhagen 市中心觀光。
 - 09/10 搭 Bus 9 到 Hyllie，再步行至 Malmö Arena／Malmömässan。
-- 09/11 以 Malmö C → København H 的 09:00 到 09:45 Øresundståg 為主；Rosenborg 10:15 抵達、目標 10:30 Student 時段，午餐 60 分鐘、Rundetaarn 45 分鐘，接著走 Strøget → Christiansborg、快速晚餐，約 17:30 入 Tivoli，22:00 從 København H 回 Malmö。實際價格、適用範圍、末班車與工程仍需用 Skånetrafiken 複查。
-- 09/11 Tivoli 本次票面抓約 17:30 入園（較便宜時段），可提早參觀花園與晚餐；9/11 另有 Friday Rock（Dizzy Mizz Lizzy 22:00）與 22:30 Illuminations，目前時間軸 21:45 離園，若要看完整演出必須主動延後回程並重新確認跨海列車。
+- 09/11 以 Malmö C → København H 的 09:15 到 10:00 Øresundståg 為主；出站沿水岸散步 12 分鐘至 BLOX 大樓，10:00 參觀丹麥建築中心（DAC，體驗 4 層樓 BLOX Slide 溜滑梯，憑 K7 免費），11:45 步行 5 分鐘過橋參觀克里斯蒂安堡宮皇家接待廳（憑 K7 免費），13:00 老城區享用傳統三明治午餐（如 Slotskælderen hos Gitte Kik 百年老店），14:30 登圓塔（憑 K7 免費），15:30 沿 Strøget 徒步街逛設計名店並漫步走向市政廳廣場，17:30 廣場周邊晚餐，18:30 入 Tivoli 花園（已購票），22:00 從 København H 搭火車約 35 分鐘回 Malmö。實際價格、末班車與工程仍需用 Skånetrafiken 複查。
+- 09/11 Tivoli 本次票面抓 18:30 入園，可欣賞傍晚至夜晚 10 萬盞復古燈景；9/11 另有 Friday Rock（Dizzy Mizz Lizzy 22:00）與 22:30 Illuminations，目前時間軸預定 21:45 離園搭 22:00 火車，若要看完整演出必須主動延後回程並重新確認跨海列車。
 - 09/12 帶 20 kg 行李，已選方案 B：目前查到的 09/12（週六）Re 1041 為 Malmö C 09:05 → CPH Airport 09:35，目標 08:45 離開住宿，先到 CPH P4／P7A 寄放四件托運箱，再搭 M2／M3／M4 回 Marmorkirken。CPH 機場寄放的 checked-in 尺寸櫃與現場可用數量要出發前確認；若四件行李無法相容或櫃位不足，才改用中央站方案 A。
 - 09/12 10:45 Marmorkirken、11:50 到 Amalienborg 站位、12:00 看衛兵交接，之後步行到 Nyhavn／Kongens Nytorv 午餐；15:00 到 16:00 搭 Nyhavn 3 的 Stromma Classic Canal Tour，16:00 到 16:30 前往 Christianshavn，16:30 到 17:15 再去救主堂螺旋塔，最晚 17:15 離塔銜接 M2。
 - 09/12 方案 B 的下午段為 Christianshavn → M2 直達 Lufthavnen → P4／P7A 取行李 → T2；目標 18:00 前抵達機場並完成 bag drop，保留約 2 小時至 20:05 起飛。方案 A 只在機場寄放不可用時啟用，屆時由中央站取件後視情況叫車，預估約 18:15 抵達 CPH。
@@ -527,9 +548,9 @@
 
 - 09/09 查看 [Experimentarium 官方參觀資訊](https://www.experimentarium.dk/plan-your-visit/) 與 [官方交通頁](https://www.experimentarium.dk/find-vej-experimentarium/) 的當日開放時間、票務與 science demo；目前官方頁為每日 09:30 到 17:00、線上票省 10%，並列出 Hellerup → Bus 164。Construction Site 自 9/9 起因搬遷關閉兩週，Interactive Film Theatre 目前整修中，兩者不排入；館內 SMASK 位於 1 樓，熱食供應時間以當日公告為準。
 - 09/08 晚上與 09/09 早上查 Skånetrafiken／Rejseplanen 的 Malmö 到 Copenhagen 往返；[Öresundståg 官方工程公告](https://www.oresundstag.se/reseinfo/planerade-banarbeten) 已列 09/06 到 09/11 晚間、夜間與清晨工程，部分班次改點、取消或以巴士替代。Hyllie → København H、Hellerup → Experimentarium 與回程皆作為目標窗口。
-- 09/11 Malmö 到 Copenhagen 的 Øresundståg 工程、取消班次與替代路線；Rosenborg 10:30 Student 時段與 Tivoli 指定日期動態票價。
+- 09/11 Malmö 到 Copenhagen 的 Øresundståg 工程、取消班次與替代路線；DAC 建築中心 4 層樓 BLOX Slide 溜滑梯開放狀況、克里斯蒂安堡宮接待廳 K7 入場須知與 Tivoli 18:30 入園 QR code。
 - 09/12 CPH P4／P7A 行李寄存的當日可用櫃位、尺寸、支付方式與價格；主方案是機場寄放（方案 B），若四件 20 kg 行李無法相容，再改用 [DSB København H Bagagecenter](https://www.dsb.dk/find-produkter-og-services/bagagecenter/)；參考 [CPH 行李寄存](https://www.cph.dk/en/practical/baggage/baggage-deposit)。
-- 09/11 出發前確認 Tivoli 約 17:30 入園票的 QR code 已載入手機，並於 17:15 左右抵達入口；若要看 22:00 Friday Rock，需重新確認離園與返 Malmö 班次。09/12 Stromma Nyhavn 15:00 班次是否已購買；救主堂 16:30 時段是否預約，並於 17:15 前離塔銜接 M2。
+- 09/11 出發前確認 Tivoli 18:30 入園票的 QR code 已載入手機，並於 18:25 左右抵達入口；若要看 22:00 Friday Rock，需重新確認離園與返 Malmö 班次。09/12 Stromma Nyhavn 15:00 班次是否已購買；救主堂 16:30 時段是否預約，並於 17:15 前離塔銜接 M2。
 - 09/13 Beauvais → Paris Nord 的 07:44 到 08:59 TER C17 是否維持運行，並向 Paris 飯店確認上午可寄放行李。
 - Paris Metro／RER 工程，尤其 09/13 與 09/18。
 - 各景點當日營業時間、入場時段與是否已購票；優先確認 Palais Garnier、09/14 15:00 Sainte-Chapelle（A 組聯票／B 組單館票）、09/14 16:30 左右 Notre-Dame 官方免費預約、Eiffel Tower、Louvre 與 Versailles 的指定時段。

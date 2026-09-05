@@ -567,12 +567,12 @@ window.TRIP = {
       dateLabel: "09/07-09/13 (Week 37 全週有效)",
       targetDays: ["09-08", "09-11"],
       encFile: "k7-pass.enc",
-      qrHint: "18 到 27 歲免費入場；Malmö Museum（城堡與科技館）、Rosenborg Castle 等合作場館入場出示",
+      qrHint: "18 到 27 歲免費入場；Malmö Museum（城堡與科技館）、DAC、克里斯蒂安堡宮接待廳、圓塔等合作場館入場出示",
       details: [
         { label: "票券名稱", value: "K7 WEEK 2026 (Digital Pass)" },
         { label: "持票姓名", value: "持票人本人" },
         { label: "有效期間", value: "2026/09/07 - 2026/09/13 (第 37 週)" },
-        { label: "適用場館", value: "Malmö Museum (Malmöhus 與科技館)、Rosenborg Castle 等 250+ 館舍" },
+        { label: "適用場館", value: "Malmö Museum、DAC @ BLOX、克里斯蒂安堡宮接待廳、圓塔等 250+ 館舍" },
         { label: "票券格式", value: "官方數位通行證 (含驗證 QR Code 與條碼)" }
       ]
     }
@@ -591,10 +591,11 @@ window.TRIP = {
     kongensnytorv: { region: "Copenhagen", title: "Kongens Nytorv", local: "國王新廣場", kicker: "古典廣場・皇家劇院・交通節點", intro: "新港旁的國王新廣場，連接 Strøget 步行街、皇家劇院與地鐵站，是市中心的重要交通與餐飲節點。", stay: "約 30 到 45 分鐘", accent: "gold" },
     stroget: { region: "Copenhagen", title: "Strøget", local: "步行購物街", kicker: "逛街・城市生活・設計", intro: "連接哥本哈根市中心多個廣場的步行街區，沿途有北歐設計品牌、書店、咖啡館與餐飲，適合散步逛街。", stay: "約 1 到 2 小時", accent: "gold" },
     tivoli: { region: "Copenhagen", title: "Tivoli Gardens", local: "趣伏里花園", kicker: "遊樂園・夜景・餐飲・氣氛", intro: "位於中央車站旁的歷史花園遊樂園。園內花園造景、經典老建築、餐廳與夜間燈光很有特色，適合傍晚入園漫步至夜晚。", stay: "約 4 到 6 小時", accent: "gold" },
+    dac: { region: "Copenhagen", title: "Dansk Arkitektur Center (DAC @ BLOX)", local: "丹麥建築中心", kicker: "現代建築・巨型溜滑梯・海港展覽", intro: "位於 BLOX 大樓內的丹麥建築中心，展出港灣永續建築與城市設計，並設有 4 層樓高（15 公尺）的室內巨型旋轉溜滑梯（BLOX Slide）與港灣露台。", stay: "約 1.5 小時", accent: "teal" },
     rosenborg: { region: "Copenhagen", title: "Rosenborg Castle", local: "羅森堡城堡", kicker: "王室歷史・皇冠珠寶・城堡", intro: "十七世紀王室宮殿，地下寶庫珍藏丹麥皇冠與王室珠寶，展品集中，適合了解丹麥王室歷史。", stay: "約 1.5 到 2 小時", accent: "plum" },
     torvehallerne: { region: "Copenhagen", title: "TorvehallerneKBH", local: "托維哈勒恩市場", kicker: "市場・丹麥小吃・午餐", intro: "位於 Nørreport 旁的雙館市集，集合開放式三明治（smørrebrød）、烘焙、咖啡與熟食，適合當作市區行程的午餐站。", stay: "約 1 到 1.5 小時", accent: "coral" },
-    roundtower: { region: "Copenhagen", title: "Rundetaarn", local: "圓塔", kicker: "螺旋坡道・城市屋頂・天文史", intro: "以約 200 公尺螺旋坡道通往頂樓觀景台，可眺望哥本哈根市中心屋頂景觀。", stay: "約 45 到 75 分鐘", accent: "gold" },
-    christiansborg: { region: "Copenhagen", title: "Christiansborg Palace", local: "克里斯蒂安堡宮", kicker: "王室歷史・國家制度・建築", intro: "丹麥國會與王室接待場所所在地，建築莊嚴，外圍廣場適合散步取景。", stay: "約 1 到 1.5 小時", accent: "plum" },
+    roundtower: { region: "Copenhagen", title: "Rundetaarn", local: "圓塔", kicker: "螺旋斜坡・老城紅瓦屋頂・天文台", intro: "走平緩的螺旋斜坡通往頂樓觀景台，360 度俯瞰哥本哈根老城區紅瓦屋頂，憑 K7 通行證享青年免費入場。", stay: "約 1 小時", accent: "gold" },
+    christiansborg: { region: "Copenhagen", title: "Christiansborg Palace", local: "克里斯蒂安堡宮", kicker: "皇家接待廳・編織壁毯・國會政治", intro: "丹麥國會與皇家接待場所所在地，可憑 K7 通行證免費參觀金碧輝煌的皇家接待廳（Great Hall）與現代編織壁毯。", stay: "約 1 到 1.5 小時", accent: "plum" },
     amalienborg: { region: "Copenhagen", title: "Amalienborg Palace", local: "阿馬林堡宮", kicker: "王宮建築・八角廣場・衛兵交接", intro: "由四座對稱宮殿圍繞的八角廣場，中午 12:00 有衛兵交接儀式。", stay: "約 45 到 60 分鐘", accent: "gold" },
     marmorkirken: { region: "Copenhagen", title: "Marmorkirken", local: "大理石教堂", kicker: "巴洛克圓頂・宗教建築", intro: "位於阿馬林堡宮旁的大理石圓頂教堂，內部挑高巴洛克圓頂十分典雅。", stay: "約 30 到 45 分鐘", accent: "teal" },
     canal: { region: "Copenhagen", title: "Stromma Classic Canal Tour", local: "經典運河遊船", kicker: "水上視角・港灣景致", intro: "從新港搭船遊覽哥本哈根運河與港灣，可從水上視角欣賞救主堂、歌劇院與黑鑽石圖書館。", stay: "約 1 小時", accent: "teal" },
@@ -684,23 +685,20 @@ window.TRIP = {
       transport: { duration: "住宿至會場約 25 到 35 分鐘", steps: ["First Camp", "Bus 9 → Hyllie", "步行至會場 Malmömässan", "Bus 9 原路返回"], note: "會場位於 Hyllie 車站步行 3 分鐘範圍。" }, places: ["eccv"], note: "Poster Session 1 於 10:30 CEST 開始，請攜帶海報與相關備份檔案。"
     },
     "09-11": {
-      date: "2026/09/11", weekday: "週五", city: "Copenhagen", cityKey: "copenhagen", title: "羅森堡城堡、老城散步與 Tivoli 週五夜", summary: "09:00 從 Malmö 搭火車到哥本哈根，參觀羅森堡城堡、圓塔與市中心散步，傍晚 17:30 進入 Tivoli 花園欣賞夜景。", stay: "First Camp Sibbarp-Malmö", tone: "gold",
+      date: "2026/09/11", weekday: "週五", city: "Copenhagen", cityKey: "copenhagen", title: "DAC 建築中心、克里斯蒂安堡宮、圓塔與 Tivoli 週五夜", summary: "09:15 從馬爾默搭火車至哥本哈根中央車站，沿水岸走訪 DAC 與 BLOX Slide 巨型溜滑梯、克里斯蒂安堡宮與老城午餐，午後登圓塔俯瞰老城、漫步 Strøget 購物街，傍晚 18:30 進入 Tivoli 花園欣賞復古燈景與週五音樂派對。", stay: "First Camp Sibbarp-Malmö", tone: "gold",
       reservationReminder: { countdown: "距離 09/14 還有 3 天", title: "開始留意巴黎聖母院免費預約", detail: "官方免費時段通常在前一兩天或當天釋出；今日先確認官方預約入口，目標鎖定 16:30 左右時段。", url: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", cta: "查看官方免費預約" },
       schedule: [
-        { time: "07:45 - 08:45", icon: "▸", title: "First Camp → Malmö C", detail: "搭乘 Bus 9 或叫車前往 Malmö C，預留搭車緩衝。", tag: "出發" },
-        { time: "09:00 - 09:45", icon: "🚆", title: "Malmö C → Øresundståg → København H", detail: "搭乘跨國火車前往哥本哈根中央車站。", tag: "跨海" },
-        { time: "09:45 - 10:15", icon: "↔", title: "København H → M3 → Rosenborg Castle", detail: "搭地鐵 M3 至 Nørreport，步行至羅森堡城堡入口。", tag: "地鐵" },
-        { time: "10:15 - 12:15", icon: "♜", title: "Rosenborg Castle 參觀", detail: "出示 K7 通行證免費入場或持學生票（100 DKK），參觀王室宮殿與地下寶庫皇冠珠寶。", tag: "景點", ticketId: "k7-pass" },
-        { time: "12:30 - 13:30", icon: "🍴", title: "TorvehallerneKBH 市場午餐", detail: "步行至雙館市場品嚐丹麥開放式三明治與特色小吃。", tag: "午餐" },
-        { time: "13:40 - 14:25", icon: "◎", title: "Rundetaarn 圓塔登頂", detail: "現場購買學生票（40 DKK），沿螺旋坡道登頂眺望哥本哈根老城屋頂。", tag: "景點" },
-        { time: "14:25 - 16:20", icon: "→", title: "Strøget 步行街與 Christiansborg 周邊", detail: "沿步行街逛 Hay House 等設計名店，漫步至克里斯蒂安堡宮外圍廣場。", tag: "散步" },
-        { time: "16:20 - 17:10", icon: "🍴", title: "市中心／Tivoli 周邊快速晚餐", detail: "在車站或遊樂園周邊用餐，17:10 前往 Tivoli 正門。", tag: "晚餐" },
-        { time: "17:10 - 17:30", icon: "票", title: "抵達 Tivoli 驗票入園", detail: "依已購票面約 17:30 掃描 QR code 入園，避開晚間較高票價。", tag: "入園" },
-        { time: "17:30 - 21:45", icon: "✦", title: "Tivoli Gardens 夜間花園與音樂氣氛", detail: "漫步復古花園、燈火造景、湖畔與週五音樂會氣氛。", tag: "夜景" },
-        { time: "22:00 - 22:45", icon: "🚆", title: "København H → Malmö C", detail: "中央車站搭乘晚間跨海列車返回 Malmö。", tag: "跨海" },
-        { time: "22:45 後", icon: "⌂", title: "返回 First Camp Sibbarp", detail: "抵達 Malmö C 後搭 Bus 9 或計程車返回住宿。", tag: "回程" }
+        { time: "09:15 - 10:00", icon: "🚆", title: "馬爾默 ➔ 哥本哈根中央車站", detail: "搭乘跨海火車抵達中央車站，出站後沿著水岸散步約 12 分鐘至 BLOX 大樓。", tag: "交通" },
+        { time: "10:00 - 11:30", icon: "♜", title: "丹麥建築中心 (DAC @ BLOX)", detail: "憑 K7 通行證免費入場（0 元）：參觀丹麥港灣永續建築展、體驗 4 層樓高（15 公尺長）BLOX Slide 室內巨型溜滑梯、港灣露台拍照。", tag: "景點", ticketId: "k7-pass" },
+        { time: "11:45 - 13:00", icon: "♜", title: "克里斯蒂安堡宮", detail: "憑 K7 通行證免費入場（0 元）：步行 5 分鐘過橋即達，參觀金碧輝煌的皇家接待廳（Great Hall）與現代編織壁毯。", tag: "景點", ticketId: "k7-pass" },
+        { time: "13:00 - 14:15", icon: "🍴", title: "老城區午餐", detail: "於克里斯蒂安堡宮周邊享用傳統 Smørrebrød（如 1910 年百年老字號 Slotskælderen hos Gitte Kik）或前往圓塔旁的 Paludan Bog & Café 文藝咖啡館。", tag: "午餐" },
+        { time: "14:30 - 15:30", icon: "◎", title: "圓塔 (Rundetaarn)", detail: "憑 K7 通行證免費入場（0 元）：走平緩的螺旋斜坡登頂，360 度俯瞰哥本哈根老城區紅瓦屋頂。", tag: "景點", ticketId: "k7-pass" },
+        { time: "15:30 - 17:30", icon: "→", title: "Strøget 徒步街漫遊購物", detail: "從圓塔走回 Strøget：逛 HAY House、Illums Bolighus、LEGO 旗艦店，一路向西南漫步走向市政廳廣場。", tag: "逛街" },
+        { time: "17:30 - 18:30", icon: "🍴", title: "市政廳廣場周邊晚餐 / 小歇", detail: "在市政廳廣場周邊享用晚餐與休息小歇，準備進入趣伏里，儲備夜晚體力。", tag: "晚餐" },
+        { time: "18:30 - 21:45", icon: "✦", title: "趣伏里公園 (已購票)", detail: "步行過馬路即達：欣賞傍晚至天黑後 10 萬盞復古燈景，感受週五 Fredagsrock 露天音樂派對。", tag: "夜景" },
+        { time: "22:00 - 22:45", icon: "🚆", title: "哥本哈根中央車站搭火車回馬爾默", detail: "出公園正門過馬路即進中央車站月台，搭乘跨海列車約 35 分鐘回住宿。", tag: "跨海" }
       ],
-      transport: { duration: "日間行程約 14 小時；市區步行約 4 到 5 公里", steps: ["First Camp → Malmö C", "Øresundståg → København H", "M3 → Nørreport → 羅森堡", "步行 → 托維哈勒恩 → 圓塔", "步行 → Strøget → 國會周邊", "步行至 Tivoli", "Øresundståg 回 Malmö"], note: "09:00 跨海車、10:15 城堡、17:30 Tivoli 與 22:00 回程為關鍵時間節點。" }, places: ["rosenborg", "torvehallerne", "roundtower", "stroget", "christiansborg", "tivoli"], note: "Tivoli 門票已選定約 17:30 時段，入園後可自由停留至夜間。"
+      transport: { duration: "日間行程約 13.5 小時；以中央車站為起迄形成逆時針精華環線", steps: ["Malmö C ➔ København H", "水岸散步 ➔ DAC @ BLOX", "過橋步行 ➔ 克里斯蒂安堡宮", "老城午餐 ➔ 圓塔", "Strøget 步行街 ➔ 市政廳廣場", "步行過馬路 ➔ 趣伏里公園", "中央車站火車回 Malmö"], note: "中央車站為起迄點；10:00 DAC、11:45 宮殿、14:30 圓塔、18:30 Tivoli 與 22:00 回程為關鍵時間節點。" }, places: ["dac", "christiansborg", "roundtower", "stroget", "tivoli"], note: "DAC、克里斯蒂安堡宮接待廳與圓塔均憑 K7 文化通行證免費入場；Tivoli 已購票預計 18:30 入園。"
     },
     "09-12": {
       date: "2026/09/12", weekday: "週六", city: "Copenhagen → Beauvais", cityKey: "transfer", title: "大理石教堂、衛兵交接、運河船與救主堂", summary: "退房後先將托運行李送至 CPH 機場寄放（方案 B），走訪大理石教堂、衛兵交接、新港與運河船，登救主堂後搭 M2 直達機場搭乘 FR9267。", stay: "Hostellerie Saint Vincent Beauvais Aéroport", tone: "plum",
@@ -868,11 +866,12 @@ window.TRIP.placeDetails = {
   nyhavn: { why: "容易與 Strøget、王宮區與運河遊船串接的哥本哈根經典地標。", booking: { state: "free", label: "免費・免預約", note: "港區散步免費；遊船搭乘請參考運河遊船票券。" } },
   kongensnytorv: { why: "鄰近新港，將午餐、皇家劇院與地鐵轉乘集中於同一節點。", booking: { state: "free", label: "免費・免預約", note: "公共廣場；周邊店家與地鐵依各自時間運作。" } },
   stroget: { why: "從市中心通往中央車站的步行街，沿途匯集北歐設計品牌與咖啡館。", booking: { state: "free", label: "免費・免預約", note: "公共步行街，各店舖依營業時間運作。" } },
-  tivoli: { why: "以歷史花園、老式建築、精緻燈光與夜間氣氛為主；鄰近中央車站方便返回 Malmö。", booking: { state: "confirmed", label: "已購・約 17:30 入園票", note: "已購買約 17:30 入園票以避開晚間較高票價；實際入場依票面 QR code，不含遊樂設施 Ride Pass。", url: "https://shop.tivoli.dk/en/billetter-og-tivolikort/entre?date=11-9-2026", cta: "官方指定日期購票" } },
+  tivoli: { why: "以歷史花園、老式建築、10 萬盞復古燈景與週五 Fredagsrock 音樂會氣氛為主；鄰近中央車站方便返回 Malmö。", booking: { state: "confirmed", label: "已購・指定日入園票", note: "已購買 09/11 指定日入園票；預計 18:30 入園欣賞夜景與音樂派對，實際入場依票面 QR code，不含遊樂設施 Ride Pass。", url: "https://shop.tivoli.dk/en/billetter-og-tivolikort/entre?date=11-9-2026", cta: "官方指定日期購票" } },
+  dac: { why: "憑 K7 通行證免費體驗 4 層樓高室內巨型溜滑梯（BLOX Slide）與港灣建築展，動線順暢緊湊。", booking: { state: "confirmed", label: "K7 通行證免費", note: "09/11（週五）開放 10:00-18:00；18 到 27 歲青年出示 K7 通行證免費入場；體驗 BLOX Slide 與港灣露台。", url: "https://dac.dk/en/visit/", cta: "官方開放時間與參觀資訊" } },
   rosenborg: { why: "皇冠珠寶與王室宮殿集中在一座歷史城堡，適合了解丹麥王室歷史。", booking: { state: "confirmed", label: "K7 通行證免費／學生票 100 DKK", note: "09/11（週五）夏季開放 10:00-17:00；18 到 27 歲青年出示 K7 通行證享免費入場；同行者學生票為 100 DKK。", url: "https://denkongeligesamling.dk/en/rosenborg-castle/calendar/k7-seven-days-free-cultural-experiences-for-young-people", cta: "官方 K7 免費活動說明" } },
   torvehallerne: { why: "位於 Rosenborg 與圓塔附近，適合作為市中心散步路線的午餐站。", booking: { state: "free", label: "免費入場", note: "市場不需門票，各攤位自選消費。" } },
-  roundtower: { why: "位於市中心步行街區，停留時間彈性，為老城眺望視野的好去處。", booking: { state: "onsite", label: "學生票 40 DKK・現場購票", note: "09/11（週五）夏季開放 10:00-20:00；成人 60 DKK、學生 40 DKK，現場排隊購票。", url: "https://www.rundetaarn.dk/en/visit-us/", cta: "官方開放時間與規則" } },
-  christiansborg: { why: "將王室空間與國會政治結合於同一建築群，外圍廣場適合散步參觀。", booking: { state: "recommended", label: "外觀免費・入內購票", note: "本日以外圍廣場散步為主；若想入內參觀可購買 Palace Ticket。", url: "https://denkongeligesamling.dk/en/christiansborg-palace/plan-your-visit/", cta: "官方票務資訊" } },
+  roundtower: { why: "走平緩螺旋斜坡登頂 360 度俯瞰老城紅瓦屋頂，持 K7 通行證免費入場。", booking: { state: "confirmed", label: "K7 通行證免費", note: "09/11（週五）開放 10:00-20:00；18 到 27 歲青年出示 K7 通行證免費入場登頂（同行滿 28 歲者現場購買門票）。", url: "https://www.rundetaarn.dk/en/visit-us/", cta: "官方開放時間與規則" } },
+  christiansborg: { why: "步行過橋即達，持 K7 通行證免費參觀金碧輝煌的皇家接待大廳與壁毯。", booking: { state: "confirmed", label: "K7 通行證免費", note: "09/11（週五）開放 10:00-17:00；18 到 27 歲青年出示 K7 通行證免費參觀皇家接待大廳（Royal Reception Rooms）。", url: "https://denkongeligesamling.dk/en/christiansborg-palace/plan-your-visit/", cta: "官方票務資訊" } },
   amalienborg: { why: "八角廣場、衛兵交接與大理石教堂形成完整的王宮景觀軸線。", booking: { state: "recommended", label: "廣場與交接免費・博物館需購票", note: "重點為八角廣場與 12:00 衛兵交接（免費）；進博物館參觀才需購票。", url: "https://denkongeligesamling.dk/en/amalienborg-museum/tickets/", cta: "博物館官方購票" } },
   marmorkirken: { why: "座落於阿馬林堡宮正對面，順路參觀巴洛克挑高圓頂建築。", booking: { state: "free", label: "教堂免費・不排圓頂導覽", note: "9/12（週六）開放 10:00-17:00；教堂本體免費參觀。", url: "https://www.marmorkirken.dk/admission", cta: "官方開放時間" } },
   canal: { why: "衛兵交接與午餐後乘船遊覽運河港灣，輕鬆欣賞哥本哈根水上景色。", booking: { state: "advance", label: "鎖定 09/12 15:00 班次", note: "Nyhavn 3 出發，15:00-16:00 Classic Canal Tour；票價依日期與早鳥浮動，依指定日期頁確認班次。", url: "https://www.stromma.com/en-dk/copenhagen/sightseeing/sightseeing-by-boat/grand-tour/", cta: "官方預約購票" } },
@@ -913,6 +912,7 @@ window.TRIP.placeSearchNames = {
   kongensnytorv: ["國王新廣場", "哥本哈根國王新廣場", "Kongens Nytorv", "King's New Square"],
   stroget: ["步行購物街", "哥本哈根步行街", "北歐設計店", "Hay House", "Illums Bolighus", "Strøget"],
   tivoli: ["趣伏里花園", "蒂沃利公園", "Tivoli Gardens"],
+  dac: ["丹麥建築中心", "DAC", "BLOX", "BLOX Slide", "Dansk Arkitektur Center"],
   rosenborg: ["羅森堡城堡", "羅森堡宮", "Rosenborg Castle"],
   torvehallerne: ["托維哈勒恩市場", "哥本哈根市場", "Torvehallerne"],
   roundtower: ["圓塔", "哥本哈根圓塔", "Rundetaarn", "Round Tower"],
@@ -1021,6 +1021,12 @@ window.TRIP.placeVisuals = {
     credit: "https://commons.wikimedia.org/wiki/File:Tivoligardens2.jpg",
     creditLabel: "Wikimedia Commons",
     mapQuery: "Tivoli Gardens, Vesterbrogade 3, Copenhagen"
+  },
+  dac: {
+    image: "assets/places/dac.jpg",
+    credit: "https://commons.wikimedia.org/wiki/File:BLOX.jpg",
+    creditLabel: "Wikimedia Commons",
+    mapQuery: "Danish Architecture Center, Bryghuspladsen 10, Copenhagen"
   },
   rosenborg: {
     image: "assets/places/rosenborg.jpg",
@@ -1293,33 +1299,31 @@ window.TRIP.routeMaps = {
   "09-11": {
     defaultGroup: "copenhagen",
     groups: [{
-      id: "copenhagen", label: "老城與 Tivoli 一日", note: "09:00 Malmö C 出發、約 17:30 Tivoli 入園、22:00 København H 返回 Malmö。",
+      id: "copenhagen", label: "逆時針水岸老城環線與 Tivoli", note: "09:15 Malmö C 出發、10:00 DAC 溜滑梯、11:45 克里斯蒂安堡宮、14:30 圓塔、18:30 Tivoli 入園、22:00 København H 返回 Malmö。",
       stops: [
-        { time: "07:45", label: "First Camp Sibbarp", detail: "前往 Malmö C", lat: 55.5718, lng: 12.9087, status: "start" },
-        { time: "08:45", label: "Malmö C", detail: "搭乘 09:00 Øresundståg", lat: 55.6091, lng: 13.0007, status: "transfer" },
-        { time: "09:45", label: "København H", detail: "抵達哥本哈根中央車站", lat: 55.6728, lng: 12.5647, status: "transfer" },
-        { time: "10:15", label: "Rosenborg Castle", detail: "目標 10:30 Student 時段", lat: 55.6853, lng: 12.5774, status: "ticket" },
-        { time: "12:30", label: "TorvehallerneKBH", detail: "市場午餐", lat: 55.6841, lng: 12.5693, status: "planned" },
-        { time: "13:40", label: "Rundetaarn", detail: "圓塔登頂（現場購票）", lat: 55.6814, lng: 12.5758, status: "planned" },
-        { time: "14:25", label: "Strøget", detail: "步行購物街", lat: 55.6787, lng: 12.5789, status: "planned" },
-        { time: "16:00", label: "Christiansborg Palace", detail: "外圍廣場散步", lat: 55.6762, lng: 12.5797, status: "planned" },
-        { time: "17:30", label: "Tivoli Gardens", detail: "約 17:30 票面入園", lat: 55.6734, lng: 12.5692, status: "fixed" },
-        { time: "21:45", label: "København H", detail: "搭 22:00 跨海列車回 Malmö", lat: 55.6728, lng: 12.5647, status: "transfer" },
-        { time: "22:45", label: "Malmö C", detail: "轉 Bus 9 或計程車", lat: 55.6091, lng: 13.0007, status: "transfer" },
-        { time: "23:30 前", label: "First Camp Sibbarp", detail: "抵達住宿", lat: 55.5718, lng: 12.9087, status: "stay" }
+        { time: "09:15", label: "Malmö C", detail: "搭乘 Øresundståg 跨海火車", lat: 55.6091, lng: 13.0007, status: "transfer" },
+        { time: "10:00", label: "København H", detail: "抵達後沿水岸散步 12 分鐘", lat: 55.6728, lng: 12.5647, status: "transfer" },
+        { time: "10:00 - 11:30", label: "DAC @ BLOX", detail: "丹麥建築中心・室內巨型溜滑梯（憑 K7 免費）", lat: 55.6723, lng: 12.5794, status: "ticket" },
+        { time: "11:45 - 13:00", label: "Christiansborg Palace", detail: "克里斯蒂安堡宮皇家接待廳（憑 K7 免費）", lat: 55.6762, lng: 12.5797, status: "ticket" },
+        { time: "13:00 - 14:15", label: "老城區午餐", detail: "百年傳統三明治或文藝復古咖啡館", lat: 55.6780, lng: 12.5770, status: "planned" },
+        { time: "14:30 - 15:30", label: "Rundetaarn", detail: "圓塔螺旋斜坡登頂（憑 K7 免費）", lat: 55.6814, lng: 12.5758, status: "ticket" },
+        { time: "15:30 - 17:30", label: "Strøget 步行街", detail: "漫步購物：HAY House、Illums、LEGO", lat: 55.6787, lng: 12.5789, status: "planned" },
+        { time: "17:30 - 18:30", label: "市政廳廣場", detail: "廣場周邊晚餐與小歇", lat: 55.6761, lng: 12.5683, status: "planned" },
+        { time: "18:30 - 21:45", label: "Tivoli Gardens", detail: "趣伏里公園復古燈景與週五音樂派對", lat: 55.6734, lng: 12.5692, status: "fixed" },
+        { time: "22:00", label: "København H", detail: "出公園過馬路搭 22:00 火車回 Malmö", lat: 55.6728, lng: 12.5647, status: "transfer" },
+        { time: "22:35", label: "Malmö C", detail: "抵達 Malmö C 返回住宿", lat: 55.6091, lng: 13.0007, status: "stay" }
       ],
       legs: [
-        { mode: "transit", label: "Bus 9／Taxi" },
-        { mode: "train", label: "Øresundståg・09:00 - 09:45" },
-        { mode: "metro", label: "M3＋步行" },
-        { mode: "walk", label: "步行" },
-        { mode: "walk", label: "步行 8 分" },
-        { mode: "walk", label: "步行 Strøget" },
-        { mode: "walk", label: "步行" },
-        { mode: "walk", label: "步行至 Tivoli" },
-        { mode: "walk", label: "步行至 København H" },
-        { mode: "train", label: "Øresundståg・22:00" },
-        { mode: "transit", label: "Bus 9／Taxi" }
+        { mode: "train", label: "Øresundståg・09:15 - 10:00" },
+        { mode: "walk", label: "水岸散步 12 分" },
+        { mode: "walk", label: "過橋步行 5 分" },
+        { mode: "walk", label: "步行老城" },
+        { mode: "walk", label: "步行至圓塔" },
+        { mode: "walk", label: "Strøget 購物漫步" },
+        { mode: "walk", label: "漫步至市政廳廣場" },
+        { mode: "walk", label: "步行過馬路至 Tivoli" },
+        { mode: "walk", label: "步行過馬路至車站" },
+        { mode: "train", label: "Øresundståg・22:00" }
       ]
     }]
   },
@@ -1605,6 +1609,12 @@ window.TRIP.bilingualNames = {
   "Classic Canal Tour": "經典運河遊船",
   "Stromma Classic Canal Tour": "斯特羅瑪經典運河遊船",
   "Experimentarium": "互動科學中心",
+  "Dansk Arkitektur Center": "丹麥建築中心",
+  "DAC": "丹麥建築中心",
+  "BLOX": "BLOX 大樓",
+  "BLOX Slide": "BLOX 巨型溜滑梯",
+  "Slotskælderen hos Gitte Kik": "吉特菊克傳統三明治",
+  "Paludan Bog & Café": "帕魯丹圖書館咖啡館",
   "Rosenborg Castle": "羅森堡城堡",
   "Christiansborg Palace": "克里斯蒂安堡宮",
   "Church of Our Saviour": "救主堂",
