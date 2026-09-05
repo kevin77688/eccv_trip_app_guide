@@ -1634,6 +1634,64 @@ a.schedule-card { cursor: pointer; }
 .packing-source-links small { margin-bottom: 4px; color: var(--muted); font-size: 9px; }
 .packing-source-links a { color: var(--coral-dark); font-size: 10px; font-weight: 800; }
 
+/* Packing & Souvenirs View Tabs */
+.packing-nav-bar { margin-top: 24px; }
+.packing-view-tabs { display: flex; gap: 8px; padding: 6px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface-soft); box-shadow: var(--shadow-soft); }
+.packing-view-tab { flex: 1; min-height: 46px; padding: 8px 16px; border: 0; border-radius: 12px; background: transparent; color: var(--muted); font-size: 15px; font-weight: 850; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background .16s ease, color .16s ease, box-shadow .16s ease, transform .16s ease; }
+.packing-view-tab:hover { color: var(--ink); }
+.packing-view-tab.is-active { background: var(--control-bg); color: var(--control-text); box-shadow: 0 4px 12px rgba(0,0,0,.10); }
+
+/* Souvenirs Showcase Layout */
+.souvenirs-hero-banner { margin-top: 28px; padding: 28px 32px; border-radius: var(--radius); background: linear-gradient(135deg, #2b453e 0%, #172722 100%); color: #fff; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow-soft); }
+.souvenirs-hero-copy h2 { margin: 6px 0 6px; font-size: clamp(24px, 3.2vw, 32px); font-weight: 900; line-height: 1.2; letter-spacing: -.02em; }
+.souvenirs-hero-copy p { margin: 0; color: rgba(255,255,255,.82); font-size: 14.5px; line-height: 1.6; max-width: 740px; }
+.souvenirs-hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.souvenir-stat-chip { padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2); font-size: 12px; font-weight: 850; color: #fff; backdrop-filter: blur(4px); }
+
+.souvenir-alert-box { margin-top: 24px; padding: 18px 22px; border-radius: 16px; background: #fffbeb; border: 1px solid #fde68a; border-left: 5px solid #d97706; display: flex; align-items: flex-start; gap: 14px; box-shadow: var(--shadow-soft); }
+.souvenir-alert-icon { font-size: 24px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+.souvenir-alert-text { display: flex; flex-direction: column; gap: 4px; }
+.souvenir-alert-text strong { color: #92400e; font-size: 15px; font-weight: 900; }
+.souvenir-alert-text p { margin: 0; color: #78350f; font-size: 13.5px; line-height: 1.6; }
+
+.souvenir-group-section { margin-top: 44px; display: flex; flex-direction: column; gap: 20px; }
+.souvenir-group-heading { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-bottom: 2px solid var(--line); padding-bottom: 14px; }
+.souvenir-group-heading h2 { margin: 4px 0 4px; font-size: clamp(22px, 2.6vw, 28px); font-weight: 900; letter-spacing: -.02em; }
+.souvenir-group-heading p { margin: 0; color: var(--muted); font-size: 14px; max-width: 680px; }
+.souvenir-group-count { padding: 6px 14px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); font-size: 12px; font-weight: 900; }
+
+.souvenir-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+.souvenir-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow-soft); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.souvenir-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.08); border-color: var(--teal); }
+.souvenir-card.is-premium { border-top: 3px solid var(--teal); }
+.souvenir-card.is-shared { border-top: 3px solid var(--coral); }
+
+.souvenir-media-frame { position: relative; width: 100%; aspect-ratio: 16 / 10; background: var(--surface-soft); overflow: hidden; }
+.souvenir-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+.souvenir-card:hover .souvenir-img { transform: scale(1.03); }
+.souvenir-badge { position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 850; background: rgba(18, 30, 36, 0.85); color: #fff; backdrop-filter: blur(6px); letter-spacing: .02em; }
+
+.souvenir-content { padding: 20px; display: flex; flex-direction: column; flex: 1; gap: 14px; }
+.souvenir-header { display: flex; flex-direction: column; gap: 3px; }
+.souvenir-origin { font-size: 11px; font-weight: 850; color: var(--coral-dark); letter-spacing: .04em; text-transform: uppercase; }
+.souvenir-title { margin: 0; font-size: 18px; font-weight: 900; line-height: 1.35; color: var(--ink); }
+.souvenir-local-name { margin: 0; font-size: 12px; color: var(--muted); font-family: inherit; }
+
+.souvenir-meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--surface-soft); border: 1px solid var(--line); }
+.souvenir-meta-label { display: block; font-size: 10px; font-weight: 850; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
+.souvenir-price-chip strong { font-size: 13.5px; color: var(--teal); font-weight: 900; line-height: 1.35; display: block; }
+.souvenir-place-chip p { margin: 0; font-size: 12px; color: var(--ink); line-height: 1.35; font-weight: 600; }
+
+.souvenir-features { margin: 0; padding-left: 20px; font-size: 13px; color: var(--muted); line-height: 1.6; display: flex; flex-direction: column; gap: 5px; }
+.souvenir-features li { margin: 0; }
+
+.souvenir-card-footer { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line); display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+.souvenir-bag-tip { display: inline-flex; align-items: center; gap: 6px; font-weight: 750; color: var(--muted); }
+
+.souvenir-luggage-tips { margin-top: 44px; padding: 28px 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-soft); }
+.souvenir-tips-list { margin: 18px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.souvenir-tips-list strong { color: var(--coral-dark); }
+
 html[data-theme="dark"] .site-header { border-bottom-color: rgba(255,255,255,.08); background: rgba(13,21,25,.94); }
 html[data-theme="dark"] .search-field input::placeholder { color: #83969b; }
 html[data-theme="dark"] .home-today-card { border-color: #5b4926; border-left-color: var(--gold); background: var(--gold-soft); }
@@ -1804,6 +1862,16 @@ html[data-theme="dark"] .tools-update-card {
 }
 html[data-theme="dark"] .mobile-nav { border-top-color: var(--line); background: rgba(18,31,36,.98); box-shadow: 0 -8px 28px rgba(0,0,0,.24); }
 
+html[data-theme="dark"] .souvenirs-hero-banner { background: linear-gradient(135deg, #1d332d 0%, #101c18 100%); }
+html[data-theme="dark"] .souvenir-alert-box { background: #261d0f; border-color: #554019; border-left-color: #f59e0b; }
+html[data-theme="dark"] .souvenir-alert-text strong { color: #fde68a; }
+html[data-theme="dark"] .souvenir-alert-text p { color: #fef3c7; }
+html[data-theme="dark"] .souvenir-card { background: var(--surface); border-color: var(--line); }
+html[data-theme="dark"] .souvenir-meta-row { background: var(--surface-soft); border-color: var(--line); }
+html[data-theme="dark"] .souvenir-place-chip p { color: var(--ink); }
+html[data-theme="dark"] .souvenir-luggage-tips { background: var(--surface); border-color: var(--line); }
+html[data-theme="dark"] .packing-view-tabs { background: var(--surface-soft); border-color: var(--line); }
+
 .site-footer { border-top: 1px solid var(--line); background: #ebe7dc; }
 .footer-inner { width: min(1220px, calc(100% - 48px)); min-height: 120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .footer-inner > div { display: grid; gap: 1px; }
@@ -1925,6 +1993,20 @@ html[data-theme="dark"] .mobile-nav { border-top-color: var(--line); background:
   .home-weather-temp { font-size: 26px; }
   .home-weather-big-icon { width: 34px; height: 34px; }
   .hourly-tiles-strip { grid-template-columns: repeat(6, 1fr); gap: 3px; }
+  .packing-nav-bar { margin-top: 14px; }
+  .packing-view-tabs { padding: 4px; }
+  .packing-view-tab { min-height: 42px; font-size: 13.5px; padding: 6px 10px; }
+  .souvenirs-hero-banner { padding: 20px 18px; margin-top: 16px; gap: 12px; }
+  .souvenirs-hero-copy h2 { font-size: 22px; }
+  .souvenirs-hero-copy p { font-size: 13.5px; }
+  .souvenir-alert-box { padding: 14px 16px; margin-top: 16px; gap: 10px; }
+  .souvenir-alert-text strong { font-size: 14px; }
+  .souvenir-alert-text p { font-size: 12.5px; }
+  .souvenir-group-section { margin-top: 30px; gap: 14px; }
+  .souvenir-cards-grid { grid-template-columns: 1fr; gap: 14px; }
+  .souvenir-content { padding: 16px; gap: 12px; }
+  .souvenir-meta-row { grid-template-columns: 1fr; gap: 8px; }
+  .souvenir-luggage-tips { padding: 20px 18px; margin-top: 30px; }
   .packing-header-dashboard { margin-top: 14px; gap: 14px; }
   .packing-dashboard-top { flex-direction: column; align-items: stretch; gap: 12px; }
   .packing-dashboard-title h1 { font-size: 22px; }

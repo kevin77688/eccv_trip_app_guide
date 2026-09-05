@@ -116,6 +116,143 @@ window.TRIP = {
       { label: "Emirates 危險物品／行動電源", url: "https://www.emirates.com/english/before-you-fly/travel/dangerous-goods-policy/" }
     ]
   },
+  souvenirs: {
+    lastUpdated: "2026/09/05",
+    intro: "精選北歐與法國代表性伴手禮，分為「精選主題禮包（適合一人一份）」與「團隊零食分享包（適合公用桌分食）」，均附實物相片、預算估計與採買建議。",
+    notice: "⚠️ 提醒：瑞典牙膏型魚子醬（Kalles Kaviar）官方保存條件為 2～8°C，9/12 離開瑞典後還需在巴黎待至 9/18，常溫攜帶極易變質爆管，強烈不建議作為長途伴手禮帶回台灣（建議在瑞典小木屋早餐品嚐，或回台至 IKEA 瑞典食品超市購買冷藏版）。",
+    premium: [
+      {
+        id: "lakrids-bulow",
+        theme: "極黑工藝・精品甘草",
+        name: "Lakrids by Bülow 巧克力甘草球雙罐組",
+        localName: "Lakrids by Bülow (Dark & Sea Salt / Passion Fruit)",
+        origin: "🇩🇰 丹麥設計製造",
+        budget: "約 220～260 DKK（約 NT$1,000～1,200）",
+        place: "哥本哈根中央車站專櫃、Strøget 旗艦店或哥本哈根機場（CPH 免稅店）",
+        image: "assets/souvenirs/lakrids-bulow.webp",
+        bagTip: "隨身或托運皆可（常溫陰涼處保存）",
+        features: [
+          "北歐精品甘草第一品牌，黑金極簡霧面圓罐設計，外觀極具奢華感。",
+          "外層厚裹比利時黑巧克力與海鹽焦糖，內層為軟質甜甘草，顛覆傳統刺鼻印象。",
+          "極受不習慣生硬甘草人士的喜愛，兼具北歐文化話題與頂級精緻包裝。"
+        ]
+      },
+      {
+        id: "laeso-salt",
+        theme: "主廚工藝・傳統海鹽",
+        name: "Læsø Salt 丹麥百年柴燒手工海鹽禮袋",
+        localName: "Læsø Salt (Håndsyndet Salt i lærredspose)",
+        origin: "🇩🇰 丹麥萊斯島",
+        budget: "約 180～250 DKK（約 NT$850～1,150）",
+        place: "哥本哈根 Torvehallerne 市集、伴手禮選品店，或巴黎食品館 Guérande 鹽之花",
+        image: "assets/souvenirs/laeso-salt.webp",
+        bagTip: "需防潮封口，建議放入托運行李箱",
+        features: [
+          "丹麥千年中世紀傳統柴燒蒸發結晶技術，北歐米其林星級主廚指定御用。",
+          "天然復古麻布袋封裝，富含海洋礦物質微量元素，結晶薄脆甘美帶微燻香。",
+          "適合煎牛排、沙拉與日常調味，對熱愛烹飪者而言是不可多得的硬核工藝逸品。"
+        ]
+      },
+      {
+        id: "kay-bojesen",
+        theme: "療癒設計・國寶木偶",
+        name: "Kay Bojesen 丹麥設計木偶／經典萌物",
+        localName: "Kay Bojesen Denmark (Wooden Monkey / Songbird / Viking Duck)",
+        origin: "🇩🇰 丹麥經典設計",
+        budget: "約 260～350 DKK（約 NT$1,200～1,600）",
+        place: "哥本哈根 Illums Bolighus 百貨、Strøget 紀念品專賣店或馬爾默設計選品店",
+        image: "assets/souvenirs/kay-bojesen.webp",
+        bagTip: "精緻木器，建議以衣物包裹保護放入托運行李箱或隨身攜帶",
+        features: [
+          "丹麥銀匠大師 Kay Bojesen 於 1951 年創立之國寶級原木工藝，全球設計迷爭相收藏。",
+          "天然橡木／柚木手工打磨，肢體關節可活動擺出各種搞怪萌態，擺在辦公桌極度療癒。",
+          "兼具北歐現代工藝歷史厚度與幽默感，是永不褪色的經典居家擺件。"
+        ]
+      },
+      {
+        id: "coffee-collective",
+        theme: "世界冠軍・精品咖啡",
+        name: "The Coffee Collective 產地烘焙精品咖啡豆組",
+        localName: "The Coffee Collective (Specialty Coffee Beans / Roast)",
+        origin: "🇩🇰 丹麥哥本哈根",
+        budget: "約 240～300 DKK（約 NT$1,100～1,400，雙包裝）",
+        place: "哥本哈根 Nørre Voldgade 門市、Torvehallerne 分店或中央車站外帶吧",
+        image: "assets/souvenirs/coffee-collective.webp",
+        bagTip: "單向排氣閥原裝袋，常溫乾燥存放，隨身或托運皆可",
+        features: [
+          "由世界咖啡大師競賽（WBC）冠軍與杯測雙料世界冠軍聯合創辦的傳奇烘豆廠。",
+          "引領北歐淺焙風潮，極致突出產區乾淨果酸與圓潤甜感，全球精品咖啡迷朝聖標竿。",
+          "挑選適合做濃縮與拿鐵的高甜度莊園豆，送給鑽研咖啡沖煮與拉花的朋友兼具專業度與心意。"
+        ]
+      }
+    ],
+    shared: [
+      {
+        id: "ahlgrens-bilar",
+        tag: "國民軟糖・老少咸宜",
+        name: "Ahlgrens Bilar 經典小車棉花糖軟糖",
+        localName: "Ahlgrens Bilar Original (125g / 160g)",
+        origin: "🇸🇪 瑞典國民零食",
+        budget: "約 18～22 SEK／包（約 NT$55～68）",
+        place: "馬爾默 ICA Maxi、Coop 等各大超市，零食糖果貨架極易找到",
+        image: "assets/souvenirs/ahlgrens-bilar.webp",
+        bagTip: "輕量包裝，托運或後背包皆可攜帶",
+        features: [
+          "自稱「瑞典最暢銷的車（Sveriges mest köpta bil）」，國民級經典造型軟糖。",
+          "粉紅、白、綠三色，質地介於棉花糖與小熊軟糖之間，微酸微甜極具辨識度。",
+          "放在團隊公用桌或茶水間隨手拿取，接受度極高，完全零踩雷風險。"
+        ]
+      },
+      {
+        id: "marabou-chocolate",
+        tag: "皇室御用・熱量補給",
+        name: "Marabou 牛奶巧克力大片裝（海鹽焦糖限定版）",
+        localName: "Marabou Mjölkchoklad Havssalt (185g / 200g)",
+        origin: "🇸🇪 瑞典皇室御用品牌",
+        budget: "約 25～32 SEK／片（約 NT$78～100）",
+        place: "馬爾默超市巧克力專區，或哥本哈根超市／免稅店",
+        image: "assets/souvenirs/marabou-chocolate.webp",
+        bagTip: "避免高溫曝曬，建議放於行李箱陰涼衣物中避免壓碎",
+        features: [
+          "瑞典市佔率最高的國寶巧克力，擁有瑞典皇室認證標章（Kunglig Hovleverantör）。",
+          "推薦海鹽焦糖（Havssalt）或 Daim 脆片口味，鹹甜酥脆，奶香濃郁。",
+          "大塊裝方便掰開分食，適合團隊燒腦寫 code 或開會後的元氣補充。"
+        ]
+      },
+      {
+        id: "ballerina-kex",
+        tag: "傳統 Fika・茶水間首選",
+        name: "Ballerina 雙層榛果可可夾心餅乾",
+        localName: "Göteborgs Kex Ballerina Original (190g / 205g)",
+        origin: "🇸🇪 瑞典百年餅乾廠",
+        budget: "約 18～24 SEK／筒（約 NT$55～75）",
+        place: "馬爾默 ICA / Coop 餅乾零食專區",
+        image: "assets/souvenirs/ballerina-kex.webp",
+        bagTip: "圓筒包裝稍具厚度，可直立放於托運行李箱四周固定",
+        features: [
+          "自 1960 年代以來瑞典最受歡迎的下午茶 Fika 餅乾，被譽為瑞典版國民夾心餅。",
+          "酥脆奶油圓餅搭配濃郁榛果可可內餡，中央有鏤空小圓孔，造型雅緻。",
+          "與黑咖啡或熱茶是絕配，放一筒在茶水間瞬間化身北歐辦公室日常。"
+        ]
+      },
+      {
+        id: "djungelvral",
+        tag: "文化震撼・大冒險道具",
+        name: "Malaco Djungelvrål 經典鹹甘草猴子糖",
+        localName: "Malaco Djungelvrål Supersalt Lakrits (80g)",
+        origin: "🇸🇪 瑞典經典糖果品牌",
+        budget: "約 14～18 SEK／包（約 NT$45～55）",
+        place: "馬爾默超市收銀台旁或糖果專區",
+        image: "assets/souvenirs/djungelvral.webp",
+        bagTip: "體積極小，隨便塞在行李角落即可帶回",
+        features: [
+          "北歐最具代表性的氯化銨（Salmiak）超鹹甘草糖，外層裹滿厚厚鹽粉。",
+          "包裝為經典尖叫猴子圖樣，入口瞬間鹹烈衝擊，是北歐特有的硬派風味體驗。",
+          "強烈建議買一包放在團隊零食桌上，作為解 bug 提神或同事聚會的歡樂大冒險道具。"
+        ]
+      }
+    ]
+  },
   registration: {
     status: "Paid",
     label: "Registration: Paid",

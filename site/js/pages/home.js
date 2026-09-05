@@ -323,6 +323,7 @@
     const core = getCore();
     const esc = core.esc;
     const toolsLink = core.toolsLink;
+    const packingLink = core.packingLink;
     const layout = core.layout;
     const sectionHeading = core.sectionHeading;
 
@@ -339,6 +340,7 @@
           </div>
           <nav class="home-utility-links" aria-label="旅程相關工具">
             ${hackmdLink?.url ? `<a href="${esc(hackmdLink.url)}" target="_blank" rel="noreferrer">ECCV 筆記 <span aria-hidden="true">↗</span></a>` : ""}
+            <a href="${packingLink}#souvenirs" title="查看精選伴手禮推薦與採買指南">🎁 推薦伴手禮</a>
             <a href="${toolsLink}#weather-gps" title="透過 GPS 查看所在地即時天氣">📍 GPS 定位天氣</a>
             <a href="${toolsLink}">小工具 <span aria-hidden="true">→</span></a>
           </nav>

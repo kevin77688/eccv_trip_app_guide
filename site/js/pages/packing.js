@@ -165,6 +165,40 @@
       </div>`;
   }
 
+  function souvenirCardMarkup(item, type, esc) {
+    const isPremium = type === "premium";
+    return `
+      <article class="souvenir-card ${isPremium ? "is-premium" : "is-shared"}" id="souvenir-${esc(item.id)}">
+        <div class="souvenir-media-frame">
+          <img class="souvenir-img" src="${esc(item.image)}" alt="${esc(item.name)}" loading="eager" />
+          <span class="souvenir-badge">${esc(item.theme || item.tag)}</span>
+        </div>
+        <div class="souvenir-content">
+          <div class="souvenir-header">
+            <span class="souvenir-origin">${esc(item.origin)}</span>
+            <h3 class="souvenir-title">${esc(item.name)}</h3>
+            <p class="souvenir-local-name">${esc(item.localName)}</p>
+          </div>
+          <div class="souvenir-meta-row">
+            <div class="souvenir-price-chip">
+              <span class="souvenir-meta-label">參考預算</span>
+              <strong>${esc(item.budget)}</strong>
+            </div>
+            <div class="souvenir-place-chip">
+              <span class="souvenir-meta-label">建議採購點</span>
+              <p>${esc(item.place)}</p>
+            </div>
+          </div>
+          <ul class="souvenir-features">
+            ${(item.features || []).map((f) => `<li>${esc(f)}</li>`).join("")}
+          </ul>
+          <div class="souvenir-card-footer">
+            <span class="souvenir-bag-tip"><span aria-hidden="true">🧳</span> ${esc(item.bagTip)}</span>
+          </div>
+        </div>
+      </article>`;
+  }
+
   function renderPacking() {
     const trip = window.TRIP || {};
     const core = getCore();
@@ -192,74 +226,157 @@
     const packing = trip.packing || { bags: [], sources: [] };
     const sourceLinks = (packing.sources || []).map((source) => `<a href="${esc(source.url)}" target="_blank" rel="noreferrer">${esc(source.label)} <span aria-hidden="true">↗</span></a>`).join("");
 
+    const souvenirsData = trip.souvenirs || { premium: [], shared: [] };
+    const premiumCards = (souvenirsData.premium || []).map((item) => souvenirCardMarkup(item, "premium", esc)).join("");
+    const sharedCards = (souvenirsData.shared || []).map((item) => souvenirCardMarkup(item, "shared", esc)).join("");
+
+    const souvenirsPaneMarkup = `
+      <section class="souvenirs-hero-banner">
+        <div class="souvenirs-hero-copy">
+          <span class="eyebrow light">SOUVENIRS & GIFTS GUIDE · 採買推薦</span>
+          <h2>精選伴手禮採買指南</h2>
+          <p>與個人行李打包徹底隔離分流。精選北歐與法國代表性選品，分為一人一份的「精選主題風格禮包」與公用桌分享的「團隊零食分享包」，均附實物相片、預算估計與採買建議。</p>
+        </div>
+        <div class="souvenirs-hero-chips">
+          <span class="souvenir-stat-chip">🎁 4 款精選主題禮包</span>
+          <span class="souvenir-stat-chip">🍬 4 款團隊分享零食</span>
+          <span class="souvenir-stat-chip">⚖️ 留意 20kg 託運限額</span>
+        </div>
+      </section>
+
+      <section class="souvenir-alert-box" role="note">
+        <div class="souvenir-alert-icon" aria-hidden="true">⚠️</div>
+        <div class="souvenir-alert-text">
+          <strong>重要提醒：瑞典魚卵牙膏抹醬（Kalles Kaviar）不建議帶回台灣</strong>
+          <p>官方保存條件載明需全程 2～8°C 冷藏。9/12 離開瑞典後還需在巴黎待至 9/18，常溫攜帶極易發酵變質爆管；且膏狀物 190g 超過 100ml 須託運，在貨艙與常溫下難以保鮮。若想體驗，建議在瑞典 First Camp 小木屋廚房配白煮蛋享用，或回台至台灣 IKEA 瑞典食品超市購買冷藏進口品。</p>
+        </div>
+      </section>
+
+      <section class="souvenir-group-section">
+        <div class="souvenir-group-heading">
+          <div>
+            <span class="eyebrow">THEME GIFT PACKS · 一人一份</span>
+            <h2>精選主題風格禮包</h2>
+            <p>單人預算約 NT$1,000～1,500（約 200～350 DKK / SEK），當地代表性強、包裝質感高，適合致贈摯友或職場 Mentor。</p>
+          </div>
+          <span class="souvenir-group-count">4 款選品</span>
+        </div>
+        <div class="souvenir-cards-grid">${premiumCards}</div>
+      </section>
+
+      <section class="souvenir-group-section">
+        <div class="souvenir-group-heading">
+          <div>
+            <span class="eyebrow">OFFICE & TEAM PANTRY · 零食公用桌</span>
+            <h2>團隊零食分享包</h2>
+            <p>總預算約 NT$400～500（約 140 SEK），直接放辦公室公用桌供多人享用。80% 瑞典國民安全牌美味 ＋ 20% 文化衝擊冒險體驗。</p>
+          </div>
+          <span class="souvenir-group-count">4 款選品</span>
+        </div>
+        <div class="souvenir-cards-grid">${sharedCards}</div>
+      </section>
+
+      <section class="souvenir-luggage-tips content-section">
+        <div class="section-heading-row">
+          <div>
+            <span class="eyebrow light">LUGGAGE ALLOCATION</span>
+            <h2>伴手禮行李配置建議</h2>
+            <p>避免在哥本哈根飛巴黎段（Ryanair 託運上限 20 kg）超重。</p>
+          </div>
+        </div>
+        <ul class="souvenir-tips-list">
+          <li><strong>瑞典馬爾默段（09/07 - 09/12）</strong>：可在 ICA Maxi 超市一次購足車車軟糖、Marabou 巧克力、Ballerina 餅乾與鹹甘草糖，總重控制在 1.5 kg 內。</li>
+          <li><strong>丹麥哥本哈根段（09/11 - 09/12）</strong>：在中央車站、Strøget 街或 CPH 機場免稅店採買精品甘草球、Læsø 海鹽、木偶或冠軍咖啡豆，體積小巧好收納。</li>
+          <li><strong>巴黎段（09/12 - 09/18）</strong>：若北歐零食擔心超重，可保留部分額度在巴黎樂蓬馬歇美食館或 Monoprix 超市補齊法國經典點心。</li>
+        </ul>
+      </section>
+    `;
+
     layout(`
-      <section class="packing-header-dashboard">
-        <div class="packing-dashboard-top">
-          <div class="packing-dashboard-title">
-            <span class="eyebrow">PACK BY WHERE IT LIVES · 09/06 - 09/19</span>
-            <h1>三個包準備清單</h1>
-            <p>小包永遠貼身、後背包負責工作與登機、行李箱收托運物。支援自訂編輯並自動儲存於本機快取。</p>
-          </div>
-          <div class="packing-progress-pill-card">
-            <div class="progress-pill-header">
-              <span class="eyebrow">整體進度</span>
-              <strong><span data-packing-completed>0</span> / <span data-packing-total>0</span> 項 (<span data-packing-percent>0%</span>)</strong>
-            </div>
-            <div class="packing-progress-track">
-              <div class="packing-progress-fill" data-packing-progress-fill style="width: 0%"></div>
-            </div>
-          </div>
+      <section class="packing-nav-bar content-section">
+        <div class="packing-view-tabs" role="tablist" aria-label="行李與伴手禮分頁切換">
+          <button class="packing-view-tab is-active" type="button" role="tab" aria-selected="true" data-packing-view="checklist">
+            <span aria-hidden="true">🎒</span> 行李打包清單
+          </button>
+          <button class="packing-view-tab" type="button" role="tab" aria-selected="false" data-packing-view="souvenirs">
+            <span aria-hidden="true">🎁</span> 伴手禮推薦指南
+          </button>
         </div>
+      </section>
 
-        <div class="packing-bags-nav">
-          ${currentBags.map((bag) => `
-            <a class="packing-bag-nav-card bag-nav-${esc(bag.id)}" href="#bag-${esc(bag.id)}">
-              <span class="bag-nav-number">${esc(bag.number)}</span>
-              <div class="bag-nav-info">
-                <strong>${esc(bag.label)}</strong>
-                <small>${esc(bag.shortLabel || bag.label)} · ${esc(bag.headline)}</small>
+      <div class="packing-view-pane" data-packing-pane="checklist">
+        <section class="packing-header-dashboard">
+          <div class="packing-dashboard-top">
+            <div class="packing-dashboard-title">
+              <span class="eyebrow">PACK BY WHERE IT LIVES · 09/06 - 09/19</span>
+              <h1>三個包準備清單</h1>
+              <p>小包永遠貼身、後背包負責工作與登機、行李箱收托運物。支援自訂編輯並自動儲存於本機快取。</p>
+            </div>
+            <div class="packing-progress-pill-card">
+              <div class="progress-pill-header">
+                <span class="eyebrow">整體進度</span>
+                <strong><span data-packing-completed>0</span> / <span data-packing-total>0</span> 項 (<span data-packing-percent>0%</span>)</strong>
               </div>
-              <span class="bag-nav-count" data-bag-count="${esc(bag.id)}">0 / ${bag.items.length}</span>
-            </a>`).join("")}
-        </div>
-      </section>
-
-      <section class="boarding-rule" id="boarding-rule" aria-label="Ryanair 登機行李規則">
-        <div class="boarding-rule-copy"><span class="eyebrow light">FR9267 · GATE MODE</span><h2>登機時只能看見一件隨身包。</h2><p>日常是「小包＋後背包」，但到 Ryanair 登機口前，<strong>小包要整個塞進後背包</strong>；後背包再放前座下方。</p></div>
-        <div class="boarding-flow" aria-label="小包放進後背包再放到前座下"><span>貼身小包</span><b aria-hidden="true">→</b><span>收進後背包</span><b aria-hidden="true">→</b><span>前座下方</span></div>
-        <div class="boarding-limits"><div><small>唯一免費隨身件</small><strong>40 × 30 × 20</strong><span>cm</span></div><div><small>托運上限／封箱目標</small><strong>20 / 18</strong><span>kg</span></div></div>
-      </section>
-
-      <section class="packing-workspace content-section">
-        <div class="packing-toolbar">
-          <div class="packing-toolbar-copy">
-            <span class="eyebrow">LIVE CHECKLIST</span>
-            <strong><span data-packing-completed>0</span> / <span data-packing-total>0</span> 已完成</strong>
-            <small data-packing-visible>顯示 0 項</small>
+              <div class="packing-progress-track">
+                <div class="packing-progress-fill" data-packing-progress-fill style="width: 0%"></div>
+              </div>
+            </div>
           </div>
-          <div class="packing-filters" role="group" aria-label="篩選行李清單">
-            <button class="is-active" type="button" data-packing-filter="all">全部</button>
-            <button type="button" data-packing-filter="todo">還沒收</button>
-          </div>
-          <div class="packing-toolbar-actions">
-            <button class="packing-sync-btn" type="button" data-packing-sync-open title="跨裝置同步與備份">⇄ 同步／匯出</button>
-            <button class="packing-edit-toggle" type="button" data-packing-edit-toggle>✎ 編輯清單</button>
-            <button class="packing-reset" type="button" data-packing-reset>重設勾選</button>
-            <button class="packing-revert-btn" type="button" data-packing-revert hidden>恢復預設</button>
-          </div>
-        </div>
-        <div class="packing-bags" id="packing-bags-container"></div>
-      </section>
 
-      <section class="flight-wear content-section">
-        <div><span class="eyebrow light">WEAR, DON'T PACK</span><h2>出發當天直接穿上。</h2><p>把最佔體積、又能應付冷氣與北歐晚風的組合穿在身上。</p></div>
-        <ol><li><span>01</span><strong>主力走路鞋</strong></li><li><span>02</span><strong>長褲＋短袖</strong></li><li><span>03</span><strong>薄帽 T／中層</strong></li><li><span>04</span><strong>防水外套放手邊</strong></li></ol>
-      </section>
+          <div class="packing-bags-nav">
+            ${currentBags.map((bag) => `
+              <a class="packing-bag-nav-card bag-nav-${esc(bag.id)}" href="#bag-${esc(bag.id)}">
+                <span class="bag-nav-number">${esc(bag.number)}</span>
+                <div class="bag-nav-info">
+                  <strong>${esc(bag.label)}</strong>
+                  <small>${esc(bag.shortLabel || bag.label)} · ${esc(bag.headline)}</small>
+                </div>
+                <span class="bag-nav-count" data-bag-count="${esc(bag.id)}">0 / ${bag.items.length}</span>
+              </a>`).join("")}
+          </div>
+        </section>
 
-      <section class="packing-safety content-section">
-        <div><span class="eyebrow">CABIN ONLY</span><h2>這些絕對不要托運。</h2><p>護照、現金、信用卡、藥品、MacBook、iPad、XM6 與行動電源都留在身上或後背包。</p></div>
-        <div class="packing-source-links"><small>航空規則最後確認：${esc(packing.lastChecked)}</small>${sourceLinks}</div>
-      </section>
+        <section class="boarding-rule" id="boarding-rule" aria-label="Ryanair 登機行李規則">
+          <div class="boarding-rule-copy"><span class="eyebrow light">FR9267 · GATE MODE</span><h2>登機時只能看見一件隨身包。</h2><p>日常是「小包＋後背包」，但到 Ryanair 登機口前，<strong>小包要整個塞進後背包</strong>；後背包再放前座下方。</p></div>
+          <div class="boarding-flow" aria-label="小包放進後背包再放到前座下"><span>貼身小包</span><b aria-hidden="true">→</b><span>收進後背包</span><b aria-hidden="true">→</b><span>前座下方</span></div>
+          <div class="boarding-limits"><div><small>唯一免費隨身件</small><strong>40 × 30 × 20</strong><span>cm</span></div><div><small>托運上限／封箱目標</small><strong>20 / 18</strong><span>kg</span></div></div>
+        </section>
+
+        <section class="packing-workspace content-section">
+          <div class="packing-toolbar">
+            <div class="packing-toolbar-copy">
+              <span class="eyebrow">LIVE CHECKLIST</span>
+              <strong><span data-packing-completed>0</span> / <span data-packing-total>0</span> 已完成</strong>
+              <small data-packing-visible>顯示 0 項</small>
+            </div>
+            <div class="packing-filters" role="group" aria-label="篩選行李清單">
+              <button class="is-active" type="button" data-packing-filter="all">全部</button>
+              <button type="button" data-packing-filter="todo">還沒收</button>
+            </div>
+            <div class="packing-toolbar-actions">
+              <button class="packing-sync-btn" type="button" data-packing-sync-open title="跨裝置同步與備份">⇄ 同步／匯出</button>
+              <button class="packing-edit-toggle" type="button" data-packing-edit-toggle>✎ 編輯清單</button>
+              <button class="packing-reset" type="button" data-packing-reset>重設勾選</button>
+              <button class="packing-revert-btn" type="button" data-packing-revert hidden>恢復預設</button>
+            </div>
+          </div>
+          <div class="packing-bags" id="packing-bags-container"></div>
+        </section>
+
+        <section class="flight-wear content-section">
+          <div><span class="eyebrow light">WEAR, DON'T PACK</span><h2>出發當天直接穿上。</h2><p>把最佔體積、又能應付冷氣與北歐晚風的組合穿在身上。</p></div>
+          <ol><li><span>01</span><strong>主力走路鞋</strong></li><li><span>02</span><strong>長褲＋短袖</strong></li><li><span>03</span><strong>薄帽 T／中層</strong></li><li><span>04</span><strong>防水外套放手邊</strong></li></ol>
+        </section>
+
+        <section class="packing-safety content-section">
+          <div><span class="eyebrow">CABIN ONLY</span><h2>這些絕對不要托運。</h2><p>護照、現金、信用卡、藥品、MacBook、iPad、XM6 與行動電源都留在身上或後背包。</p></div>
+          <div class="packing-source-links"><small>航空規則最後確認：${esc(packing.lastChecked)}</small>${sourceLinks}</div>
+        </section>
+      </div>
+
+      <div class="packing-view-pane" data-packing-pane="souvenirs" hidden>
+        ${souvenirsPaneMarkup}
+      </div>
 
       <div class="packing-sync-overlay" id="packing-sync-modal" hidden>
         <div class="packing-sync-container" role="dialog" aria-modal="true" aria-labelledby="sync-modal-heading">
@@ -944,6 +1061,37 @@
 
     handleUrlHashSync();
     window.addEventListener("hashchange", handleUrlHashSync);
+
+    const viewTabs = document.querySelectorAll("[data-packing-view]");
+    const viewPanes = document.querySelectorAll("[data-packing-pane]");
+
+    function switchPackingView(viewName) {
+      viewTabs.forEach((tab) => {
+        const active = tab.dataset.packingView === viewName;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      viewPanes.forEach((pane) => {
+        pane.hidden = pane.dataset.packingPane !== viewName;
+      });
+      if (viewName === "souvenirs") {
+        if (!window.location.hash.includes("sync=")) {
+          history.replaceState(null, document.title, window.location.pathname + "#souvenirs");
+        }
+      } else {
+        if (window.location.hash === "#souvenirs") {
+          history.replaceState(null, document.title, window.location.pathname);
+        }
+      }
+    }
+
+    viewTabs.forEach((tab) => {
+      tab.addEventListener("click", () => switchPackingView(tab.dataset.packingView));
+    });
+
+    if (window.location.hash === "#souvenirs") {
+      switchPackingView("souvenirs");
+    }
 
     renderBags();
   }

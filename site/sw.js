@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260905-18';
+const CACHE_NAME = 'eccv-guide-v20260905-19';
 
 const STATIC_ASSETS = [
   './',
@@ -89,7 +89,15 @@ const STATIC_ASSETS = [
   './assets/places/torvehallerne.jpg',
   './assets/places/tuileries.jpg',
   './assets/places/turning.jpg',
-  './assets/places/versailles.jpg'
+  './assets/places/versailles.jpg',
+  './assets/souvenirs/lakrids-bulow.webp',
+  './assets/souvenirs/laeso-salt.webp',
+  './assets/souvenirs/kay-bojesen.webp',
+  './assets/souvenirs/coffee-collective.webp',
+  './assets/souvenirs/ahlgrens-bilar.webp',
+  './assets/souvenirs/marabou-chocolate.webp',
+  './assets/souvenirs/ballerina-kex.webp',
+  './assets/souvenirs/djungelvral.webp'
 ];
 
 self.addEventListener('install', (event) => {
