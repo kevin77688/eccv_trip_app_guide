@@ -344,16 +344,27 @@
 
         <section class="packing-workspace content-section">
           <div class="packing-toolbar">
-            <div class="packing-toolbar-copy">
-              <span class="eyebrow">LIVE CHECKLIST</span>
-              <strong><span data-packing-completed>0</span> / <span data-packing-total>0</span> 已完成</strong>
-              <small data-packing-visible>顯示 0 項</small>
+            <div class="packing-toolbar-top">
+              <div class="packing-toolbar-copy">
+                <span class="eyebrow">LIVE CHECKLIST</span>
+                <strong><span data-packing-completed>0</span> / <span data-packing-total>0</span> 已完成</strong>
+                <small data-packing-visible>顯示 0 項</small>
+              </div>
+              <div class="packing-filters" role="group" aria-label="篩選行李狀態">
+                <button class="is-active" type="button" data-packing-filter="all">全部</button>
+                <button type="button" data-packing-filter="todo">還沒收</button>
+              </div>
             </div>
-            <div class="packing-filters" role="group" aria-label="篩選行李清單">
-              <button class="is-active" type="button" data-packing-filter="all">全部</button>
-              <button type="button" data-packing-filter="todo">還沒收</button>
+
+            <div class="packing-bag-pills" role="tablist" aria-label="按包篩選行李清單">
+              <button class="packing-bag-pill is-active" type="button" data-bag-filter="all">全部 (<span data-bag-filter-count="all">0</span>)</button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="tiny">① 小包 (<span data-bag-filter-count="tiny">0/0</span>)</button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="backpack">② 後背包 (<span data-bag-filter-count="backpack">0/0</span>)</button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="suitcase">③ 行李箱 (<span data-bag-filter-count="suitcase">0/0</span>)</button>
             </div>
+
             <div class="packing-toolbar-actions">
+              <button class="packing-collapse-toggle" type="button" data-packing-collapse-toggle title="收合或展開所有包包">全部收合</button>
               <button class="packing-sync-btn" type="button" data-packing-sync-open title="跨裝置同步與備份">⇄ 同步／匯出</button>
               <button class="packing-edit-toggle" type="button" data-packing-edit-toggle>✎ 編輯清單</button>
               <button class="packing-reset" type="button" data-packing-reset>重設勾選</button>
@@ -454,6 +465,17 @@
     const resetBtn = document.querySelector("[data-packing-reset]");
     const revertBtn = document.querySelector("[data-packing-revert]");
     const filterButtons = document.querySelectorAll("[data-packing-filter]");
+    const bagFilterButtons = document.querySelectorAll("[data-bag-filter]");
+    const collapseToggleBtn = document.querySelector("[data-packing-collapse-toggle]");
+
+    let selectedBag = "all";
+    const collapsedBags = { tiny: false, backpack: false, suitcase: false };
+
+    function updateCollapseToggleBtn() {
+      if (!collapseToggleBtn) return;
+      const allCollapsed = Object.values(collapsedBags).every(Boolean);
+      collapseToggleBtn.textContent = allCollapsed ? "全部展開" : "全部收合";
+    }
 
     function updateCounters() {
       const savedChecks = getSavedChecks();
@@ -477,24 +499,50 @@
       const progressFill = document.querySelector("[data-packing-progress-fill]");
       if (progressFill) progressFill.style.width = `${percent}%`;
 
+      const allFilterCountNode = document.querySelector('[data-bag-filter-count="all"]');
+      if (allFilterCountNode) allFilterCountNode.textContent = total;
+
       currentBags.forEach((bag) => {
         const bagTotal = bag.items.length;
         const bagCompleted = bag.items.filter((item) => validChecks.has(`${bag.id}:${item.id}`)).length;
         document.querySelectorAll(`[data-bag-count="${bag.id}"]`).forEach((node) => {
           node.textContent = `${bagCompleted} / ${bagTotal}`;
         });
+        const bagPillCount = document.querySelector(`[data-bag-filter-count="${bag.id}"]`);
+        if (bagPillCount) {
+          bagPillCount.textContent = `${bagCompleted}/${bagTotal}`;
+        }
+      });
+
+      // Filter bag sections
+      document.querySelectorAll(".packing-bag-section").forEach((section) => {
+        const bagId = section.dataset.bagId;
+        const bagMatch = selectedBag === "all" || selectedBag === bagId;
+        section.hidden = !bagMatch;
       });
 
       if (!isEditing) {
         let visible = 0;
-        document.querySelectorAll("[data-packing-item]").forEach((itemNode) => {
-          const isChecked = itemNode.querySelector("input")?.checked;
-          const show = filter === "all" || (filter === "todo" && !isChecked);
-          itemNode.hidden = !show;
-          if (show) visible += 1;
+        document.querySelectorAll(".packing-bag-section").forEach((section) => {
+          if (section.hidden) return;
+          section.querySelectorAll("[data-packing-item]").forEach((itemNode) => {
+            const isChecked = itemNode.querySelector("input")?.checked;
+            const statusMatch = filter === "all" || (filter === "todo" && !isChecked);
+            itemNode.hidden = !statusMatch;
+            if (statusMatch) visible += 1;
+          });
         });
+
         const visibleNode = document.querySelector("[data-packing-visible]");
-        if (visibleNode) visibleNode.textContent = `顯示 ${visible} 項`;
+        if (visibleNode) {
+          if (selectedBag === "all") {
+            visibleNode.textContent = `顯示 ${visible} / ${total} 項${filter === "todo" ? " (未收)" : ""}`;
+          } else {
+            const curBag = currentBags.find((b) => b.id === selectedBag);
+            const bagTotal = curBag?.items.length || 0;
+            visibleNode.textContent = `顯示 ${visible} / ${bagTotal} 項 (${curBag?.shortLabel || curBag?.label || ""})`;
+          }
+        }
       } else {
         const visibleNode = document.querySelector("[data-packing-visible]");
         if (visibleNode) visibleNode.textContent = `編輯中 · 共 ${total} 項`;
@@ -504,18 +552,23 @@
     function renderBags() {
       const savedChecks = getSavedChecks();
       const bagSections = currentBags.map((bag) => `
-        <section class="packing-bag-section" id="bag-${esc(bag.id)}">
-          <div class="packing-bag-heading">
+        <section class="packing-bag-section ${collapsedBags[bag.id] && !isEditing ? "is-collapsed" : ""}" id="bag-${esc(bag.id)}" data-bag-id="${esc(bag.id)}">
+          <div class="packing-bag-heading" data-packing-bag-toggle="${esc(bag.id)}" role="button" tabindex="0" aria-expanded="${collapsedBags[bag.id] ? "false" : "true"}">
             <span class="packing-bag-number">${esc(bag.number)}</span>
-            <div>
+            <div class="packing-bag-heading-text">
               <span class="eyebrow">${esc(bag.capacity)}</span>
               <h2>${esc(bag.label)}</h2>
               <p class="packing-bag-headline">${esc(bag.headline)}</p>
               <p>${esc(bag.rule)}</p>
             </div>
-            <strong class="packing-bag-count" data-bag-count="${esc(bag.id)}">0 / ${bag.items.length}</strong>
+            <div class="packing-bag-heading-meta">
+              <strong class="packing-bag-count" data-bag-count="${esc(bag.id)}">0 / ${bag.items.length}</strong>
+              <span class="packing-bag-caret" aria-hidden="true">${collapsedBags[bag.id] ? "▾" : "▴"}</span>
+            </div>
           </div>
-          ${packingItemsMarkup(bag, isEditing)}
+          <div class="packing-bag-body">
+            ${packingItemsMarkup(bag, isEditing)}
+          </div>
         </section>`).join("");
 
       bagsContainer.innerHTML = (isEditing ? `
@@ -523,6 +576,23 @@
           <span><strong>✎ 行李編輯模式中</strong>：可修改名稱、點擊 ✕ 刪除，或在下方欄位新增物品。</span>
           <small>變更即時儲存至本機快取</small>
         </div>` : "") + bagSections;
+
+      // Accordion bag header click
+      bagsContainer.querySelectorAll("[data-packing-bag-toggle]").forEach((heading) => {
+        heading.addEventListener("click", () => {
+          if (isEditing) return;
+          const bagId = heading.dataset.packingBagToggle;
+          collapsedBags[bagId] = !collapsedBags[bagId];
+          const section = document.getElementById(`bag-${bagId}`);
+          if (section) {
+            section.classList.toggle("is-collapsed", collapsedBags[bagId]);
+            const caret = section.querySelector(".packing-bag-caret");
+            if (caret) caret.textContent = collapsedBags[bagId] ? "▾" : "▴";
+            heading.setAttribute("aria-expanded", collapsedBags[bagId] ? "false" : "true");
+          }
+          updateCollapseToggleBtn();
+        });
+      });
 
       if (isEditing) {
         bagsContainer.querySelectorAll("[data-packing-item-input]").forEach((input) => {
@@ -661,6 +731,64 @@
         filterButtons.forEach((b) => b.classList.toggle("is-active", b === btn));
         updateCounters();
       });
+    });
+
+    bagFilterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selectedBag = btn.dataset.bagFilter;
+        bagFilterButtons.forEach((b) => b.classList.toggle("is-active", b === btn));
+        if (selectedBag !== "all") {
+          collapsedBags[selectedBag] = false;
+          const section = document.getElementById(`bag-${selectedBag}`);
+          if (section) {
+            section.classList.remove("is-collapsed");
+            const caret = section.querySelector(".packing-bag-caret");
+            if (caret) caret.textContent = "▴";
+          }
+        }
+        updateCollapseToggleBtn();
+        updateCounters();
+      });
+    });
+
+    document.querySelectorAll(".packing-bag-nav-card").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        const href = card.getAttribute("href") || "";
+        const bagId = href.replace("#bag-", "");
+        if (bagId && currentBags.some((b) => b.id === bagId)) {
+          e.preventDefault();
+          selectedBag = bagId;
+          collapsedBags[bagId] = false;
+          bagFilterButtons.forEach((b) => b.classList.toggle("is-active", b.dataset.bagFilter === bagId));
+          const section = document.getElementById(`bag-${bagId}`);
+          if (section) {
+            section.classList.remove("is-collapsed");
+            const caret = section.querySelector(".packing-bag-caret");
+            if (caret) caret.textContent = "▴";
+          }
+          updateCollapseToggleBtn();
+          updateCounters();
+          section?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    collapseToggleBtn?.addEventListener("click", () => {
+      if (isEditing) return;
+      const allCollapsed = Object.values(collapsedBags).every(Boolean);
+      const shouldCollapse = !allCollapsed;
+      currentBags.forEach((bag) => {
+        collapsedBags[bag.id] = shouldCollapse;
+        const section = document.getElementById(`bag-${bag.id}`);
+        if (section) {
+          section.classList.toggle("is-collapsed", shouldCollapse);
+          const caret = section.querySelector(".packing-bag-caret");
+          if (caret) caret.textContent = shouldCollapse ? "▾" : "▴";
+          const heading = section.querySelector("[data-packing-bag-toggle]");
+          if (heading) heading.setAttribute("aria-expanded", shouldCollapse ? "false" : "true");
+        }
+      });
+      updateCollapseToggleBtn();
     });
 
     function applyPackingSyncPayload(payload) {
