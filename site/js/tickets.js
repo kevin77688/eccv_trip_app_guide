@@ -4,6 +4,7 @@
   let activeTicketBlobUrl = null;
   let pdfJsLoadingPromise = null;
   let modalPushedState = false;
+  let returnFocus = null;
 
   function getCore() {
     return window.ECCV_CORE || {
@@ -63,6 +64,12 @@
     if (e.key === "Escape") {
       closeTicketModal();
     }
+    if (e.key === 'Tab') {
+      const controls = [...document.querySelectorAll('#ticket-modal-root button, #ticket-modal-root input, #ticket-modal-root a')].filter(el => !el.disabled && el.getClientRects().length);
+      const first = controls[0], last = controls.at(-1);
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+    }
   }
 
   function closeTicketModal() {
@@ -82,14 +89,12 @@
     }
     document.body.style.overflow = "";
     document.removeEventListener("keydown", handleModalKeydown);
+    returnFocus?.focus();
   }
 
   async function decryptTicket(encUrl, password) {
-    const resp = await fetch(encUrl);
-    if (!resp.ok) {
-      throw new Error(`無法載入加密票券檔案 (${resp.status})`);
-    }
-    const buffer = await resp.arrayBuffer();
+    const name = new URL(encUrl, location.href).pathname.split('/').at(-1);
+    const buffer = await window.ECCV_TICKET_STORE.get(name);
     if (buffer.byteLength < 28) {
       throw new Error("加密檔案格式損毀");
     }
@@ -291,7 +296,7 @@
     });
   }
 
-  function openTicketModal(ticketId) {
+  function openTicketModal(ticketId, replaceHistory = false) {
     const trip = window.TRIP || {};
     const ticket = (trip.tickets || []).find((t) => t.id === ticketId);
     if (!ticket) return;
@@ -301,10 +306,11 @@
     const esc = core.esc;
     const assetPath = core.assetPath;
 
-    closeTicketModal();
+    if (document.getElementById('ticket-modal-root')) return;
+    returnFocus = document.activeElement;
 
     try {
-      history.pushState({ eccvModal: "ticket" }, "");
+      history[replaceHistory ? 'replaceState' : 'pushState']({ ...history.state, eccvModal: "ticket" }, "");
       modalPushedState = true;
     } catch (_) {}
 
@@ -330,6 +336,7 @@
 
         <div class="ticket-modal-body" id="ticket-modal-body">
           <div class="ticket-prompt-view" id="ticket-prompt-view">
+            <section class="ticket-import-box"><p data-ticket-availability role="status">正在確認這台裝置的票券…</p><label class="button button-secondary ticket-import-label">匯入票券檔<input type="file" accept=".enc" data-ticket-import data-ticket-expected="${esc(ticket.encFile)}" /></label><small>選擇 ${esc(ticket.encFile)}，只會儲存在這台裝置。</small><p data-ticket-import-status role="status"></p></section>
             <div class="ticket-biometric-card" id="ticket-biometric-card" hidden>
               <div class="ticket-biometric-icon" id="ticket-bio-icon" aria-hidden="true">👆</div>
               <div class="ticket-biometric-info">
@@ -352,7 +359,7 @@
                 <span class="security-shield" aria-hidden="true">🎫</span>
                 <div>
                   <strong>票券驗證</strong>
-                  <p>請輸入密碼以出示憑證，關閉後即自動銷毀記憶體暫存。</p>
+                  <p>輸入密碼後出示票券，關閉視窗便清除已解開的內容。</p>
                 </div>
               </div>
 
@@ -391,6 +398,11 @@
     document.body.appendChild(modal);
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleModalKeydown);
+    window.ECCV_TICKET_STORE.get(ticket.encFile).then(() => {
+      if (modal.isConnected) modal.querySelector('[data-ticket-availability]').textContent = '票券已在這台裝置，可離線出示。';
+    }).catch(() => {
+      if (modal.isConnected) modal.querySelector('[data-ticket-availability]').textContent = '尚未匯入此票券，請先選擇下方檔案。';
+    });
 
     function setModalMaximized(maximized) {
       const isMax = !!maximized;
@@ -513,6 +525,7 @@
     async function renderDecryptedView(password) {
       const encUrl = assetPath(`assets/tickets/${ticket.encFile}`);
       const { objectUrl, mimeType, fileBytes } = await decryptTicket(encUrl, password);
+      if (!modal.isConnected) { URL.revokeObjectURL(objectUrl); return; }
       activeTicketBlobUrl = objectUrl;
 
       const isPhone = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -625,7 +638,7 @@
               if (pdf.numPages > 1) {
                 const badge = document.createElement("div");
                 badge.className = "ticket-page-badge";
-                badge.textContent = `第 ${num} / ${pdf.numPages} 頁 · 4 位同行憑證`;
+                badge.textContent = `第 ${num} / ${pdf.numPages} 頁`;
                 pageCard.appendChild(badge);
               }
 
@@ -713,13 +726,13 @@
                   enrollBtn.disabled = false;
                   enrollBtn.innerHTML = `<span>${deviceIcon} 立即啟用 ${esc(deviceLabel)}</span>`;
                   if (res && res.message && !res.cancelled) {
-                    alert(res.message);
+                    core.toast(res.message);
                   }
                 }
               } catch (regErr) {
                 enrollBtn.disabled = false;
                 enrollBtn.innerHTML = `<span>${deviceIcon} 立即啟用 ${esc(deviceLabel)}</span>`;
-                alert("生物辨識綁定失敗: " + (regErr.message || regErr));
+                core.toast("生物辨識設定失敗：" + (regErr.message || regErr));
               }
             });
           }
@@ -751,6 +764,23 @@
   }
 
   function setupTicketModal() {
+    document.addEventListener('change', async event => {
+      const input = event.target.closest('[data-ticket-import]');
+      if (!input || !input.files?.length) return;
+      const box = input.closest('.ticket-import-box');
+      const status = box.querySelector('[data-ticket-import-status]');
+      input.disabled = true;
+      status.textContent = '正在檢查並儲存票券…';
+      try {
+        const files = [...input.files];
+        if (input.dataset.ticketExpected && files.some(file => file.name !== input.dataset.ticketExpected)) throw new Error(`請選擇 ${input.dataset.ticketExpected}。`);
+        const count = await window.ECCV_TICKET_STORE.save(files);
+        status.textContent = `已匯入 ${count} 份票券，可在這台裝置離線出示。`;
+        const availability = box.querySelector('[data-ticket-availability]');
+        if (availability) availability.textContent = '票券已在這台裝置，可離線出示。';
+      } catch (error) { status.textContent = error.message; }
+      finally { input.disabled = false; input.value = ''; }
+    });
     document.addEventListener("click", (e) => {
       const openBtn = e.target.closest("[data-ticket-action='open']");
       if (openBtn) {

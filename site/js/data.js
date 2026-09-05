@@ -508,10 +508,10 @@ window.TRIP = {
       duration: "約 1 小時 55 分",
       note: "Ryanair／Malta Air 代碼共享；四位同行座位已確認；每人 1 件 20 kg 託運行李",
       passengers: [
-        { name: "旅客 1 (20A)", seat: "20A", bag: "20 kg Check-in Bag" },
-        { name: "旅客 2 (20B)", seat: "20B", bag: "20 kg Check-in Bag" },
-        { name: "旅客 3 (21A)", seat: "21A", bag: "20 kg Check-in Bag" },
-        { name: "旅客 4 (21B)", seat: "21B", bag: "20 kg Check-in Bag" }
+        { name: "同行者 1", seat: "20A", bag: "20 kg Check-in Bag" },
+        { name: "同行者 2", seat: "20B", bag: "20 kg Check-in Bag" },
+        { name: "同行者 3", seat: "21A", bag: "20 kg Check-in Bag" },
+        { name: "同行者 4", seat: "21B", bag: "20 kg Check-in Bag" }
       ]
     },
     {
@@ -546,7 +546,7 @@ window.TRIP = {
       name: "First Camp Sibbarp-Malmö",
       address: "Strandgatan 101, Vaster, 216 11 Malmö",
       phone: "+46 40 15 51 65",
-      bookingRef: "5398****** (PIN: 5958)",
+      bookingRef: "已遮蔽",
       note: "09/07 15:00 起入住（已約定 18:00-19:00 抵達），09/12 11:00 前退房；退房前須自行完成清潔或付費清潔；日常以 Götgatan 搭 Bus 9 接 Hyllie。",
       fit: "已確認住宿（4 位成人 1 棟 Cottage 獨立小木屋）。Sibbarp 靠海清靜，附小廚房、微波爐、露台與免費停車位；以 Bus 9 接 Hyllie 即可前往會場、市中心、哥本哈根與機場。"
     },
@@ -568,8 +568,8 @@ window.TRIP = {
         { label: "去程第 1 段", value: "EK 367 (台北 23:50 → 杜拜 04:35+1 · 座位 49C · Group 6 · 23:05 登機)" },
         { label: "去程第 2 段", value: "EK 151 (杜拜 08:20 → 哥本哈根 13:15 · 座位 25H · Group 4 · 07:20 登機)" },
         { label: "搭乘旅客", value: "旅客本人" },
-        { label: "訂位代號", value: "FH****" },
-        { label: "電子票號", value: "176-**********" },
+        { label: "訂位代號", value: "已遮蔽" },
+        { label: "電子票號", value: "已遮蔽" },
         { label: "轉機時限", value: "杜拜轉機安檢截止 07:20 / 登機門關閉 08:05" },
         { label: "憑證格式", value: "官方電子登機證 (雙頁含兩段完整 2D 條碼)" }
       ]
@@ -586,9 +586,9 @@ window.TRIP = {
       encFile: "emirates-flights.enc",
       qrHint: "機場櫃檯報到、托運或安檢時出示官方 PDF",
       details: [
-        { label: "訂位代號", value: "FH****" },
-        { label: "電子票號", value: "176-**********" },
-        { label: "旅客姓名", value: "旅客本人" },
+        { label: "訂位代號", value: "已遮蔽" },
+        { label: "電子票號", value: "已遮蔽" },
+        { label: "旅客姓名", value: "已遮蔽" },
         { label: "去程航段", value: "EK 367 (49C) + EK 151 (25H)" },
         { label: "回程航段", value: "EK 74 (62C) + EK 366 (47H)" },
         { label: "票券格式", value: "Emirates 官方 e-Ticket 憑證" }
@@ -726,7 +726,7 @@ window.TRIP = {
       qrHint: "18 到 27 歲免費入場；Malmö Museum（城堡與科技館）、DAC、克里斯蒂安堡宮接待廳、圓塔等合作場館入場出示",
       details: [
         { label: "票券名稱", value: "K7 WEEK 2026 (Digital Pass)" },
-        { label: "持票姓名", value: "持票人本人" },
+        { label: "持票姓名", value: "已遮蔽" },
         { label: "有效期間", value: "2026/09/07 - 2026/09/13 (第 37 週)" },
         { label: "適用場館", value: "Malmö Museum、DAC @ BLOX、克里斯蒂安堡宮接待廳、圓塔等 250+ 館舍" },
         { label: "票券格式", value: "官方數位通行證 (含驗證 QR Code 與條碼)" }
@@ -743,7 +743,7 @@ window.TRIP = {
       encFile: "first-camp.enc",
       qrHint: "辦理入住、領取小木屋鑰匙或接待處確認時出示官方 PDF",
       details: [
-        { label: "預訂編號", value: "5398****** (PIN: 5958)" },
+        { label: "預訂編號", value: "已遮蔽" },
         { label: "預約期間", value: "2026/09/07 (週一) 15:00 起至 09/12 (週六) 11:00 前 (共 5 晚)" },
         { label: "抵達約定", value: "已確認於 18:00 - 19:00 間抵達辦理入住 (接待處)" },
         { label: "房型格局", value: "Cottage 獨立小木屋 (4 位成人，含露台、烹飪設備、微波爐、咖啡機、免費 WiFi 與 1 個車位)" },
@@ -1976,6 +1976,20 @@ window.TRIP.bilingualNames = {
 };
 
 // Explicit instants for flight segments whose departure and arrival use different zones.
+window.TRIP.ticketDigests = {
+  "arc-de-triomphe.enc": "ad8c0264b62fc07fc33ba293ab7cab1f2b547c72370e3cfdc670f03b03a4fc8f",
+  "church-our-saviour.enc": "ec8ace8d563dd8fc59e6dc9019052626f19df829436826d89fcee50c8dc749f2",
+  "ek367-boarding-pass.enc": "feeade13eee739347031ba3d2dea7989818ab889dda31512c3ba40963d756963",
+  "emirates-flights.enc": "0ea0c116b6e11bbf76fc9e34469654aafcb6435ec6422dcf46139e16a9fd2895",
+  "first-camp.enc": "ee39682d3345e27cc4592c8bd58cdffe56772a3c7b3259f275ca48dadb624cf6",
+  "k7-pass.enc": "a626901ecea63d363597ff3cfc8ea9bf6944ab30b3fa7d5588c6e076d1540a06",
+  "louvre.enc": "aaef5837fcd8bef43f7b29e1622d9d56716aef1f6d4be5765a055d4cb4bd8a2a",
+  "ryanair-fr9267.enc": "bf2902a318fc57ce3565afb0fa93401c123fd48316ea5df216b5a4080f062557",
+  "sainte-chapelle.enc": "12aa851c0e7308a1068146161357e6515f584c454adba8b2889975cedb52b9eb",
+  "stromma-canal-tour.enc": "a0c81657aa4e234f0e0ebed5683e9e8fa83e4cb29d1c5d647959e66b6b2bf6c0",
+  "versailles.enc": "e19943cce11bc3e6303d52fc25a75c3315afd57e62e0f4d289eb154c433482e5"
+};
+
 window.TRIP.scheduleTiming = {
   '09-06': { 3: { start: '2026-09-06T23:50:00+08:00', end: '2026-09-07T04:35:00+04:00', timezone: 'Asia/Taipei' } },
   '09-07': { 0: { timezone: 'Asia/Dubai' } },

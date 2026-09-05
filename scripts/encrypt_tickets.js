@@ -4,10 +4,10 @@ const crypto = require('crypto');
 
 const PDF_DIR = path.join(__dirname, '..', 'pdf');
 const OUT_DIR = path.join(__dirname, '..', 'site', 'assets', 'tickets');
-const PASSWORD = process.env.TICKET_PASSWORD || process.argv[2];
+const PASSWORD = process.env.TICKET_PASSWORD;
 
 if (!PASSWORD) {
-  console.error('[Error] 請設定 TICKET_PASSWORD 環境變數或透過參數提供密碼。');
+  console.error('[Error] 請設定 TICKET_PASSWORD 環境變數。');
   console.error('範例: TICKET_PASSWORD=your_password node scripts/encrypt_tickets.js');
   process.exit(1);
 }

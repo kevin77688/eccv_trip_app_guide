@@ -230,6 +230,7 @@
       <div class="logistics-page">
         <section class="logistics-block tickets-section" id="tickets" data-logistics-section="tickets">
           <div class="section-heading-row">${sectionHeading("TICKETS & PASSES", "票券與入場憑證", "包含航班登機證、景點預約、運河遊船與博物館通行證；點擊即可快速出示。")}</div>
+          <section class="ticket-import-box"><h3>把票券帶到這台裝置</h3><p>選擇你的 .enc 票券檔，可一次匯入多份。檔案只存在這台裝置，出示時仍需密碼。</p><label class="button button-secondary ticket-import-label">匯入票券<input type="file" accept=".enc" multiple data-ticket-import /></label><p data-ticket-import-status role="status"></p></section>
           <div class="ticket-card-grid">${ticketCards}</div>
         </section>
         ${registrationPanel}

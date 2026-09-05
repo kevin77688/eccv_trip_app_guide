@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260906-03';
+const CACHE_NAME = 'eccv-guide-v20260906-04';
 
 const STATIC_ASSETS = [
   './',
@@ -22,6 +22,8 @@ const STATIC_ASSETS = [
   './js/pages/tools.js',
   './js/pages/day.js',
   './js/app.js',
+  './js/essentials.js',
+  './js/ticket-store.js',
   './vendor/qr/qrcode.min.js',
   './vendor/qr/jsqr.min.js',
   './vendor/pdfjs/pdf.min.js',

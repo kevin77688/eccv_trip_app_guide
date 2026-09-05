@@ -1,6 +1,28 @@
 /* Shared travel UI. Phone controls retain the same labels on every page. */
 [hidden] { display: none !important; }
 .search-toggle { display: none; }
+.essentials-toggle { min-height: 44px; padding: 0 12px; flex-shrink: 0; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--surface); font-size: 14px; cursor: pointer; }
+.essentials-dialog { width: min(560px, calc(100% - 24px)); max-height: calc(100dvh - 40px); padding: 0; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--ink); overflow-wrap: anywhere; }
+.essentials-dialog::backdrop { background: rgb(0 0 0 / .55); }
+.essentials-dialog > header { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid var(--line); background: var(--surface); }
+.essentials-dialog h2 { font-size: 21px; margin: 0; }
+.essentials-dialog header button { min-height: 44px; padding: 0 12px; background: var(--surface-soft); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; }
+[data-essentials-content] { padding: 16px 18px; }
+.essentials-date { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.essentials-date select { max-width: 220px; min-height: 44px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+.essential-section { border-bottom: 1px solid var(--line); padding: 16px 0; }
+.essential-section h3 { font-size: 17px; margin: 0 0 10px; }
+.essential-section p { margin: 6px 0; font-size: 15px; }
+.essential-tickets { display: grid; gap: 8px; }
+.essential-tickets button { text-align: left; padding: 12px; min-height: 48px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-soft); color: var(--ink); }
+.essential-tickets span { display: block; color: var(--coral-dark); font-size: 13px; }
+.ticket-import-box { padding: 16px; margin-bottom: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-soft); }
+.ticket-import-box h3 { margin-top: 0; }
+.ticket-import-box p, .ticket-import-box small { display: block; font-size: 14px; margin: 8px 0; }
+.ticket-import-label { position: relative; cursor: pointer; min-height: 44px; overflow: hidden; }
+.ticket-import-label input { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer; }
+.ticket-import-label:focus-within { outline: 3px solid var(--coral); outline-offset: 3px; }
+.ticket-modal-close, .ticket-modal-action-btn { min-width: 44px; min-height: 44px; }
 :focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
 button, input, select, textarea { font: inherit; }
 .button, button, summary, select { touch-action: manipulation; }
@@ -52,6 +74,7 @@ button, input, select, textarea { font: inherit; }
   .site-header { min-height: 0; }
   .nav-wrap { width: calc(100% - 24px); min-height: 64px; padding: 8px 0; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto; gap: 8px; }
   .brand-copy small { display: none; }
+  .brand-copy { display: none; }
   .header-tools { display: flex; gap: 6px; }
   .theme-toggle { position: static; width: 44px; height: 44px; }
   .search-toggle { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); font-size: 14px; }
@@ -82,6 +105,13 @@ button, input, select, textarea { font: inherit; }
   .home-today-action { width: auto; min-height: 44px; margin-top: 8px; padding: 8px 12px; font-size: 14px; }
   .home-today-copy h2 { font-size: 24px; }
   .day-breadcrumb { display: none; }
+}
+@media (max-width: 680px) {
+  .essentials-dialog { width: 100%; max-width: 100%; max-height: calc(100dvh - env(safe-area-inset-top)); margin: auto 0 0; border-radius: 20px 20px 0 0; padding-bottom: env(safe-area-inset-bottom); }
+  .ticket-modal-overlay { padding: max(10px, env(safe-area-inset-top)) 8px max(10px, env(safe-area-inset-bottom)); }
+  .ticket-modal-container { max-height: calc(100dvh - 24px); }
+  .ticket-modal-header { padding: 10px 12px; gap: 8px; }
+  .ticket-modal-title-group h2 { font-size: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -37,4 +37,5 @@
     pages.day?.render?.(core.dayKey);
   }
   window.ECCV_JOURNEY?.setup();
+  window.ECCV_ESSENTIALS?.setup();
 })();
