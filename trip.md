@@ -38,6 +38,7 @@
 - 介面與本段文件已依 humanize 流程整理，使用自然的繁體中文，保留行程、預約狀態及操作限制。
 - `node scripts/sync-version.cjs YYYYMMDD-NN` 同步所有頁面、快取版本及首頁標記。`npm test` 驗證各地時間與隱私規則；本機 8080 伺服器啟動後，`npm run test:ui` 驗證頁面、互動及離線使用。
 - APK 工作流程建置前執行時間與隱私檢查；同一分支有較新的建置時取消舊工作，避免舊 APK 蓋過新版。更新連結與分享圖片網址使用目前的 `eccv_trip_app_guide` 儲存庫。
+- APK 發布完成後，工作流程將 `latest` 標籤同步到該次提交，使用非強制更新檢查，讓標籤與下載的版本一致。
 
 ## Playwright MCP 與 Chromium 渲染工具安裝（2026-09-06）
 

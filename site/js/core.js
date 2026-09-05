@@ -769,7 +769,7 @@
         reg.waiting.postMessage({ type: 'SKIP_WAITING' });
         return { supported: true, updated: true, message: "已找到新版，正在套用。" };
       }
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-09）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-10）" };
     } catch (e) {
       return { supported: true, updated: false, message: "無法確認是否有新版，請連上網路後重試。" };
     }

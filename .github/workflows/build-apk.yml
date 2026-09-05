@@ -81,3 +81,7 @@ jobs:
             gh release create "${RELEASE_TAG}" --title "${RELEASE_TITLE}" --notes-file "${notes_file}" --target "${GITHUB_SHA}"
           fi
           gh release upload "${RELEASE_TAG}" ECCV-2026-Guide.apk --clobber
+          if [ "${RELEASE_TAG}" = "latest" ]; then
+            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/git/refs/tags/latest" \
+              -f sha="${GITHUB_SHA}" -F force=false --silent
+          fi
