@@ -61,12 +61,12 @@
           <div class="place-compact-thumb">${compactThumb}</div>
           <div class="place-compact-info">
             <div class="place-compact-title-row">
-              <strong class="place-compact-title">${esc(place.title)}</strong>
+              <strong class="place-compact-title">${esc(place.local || place.title)}</strong>
               <span class="place-compact-stay">${esc(place.stay)}</span>
             </div>
             <div class="place-compact-sub">
               <span class="place-compact-region">${esc(place.region)}</span>
-              <span class="place-compact-local">${esc(place.local)}</span>
+              <span class="place-compact-local">${esc(place.title)}</span>
               ${firstScheduledDate ? `<span class="place-compact-date">${esc(firstScheduledDate)}</span>` : ""}
             </div>
           </div>
@@ -74,12 +74,12 @@
             <a class="place-compact-map-btn" href="${esc(googleMapsLink(id, place))}" target="_blank" rel="noreferrer" title="Google Maps 導航" aria-label="導航至 ${esc(place.title)}">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
-            <button class="place-compact-expand-btn" type="button" aria-label="展開詳細資訊" title="展開詳細資訊">
+            <button class="place-compact-expand-btn" type="button" aria-expanded="false" aria-controls="place-details-${esc(id)}" aria-label="展開 ${esc(place.local || place.title)}" title="展開詳細資訊">
               <span class="expand-icon" aria-hidden="true">▾</span>
             </button>
           </div>
         </div>
-        <div class="place-detail-section">
+        <div class="place-detail-section" id="place-details-${esc(id)}">
           ${image}
           <div class="place-card-content"><div class="place-card-meta"><span>${esc(place.region)}</span><strong>${esc(place.stay)}</strong></div>${dateMarkup}${locationMarkup}<span class="place-kicker">${esc(place.kicker)}</span><h3>${esc(place.title)}</h3><p class="place-local">${esc(place.local)}</p><p class="place-intro">${esc(place.intro)}</p>${recommendationMarkup}${bookingMarkup}<div class="place-actions">${ticketButton}<a class="map-button" href="${esc(googleMapsLink(id, place))}" target="_blank" rel="noreferrer"><svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Google Maps 導航</span><b aria-hidden="true">↗</b></a></div></div>
         </div>
@@ -115,7 +115,7 @@
           <div class="places-title-group">
             <span class="eyebrow">ECCV 2026 · PLACE DIRECTORY</span>
             <h1>景點快速查找</h1>
-            <p>依國家與城市快速篩選景點；點擊景點卡片上的日期可前往當日行程，或直接開啟 Google Maps 導航。</p>
+            <p>搜尋地名，展開看介紹；按地圖圖示直接導航。</p>
           </div>
           <span class="result-count" data-place-count>共 ${totalPlaces} 個地點</span>
         </div>
@@ -164,11 +164,14 @@
     const emptyState = document.querySelector("[data-places-empty]");
     const viewButtons = document.querySelectorAll("[data-place-view]");
 
-    let activeFilter = "all";
-    let activeQuery = "";
+    const savedState = core.readViewState('places');
+    let activeFilter = ['all', 'malmo', 'copenhagen', 'paris', 'scheduled', 'unscheduled'].includes(savedState.filter) ? savedState.filter : 'all';
+    let activeQuery = typeof savedState.query === 'string' ? savedState.query : '';
+    if (searchInput) searchInput.value = activeQuery;
 
-    const savedView = localStorage.getItem("eccv-places-view");
-    let currentView = savedView || (window.innerWidth <= 768 ? "compact" : "detailed");
+    let savedView;
+    try { savedView = localStorage.getItem('eccv-places-view'); } catch (_) {}
+    let currentView = ['compact', 'detailed'].includes(savedView) ? savedView : (window.innerWidth <= 768 ? 'compact' : 'detailed');
 
     const setViewMode = (mode) => {
       currentView = mode;
@@ -180,6 +183,7 @@
       }
       viewButtons.forEach((btn) => {
         btn.classList.toggle("is-active", btn.dataset.placeView === mode);
+        btn.setAttribute('aria-pressed', String(btn.dataset.placeView === mode));
       });
     };
 
@@ -190,6 +194,11 @@
     });
 
     const applyCombinedFilters = () => {
+      core.saveViewState('places', { filter: activeFilter, query: activeQuery });
+      document.querySelectorAll('[data-place-filter]').forEach(button => {
+        button.classList.toggle('is-active', button.dataset.placeFilter === activeFilter);
+        button.setAttribute('aria-pressed', String(button.dataset.placeFilter === activeFilter));
+      });
       const q = activeQuery.trim().toLowerCase();
       let visible = 0;
 
@@ -291,10 +300,24 @@
         toggleHeader.addEventListener("click", (e) => {
           if (e.target.closest(".place-compact-map-btn")) return;
           if (!browserSection?.classList.contains("is-compact-mode")) return;
-          card.classList.toggle("is-expanded");
+          const expanded = card.classList.toggle("is-expanded");
+          const button = card.querySelector('.place-compact-expand-btn');
+          button.setAttribute('aria-expanded', String(expanded));
+          button.setAttribute('aria-label', `${expanded ? '收合' : '展開'} ${trip.places[card.id.replace('place-', '')]?.local || ''}`);
         });
       }
     });
+    applyCombinedFilters();
+    const revealPlace = () => {
+      if (!location.hash.startsWith('#place-')) return;
+      const target = document.getElementById(location.hash.slice(1));
+      if (target?.classList.contains('place-card')) {
+        activeFilter = 'all'; activeQuery = ''; searchInput.value = ''; applyCombinedFilters();
+        target.classList.add('is-expanded'); target.querySelector('.place-compact-expand-btn')?.setAttribute('aria-expanded', 'true');
+      }
+    };
+    window.addEventListener('hashchange', revealPlace);
+    revealPlace();
   }
 
   window.ECCV_PAGES = window.ECCV_PAGES || {};

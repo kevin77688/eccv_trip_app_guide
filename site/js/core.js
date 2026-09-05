@@ -413,6 +413,39 @@
     return `<div class="section-heading"><span class="eyebrow">${esc(kicker)}</span><h2>${esc(title)}</h2>${text ? `<p>${esc(text)}</p>` : ""}</div>`;
   }
 
+  function readViewState(key) {
+    try {
+      const value = JSON.parse(sessionStorage.getItem(`eccv-view:${key}`) || '{}');
+      return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+    } catch (_) { return {}; }
+  }
+  function saveViewState(key, value) {
+    try { sessionStorage.setItem(`eccv-view:${key}`, JSON.stringify(value)); } catch (_) {}
+  }
+  function setupPageMemory() {
+    const key = `page:${location.pathname}`;
+    const saved = readViewState(key);
+    const details = [...document.querySelectorAll('details')];
+    const detailKey = node => node.id || node.querySelector('summary')?.textContent.trim();
+    if (!location.hash) details.forEach(node => { if (typeof saved.details?.[detailKey(node)] === 'boolean') node.open = saved.details[detailKey(node)]; });
+    window.addEventListener('pagehide', () => {
+      saveViewState(key, { scroll: scrollY, details: Object.fromEntries(details.map(node => [detailKey(node), node.open])) });
+    });
+    if (!location.hash && Number.isFinite(saved.scroll) && saved.scroll > 0) {
+      window.addEventListener('load', () => requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({ top: saved.scroll, behavior: 'instant' }))), { once: true });
+    }
+    let viewportHeight = window.visualViewport?.height || innerHeight;
+    const updateKeyboard = () => {
+      const height = window.visualViewport?.height || innerHeight;
+      const typing = document.activeElement?.matches('input, textarea, [contenteditable="true"]');
+      if (!typing) viewportHeight = Math.max(height, viewportHeight);
+      body.classList.toggle('keyboard-open', Boolean(typing && viewportHeight - height > 150));
+    };
+    window.visualViewport?.addEventListener('resize', updateKeyboard);
+    document.addEventListener('focusin', updateKeyboard);
+    document.addEventListener('focusout', () => setTimeout(updateKeyboard, 0));
+  }
+
   function setupSwipeNavigation() {
     let startX = 0;
     let startY = 0;
@@ -721,13 +754,16 @@
         reg.waiting.postMessage({ type: 'SKIP_WAITING' });
         return { supported: true, updated: true, message: "發現新版本，請點擊更新" };
       }
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-05）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-06）" };
     } catch (e) {
       return { supported: true, updated: false, message: "無法確認是否有新版，請連上網路後重試。" };
     }
   }
 
   window.ECCV_CORE = {
+    readViewState,
+    saveViewState,
+    setupPageMemory,
     trip: trip,
     page: page,
     dayKey: dayKey,

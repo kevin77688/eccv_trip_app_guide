@@ -39,4 +39,5 @@
   window.ECCV_JOURNEY?.setup();
   window.ECCV_ESSENTIALS?.setup();
   window.ECCV_OFFLINE?.setup();
+  core.setupPageMemory();
 })();
