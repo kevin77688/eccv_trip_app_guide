@@ -599,9 +599,11 @@
   function confirmModal({ title = "確認操作", message = "", confirmText = "確定", cancelText = "取消", danger = false }) {
     return new Promise((resolve) => {
       const existing = document.getElementById("eccv-confirm-modal");
-      if (existing) existing.remove();
+      if (existing) { resolve(false); return; }
 
-      const overlay = document.createElement("div");
+      const overlay = document.createElement("dialog");
+      const previousFocus = document.activeElement;
+      const previousOverflow = document.body.style.overflow;
       overlay.id = "eccv-confirm-modal";
       overlay.className = "confirm-modal-overlay";
       overlay.innerHTML = `
@@ -620,17 +622,24 @@
       `;
 
       let resolved = false;
-      const cleanup = (val) => {
+      const cleanup = (val, fromHistory = false) => {
         if (resolved) return;
         resolved = true;
-        overlay.classList.remove("is-active");
-        setTimeout(() => overlay.remove(), 200);
+        overlay.close();
+        overlay.remove();
+        document.body.style.overflow = previousOverflow;
+        previousFocus?.focus();
         document.removeEventListener("keydown", onKeyDown);
-        resolve(val);
+        window.removeEventListener('popstate', onBack);
+        if (!fromHistory && history.state?.eccvModal === 'confirm') {
+          window.addEventListener('popstate', () => resolve(val), { once: true });
+          history.back();
+        } else resolve(val);
       };
+      const onBack = () => cleanup(false, true);
 
       const onKeyDown = (e) => {
-        if (e.key === "Escape") cleanup(false);
+        if (e.key === "Escape") { e.preventDefault(); cleanup(false); }
       };
 
       overlay.querySelector(".confirm-modal-cancel").addEventListener("click", () => cleanup(false));
@@ -639,8 +648,14 @@
         if (e.target === overlay) cleanup(false);
       });
       document.addEventListener("keydown", onKeyDown);
+      overlay.addEventListener('cancel', event => { event.preventDefault(); cleanup(false); });
+      window.addEventListener('popstate', onBack);
 
       document.body.appendChild(overlay);
+      history.pushState({ ...history.state, eccvModal: 'confirm' }, '');
+      overlay.showModal();
+      document.body.style.overflow = 'hidden';
+      overlay.querySelector('.confirm-modal-cancel').focus();
       requestAnimationFrame(() => overlay.classList.add("is-active"));
     });
   }
@@ -754,7 +769,7 @@
         reg.waiting.postMessage({ type: 'SKIP_WAITING' });
         return { supported: true, updated: true, message: "發現新版本，請點擊更新" };
       }
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-06）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-07）" };
     } catch (e) {
       return { supported: true, updated: false, message: "無法確認是否有新版，請連上網路後重試。" };
     }

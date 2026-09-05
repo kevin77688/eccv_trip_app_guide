@@ -207,7 +207,8 @@
 
     let currentBags = getPackingBags();
     let isEditing = false;
-    let filter = "all";
+    const savedView = core.readViewState('packing');
+    let filter = savedView.filter === 'all' ? 'all' : 'todo';
 
     const getSavedChecks = () => {
       try {
@@ -309,8 +310,8 @@
           <div class="packing-dashboard-top">
             <div class="packing-dashboard-title">
               <span class="eyebrow">PACK BY WHERE IT LIVES · 09/06 - 09/19</span>
-              <h1>三個包準備清單</h1>
-              <p>小包永遠貼身、後背包負責工作與登機、行李箱收托運物。支援自訂編輯並自動儲存於本機快取。</p>
+              <h1>行李清單</h1>
+              <p>選一個包，勾選已收好的物品。進度會保存在這台裝置。</p>
             </div>
             <div class="packing-progress-pill-card">
               <div class="progress-pill-header">
@@ -323,7 +324,7 @@
             </div>
           </div>
 
-          <div class="packing-bags-nav">
+          <details class="travel-details packing-bag-guide"><summary>三個包怎麼分裝？</summary><div class="packing-bags-nav">
             ${currentBags.map((bag) => `
               <a class="packing-bag-nav-card bag-nav-${esc(bag.id)}" href="#bag-${esc(bag.id)}">
                 <span class="bag-nav-number">${esc(bag.number)}</span>
@@ -333,14 +334,16 @@
                 </div>
                 <span class="bag-nav-count" data-bag-count="${esc(bag.id)}">0 / ${bag.items.length}</span>
               </a>`).join("")}
-          </div>
+          </div></details>
         </section>
 
+        <details class="travel-details packing-flight-rules"><summary>登機行李限制</summary>
         <section class="boarding-rule" id="boarding-rule" aria-label="Ryanair 登機行李規則">
           <div class="boarding-rule-copy"><span class="eyebrow light">FR9267 · GATE MODE</span><h2>登機時只能看見一件隨身包。</h2><p>日常是「小包＋後背包」，但到 Ryanair 登機口前，<strong>小包要整個塞進後背包</strong>；後背包再放前座下方。</p></div>
           <div class="boarding-flow" aria-label="小包放進後背包再放到前座下"><span>貼身小包</span><b aria-hidden="true">→</b><span>收進後背包</span><b aria-hidden="true">→</b><span>前座下方</span></div>
           <div class="boarding-limits"><div><small>唯一免費隨身件</small><strong>40 × 30 × 20</strong><span>cm</span></div><div><small>托運上限／封箱目標</small><strong>20 / 18</strong><span>kg</span></div></div>
         </section>
+        </details>
 
         <section class="packing-workspace content-section">
           <div class="packing-toolbar">
@@ -363,15 +366,16 @@
               <button class="packing-bag-pill" type="button" data-bag-filter="suitcase">③ 行李箱 (<span data-bag-filter-count="suitcase">0/0</span>)</button>
             </div>
 
-            <div class="packing-toolbar-actions">
+            <details class="packing-options"><summary>編輯與備份</summary><div class="packing-toolbar-actions">
               <button class="packing-collapse-toggle" type="button" data-packing-collapse-toggle title="收合或展開所有包包">全部收合</button>
               <button class="packing-sync-btn" type="button" data-packing-sync-open title="跨裝置同步與備份">⇄ 同步／匯出</button>
               <button class="packing-edit-toggle" type="button" data-packing-edit-toggle>✎ 編輯清單</button>
               <button class="packing-reset" type="button" data-packing-reset>重設勾選</button>
               <button class="packing-revert-btn" type="button" data-packing-revert hidden>恢復預設</button>
-            </div>
+            </div></details>
           </div>
           <div class="packing-bags" id="packing-bags-container"></div>
+          <p class="packing-empty" data-packing-empty hidden role="status">目前選擇的包已收齊。切換「全部」可再次核對。</p>
         </section>
 
         <section class="flight-wear content-section">
@@ -468,16 +472,24 @@
     const bagFilterButtons = document.querySelectorAll("[data-bag-filter]");
     const collapseToggleBtn = document.querySelector("[data-packing-collapse-toggle]");
 
-    let selectedBag = "all";
-    const collapsedBags = { tiny: false, backpack: false, suitcase: false };
+    let selectedBag = ['all', 'tiny', 'backpack', 'suitcase'].includes(savedView.bag) ? savedView.bag : 'all';
+    const collapsedBags = { tiny: Boolean(savedView.collapsed?.tiny), backpack: Boolean(savedView.collapsed?.backpack), suitcase: Boolean(savedView.collapsed?.suitcase) };
+    const workspace = document.querySelector('.packing-workspace');
+    workspace.after(document.querySelector('.packing-flight-rules'));
+    workspace.after(document.querySelector('.packing-bag-guide'));
+    const rememberView = () => core.saveViewState('packing', { filter, bag: selectedBag, collapsed: collapsedBags });
 
     function updateCollapseToggleBtn() {
+      rememberView();
       if (!collapseToggleBtn) return;
       const allCollapsed = Object.values(collapsedBags).every(Boolean);
       collapseToggleBtn.textContent = allCollapsed ? "全部展開" : "全部收合";
     }
 
     function updateCounters() {
+      rememberView();
+      filterButtons.forEach(button => { button.classList.toggle('is-active', button.dataset.packingFilter === filter); button.setAttribute('aria-pressed', String(button.dataset.packingFilter === filter)); });
+      bagFilterButtons.forEach(button => { button.classList.toggle('is-active', button.dataset.bagFilter === selectedBag); button.setAttribute('aria-selected', String(button.dataset.bagFilter === selectedBag)); });
       const savedChecks = getSavedChecks();
       const allItemKeys = [];
       currentBags.forEach((bag) => {
@@ -534,6 +546,7 @@
         });
 
         const visibleNode = document.querySelector("[data-packing-visible]");
+        document.querySelector('[data-packing-empty]').hidden = visible > 0 || filter !== 'todo';
         if (visibleNode) {
           if (selectedBag === "all") {
             visibleNode.textContent = `顯示 ${visible} / ${total} 項${filter === "todo" ? " (未收)" : ""}`;
@@ -544,6 +557,7 @@
           }
         }
       } else {
+        document.querySelector('[data-packing-empty]').hidden = true;
         const visibleNode = document.querySelector("[data-packing-visible]");
         if (visibleNode) visibleNode.textContent = `編輯中 · 共 ${total} 項`;
       }
@@ -579,6 +593,9 @@
 
       // Accordion bag header click
       bagsContainer.querySelectorAll("[data-packing-bag-toggle]").forEach((heading) => {
+        heading.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); heading.click(); }
+        });
         heading.addEventListener("click", () => {
           if (isEditing) return;
           const bagId = heading.dataset.packingBagToggle;
@@ -710,14 +727,14 @@
       renderBags();
     });
 
-    resetBtn?.addEventListener("click", () => {
-      if (!window.confirm("要清除這台裝置上的所有行李勾選紀錄嗎？")) return;
+    resetBtn?.addEventListener("click", async () => {
+      if (!(await core.confirmModal({ title: '重設勾選', message: '要清除這台裝置上的所有行李勾選紀錄嗎？自訂物品會保留。', confirmText: '重設勾選', danger: true }))) return;
       saveChecks(new Set());
       renderBags();
     });
 
-    revertBtn?.addEventListener("click", () => {
-      if (!window.confirm("確定要將行李清單恢復為系統預設值嗎？所有自訂修改與新增項目將會被重設。")) return;
+    revertBtn?.addEventListener("click", async () => {
+      if (!(await core.confirmModal({ title: '恢復預設清單', message: '自訂名稱與新增物品都會移除，確定恢復預設清單嗎？', confirmText: '恢復預設', danger: true }))) return;
       try {
         localStorage.removeItem(PACKING_CUSTOM_STORAGE_KEY);
       } catch (_) {}
@@ -882,6 +899,8 @@
     let scannerStream = null;
     let scannerTimer = null;
     let isScanning = false;
+    let scannerRequest = 0;
+    let scannerStarting = false;
     let barcodeDetector = null;
 
     if ("BarcodeDetector" in window) {
@@ -891,7 +910,8 @@
     }
 
     function openSyncModal(initialTab = "export") {
-      if (!syncModal) return;
+      if (!syncModal || !syncModal.hidden) return;
+      history.pushState({ ...history.state, eccvModal: 'packing-sync' }, '');
       if (syncModal.parentElement !== document.body) {
         document.body.appendChild(syncModal);
       }
@@ -911,14 +931,22 @@
       switchSyncTab(initialTab);
       syncModal.hidden = false;
       document.body.style.overflow = "hidden";
+      syncCloseBtn?.focus();
     }
 
-    function closeSyncModal() {
-      if (!syncModal) return;
+    function closeSyncModal(fromHistory = false) {
+      if (!syncModal || syncModal.hidden) return;
       stopScanner();
       syncModal.hidden = true;
       document.body.style.overflow = "";
+      syncOpenBtn?.focus();
+      if (!fromHistory && history.state?.eccvModal === 'packing-sync') history.back();
     }
+    window.addEventListener('popstate', () => {
+      if (!['packing-sync', 'confirm'].includes(history.state?.eccvModal)) closeSyncModal(true);
+    });
+    window.addEventListener('pagehide', () => stopScanner());
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stopScanner(); });
 
     function switchSyncTab(tabName) {
       if (tabName !== "import") {
@@ -935,17 +963,21 @@
     }
 
     async function startScanner() {
-      if (isScanning || !scannerVideo) return;
+      if (isScanning || scannerStarting || !scannerVideo) return;
       if (!navigator.mediaDevices?.getUserMedia) {
         if (scannerStatus) scannerStatus.textContent = "此裝置或瀏覽器不支援相機 API，請使用下方手動備案。";
         return;
       }
       try {
+        scannerStarting = true;
+        const request = ++scannerRequest;
         if (scannerStatus) scannerStatus.textContent = "正在啟動相機...";
         const stream = await navigator.mediaDevices.getUserMedia({
           audio: false,
           video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 }, height: { ideal: 720 } }
         });
+        if (request !== scannerRequest || syncModal.hidden) { stream.getTracks().forEach(track => track.stop()); return; }
+        scannerStarting = false;
         scannerStream = stream;
         scannerVideo.srcObject = stream;
         await scannerVideo.play();
@@ -963,6 +995,8 @@
     }
 
     function stopScanner() {
+      scannerRequest++;
+      scannerStarting = false;
       isScanning = false;
       if (scannerTimer) {
         cancelAnimationFrame(scannerTimer);
@@ -1019,7 +1053,7 @@
       scannerTimer = requestAnimationFrame(scanLoop);
     }
 
-    function handleDetectedQr(text) {
+    async function handleDetectedQr(text) {
       stopScanner();
       if (scannerStatus) scannerStatus.textContent = "✓ 已偵測到 QR Code！正在解析...";
       try {
@@ -1030,10 +1064,10 @@
             : currentBags.reduce((acc, b) => acc + b.items.length, 0);
           const chk = payload.checks.length;
           const msg = `【行李清單同步】掃描成功！\n\n• 總物品數：${total} 項\n• 已勾選進度：${chk} 項\n\n確定要將此進度覆蓋至本裝置嗎？`;
-          if (window.confirm(msg)) {
+          if (await core.confirmModal({ title: '匯入行李清單', message: msg, confirmText: '套用清單' })) {
             applyPackingSyncPayload(payload);
             closeSyncModal();
-            alert("✓ 行李清單已成功同步至本裝置！");
+            core.toast("✓ 行李清單已成功同步至本裝置！");
           } else {
             if (scannerStatus) scannerStatus.textContent = "已取消同步。可再次點擊按鈕重新掃描。";
           }
@@ -1057,15 +1091,21 @@
     }
 
     if (syncOpenBtn) syncOpenBtn.addEventListener("click", () => openSyncModal("export"));
-    if (syncCloseBtn) syncCloseBtn.addEventListener("click", closeSyncModal);
+    if (syncCloseBtn) syncCloseBtn.addEventListener("click", () => closeSyncModal());
     if (syncModal) {
       syncModal.addEventListener("click", (e) => {
         if (e.target === syncModal) closeSyncModal();
       });
     }
     document.addEventListener("keydown", (e) => {
+      if (document.getElementById('eccv-confirm-modal')) return;
       if (e.key === "Escape" && syncModal && !syncModal.hidden) {
         closeSyncModal();
+      }
+      if (e.key === 'Tab' && syncModal && !syncModal.hidden) {
+        const controls = [...syncModal.querySelectorAll('button, input, textarea, a')].filter(el => !el.disabled && el.getClientRects().length);
+        if (e.shiftKey && document.activeElement === controls[0]) { e.preventDefault(); controls.at(-1)?.focus(); }
+        else if (!e.shiftKey && document.activeElement === controls.at(-1)) { e.preventDefault(); controls[0]?.focus(); }
       }
     });
 
@@ -1095,13 +1135,13 @@
           }).catch((err) => {
             if (err.name !== "AbortError") {
               copyTextToClipboard(syncUrl).then(() => {
-                alert("已複製同步連結至剪貼簿！可直接傳送至另一台裝置。");
+                core.toast("已複製同步連結至剪貼簿！可直接傳送至另一台裝置。");
               });
             }
           });
         } else {
           copyTextToClipboard(syncUrl).then(() => {
-            alert("此裝置未支援原生分享面板，已為您複製同步連結至剪貼簿！可直接透過 AirDrop 或備忘錄開啟。");
+            core.toast("此裝置未支援原生分享面板，已為您複製同步連結至剪貼簿！可直接透過 AirDrop 或備忘錄開啟。");
           });
         }
       });
@@ -1147,26 +1187,27 @@
     }
 
     if (applyBtn) {
-      applyBtn.addEventListener("click", () => {
+      applyBtn.addEventListener("click", async () => {
         if (!parsedImportPayload) return;
-        if (!window.confirm("確定要將這份同步資料覆蓋到本機嗎？目前的勾選與自訂項目將會被替換。")) return;
+        if (!(await core.confirmModal({ title: '匯入行李清單', message: '目前的勾選與自訂物品會被這份清單取代，確定套用嗎？', confirmText: '套用清單' }))) return;
         try {
           applyPackingSyncPayload(parsedImportPayload);
           closeSyncModal();
           if (importInput) importInput.value = "";
           applyBtn.disabled = true;
-          alert("✓ 行李清單已成功同步至本裝置！");
+          core.toast("✓ 行李清單已成功同步至本裝置！");
         } catch (err) {
-          alert("套用失敗：" + (err.message || "未知錯誤"));
+          core.toast("套用失敗：" + (err.message || "未知錯誤"));
         }
       });
     }
 
-    function handleUrlHashSync() {
+    async function handleUrlHashSync() {
       const hash = window.location.hash;
       if (!hash || !hash.includes("sync=")) return;
       const match = hash.match(/sync=([^&]+)/);
       if (!match) return;
+      history.replaceState(history.state, document.title, window.location.pathname + window.location.search);
       try {
         const payload = unpackFromUrlSafeBase64(match[1]);
         if (payload && Array.isArray(payload.checks)) {
@@ -1175,15 +1216,13 @@
             : currentBags.reduce((s, b) => s + b.items.length, 0);
           const chk = payload.checks.length;
           const msg = `【行李清單同步】偵測到來自另一台裝置的同步資料：\n\n• 總物品數：${total} 項\n• 已勾選：${chk} 項\n\n是否立即套用此進度並覆蓋本機？`;
-          if (window.confirm(msg)) {
+          if (await core.confirmModal({ title: '匯入行李清單', message: msg, confirmText: '套用清單' })) {
             applyPackingSyncPayload(payload);
-            alert("✓ 行李清單已成功同步！");
+            core.toast("✓ 行李清單已成功同步！");
           }
         }
       } catch (err) {
         console.warn("無法解析網址同步資料", err);
-      } finally {
-        history.replaceState(null, document.title, window.location.pathname + window.location.search);
       }
     }
 
