@@ -68,11 +68,11 @@
   - `site/js/app.js`：精簡為純調度器，依 `body.dataset.page` 執行渲染。
 - **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-05`，全站 19 份 HTML 檔案同步更新載入標籤與快取版本號。
 
-## Android App 原生 Knox 硬體指紋金鑰與票券快速出示（2026-09-05）
+## Android App 原生 Knox 指紋與跨平台 WebAuthn 生物辨識保險箱（2026-09-05）
 
-- **僅限 Android 原生 App 與實體指紋感測器**：
-  - 指紋快速出示、憑證安全保管與密碼免輸入機制，**僅限於已安裝的 Android 原生 App（`com.kevin.eccvtrip`）且裝置具備已註冊之生物辨識感應器（如 Samsung Galaxy S23）** 啟用。
-  - 一般行動瀏覽器（如手機版 Chrome、Safari、Samsung Internet）或網頁視窗開啟時，`isNativeAndroidApp()` 判斷為 false，不彈出指紋綁定提示、不儲存任何憑證，管理卡片自動隱藏，維持純手動密碼驗證。
+- **雙軌生物辨識快速出示支援**：
+  - **Android 原生 App（Samsung Knox）**：由 Android Keystore 與硬體安全晶片（TEE）生成硬體綁定金鑰，強制活體指紋授權驗證（BiometricPrompt CryptoObject）。
+  - **Apple 與現代瀏覽器（WebAuthn）**：支援 MacBook Touch ID、iPhone Face ID / Touch ID 透過安全隔離區（Secure Enclave）生成平台認證金鑰，以 PBKDF2 + AES-256-GCM 本機加密保管票券密碼，達成全平台指紋／臉部感應快速出示。
 - **APK 與本機資安防護架構**：
   - **APK 零寫死密鑰**：APK 安裝檔、JavaScript 與 Java 原始碼中均不包含密碼或解密金鑰，無法藉由反編譯（decompile）取得通關密碼。
   - **Samsung Knox 硬體安全隔離**：首次由使用者在 App 內手動輸入正確密碼並成功解密後，使用者可自主選擇綁定指紋；密碼由 Android 系統 Keystore 在獨立安全晶片（TEE / Knox Secure Processor）內生成專屬 AES-256-GCM 硬體金鑰加密後存放於應用程式私有目錄，金鑰無法被匯出。

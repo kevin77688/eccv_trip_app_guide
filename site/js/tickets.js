@@ -331,15 +331,15 @@
         <div class="ticket-modal-body" id="ticket-modal-body">
           <div class="ticket-prompt-view" id="ticket-prompt-view">
             <div class="ticket-biometric-card" id="ticket-biometric-card" hidden>
-              <div class="ticket-biometric-icon" aria-hidden="true">👆</div>
+              <div class="ticket-biometric-icon" id="ticket-bio-icon" aria-hidden="true">👆</div>
               <div class="ticket-biometric-info">
-                <h3>Samsung S23 指紋快速出示</h3>
-                <p>感應螢幕指紋，立即驗證出示票券憑證</p>
+                <h3 id="ticket-bio-title">生物辨識快速出示</h3>
+                <p id="ticket-bio-desc">感應生物辨識，立即驗證出示票券憑證</p>
               </div>
               <div class="ticket-error-msg" id="ticket-bio-error-msg" hidden></div>
               <div class="ticket-biometric-actions">
                 <button type="button" class="button button-primary ticket-biometric-btn" id="ticket-trigger-bio-btn">
-                  <span>👆 感應指紋出示</span>
+                  <span id="ticket-bio-btn-text">👆 感應出示</span>
                 </button>
                 <button type="button" class="ticket-biometric-fallback-btn" id="ticket-switch-password-btn">
                   改用密碼輸入
@@ -477,18 +477,28 @@
 
     (async () => {
       try {
-        if (!android.isNative()) {
-          setTimeout(() => input?.focus(), 50);
-          return;
-        }
         const bioStatus = await android.checkBiometricsStatus();
-        if (bioStatus.canUseBiometrics && bioStatus.isRegistered) {
-          if (bioCard) bioCard.hidden = false;
-          if (pwdView) pwdView.hidden = true;
-          setTimeout(() => triggerBiometricAuth(), 120);
-        } else {
-          setTimeout(() => input?.focus(), 50);
+        if (bioStatus && bioStatus.canUseBiometrics) {
+          const deviceLabel = bioStatus.deviceLabel || "生物辨識";
+          const deviceIcon = bioStatus.deviceIcon || "👆";
+          const bioIconEl = modal.querySelector("#ticket-bio-icon");
+          const bioTitleEl = modal.querySelector("#ticket-bio-title");
+          const bioDescEl = modal.querySelector("#ticket-bio-desc");
+          const bioBtnTextEl = modal.querySelector("#ticket-bio-btn-text");
+
+          if (bioIconEl) bioIconEl.textContent = deviceIcon;
+          if (bioTitleEl) bioTitleEl.textContent = `${deviceLabel} 快速出示`;
+          if (bioDescEl) bioDescEl.textContent = `感應 ${deviceLabel}，立即驗證出示票券憑證`;
+          if (bioBtnTextEl) bioBtnTextEl.textContent = `${deviceIcon} 感應 ${deviceLabel} 出示`;
+
+          if (bioStatus.isRegistered) {
+            if (bioCard) bioCard.hidden = false;
+            if (pwdView) pwdView.hidden = true;
+            setTimeout(() => triggerBiometricAuth(), 120);
+            return;
+          }
         }
+        setTimeout(() => input?.focus(), 50);
       } catch (_) {
         setTimeout(() => input?.focus(), 50);
       }
@@ -644,23 +654,29 @@
 
       (async () => {
         try {
-          if (!android.isNative()) return;
           const bioStatus = await android.checkBiometricsStatus();
-          if (bioStatus.canUseBiometrics && !bioStatus.isRegistered && !sessionStorage.getItem("eccv_bio_dismissed")) {
+          if (bioStatus && bioStatus.canUseBiometrics && !bioStatus.isRegistered && !sessionStorage.getItem("eccv_bio_dismissed")) {
+            const deviceLabel = bioStatus.deviceLabel || "生物辨識";
+            const deviceIcon = bioStatus.deviceIcon || "👆";
+            const isNative = android.isNative();
+            const securityNote = isNative
+              ? "由 Samsung Knox 硬體安全晶片保管，下次出示可直接感應指紋。"
+              : "由裝置安全晶片（Apple Secure Enclave / WebAuthn）保管，下次出示直接感應解鎖。";
+
             const enrollCard = document.createElement("div");
             enrollCard.className = "ticket-enroll-card";
             enrollCard.id = "ticket-enroll-card";
             enrollCard.innerHTML = `
               <div class="ticket-enroll-header">
-                <span class="enroll-icon" aria-hidden="true">👆</span>
+                <span class="enroll-icon" aria-hidden="true">${deviceIcon}</span>
                 <div>
-                  <strong>啟用 Samsung S23 指紋快速出示？</strong>
-                  <p>由 Knox 硬體安全晶片保管，下次出示可直接感應指紋。</p>
+                  <strong>啟用 ${esc(deviceLabel)} 快速出示？</strong>
+                  <p>${esc(securityNote)}</p>
                 </div>
               </div>
               <div class="ticket-enroll-actions">
                 <button type="button" class="button button-primary" id="ticket-enroll-btn">
-                  <span>👆 立即啟用指紋</span>
+                  <span>${deviceIcon} 立即啟用 ${esc(deviceLabel)}</span>
                 </button>
                 <button type="button" class="button button-ghost" id="ticket-enroll-dismiss-btn">
                   <span>稍後再說</span>
@@ -683,27 +699,27 @@
             enrollCard.querySelector("#ticket-enroll-btn")?.addEventListener("click", async () => {
               const enrollBtn = enrollCard.querySelector("#ticket-enroll-btn");
               enrollBtn.disabled = true;
-              enrollBtn.textContent = "請感應 S23 指紋...";
+              enrollBtn.textContent = `請感應 ${deviceLabel}...`;
               try {
                 const res = await android.registerPassword(password);
                 if (res && res.success) {
                   enrollCard.innerHTML = `
                     <div class="ticket-enroll-success">
                       <span aria-hidden="true">✓</span>
-                      <span>已成功啟用 Samsung S23 指紋快速出示！下次點擊將直接驗證指紋。</span>
+                      <span>已成功啟用 ${esc(deviceLabel)} 快速出示！下次點擊將直接驗證。</span>
                     </div>
                   `;
                 } else {
                   enrollBtn.disabled = false;
-                  enrollBtn.textContent = "👆 立即啟用指紋";
+                  enrollBtn.innerHTML = `<span>${deviceIcon} 立即啟用 ${esc(deviceLabel)}</span>`;
                   if (res && res.message && !res.cancelled) {
                     alert(res.message);
                   }
                 }
               } catch (regErr) {
                 enrollBtn.disabled = false;
-                enrollBtn.textContent = "👆 立即啟用指紋";
-                alert("指紋綁定失敗: " + (regErr.message || regErr));
+                enrollBtn.innerHTML = `<span>${deviceIcon} 立即啟用 ${esc(deviceLabel)}</span>`;
+                alert("生物辨識綁定失敗: " + (regErr.message || regErr));
               }
             });
           }
