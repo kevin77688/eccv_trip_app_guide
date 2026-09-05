@@ -381,9 +381,15 @@
     ["sainte", /Sainte-Chapelle/i],
     ["notre", /Notre-Dame/i],
     ["army", /Musée de l’Armée|Les Invalides|Invalides/i],
+    ["bonmarche", /Bon Marché|樂蓬馬歇/i],
     ["rodin", /Musée Rodin/i],
     ["francette", /Francette/i],
-    ["eiffel", /Eiffel Tower|Champ de Mars|鐵塔周邊/i],
+    ["eiffel", /Eiffel Tower|Champ de Mars|鐵塔周邊|鐵塔地面/i],
+    ["trocadero", /Trocadéro|特羅卡德羅/i],
+    ["birhakeim", /Bir-Hakeim|比爾哈凱姆/i],
+    ["cygnes", /Cygnes|天鵝島|自由女神/i],
+    ["beaugrenelle", /Beaugrenelle|博格內爾|Fnac/i],
+    ["ballon", /Ballon|熱氣球|Citroën|雪鐵龍/i],
     ["arc", /Arc de Triomphe|Charles de Gaulle[-–]Étoile/i],
     ["champs", /Champs-Élysées|Place de la Concorde/i],
     ["tuileries", /Tuileries/i],
@@ -469,6 +475,9 @@
     if (/RER|TER|Metro|M\d|S-tog|Øresund|火車|列車|車站|Station|København H|Malmö C/.test(text)) return ["🚆", "火車或捷運", "transit"];
     if (/票|驗票|安檢|安全檢查|證照查驗|報到|Check-in|寄放/.test(text)) return ["🎟️", "票券或報到", "ticket"];
     if (/飯店|住宿|First Camp|入住/.test(text)) return ["🏨", "住宿", "prep"];
+    if (/自由女神|Cygnes/.test(text)) return ["🗽", "地標雕像", "sight"];
+    if (/Ballon|熱氣球/.test(text)) return ["🎈", "熱氣球", "sight"];
+    if (/商場|Fnac|百貨|Bon Marché/.test(text)) return ["🛍️", "商場百貨", "sight"];
     if (/步行|散步|街道|Strøget|Champs-Élysées|Västra Hamnen/.test(text)) return ["🚶", "步行", "transit"];
     if (/Church|Notre-Dame|Sacré-Cœur|聖心堂|Sainte-Chapelle|聖徒禮拜堂/.test(text)) return ["⛪", "教堂", "sight"];
     if (/Versailles|Rosenborg|城堡/.test(text)) return ["🏰", "城堡宮殿", "sight"];
