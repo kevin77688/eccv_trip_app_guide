@@ -1,0 +1,23 @@
+.DS_Store
+.venv/
+node_modules/
+dist/
+.openai/
+pdf/
+raw_tickets/
+site/assets/tickets/*.enc
+
+# Android build
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/app/*.iml
+android/captures/
+android/.externalNativeBuild/
+.cxx/
+
+# Environment & SDK
+android-sdk/

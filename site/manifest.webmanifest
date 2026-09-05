@@ -1,0 +1,19 @@
+{
+  "name": "ECCV 2026 Europe Trip Guide",
+  "short_name": "ECCV 2026",
+  "description": "ECCV 2026 北歐到巴黎 14 天旅程導覽・離線可用",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f2ea",
+  "theme_color": "#f5f2ea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/eccv-mark.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
