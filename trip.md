@@ -3,6 +3,12 @@
 > 給後續 agent 的精簡背景資料。最後同步：2026-09-06。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
 
+## Playwright MCP 與 Chromium 渲染工具安裝（2026-09-06）
+
+- 專案開發相依套件新增固定版本 `@playwright/mcp@0.0.80`，並提供 `npm run mcp:playwright` 啟動指令；Chromium 已安裝至本機 Playwright 快取。
+- Codex 本機 MCP 設定已註冊 `playwright` stdio server，使用專案內啟動器、headless Chromium 與 `localhost` 存取限制，供後續 agent 直接檢查靜態網站。
+- `site/index.html` 已以 Playwright 實際渲染驗證：手機 390 × 844、桌面 1280 × 800 均 HTTP 200、首頁正常掛載、無 console/page error、無失敗請求與水平溢出；截圖暫存於 `/tmp/eccv-index-phone.png` 與 `/tmp/eccv-index-desktop.png`。
+
 ## 全站文案與文字描述去 AI 化與精簡優化（2026-09-06）
 
 - **伴手禮採買指南客觀化**：
