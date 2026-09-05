@@ -726,22 +726,20 @@ window.TRIP = {
       transport: { duration: "全日交通與景點約 11 小時；下午由 Christianshavn 搭 M2 直達機場", steps: ["First Camp → Malmö C", "Re 1041 → CPH 機場寄放行李", "M2 → M3 → 大理石教堂", "步行 → 阿馬林堡宮", "步行 → 新港遊船", "步行 → 救主堂", "M2 直達 CPH 機場", "FR9267 飛往 Beauvais"], note: "方案 B 先在機場寄放行李，下午從救主堂搭 M2 直達機場，免回市中心折返。" }, places: ["marmorkirken", "amalienborg", "nyhavn", "kongensnytorv", "canal", "saviour"], note: "15:00 運河船後接 16:30 救主堂，最晚 17:15 離塔銜接 M2 與 20:05 航班。"
     },
     "09-13": {
-      date: "2026/09/13", weekday: "週日", city: "Beauvais → Paris", cityKey: "paris", title: "早班 TER 進巴黎，加尼葉歌劇院與聖心堂", summary: "搭乘 07:44 直達 TER 前往巴黎北站，飯店寄放行李後參觀加尼葉歌劇院，下午漫步蒙馬特高地與聖心堂。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "plum",
+      date: "2026/09/13", weekday: "週日", city: "Beauvais → Paris", cityKey: "paris", title: "TER 進巴黎，蒙馬特高地深度漫遊與聖心堂", summary: "搭乘 09:40 直達 TER 前往巴黎北站，飯店寄放行李後前往蒙馬特享用法式午餐，午後漫步愛牆、小丘廣場畫家村、聖心堂與後山葡萄園。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "plum",
       reservationReminder: { countdown: "明天 09/14 就要使用", title: "今日務必確認聖母院免費預約", detail: "抵達巴黎後檢查官方預約頁面，優先預約 16:30 左右時段；若無名額明天亦可現場排隊。", url: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", cta: "檢查官方預約時段" },
       schedule: [
-        { time: "06:20 - 07:05", icon: "☼", title: "退房與叫車出發", detail: "06:20 起床整理隨身物品，07:05 叫車前往 Beauvais SNCF 火車站。", tag: "出發" },
-        { time: "07:05 - 07:35", icon: "↗", title: "計程車 → Beauvais SNCF 車站", detail: "車程約 10 到 15 分鐘，07:35 前抵達月台準備搭車。", tag: "交通" },
-        { time: "07:44 - 08:59", icon: "🚆", title: "TER C17 直達 Paris Nord (巴黎北站)", detail: "搭乘直達 TER 火車進巴黎，約 1 小時 15 分抵達巴黎北站。", tag: "火車" },
-        { time: "09:10 - 09:35", icon: "⌂", title: "巴黎飯店寄放行李／若有空房先入住", detail: "步行至 Sure Hotel 寄放四件行李，若房間已備妥則先辦理入住。", tag: "住宿" },
-        { time: "09:35 - 10:30", icon: "🍴", title: "Gare du Nord 周邊早餐與咖啡", detail: "享用可頌與咖啡，整理隨身小包，10:30 出發前往歌劇院。", tag: "休息" },
-        { time: "10:30 - 11:15", icon: "↔", title: "M7 → Opéra 加尼葉歌劇院", detail: "搭乘地鐵 M7 到 Chaussée d'Antin-La Fayette，步行至歌劇院入口排隊。", tag: "地鐵" },
-        { time: "11:30 - 13:00", icon: "▦", title: "Palais Garnier 加尼葉歌劇院參觀", detail: "依照預約時段入內，參觀大階梯、華麗大廳與夏卡爾彩繪天花板。", tag: "景點" },
-        { time: "13:00 - 14:10", icon: "🍴", title: "歌劇院周邊法式午餐", detail: "於周邊法式餐館用餐，或短逛老佛爺百貨。", tag: "午餐" },
-        { time: "14:10 - 14:45", icon: "↔", title: "Madeleine → M12 → Abbesses", detail: "搭乘地鐵 M12 到 Abbesses 站，抵達蒙馬特高地山腳。", tag: "地鐵" },
-        { time: "14:45 - 17:15", icon: "♜", title: "聖心堂、愛牆與蒙馬特藝術街區", detail: "參觀聖心堂內部與階梯景觀，漫步小丘廣場與愛牆。", tag: "景點" },
-        { time: "17:15 - 18:00", icon: "⌂", title: "Anvers → M2 → La Chapelle → 飯店", detail: "搭乘地鐵 M2 返回飯店，正式辦理 Check-in 入住休息。", tag: "回程" }
+        { time: "08:30 - 09:05", icon: "☼", title: "退房與叫車出發", detail: "08:30 起床整理隨身物品並退房，09:05 叫車前往 Beauvais SNCF 火車站。", tag: "出發" },
+        { time: "09:05 - 09:25", icon: "↗", title: "計程車 → Beauvais SNCF 車站", detail: "車程約 10 到 15 分鐘，09:25 前抵達月台準備搭車。", tag: "交通" },
+        { time: "09:40 - 10:59", icon: "🚆", title: "TER C17 直達 Paris Nord (巴黎北站)", detail: "搭乘已購 09:40 直達 TER 火車進巴黎，約 1 小時 19 分抵達巴黎北站。", tag: "火車" },
+        { time: "11:00 - 11:25", icon: "⌂", title: "巴黎飯店寄放行李／若有空房先入住", detail: "步行至 Sure Hotel 寄放四件行李，若房間已備妥則先辦理入住。", tag: "住宿" },
+        { time: "11:30 - 13:00", icon: "🍴", title: "La Chapelle → M2 → Anvers 或周邊法式午餐", detail: "搭乘 M2 至 Anvers 站或於蒙馬特山腳／飯店周邊餐廳享用法式午餐，悠閒開啟巴黎首日行程。", tag: "午餐" },
+        { time: "13:00 - 14:30", icon: "♧", title: "愛牆、穿牆人雕塑與小丘廣場畫家村", detail: "從 Abbesses 站旁愛牆（Le Mur des Je t'aime）漫步，走訪小丘廣場（Place du Tertre）街頭畫家村與藝術氛圍。", tag: "街區" },
+        { time: "14:30 - 16:30", icon: "♜", title: "Sacré-Cœur 聖心堂參觀與階梯俯瞰全景", detail: "免費入內參觀聖心堂莊嚴穹頂與馬賽克壁畫，於教堂前階梯眺望巴黎市區開闊天際線。", tag: "景點" },
+        { time: "16:30 - 17:30", icon: "◎", title: "蒙馬特後山葡萄園與粉紅之家漫步", detail: "漫步至聖心堂後方的蒙馬特葡萄園（Clos Montmartre）與知名的粉紅之家（La Maison Rose），享受悠閒的高地石板步道。", tag: "散步" },
+        { time: "17:30 - 18:15", icon: "⌂", title: "Anvers → M2 → La Chapelle → 飯店", detail: "搭乘地鐵 M2 返回飯店，正式辦理 Check-in 入住房間整理休息。", tag: "回程" }
       ],
-      transport: { duration: "Beauvais 至巴黎市區約 2 小時 15 分", steps: ["Beauvais 飯店", "Taxi → Beauvais SNCF", "07:44 TER C17 → Paris Nord", "飯店寄行李", "M7 → Opéra", "M12 → Abbesses → 蒙馬特", "M2 回飯店"], note: "早班直達 TER 爭取完整巴黎白天時間。" }, places: ["opera", "sacre"], note: "加尼葉歌劇院需事先預約指定時段；飯店上午先寄放行李。"
+      transport: { duration: "Beauvais 至巴黎市區約 1 小時 20 分；市區搭乘 M2 直達", steps: ["Beauvais 飯店", "Taxi → Beauvais SNCF", "09:40 TER C17 → Paris Nord", "飯店寄行李", "M2 → Anvers / 蒙馬特", "愛牆・小丘廣場・聖心堂・後山葡萄園", "M2 回飯店"], note: "搭乘 09:40 TER 進巴黎，下午專注蒙馬特高地單一街區，動線順暢不趕場。" }, places: ["sacre"], note: "加尼葉歌劇院暫時取消內部參觀；聖心堂免費參觀，飯店上午先寄放行李。"
     },
     "09-14": {
       date: "2026/09/14", weekday: "週一", city: "Paris", cityKey: "paris", title: "拉丁區雙路線，聖徒禮拜堂與聖母院", summary: "上午從盧森堡公園向北漫步拉丁區；13:00 分為 A 古監獄與 B 咖啡兩組，14:30 集合參觀聖徒禮拜堂彩繪玻璃與巴黎聖母院。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "plum",
@@ -895,7 +893,7 @@ window.TRIP.placeDetails = {
   tuileries: { why: "從香榭麗舍向東漫步抵達，是進入羅浮宮前休息與享用咖啡點心的好去處。", booking: { state: "free", label: "免費・免預約", note: "公共花園，設有綠色躺椅與咖啡座。" } },
   palais: { why: "鄰近羅浮宮，Buren 黑白條紋柱與安靜拱廊適合作為午後短暫散步點。", booking: { state: "free", label: "庭院免費・免預約", note: "公共庭院與花園，可自由進出。" } },
   sciences: { why: "大型科學中心，保留為未排入行程的備選參考資料。", booking: { state: "recommended", label: "未排入每日行程", note: "Argonaute 潛水艇 2026/09/01-09/30 閉館維護。", url: "https://billetterie.cite-sciences.fr/", cta: "官方票務資訊" } },
-  opera: { why: "搭早班 TER 抵達巴黎北站寄放行李後搭 M7 直達，參觀後前往蒙馬特高地。", booking: { state: "advance", label: "目標 09/13 11:30 指定時段", note: "自助參觀需線上預約指定時段，現場不售一般參觀票。", url: "https://www.operadeparis.fr/en/visits/palais-garnier", cta: "歌劇院官方預約" } },
+  opera: { why: "因 09/13 改搭 09:40 TER 抵達巴黎北站較晚，歌劇院內部參觀暫時取消，保留作為未來行程備選。", booking: { state: "optional", label: "暫時取消・保留備選", note: "原預約 11:30 參觀，因交通時間延後暫時取消內部參觀。", url: "https://www.operadeparis.fr/en/visits/palais-garnier", cta: "歌劇院官方資訊" } },
   sacre: { why: "聖心堂、愛牆與蒙馬特街區可一次走訪，高地階梯前可俯瞰巴黎全景。", booking: { state: "onsite", label: "教堂免費・圓頂現場購票", note: "教堂本體免費；圓頂約 280 階且無電梯，僅現場購票。", url: "https://www.sacre-coeur-montmartre.com/en/info-and-visits/the-dome-tour/", cta: "圓頂參觀規則" } },
   grandpalais: { why: "鄰近香榭麗舍大道，若有感興趣之特展可安排入內欣賞玻璃穹頂建築。", booking: { state: "recommended", label: "外觀免費・展覽個別購票", note: "各展覽獨立售票，依官方節目表為準。", url: "https://www.grandpalais.fr/en", cta: "官方節目與票務" } },
   marais: { why: "歷史街區氛圍濃厚，獨立小店、藝廊與特色咖啡館林立。", booking: { state: "free", label: "街區免費・免預約", note: "個別店家與博物館依自身營業時間運作。" } },
@@ -1435,31 +1433,35 @@ window.TRIP.routeMaps = {
     defaultGroup: "paris",
     groups: [
       {
-        id: "transfer", label: "Beauvais → Paris", note: "搭乘 07:44 直達 TER 前往巴黎北站。",
+        id: "transfer", label: "Beauvais → Paris", note: "搭乘 09:40 直達 TER 前往巴黎北站。",
         stops: [
-          { time: "07:05", label: "Hostellerie Saint Vincent", detail: "退房叫車", lat: 49.4305, lng: 2.1179, status: "start" },
-          { time: "07:35", label: "Gare de Beauvais", detail: "抵達月台", lat: 49.4264, lng: 2.0887, status: "transfer" },
-          { time: "08:59", label: "Paris Gare du Nord", detail: "TER C17 抵達", lat: 48.8809, lng: 2.3553, status: "fixed" },
-          { time: "09:10", label: "Paris 飯店", detail: "寄放行李／可入住先入住", lat: 48.8836, lng: 2.3594, status: "stay" }
+          { time: "09:05", label: "Hostellerie Saint Vincent", detail: "退房叫車", lat: 49.4305, lng: 2.1179, status: "start" },
+          { time: "09:25", label: "Gare de Beauvais", detail: "抵達月台", lat: 49.4264, lng: 2.0887, status: "transfer" },
+          { time: "10:59", label: "Paris Gare du Nord", detail: "TER C17 抵達", lat: 48.8809, lng: 2.3553, status: "fixed" },
+          { time: "11:20", label: "Paris 飯店", detail: "寄放行李／可入住先入住", lat: 48.8836, lng: 2.3594, status: "stay" }
         ],
         legs: [
           { mode: "taxi", label: "Taxi" },
-          { mode: "train", label: "07:44 - 08:59 TER C17" },
+          { mode: "train", label: "09:40 - 10:59 TER C17" },
           { mode: "walk", label: "步行" }
         ]
       },
       {
-        id: "paris", label: "Paris 白天", note: "先至 Opéra 歌劇院，再前往蒙馬特，最後回飯店正式辦理入住。",
+        id: "paris", label: "蒙馬特高地漫遊", note: "午餐後漫步愛牆、小丘廣場與聖心堂，最後回飯店正式辦理入住。",
         stops: [
-          { time: "10:30", label: "Paris 飯店", detail: "寄行李後出發", lat: 48.8836, lng: 2.3594, status: "start" },
-          { time: "11:30", label: "Palais Garnier", detail: "加尼葉歌劇院", lat: 48.8720, lng: 2.3316, status: "ticket" },
-          { time: "14:45", label: "Sacré-Cœur", detail: "聖心堂、蒙馬特與愛牆", lat: 48.8868, lng: 2.3430, status: "planned" },
+          { time: "11:30", label: "Paris 飯店", detail: "寄放行李後出發", lat: 48.8836, lng: 2.3594, status: "start" },
+          { time: "12:00", label: "蒙馬特山腳／Anvers", detail: "法式小館午餐", lat: 48.8828, lng: 2.3444, status: "planned" },
+          { time: "13:30", label: "Le Mur des Je t'aime", detail: "愛牆與小丘廣場", lat: 48.8848, lng: 2.3387, status: "planned" },
+          { time: "14:30", label: "Sacré-Cœur", detail: "聖心堂與階梯景觀", lat: 48.8868, lng: 2.3430, status: "fixed" },
+          { time: "16:30", label: "Clos Montmartre", detail: "後山葡萄園與粉紅之家", lat: 48.8880, lng: 2.3400, status: "planned" },
           { time: "18:00 前", label: "Paris 飯店", detail: "Check-in 入住與休息", lat: 48.8836, lng: 2.3594, status: "stay" }
         ],
         legs: [
-          { mode: "metro", label: "M7" },
-          { mode: "metro", label: "步行＋M12" },
-          { mode: "metro", label: "步行＋M2" }
+          { mode: "metro", label: "M2" },
+          { mode: "walk", label: "漫步" },
+          { mode: "walk", label: "登階" },
+          { mode: "walk", label: "後山漫步" },
+          { mode: "metro", label: "M2 回飯店" }
         ]
       }
     ]

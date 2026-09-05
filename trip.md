@@ -3,6 +3,22 @@
 > 給後續 agent 的精簡背景資料。最後同步：2026-09-05。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
 
+## 09/13 TER 09:40 改點與蒙馬特高地深度慢遊（2026-09-05）
+
+- **確認改搭 09:40 直達 TER 進巴黎**：
+  - 由 Beauvais SNCF 搭乘已購之 09:40 直達 TER C17，10:59 抵達 Paris Nord（巴黎北站），車程約 1 小時 19 分。
+  - 上午安排：08:30 起床早餐並退房、09:05 叫車前往 Beauvais SNCF 車站，09:25 抵達月台候車。
+- **暫時取消加尼葉歌劇院內部參觀**：
+  - 由於抵達巴黎北站與寄行李完成已近 11:25，原訂 11:30 歌劇院參觀時間不足，加尼葉歌劇院內部參觀暫時取消，保留作為未來行程備選。
+- **改採蒙馬特高地深度漫遊（方案 1，完全順路、零趕場壓力）**：
+  - 11:00 - 11:25 步行至 Sure Hotel 寄放行李（若有空房則先入住）。
+  - 11:30 - 13:00 於蒙馬特山腳或飯店周邊享用法式午餐。
+  - 13:00 - 14:30 漫步走訪 Abbesses 站旁愛牆（Le Mur des Je t'aime）、穿牆人雕塑與小丘廣場（Place du Tertre）畫家村。
+  - 14:30 - 16:30 免費參觀聖心大教堂（Sacré-Cœur）內部，並於階梯眺望巴黎市區全景。
+  - 16:30 - 17:30 漫步後山蒙馬特葡萄園（Clos Montmartre）與粉紅之家（La Maison Rose）。
+  - 17:30 - 18:15 搭乘地鐵 M2（Anvers → La Chapelle）返回飯店，辦理正式入住休息。
+- **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-17`，全站 19 份 HTML 檔案、`site/sw.js` 與工具頁版本資訊同步更新。
+
 ## 09/15 艾菲爾鐵塔全員合照、上午分流、天鵝島自由女神與雪鐵龍公園熱氣球（2026-09-05）
 
 - **上午分流參觀與逛街**：
@@ -353,7 +369,7 @@
 - 09/09 為子明學長的個人主行程：First Camp → Götgatan → Hyllie → København H → Hellerup → Experimentarium（約 5 小時）→ Malmö C → Turning Torso／Västra Hamnen 與朋友會合；Disgusting Food Museum 與 Malmö Saluhall 不放進個人當日路線。
 - 09/11 改為 Malmö C → 09:15-10:00 København H → 10:00-11:30 水岸 DAC @ BLOX（體驗 4 層樓 BLOX Slide 巨型溜滑梯，憑 K7 免費）→ 11:45-13:00 克里斯蒂安堡宮皇家接待廳（憑 K7 免費）→ 13:00-14:15 老城區午餐（Slotskælderen 百年三明治或 Paludan 咖啡館）→ 14:30-15:30 圓塔登頂（憑 K7 免費）→ 15:30-17:30 Strøget 購物街（HAY House、Illums、LEGO 旗艦店）→ 17:30-18:30 市政廳廣場周邊晚餐／小歇 → 18:30-21:45 Tivoli 花園（已購票，賞復古夜景與週五 Fredagsrock）→ 22:00 中央車站搭火車回 Malmö。DAC、克里斯蒂安堡宮與圓塔三館青年均憑 K7 文化通行證免費入場（0 元）。
 - 09/12 改為退房 → Malmö C → CPH P4／P7A 機場寄放（方案 B，主方案）→ Marmorkirken → 12:00 Amalienborg 衛兵交接 → Nyhavn／Kongens Nytorv 午餐 → 15:00 到 16:00 Stromma Classic Canal Tour → 16:00 到 16:30 前往 Christianshavn → 16:30 到 17:15 救主堂螺旋塔 → 17:15 到 18:00 搭 M2 直達 CPH 取行李 → 18:00 前完成 bag drop → FR9267。ENIGMA 保留在景點總覽供參考；Experimentarium 已移到 09/09 個人主行程；機場櫃位尺寸／容量、15:00 船班與 Metro 狀況仍需出發前確認，中央站方案 A 作為備援。
-- 09/13 的「Check-in」定義為先到 Paris 飯店寄行李／若房間已準備好就入住；正式入住時間為 15:00 後。SNCF Connect 於 2026/08/30 查到 09/13 07:44 到 08:59 的 Beauvais → Paris Nord 直達 TER C17，作為目標班次，出發前一日複查。
+- 09/13 的「Check-in」定義為先到 Paris 飯店寄行李／若房間已準備好就入住；正式入住時間為 15:00 後。已確認訂購 09/13 09:40 從 Beauvais 出發的直達 TER C17，預計 10:59 抵達 Paris Nord。因抵達時間較晚，加尼葉歌劇院內部參觀暫時取消，當日改採蒙馬特高地深度漫遊（愛牆、小丘廣場、聖心堂與後山葡萄園）。
 - 09/15 上午分流（軍事博物館 vs 樂蓬馬歇百貨），中午全員會合牛排午餐；下午同遊 Eiffel Tower（地面合照）➔ Place du Trocadéro 露台全景 ➔ Pont de Bir-Hakeim ＆ 天鵝島自由女神 ➔ Beaugrenelle 商場 Fnac ➔ 雪鐵龍公園 Ballon de Paris 熱氣球 ➔ 19:00 Francette 景觀晚餐。
 - 09/16 凱旋門門票時間為 10:50、羅浮宮為 16:30 入場（16:00 報到）；採 09:40 出發 → 10:20 左右抵達入口報到 → 10:50 入場 → Champs-Élysées → Place de la Concorde → Tuileries（15:15 到 15:55 咖啡甜點小憩）→ 16:00 金字塔報到排隊 → 16:30 到 20:30 Louvre 看展 → Cour Napoléon 夜景的單向路線。
 - 09/17 為 Versailles 全日，Palace 為 10:00 指定時段入場；Cité des sciences 降為未排入景點資料。
@@ -396,7 +412,7 @@
 - 景點卡保留「為什麼推薦」、票務狀態、官方票務入口與 Google Maps；票務資訊集中在 `site/js/data.js` 的 `placeDetails`，畫面由 `site/js/app.js` 產生。
 - Copenhagen 景點資料包含 DAC @ BLOX、Christiansborg、Rundetaarn、Strøget、Tivoli、Amalienborg、Marmorkirken、Nyhavn、Kongens Nytorv、運河遊船、救主堂與已排入 09/09 個人行程的 Experimentarium；Rosenborg、Torvehallerne 與 ENIGMA 保留作未排入每日行程的參考。Paris 景點資料包含 Sainte-Chapelle、Pont de Bir-Hakeim、Sacré-Cœur／Montmartre、Grand Palais、Le Marais、Le Bon Marché。
 - Disneyland 已從網站資料、景點頁、9/17 每日頁說明與圖片資產完全移除；不再作為備選。
-- 票務優先級：Eiffel Tower、Louvre、Palais Garnier、Sainte-Chapelle 與 Versailles 指定時段優先處理；Rosenborg、Tivoli、Stromma 運河遊船、Musée de l’Armée 與 Musée Rodin 建議日期確定後先買；Experimentarium 可先買線上票；Rundetaarn、Marmorkirken 教堂本體與 Sacré-Cœur 圓頂適合現場處理。
+- 票務優先級：Eiffel Tower、Louvre、Sainte-Chapelle 與 Versailles 指定時段優先處理（Palais Garnier 暫時取消）；Rosenborg、Tivoli、Stromma 運河遊船、Musée de l’Armée 與 Musée Rodin 建議日期確定後先買；Experimentarium 可先買線上票；Rundetaarn、Marmorkirken 教堂本體與 Sacré-Cœur 圓頂適合現場處理。
 - Notre-Dame 教堂本體免費，官方免費時段接近參觀日才釋出；不購買第三方普通入場票。Amalienborg 廣場與衛兵交接免費，博物館需票。Marmorkirken 教堂本體免費，圓頂最多 15 人且不可預訂。
 - Cité des sciences 的 Argonaute 潛水艇在 **2026/09/01 到 09/30** 關閉；09/17 已改排 Versailles，因此科學館只保留為未排入的景點資料。
 - 景點卡底部動作區固定貼齊卡片底部，確保 Google Maps 按鈕在同一列對齊；需購票的景點在地圖按鈕上方顯示官方票務按鈕。景點頁的說明、日期、票務與按鈕文字整體放大；「票務」區塊的狀態與說明採 17px、較深文字色、1.75 行距與 18px 內距，桌機與手機皆以易讀為優先。
@@ -470,7 +486,7 @@
 | 09/10 | Malmö | ECCV 2026 主會議、Expo；10:30 Poster Session 1／Poster #137 |
 | 09/11 | Copenhagen | Malmö C → 09:15-10:00 København H → 水岸散步至 DAC @ BLOX (溜滑梯) → 克里斯蒂安堡宮 → 老城午餐 → 圓塔 → Strøget 購物街 → 市政廳廣場晚餐 → 18:30-21:45 Tivoli 花園 → 22:00 火車回 Malmö |
 | 09/12 | Copenhagen → Beauvais | 退房 → Malmö C → CPH P4／P7A 寄行李（方案 B）→ Marmorkirken → 12:00 Amalienborg 衛兵交接 → Nyhavn／Kongens Nytorv 午餐 → 15:00-16:00 運河遊船 → 16:30-17:15 救主堂螺旋塔 → 17:15-18:00 M2 → CPH 取行李 → 18:00 前 bag drop → FR9267 |
-| 09/13 | Beauvais → Paris | 07:44 直達 TER → Paris Nord → 飯店寄行李／可入住就入住 → Palais Garnier → Sacré-Cœur／Montmartre |
+| 09/13 | Beauvais → Paris | 09:40 直達 TER → Paris Nord → 飯店寄行李／可入住就入住 → 蒙馬特高地深度漫遊（愛牆／小丘廣場／聖心堂） |
 | 09/14 | Paris | RER B → Luxembourg／Panthéon／Latin Quarter → A 古監獄／B 咖啡分流 → 15:00 Sainte-Chapelle → 16:30 Notre-Dame |
 | 09/15 | Paris | 軍事博物館分流／樂蓬馬歇 ➔ 全員艾菲爾鐵塔 ➔ 特羅卡德羅露台 ➔ 天鵝島自由女神 ➔ 博格內爾 Fnac ➔ 雪鐵龍公園熱氣球 ➔ 19:00 Francette |
 | 09/16 | Paris | 10:50 Arc de Triomphe 門票 → Champs-Élysées → Place de la Concorde → Tuileries（15:15 咖啡小憩）→ 16:00 金字塔報到排隊 → 16:30-20:30 Louvre → Cour Napoléon 夜景 |
@@ -502,9 +518,9 @@
 
 ### Beauvais 與 Paris
 
-- 09/13 不繞回 Beauvais Airport 搭 Aérobus；06:30 起床／早餐、07:05 左右叫車到 Beauvais SNCF，搭 07:44 到 08:59 的直達 TER C17 到 Paris Nord。
+- 09/13 不繞回 Beauvais Airport 搭 Aérobus；08:30 起床／早餐並退房、09:05 左右叫車到 Beauvais SNCF，搭 09:40 到 10:59 的直達 TER C17 到 Paris Nord。
 - Paris 住宿靠近 Gare du Nord；每天按同一區域／同一交通軸線安排，避免反覆橫越巴黎。
-- 09/13 先到飯店寄行李／若有房就入住，再搭 M7 到 Opéra；Palais Garnier 後從 Madeleine 搭 M12 到 Abbesses，最後由 Anvers 搭 M2 到 La Chapelle 回住宿。
+- 09/13 先到飯店寄行李／若有房就入住；歌劇院內部參觀暫時取消，中午至蒙馬特山腳或飯店周邊享用法式午餐，午後搭地鐵展開蒙馬特高地漫遊（愛牆、小丘廣場畫家村、聖心堂與後山葡萄園），最後由 Anvers 搭 M2 到 La Chapelle 回住宿。
 - 09/14 去程由 Gare du Nord 搭 RER B 直達 Luxembourg，上午從花園、Panthéon 外觀與 Sorbonne 向北走；13:00 在 Île de la Cité 分成 A 古監獄／B 咖啡，14:30 重新集合，15:00 Sainte-Chapelle、16:30 Notre-Dame，最後由 Saint-Michel-Notre-Dame 搭 RER B 直達 Gare du Nord。
 - 09/15 上午分流（軍博組 M4+M8 / 百貨組 M4）；12:30 會合後沿戰神廣場、鐵塔、特羅卡德羅、比爾哈凱姆橋、天鵝島、博格內爾商場至雪鐵龍公園單向西南延伸，搭 RER C 直達 Champ de Mars 銜接 19:00 Francette。
 - 09/16 09:40 從住宿出發搭 M2 到 Charles de Gaulle-Étoile，10:20 左右走地下通道到凱旋門入口，依 10:50 門票時間入場；之後沿 Champs-Élysées、Place de la Concorde 與 Tuileries 一路向東，15:15 到 15:55 在杜樂麗花園周邊咖啡甜點小憩，16:00 到 Louvre 玻璃金字塔指定隊伍報到安檢、16:30 入館、20:30 清場後看 Cour Napoléon 夜景，再用 M1＋M4 回住宿。
@@ -586,9 +602,9 @@
 - 09/11 Malmö 到 Copenhagen 的 Øresundståg 工程、取消班次與替代路線；DAC 建築中心 4 層樓 BLOX Slide 溜滑梯開放狀況、克里斯蒂安堡宮接待廳 K7 入場須知與 Tivoli 18:30 入園 QR code。
 - 09/12 CPH P4／P7A 行李寄存的當日可用櫃位、尺寸、支付方式與價格；主方案是機場寄放（方案 B），若四件 20 kg 行李無法相容，再改用 [DSB København H Bagagecenter](https://www.dsb.dk/find-produkter-og-services/bagagecenter/)；參考 [CPH 行李寄存](https://www.cph.dk/en/practical/baggage/baggage-deposit)。
 - 09/11 出發前確認 Tivoli 18:30 入園票的 QR code 已載入手機，並於 18:25 左右抵達入口；若要看 22:00 Friday Rock，需重新確認離園與返 Malmö 班次。09/12 Stromma Nyhavn 15:00 班次是否已購買；救主堂 16:30 時段是否預約，並於 17:15 前離塔銜接 M2。
-- 09/13 Beauvais → Paris Nord 的 07:44 到 08:59 TER C17 是否維持運行，並向 Paris 飯店確認上午可寄放行李。
+- 09/13 Beauvais → Paris Nord 已確認訂購 09:40 到 10:59 的直達 TER C17，出發前一日複查班次準點狀況，並向 Paris 飯店確認上午 11:20 可先寄放行李。
 - Paris Metro／RER 工程，尤其 09/13 與 09/18。
-- 各景點當日營業時間、入場時段與是否已購票；優先確認 Palais Garnier、09/14 15:00 Sainte-Chapelle（A 組聯票／B 組單館票）、09/14 16:30 左右 Notre-Dame 官方免費預約、Eiffel Tower、Louvre 與 Versailles 的指定時段。
+- 各景點當日營業時間、入場時段與是否已購票；優先確認 09/14 15:00 Sainte-Chapelle（A 組聯票／B 組單館票）、09/14 16:30 左右 Notre-Dame 官方免費預約、Eiffel Tower、Louvre 與 Versailles 的指定時段（Palais Garnier 暫時取消）。
 - 航班航廈、登機門、報到截止時間及最新行李／電池規則。
 
 ## 網頁內容守則

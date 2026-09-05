@@ -422,7 +422,7 @@
     [/Stromma Classic Canal Tour/, "14:45 前到 Nyhavn 3 驗票排隊；15:00 開船、16:00 下船。"],
     [/Church of Our Saviour$/, "16:30 依時段登塔；最晚 17:15 離開，步行到 Christianshavn 搭 M2。"],
     [/Palais Garnier 自助參觀/, "Rue Scribe 入口報到；依實際票面入場，13:00 離開找午餐。"],
-    [/Sacré-Cœur/, "M12 到 Abbesses 後步行或搭纜車上山；17:15 從 Anvers 搭 M2 回飯店。"],
+    [/Sacré-Cœur/, "免費入內參觀聖心堂與登階看全景；結束後漫步後山葡萄園，17:30 從 Anvers 搭 M2 回飯店。"],
     [/Jardin du Luxembourg/, "RER B 在 Luxembourg 下車；由公園往 Panthéon 方向單向前進。"],
     [/Latin Quarter：/, "從 Panthéon 經 Sorbonne 往 Saint-Michel；11:15 在拉丁區找午餐。"],
     [/Sainte-Chapelle$/, "14:30 已完成會合與安檢；依 15:00 票面入場，16:05 離開。"],
