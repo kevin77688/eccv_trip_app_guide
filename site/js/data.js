@@ -132,9 +132,9 @@ window.TRIP = {
         image: "assets/souvenirs/lakrids-bulow.webp",
         bagTip: "隨身或托運皆可（常溫陰涼處保存）",
         features: [
-          "北歐精品甘草第一品牌，黑金極簡霧面圓罐設計，外觀極具奢華感。",
-          "外層厚裹比利時黑巧克力與海鹽焦糖，內層為軟質甜甘草，顛覆傳統刺鼻印象。",
-          "極受不習慣生硬甘草人士的喜愛，兼具北歐文化話題與頂級精緻包裝。"
+          "丹麥知名甘草品牌，黑金霧面圓罐包裝。",
+          "外層為比利時黑巧克力與海鹽焦糖，內層為軟質甜甘草，口感溫和不刺鼻。",
+          "適合想嘗試北歐甘草甜點但排斥傳統刺鼻風味的人，包裝便於送禮。"
         ]
       },
       {
@@ -148,9 +148,9 @@ window.TRIP = {
         image: "assets/souvenirs/laeso-salt.webp",
         bagTip: "需防潮封口，建議放入托運行李箱",
         features: [
-          "丹麥千年中世紀傳統柴燒蒸發結晶技術，北歐米其林星級主廚指定御用。",
-          "天然復古麻布袋封裝，富含海洋礦物質微量元素，結晶薄脆甘美帶微燻香。",
-          "適合煎牛排、沙拉與日常調味，對熱愛烹飪者而言是不可多得的硬核工藝逸品。"
+          "保留中世紀柴燒蒸發傳統工法，常被北歐餐廳與料理人選用。",
+          "復古麻布袋包裝，海鹽結晶薄脆且帶微燻香氣。",
+          "適合搭配牛排、沙拉與日常調味，適合作為下廚愛好者的特色禮物。"
         ]
       },
       {
@@ -164,9 +164,9 @@ window.TRIP = {
         image: "assets/souvenirs/kay-bojesen.webp",
         bagTip: "精緻木器，建議以衣物包裹保護放入托運行李箱或隨身攜帶",
         features: [
-          "丹麥銀匠大師 Kay Bojesen 於 1951 年創立之國寶級原木工藝，全球設計迷爭相收藏。",
-          "天然橡木／柚木手工打磨，肢體關節可活動擺出各種搞怪萌態，擺在辦公桌極度療癒。",
-          "兼具北歐現代工藝歷史厚度與幽默感，是永不褪色的經典居家擺件。"
+          "丹麥設計師 Kay Bojesen 於 1951 年設計的木製玩具，為丹麥經典設計代表作。",
+          "天然橡木或柚木打磨，手腳關節可轉動調整姿勢，適合擺在書桌或層架。",
+          "線條簡潔且帶幽默感，是長青的北歐居家擺飾。"
         ]
       },
       {
@@ -180,9 +180,9 @@ window.TRIP = {
         image: "assets/souvenirs/coffee-collective.webp",
         bagTip: "單向排氣閥原裝袋，常溫乾燥存放，隨身或托運皆可",
         features: [
-          "由世界咖啡大師競賽（WBC）冠軍與杯測雙料世界冠軍聯合創辦的傳奇烘豆廠。",
-          "引領北歐淺焙風潮，極致突出產區乾淨果酸與圓潤甜感，全球精品咖啡迷朝聖標竿。",
-          "挑選適合做濃縮與拿鐵的高甜度莊園豆，送給鑽研咖啡沖煮與拉花的朋友兼具專業度與心意。"
+          "由 WBC 冠軍與世界杯測賽雙料冠軍創立的哥本哈根精品烘豆品牌。",
+          "主打北歐淺焙風格，強調產區乾淨果酸與明亮風味。",
+          "提供手沖單品與義式配方豆，適合送給喜愛精品咖啡或自行沖煮的朋友。"
         ]
       }
     ],
@@ -198,9 +198,9 @@ window.TRIP = {
         image: "assets/souvenirs/ahlgrens-bilar.webp",
         bagTip: "輕量包裝，托運或後背包皆可攜帶",
         features: [
-          "自稱「瑞典最暢銷的車（Sveriges mest köpta bil）」，國民級經典造型軟糖。",
-          "粉紅、白、綠三色，質地介於棉花糖與小熊軟糖之間，微酸微甜極具辨識度。",
-          "放在團隊公用桌或茶水間隨手拿取，接受度極高，完全零踩雷風險。"
+          "包裝印有「瑞典最暢銷的車（Sveriges mest köpta bil）」，為當地經典車型軟糖。",
+          "粉紅、白、綠三色，口感介於棉花糖與小熊軟糖之間，微酸微甜。",
+          "放在辦公室公用桌或茶水間隨手拿取，大眾接受度高。"
         ]
       },
       {
@@ -214,9 +214,9 @@ window.TRIP = {
         image: "assets/souvenirs/marabou-chocolate.webp",
         bagTip: "避免高溫曝曬，建議放於行李箱陰涼衣物中避免壓碎",
         features: [
-          "瑞典市佔率最高的國寶巧克力，擁有瑞典皇室認證標章（Kunglig Hovleverantör）。",
-          "推薦海鹽焦糖（Havssalt）或 Daim 脆片口味，鹹甜酥脆，奶香濃郁。",
-          "大塊裝方便掰開分食，適合團隊燒腦寫 code 或開會後的元氣補充。"
+          "瑞典常見的代表性大眾巧克力，具備瑞典皇室認證標章（Kunglig Hovleverantör）。",
+          "海鹽焦糖（Havssalt）或 Daim 脆片口味甜中帶鹹，奶香濃郁。",
+          "大片裝方便掰開分食，適合放在辦公室作為會議或工作間歇點心。"
         ]
       },
       {
@@ -230,9 +230,9 @@ window.TRIP = {
         image: "assets/souvenirs/ballerina-kex.webp",
         bagTip: "圓筒包裝稍具厚度，可直立放於托運行李箱四周固定",
         features: [
-          "自 1960 年代以來瑞典最受歡迎的下午茶 Fika 餅乾，被譽為瑞典版國民夾心餅。",
-          "酥脆奶油圓餅搭配濃郁榛果可可內餡，中央有鏤空小圓孔，造型雅緻。",
-          "與黑咖啡或熱茶是絕配，放一筒在茶水間瞬間化身北歐辦公室日常。"
+          "瑞典 1960 年代推出的經典夾心餅乾，為當地常見的 Fika 下午茶點心。",
+          "奶油圓餅夾入榛果可可內餡，中央為鏤空圓孔造型。",
+          "適合搭配黑咖啡或熱茶，適合放在茶水間分食。"
         ]
       },
       {
@@ -246,9 +246,9 @@ window.TRIP = {
         image: "assets/souvenirs/djungelvral.webp",
         bagTip: "體積極小，隨便塞在行李角落即可帶回",
         features: [
-          "北歐最具代表性的氯化銨（Salmiak）超鹹甘草糖，外層裹滿厚厚鹽粉。",
-          "包裝為經典尖叫猴子圖樣，入口瞬間鹹烈衝擊，是北歐特有的硬派風味體驗。",
-          "強烈建議買一包放在團隊零食桌上，作為解 bug 提神或同事聚會的歡樂大冒險道具。"
+          "北歐經典的氯化銨（Salmiak）鹹甘草糖，外層裹有鹽粉。",
+          "包裝為猴子圖案，入口鹹烈強勁，為北歐道地的重鹹甘草糖。",
+          "可買一包放在團隊零食桌，供同事體驗北歐特殊的鹹甘草風味。"
         ]
       }
     ]
@@ -788,19 +788,19 @@ window.TRIP = {
     arc: { region: "Paris", title: "Arc de Triomphe", local: "凱旋門", kicker: "城市全景・歷史地標", intro: "座落於戴高樂星形廣場中央，十二條大道以此為中心呈放射狀延伸，登頂可欣賞巴黎城市軸線。", stay: "約 1 到 1.5 小時", accent: "coral" },
     champs: { region: "Paris", title: "Champs-Élysées", local: "香榭麗舍大道", kicker: "經典大道・購物・城市氣氛", intro: "從凱旋門延伸至協和廣場的林蔭大道，沿途聚集旗艦店、咖啡館與劇院。", stay: "約 1 到 2 小時", accent: "gold" },
     louvre: { region: "Paris", title: "Musée du Louvre", local: "羅浮宮", kicker: "藝術博物館・歷史・建築", intro: "世界代表性博物館，館藏涵蓋古典藝術、繪畫與雕塑，以《蒙娜麗莎》、勝利女神與米洛的維納斯為代表。", stay: "約 3 到 4 小時", accent: "plum" },
-    versailles: { region: "Paris", title: "Palace of Versailles", local: "凡爾賽宮與花園", kicker: "王宮建築・鏡廳・法式花園", intro: "法國古典主義宮殿典範，包含鏡廳、國王套房、廣闊運河花園與特里亞農宮苑。", stay: "約 6 到 8 小時", accent: "gold" },
+    versailles: { region: "Paris", title: "Palace of Versailles", local: "凡爾賽宮與花園", kicker: "王宮建築・鏡廳・法式花園", intro: "法國 17 世紀宮殿建築，包含鏡廳、國王套房、廣闊運河花園與特里亞農宮苑。", stay: "約 6 到 8 小時", accent: "gold" },
     tuileries: { region: "Paris", title: "Jardin des Tuileries", local: "杜樂麗花園", kicker: "法式花園・水池・散步", intro: "連接協和廣場與羅浮宮的對稱法式花園，林蔭步道與水池旁適合休息。", stay: "約 45 到 60 分鐘", accent: "teal" },
     palais: { region: "Paris", title: "Palais Royal", local: "巴黎皇家宮殿", kicker: "黑白條紋柱・安靜花園", intro: "鄰近羅浮宮的古典宮殿庭院，以 Buren 黑白條紋藝術圓柱與安靜拱廊聞名。", stay: "約 30 到 45 分鐘", accent: "plum" },
     sciences: { region: "Paris", title: "Cité des sciences et de l’industrie", local: "科學與工業城", kicker: "大型科學館・互動展・探索", intro: "位於拉維萊特公園的大型科學互動博物館，涵蓋太空、科技與工業主題。", stay: "約 3 到 4 小時", accent: "teal" },
-    opera: { region: "Paris", title: "Palais Garnier", local: "加尼葉歌劇院", kicker: "新巴洛克・歌劇院・華麗裝飾", intro: "新巴洛克風格的巴黎歌劇院，內部裝飾華麗，大階梯與天花板壁畫極具特色。", stay: "約 1.5 到 2 小時", accent: "gold" },
+    opera: { region: "Paris", title: "Palais Garnier", local: "加尼葉歌劇院", kicker: "新巴洛克・歌劇院・華麗裝飾", intro: "新巴洛克風格的巴黎歌劇院，內部裝飾細緻，大階梯與天花板壁畫為其特色。", stay: "約 1.5 到 2 小時", accent: "gold" },
     sacre: { region: "Paris", title: "Sacré-Cœur & Montmartre", local: "聖心堂與蒙馬特", kicker: "高地全景・街區・愛牆", intro: "座落於蒙馬特高地的白色羅馬拜占庭式大教堂，階梯前可俯瞰整個巴黎市區。", stay: "約 2 到 3 小時", accent: "coral" },
     grandpalais: { region: "Paris", title: "Grand Palais", local: "巴黎大皇宮", kicker: "玻璃穹頂・歷史展館", intro: "具備大型玻璃穹頂的歷史展覽館，舉辦各類藝術博覽會與文化活動。", stay: "約 1 到 2 小時", accent: "gold" },
     marais: { region: "Paris", title: "Le Marais", local: "瑪黑區", kicker: "歷史街區・獨立店・咖啡", intro: "充滿歷史氛圍的巴黎街區，聚集獨立小店、藝廊、咖啡館與猶太街區熟食。", stay: "約 2 到 3 小時", accent: "plum" },
-    bonmarche: { region: "Paris", title: "Le Bon Marché", local: "樂蓬馬歇百貨", kicker: "百貨・美食館・伴手禮", intro: "巴黎左岸歷史悠久的百貨公司，鄰近的食品館提供豐富的法國在地美食與伴手禮。", stay: "約 1.5 到 2 小時", accent: "coral" },
+    bonmarche: { region: "Paris", title: "Le Bon Marché", local: "樂蓬馬歇百貨", kicker: "百貨・美食館・伴手禮", intro: "巴黎左岸的百貨公司，鄰近的食品館販售多種法國在地食品與伴手禮。", stay: "約 1.5 到 2 小時", accent: "coral" },
     trocadero: { region: "Paris", title: "Place du Trocadéro", local: "特羅卡德羅廣場與夏樂宮露台", kicker: "鐵塔全景・大理石露台・華沙噴泉", intro: "位於艾菲爾鐵塔正對岸的高地廣場，中央大理石露台與夏樂宮花園階梯是眺望與拍攝艾菲爾鐵塔全貌的經典視角。", stay: "約 45 到 60 分鐘", accent: "gold" },
     cygnes: { region: "Paris", title: "Île aux Cygnes & Statue de la Liberté", local: "天鵝島與自由女神像", kicker: "塞納河中島・林蔭漫步・青銅自由女神", intro: "塞納河中央長達 850 公尺的狹長人工島嶼，中央為雙排林蔭步道（Allée des Cygnes），西南端矗立 1889 年法國贈予的原版縮小青銅自由女神像，面朝紐約方向。", stay: "約 45 到 60 分鐘", accent: "teal" },
-    beaugrenelle: { region: "Paris", title: "Beaugrenelle Paris & Fnac", local: "博格內爾現代商場與 Fnac", kicker: "現代鋼構商場・Fnac 旗艦店・冷氣休憩", intro: "塞納河左岸前衛流線型雙棟玻璃天井綠能商場，設有大型 Fnac（法國科技 3C、設計選品與文化商品旗艦店）與多間肉類牛排餐廳，適合舒適吹冷氣採買與休息。", stay: "約 1 到 1.5 小時", accent: "coral" },
-    ballon: { region: "Paris", title: "Ballon de Paris Generali (Parc André Citroën)", local: "雪鐵龍公園・巴黎大氣球", kicker: "繫留氦氣球・150M 空中全景・空氣科學實驗室", intro: "位於雪鐵龍公園內的全球最大繫留式氦氣球，垂直升空至 150 公尺（約 50 層樓高），空中俯瞰巴黎全景；同時搭載科學儀器即時監測巴黎空氣品質。免預約，現場視天候風速購票升空。", stay: "約 1 小時", accent: "teal" },
+    beaugrenelle: { region: "Paris", title: "Beaugrenelle Paris & Fnac", local: "博格內爾現代商場與 Fnac", kicker: "現代鋼構商場・Fnac 旗艦店・冷氣休憩", intro: "塞納河左岸的雙棟鋼構商場，設有採光天井、大型 Fnac（3C 與文化商品店）以及多家餐廳，適合作為午後採買與休息點。", stay: "約 1 到 1.5 小時", accent: "coral" },
+    ballon: { region: "Paris", title: "Ballon de Paris Generali (Parc André Citroën)", local: "雪鐵龍公園・巴黎大氣球", kicker: "繫留氦氣球・150M 空中全景・空氣科學實驗室", intro: "雪鐵龍公園內的繫留式氦氣球，垂直升空至 150 公尺（約 50 層樓高），可於空中俯瞰巴黎市景；氣球同時搭載監測設備記錄空氣品質。免預約，現場視天候風速購票升空。", stay: "約 1 小時", accent: "teal" },
     francette: { region: "Paris", title: "Francette", local: "法蘭賽特水上餐廳", kicker: "塞納河船上餐廳・鐵塔景觀", intro: "停泊於艾菲爾鐵塔旁塞納河畔的景觀餐廳，可在水上近距離欣賞鐵塔夜景。", stay: "約 2 小時", accent: "coral" }
   },
   days: {
@@ -1042,13 +1042,13 @@ window.TRIP.placeDetails = {
   disgusting: { why: "將互動體驗、飲食文化與話題性結合，展覽形式特別。", booking: { state: "recommended", label: "門票・可先線上購票", note: "官方提供線上票，非強制預約，可現場或線上購買。", url: "https://disgustingfoodmuseum.com/buy-tickets-2/", cta: "官方線上購票" } },
   turning: { why: "以濱水散步欣賞 Malmö 當代地標建築與工業轉型社區。", booking: { state: "free", label: "外觀免費", note: "此行欣賞外觀與 Västra Hamnen 社區，不安排進塔。" } },
   eccv: { why: "本次旅程核心會議；9/10 專注主會議、Expo 與 Poster Session 發表。", booking: { state: "confirmed", label: "Registration: Paid", note: "Full Passport / Author Registration；實體 badge 於會場領取。" } },
-  experimentarium: { why: "動手操作展項豐富，貼近科技與互動體驗偏好；預留充足時間探索體驗。", booking: { state: "recommended", label: "門票・線上購票省 10%", note: "每日 09:30-17:00 開放；線上購票省 10%，指定日期有效，亦可現場購買。", url: "https://www.experimentarium.dk/plan-your-visit/", cta: "官方購票／開放時間" } },
+  experimentarium: { why: "以動手操作與互動科學為核心，展區範圍較大，適合保留半天時間參觀。", booking: { state: "recommended", label: "門票・線上購票省 10%", note: "每日 09:30-17:00 開放；線上購票省 10%，指定日期有效，亦可現場購買。", url: "https://www.experimentarium.dk/plan-your-visit/", cta: "官方購票／開放時間" } },
   enigma: { why: "通訊、電信與數位社會主題集中，規模適合輕鬆參觀。", booking: { state: "onsite", label: "門票・可現場購票", note: "一般參觀無需事先預約，現場購票即可。", url: "https://www.enigma.dk/en/visit-enigma", cta: "官方票務資訊" } },
   nyhavn: { why: "容易與 Strøget、王宮區與運河遊船串接的哥本哈根經典地標。", booking: { state: "free", label: "免費・免預約", note: "港區散步免費；遊船搭乘請參考運河遊船票券。" } },
   kongensnytorv: { why: "鄰近新港，將午餐、皇家劇院與地鐵轉乘集中於同一節點。", booking: { state: "free", label: "免費・免預約", note: "公共廣場；周邊店家與地鐵依各自時間運作。" } },
   stroget: { why: "從市中心通往中央車站的步行街，沿途匯集北歐設計品牌與咖啡館。", booking: { state: "free", label: "免費・免預約", note: "公共步行街，各店舖依營業時間運作。" } },
   tivoli: { why: "以歷史花園、老式建築、10 萬盞復古燈景與週五 Fredagsrock 音樂會氣氛為主；鄰近中央車站方便返回 Malmö。", booking: { state: "confirmed", label: "已購・指定日入園票", note: "已購買 09/11 指定日入園票；預計 18:30 入園欣賞夜景與音樂派對，實際入場依票面 QR code，不含遊樂設施 Ride Pass。", url: "https://shop.tivoli.dk/en/billetter-og-tivolikort/entre?date=11-9-2026", cta: "官方指定日期購票" } },
-  dac: { why: "憑 K7 通行證免費體驗 4 層樓高室內巨型溜滑梯（BLOX Slide）與港灣建築展，動線順暢緊湊。", booking: { state: "confirmed", label: "K7 通行證免費", note: "09/11（週五）開放 10:00-18:00；18 到 27 歲青年出示 K7 通行證免費入場；體驗 BLOX Slide 與港灣露台。", url: "https://dac.dk/en/visit/", cta: "官方開放時間與參觀資訊" } },
+  dac: { why: "憑 K7 通行證免費體驗 4 層樓高室內巨型溜滑梯（BLOX Slide）與港灣建築展，動線順路。", booking: { state: "confirmed", label: "K7 通行證免費", note: "09/11（週五）開放 10:00-18:00；18 到 27 歲青年出示 K7 通行證免費入場；體驗 BLOX Slide 與港灣露台。", url: "https://dac.dk/en/visit/", cta: "官方開放時間與參觀資訊" } },
   rosenborg: { why: "皇冠珠寶與王室宮殿集中在一座歷史城堡，適合了解丹麥王室歷史。", booking: { state: "confirmed", label: "K7 通行證免費／學生票 100 DKK", note: "09/11（週五）夏季開放 10:00-17:00；18 到 27 歲青年出示 K7 通行證享免費入場；同行者學生票為 100 DKK。", url: "https://denkongeligesamling.dk/en/rosenborg-castle/calendar/k7-seven-days-free-cultural-experiences-for-young-people", cta: "官方 K7 免費活動說明" } },
   torvehallerne: { why: "位於 Rosenborg 與圓塔附近，適合作為市中心散步路線的午餐站。", booking: { state: "free", label: "免費入場", note: "市場不需門票，各攤位自選消費。" } },
   roundtower: { why: "走平緩螺旋斜坡登頂 360 度俯瞰老城紅瓦屋頂，持 K7 通行證免費入場。", booking: { state: "confirmed", label: "K7 通行證免費", note: "09/11（週五）開放 10:00-20:00；18 到 27 歲青年出示 K7 通行證免費入場登頂（同行滿 28 歲者現場購買門票）。", url: "https://www.rundetaarn.dk/en/visit-us/", cta: "官方開放時間與規則" } },
@@ -1056,7 +1056,7 @@ window.TRIP.placeDetails = {
   amalienborg: { why: "八角廣場、衛兵交接與大理石教堂形成完整的王宮景觀軸線。", booking: { state: "recommended", label: "廣場與交接免費・博物館需購票", note: "重點為八角廣場與 12:00 衛兵交接（免費）；進博物館參觀才需購票。", url: "https://denkongeligesamling.dk/en/amalienborg-museum/tickets/", cta: "博物館官方購票" } },
   marmorkirken: { why: "座落於阿馬林堡宮正對面，順路參觀巴洛克挑高圓頂建築。", booking: { state: "free", label: "教堂免費・不排圓頂導覽", note: "9/12（週六）開放 10:00-17:00；教堂本體免費參觀。", url: "https://www.marmorkirken.dk/admission", cta: "官方開放時間" } },
   canal: { why: "衛兵交接與午餐後乘船遊覽運河港灣，輕鬆欣賞哥本哈根水上景色。", booking: { state: "advance", label: "鎖定 09/12 15:00 班次", note: "Nyhavn 3 出發，15:00-16:00 Classic Canal Tour；票價依日期與早鳥浮動，依指定日期頁確認班次。", url: "https://www.stromma.com/en-dk/copenhagen/sightseeing/sightseeing-by-boat/grand-tour/", cta: "官方預約購票" } },
-  saviour: { why: "戶外金色螺旋階梯景觀獨特，登頂可俯瞰哥本哈根全景。", booking: { state: "advance", label: "目標 09/12 16:30・學生票 53 DKK", note: "2026 每日開放 09:00-20:00，最後入場為關門前 30 分鐘；學生票 53 DKK。遇雨或強風會暫停開放。", url: "https://www.vorfrelserskirke.dk/taarn/tower/booking", cta: "官方預約登塔" } },
+  saviour: { why: "以戶外金色螺旋階梯為特色，登頂可俯瞰哥本哈根全景。", booking: { state: "advance", label: "目標 09/12 16:30・學生票 53 DKK", note: "2026 每日開放 09:00-20:00，最後入場為關門前 30 分鐘；學生票 53 DKK。遇雨或強風會暫停開放。", url: "https://www.vorfrelserskirke.dk/taarn/tower/booking", cta: "官方預約登塔" } },
   notre: { why: "安排於 15:00 聖徒禮拜堂後，兩組會合後共同參觀，結束後搭 RER B 直達飯店。", booking: { state: "free", label: "目標 09/14 16:30・官方免費預約", note: "教堂本體免費；官方免費預約時段通常在前一兩天或當天釋出。", url: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", cta: "官方免費預約" } },
   sainte: { why: "15:00 時段光線充足，彩繪玻璃璀璨；A 組參觀古監獄、B 組喝咖啡，於同一入口集合。", booking: { state: "advance", label: "目標 09/14 15:00 指定時段", note: "熱門時段容易額滿；A 組買聯票、B 組買單館票，皆選定 15:00 時段。", url: "https://tickets.monuments-nationaux.fr/fr-FR/produits-seances?famille=2129033746020404157&site=2035141861660400306", cta: "官方線上購票" } },
   latin: { why: "搭乘 RER B 直達盧森堡公園，上午向北漫步花園、先賢祠與索邦大學，順路抵達西岱島分組。", booking: { state: "free", label: "街區與花園免費", note: "先賢祠維持外觀欣賞，把時間留給午後西岱島分組與禮拜堂參觀。" } },
@@ -1075,11 +1075,11 @@ window.TRIP.placeDetails = {
   sacre: { why: "聖心堂、愛牆與蒙馬特街區可一次走訪，高地階梯前可俯瞰巴黎全景。", booking: { state: "onsite", label: "教堂免費・圓頂現場購票", note: "教堂本體免費；圓頂約 280 階且無電梯，僅現場購票。", url: "https://www.sacre-coeur-montmartre.com/en/info-and-visits/the-dome-tour/", cta: "圓頂參觀規則" } },
   grandpalais: { why: "鄰近香榭麗舍大道，若有感興趣之特展可安排入內欣賞玻璃穹頂建築。", booking: { state: "recommended", label: "外觀免費・展覽個別購票", note: "各展覽獨立售票，依官方節目表為準。", url: "https://www.grandpalais.fr/en", cta: "官方節目與票務" } },
   marais: { why: "歷史街區氛圍濃厚，獨立小店、藝廊與特色咖啡館林立。", booking: { state: "free", label: "街區免費・免預約", note: "個別店家與博物館依自身營業時間運作。" } },
-  bonmarche: { why: "左岸氛圍悠閒，欣賞 Eiffel 鋼構挑高中庭，相鄰的美食館適合挑選精緻伴手禮與法式頂級肉品食材。", booking: { state: "free", label: "免費入場", note: "百貨與美食館免門票，依營業時間開放。" } },
-  trocadero: { why: "艾菲爾鐵塔正對岸的高地觀景露台，午後順光拍攝鐵塔全景大合照的最佳視角，免門票免排隊。", booking: { state: "free", label: "戶外廣場・免費", note: "公共觀景露台與夏樂宮花園，24 小時自由開放。" } },
+  bonmarche: { why: "左岸氛圍悠閒，欣賞 Eiffel 鋼構挑高中庭，相鄰的美食館適合挑選伴手禮與在地食材。", booking: { state: "free", label: "免費入場", note: "百貨與美食館免門票，依營業時間開放。" } },
+  trocadero: { why: "位於艾菲爾鐵塔正對岸的高地露台，午後順光適合拍攝鐵塔全景合照，免門票免排隊。", booking: { state: "free", label: "戶外廣場・免費", note: "公共觀景露台與夏樂宮花園，24 小時自由開放。" } },
   cygnes: { why: "塞納河中島林蔭步道通風遮陽，西南端可近距離欣賞 1889 年原版青銅自由女神像。", booking: { state: "free", label: "島上步道・免費", note: "天鵝島全天免費開放散步，由比爾哈凱姆橋中段階梯進出。" } },
-  beaugrenelle: { why: "現代流線型鋼構綠能商場，設有大型 Fnac 旗艦店可逛科技 3C 選品，全室內強冷空調適合午後避熱小憩。", booking: { state: "free", label: "商場免費入場", note: "一般營業至 20:30，內部有多家肉類餐飲與咖啡館。" } },
-  ballon: { why: "全球最大繫留式氦氣球，垂直升空至 150 公尺（約 50 層樓高），空中俯瞰巴黎全景與遠眺鐵塔，兼具空氣品質科學監測功能。", booking: { state: "onsite", label: "現場視天候購票", note: "每日 09:00-20:00；成人約 20 歐元，免事先預約，現場視當日風速天候燈號售票搭乘。", url: "https://ballondeparis.com/", cta: "官方天候與票務" } },
+  beaugrenelle: { why: "設有大型 Fnac 與餐飲店家，全室內空調適合作為午後避熱與採買據點。", booking: { state: "free", label: "商場免費入場", note: "一般營業至 20:30，內部有多家肉類餐飲與咖啡館。" } },
+  ballon: { why: "繫留式氦氣球升空至 150 公尺高空俯瞰巴黎市區與鐵塔，同時具備空氣品質監測功能。", booking: { state: "onsite", label: "現場視天候購票", note: "每日 09:00-20:00；成人約 20 歐元，免事先預約，現場視當日風速天候燈號售票搭乘。", url: "https://ballondeparis.com/", cta: "官方天候與票務" } },
   francette: { why: "餐廳座落於艾菲爾鐵塔旁塞納河畔，已確認四人晚餐預約。", booking: { state: "confirmed", label: "已預約", note: "2026/09/15 19:00（4 位）；水上景觀餐廳。" } }
 };
 

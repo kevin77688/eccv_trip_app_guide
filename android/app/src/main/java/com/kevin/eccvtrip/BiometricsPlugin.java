@@ -210,7 +210,7 @@ public class BiometricsPlugin extends Plugin {
                 BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
                         .setTitle("啟用指紋快速出示")
                         .setSubtitle("感應 Samsung S23 指紋以安全綁定票券憑證")
-                        .setDescription("金鑰存放於 Samsung Knox 硬體安全晶片中，不具備密碼直接洩漏風險。")
+                        .setDescription("金鑰由 Samsung Knox 硬體晶片保護，不會洩漏密碼文字。")
                         .setNegativeButtonText("取消")
                         .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG)
                         .build();

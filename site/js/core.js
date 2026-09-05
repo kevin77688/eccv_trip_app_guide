@@ -686,9 +686,9 @@
         showPwaUpdateBanner(reg);
         return { supported: true, updated: true, message: "發現新版本，請點擊更新" };
       }
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260905-22）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-01）" };
     } catch (e) {
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260905-22）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260906-01）" };
     }
   }
 

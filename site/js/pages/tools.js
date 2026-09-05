@@ -1411,7 +1411,7 @@
             if (core.toast) core.toast("發現新版本，正在套用更新…");
             setTimeout(() => window.location.reload(), 800);
           } else {
-            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260905-22）");
+            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260906-01）");
           }
         } catch (_) {
           if (core.toast) core.toast("檢查更新失敗，請確認網路連線");
@@ -1941,20 +1941,20 @@
       <section class="tools-block content-section tools-update-section" id="tools-update">
         <div class="section-heading-row">
           <div>${sectionHeading(isNative ? "APP MAINTENANCE" : "PWA MAINTENANCE", isNative ? "Android 獨立 App 版本與維護" : "PWA 網頁版更新與離線維護", isNative ? "App 頁面內建於安裝檔中；若有最新修改可在此更新或清除舊快取。" : "支援 Service Worker 離線快取；若 GitHub 有發布更新可在此檢查或重整。")}</div>
-          <span class="result-count">${isNative ? "Android APK · v20260905-22" : "PWA 網頁版 · v20260905-22"}</span>
+          <span class="result-count">${isNative ? "Android APK · v20260906-01" : "PWA 網頁版 · v20260906-01"}</span>
         </div>
         <div class="tools-update-card">
           <div class="tools-update-copy">
             <strong>${isNative ? "Android 獨立 APK 離線維護說明" : "PWA 漸進式網頁版本與離線快取說明"}</strong>
-            <p>${isNative ? "本 Android App 採用離線獨立打包架構，所有網頁與離線資源已完整編譯封裝於安裝檔中，無網路環境亦可隨時查閱。本機安裝檔不會自動透過 PWA 下載遠端網頁更新。您可以：" : "您目前正在使用 PWA 網頁版。本站支援離線快取技術，已將全站行程、離線地圖與工具快取於本機裝置，即使無網路也能順暢瀏覽。您可以："}</p>
+            <p>${isNative ? "本 App 為獨立打包，所有網頁與離線資源已內建於安裝檔中，無網路環境亦可隨時查閱。本機安裝檔不會自動下載遠端網頁更新。操作選項：" : "目前使用 PWA 網頁版。已將行程、離線地圖與工具快取於本機裝置，無網路時亦可瀏覽。操作選項："}</p>
             <ul>
               ${isNative ? `
-                <li><strong>安裝新版 APK 後快取異常</strong>：點擊「清除快取並重啟 App」，徹底清除 WebView 暫存並重啟（保留您的行李勾選與設定）。</li>
-                <li><strong>想立即獲得最新功能</strong>：點擊「下載最新 APK 安裝檔」直接覆蓋升級，或點擊「開啟線上最新版」在瀏覽器體驗最新版。</li>
+                <li><strong>安裝新版 APK 後快取異常</strong>：點擊「清除快取並重啟 App」，清除 WebView 暫存並重啟（保留行李勾選與設定）。</li>
+                <li><strong>下載最新版安裝檔</strong>：點擊「下載最新 APK 安裝檔」覆蓋升級，或點擊「開啟線上最新版」在瀏覽器查看。</li>
               ` : `
-                <li><strong>檢查遠端是否有新發布</strong>：點擊「檢查更新並重新整理」，系統會連線 GitHub Pages 檢查是否有新版本發布，若有新資源將自動套用。</li>
-                <li><strong>網頁快取異常或需強制刷新</strong>：點擊「清除快取並強制重整」，會徹底清理過期離線快取並重新載入最新頁面（保留您的行李清單與個人設定）。</li>
-                <li><strong>安裝 Android 獨立 App</strong>：若需要在 Android 手機獲得最佳離線體驗與 Knox 指紋出示，可下載專屬 APK 安裝檔。</li>
+                <li><strong>檢查遠端是否有新發布</strong>：點擊「檢查更新並重新整理」，系統會檢查 GitHub Pages 是否有新資源，若有將自動套用。</li>
+                <li><strong>快取異常或需強制刷新</strong>：點擊「清除快取並強制重整」，會清理過期離線快取並重新載入（保留行李清單與個人設定）。</li>
+                <li><strong>安裝 Android 獨立 App</strong>：若需要在 Android 手機使用離線瀏覽與 Knox 指紋出示，可下載專屬 APK 安裝檔。</li>
               `}
             </ul>
           </div>

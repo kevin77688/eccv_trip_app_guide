@@ -235,7 +235,7 @@
         <div class="souvenirs-hero-copy">
           <span class="eyebrow light">SOUVENIRS & GIFTS GUIDE · 採買推薦</span>
           <h2>精選伴手禮採買指南</h2>
-          <p>與個人行李打包徹底隔離分流。精選北歐與法國代表性選品，分為一人一份的「精選主題風格禮包」與公用桌分享的「團隊零食分享包」，均附實物相片、預算估計與採買建議。</p>
+          <p>整理北歐與法國代表性選品，分為一人一份的主題禮包與辦公室公用桌分享零食，附參考預算與採買地點。</p>
         </div>
         <div class="souvenirs-hero-chips">
           <span class="souvenir-stat-chip">🎁 4 款精選主題禮包</span>
@@ -257,7 +257,7 @@
           <div>
             <span class="eyebrow">THEME GIFT PACKS · 一人一份</span>
             <h2>精選主題風格禮包</h2>
-            <p>單人預算約 NT$1,000～1,500（約 200～350 DKK / SEK），當地代表性強、包裝質感高，適合致贈摯友或職場 Mentor。</p>
+            <p>單人預算約 NT$1,000～1,500（約 200～350 DKK / SEK），包裝與代表性完整，適合送給重要朋友或合作夥伴。</p>
           </div>
           <span class="souvenir-group-count">4 款選品</span>
         </div>
@@ -269,7 +269,7 @@
           <div>
             <span class="eyebrow">OFFICE & TEAM PANTRY · 零食公用桌</span>
             <h2>團隊零食分享包</h2>
-            <p>總預算約 NT$400～500（約 140 SEK），直接放辦公室公用桌供多人享用。80% 瑞典國民安全牌美味 ＋ 20% 文化衝擊冒險體驗。</p>
+            <p>總預算約 NT$400～500（約 140 SEK），可直接放辦公室公用桌分食。以大眾喜愛的瑞典國民零食為主，搭配一款特色鹹甘草糖。</p>
           </div>
           <span class="souvenir-group-count">4 款選品</span>
         </div>
