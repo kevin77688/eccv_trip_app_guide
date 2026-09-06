@@ -45,7 +45,6 @@ window.TRIP = {
         capacity: "飛機・機場・火車・飯店",
         items: [
           { id: "macbook", group: "3C／電器", name: "MacBook" },
-          { id: "ipad", group: "3C／電器", name: "iPad" },
           { id: "xm6", group: "3C／電器", name: "Sony WH-1000XM6 耳機" },
           { id: "airplane-cable", group: "3C／電器", name: "3.5 mm 飛機耳機線" },
           { id: "gan-charger", group: "3C／電器", name: "GaN 充電器" },

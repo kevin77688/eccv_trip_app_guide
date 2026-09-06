@@ -387,7 +387,7 @@
         </section>
 
         <section class="packing-safety content-section">
-          <div><span class="eyebrow">CABIN ONLY</span><h2>這些絕對不要托運。</h2><p>護照、現金、信用卡、藥品、MacBook、iPad、XM6 與行動電源都留在身上或後背包。</p></div>
+          <div><span class="eyebrow">CABIN ONLY</span><h2>這些絕對不要托運。</h2><p>護照、現金、信用卡、藥品、MacBook、XM6 與行動電源都留在身上或後背包。</p></div>
           <div class="packing-source-links"><small>航空規則最後確認：${esc(packing.lastChecked)}</small>${sourceLinks}</div>
         </section>
       </div>
