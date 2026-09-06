@@ -48,22 +48,33 @@
     window.dispatchEvent(new Event('tickets-changed'));
     return verified.length;
   }
-  async function get(name) {
+  async function get(name, { localOnly = false } = {}) {
+    if (!trip.ticketDigests?.[name]) throw new Error('找不到這份票券。');
     const saved = await read(name).catch(() => null);
-    if (saved) return validate(name, saved);
-    const url = window.ECCV_CORE.assetPath(`assets/tickets/${name}`);
-    // Existing installations may already have a cached or bundled copy.
-    const cached = 'caches' in window ? await caches.match(url) : null;
-    if (cached) return validate(name, await cached.arrayBuffer());
-    if (window.ECCV_ANDROID?.isNative()) {
-      const response = await fetch(url);
-      if (response.ok) return validate(name, await response.arrayBuffer());
+    if (saved) {
+      try { return await validate(name, saved); } catch (_) { /* Try the current bundled file if an older import no longer matches. */ }
     }
-    throw new Error('這台裝置尚未匯入此票券。請先選擇對應的 .enc 檔。');
+    const url = window.ECCV_CORE.assetPath(`assets/tickets/${name}`);
+    try {
+      const cached = 'caches' in window ? await caches.match(url, { ignoreSearch: true }) : null;
+      if (cached) return await validate(name, await cached.arrayBuffer());
+    } catch (_) { /* A stale cache must not prevent reading the current bundle. */ }
+    if (!localOnly || window.ECCV_ANDROID?.isNative()) {
+      try {
+        const response = await fetch(`${url}?v=${trip.ticketDigests[name]}`);
+        if (response.ok) {
+          const buffer = await validate(name, await response.arrayBuffer());
+          // Keep website tickets available on later offline visits, even before PWA installation finishes.
+          try { await save([{ name, arrayBuffer: async () => buffer }]); } catch (_) { /* The bundled file can still be shown when storage is unavailable. */ }
+          return buffer;
+        }
+      } catch (_) { /* Show the recoverable error below. */ }
+    }
+    throw new Error('票券暫時無法載入。網頁版請連線後重試；App 請確認已安裝最新版。');
   }
   async function availability() {
     return Promise.all((trip.tickets || []).filter(t => !t.hidden).map(async ticket => {
-      try { await get(ticket.encFile); return { ticket, ready: true }; }
+      try { await get(ticket.encFile, { localOnly: true }); return { ticket, ready: true }; }
       catch (_) { return { ticket, ready: false }; }
     }));
   }

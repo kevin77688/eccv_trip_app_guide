@@ -5,7 +5,7 @@
 - Always read `trip.md` and repository memory `/memories/repo/workflow.md` before planning, researching, designing, or changing this project. No reminder is needed from the user.
 - The deployed static website lives in `site/`. Trip content is primarily stored in `site/js/data.js` and rendered through the HTML pages by `site/js/app.js`.
 - Treat `pdf/` as original booking evidence. Re-check official sources before changing volatile facts such as schedules, fares, opening hours, construction, entry rules, or baggage policies.
-- Security & Privacy: Never track `pdf/` or `site/assets/tickets/*.enc` in Git. Keep passwords and passenger PII strictly masked and out of the Git tree.
+- Security & Privacy: Never track `pdf/` or original PDFs in Git. The user explicitly authorized restoring `site/assets/tickets/*.enc` on 2026-09-06 so encrypted tickets are included in both the website and APK and open without manual import. Keep these encrypted assets tracked and bundled. Keep passwords and passenger PII strictly masked and out of the Git tree.
 
 ## Mandatory synchronization
 

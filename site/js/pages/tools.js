@@ -1419,7 +1419,7 @@
             if (core.toast) core.toast("發現新版本，正在套用更新…");
             setTimeout(() => window.location.reload(), 800);
           } else {
-            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260906-10）");
+            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260906-11）");
           }
         } catch (_) {
           if (core.toast) core.toast("檢查更新失敗，請確認網路連線");
@@ -1989,12 +1989,12 @@
       <section class="tools-block content-section tools-update-section" id="tools-update">
         <div class="section-heading-row">
           <div>${sectionHeading(isNative ? "APP MAINTENANCE" : "PWA MAINTENANCE", isNative ? "Android 獨立 App 版本與維護" : "PWA 網頁版更新與離線維護", isNative ? "App 頁面內建於安裝檔中；若有最新修改可在此更新或清除舊快取。" : "支援 Service Worker 離線快取；若 GitHub 有發布更新可在此檢查或重整。")}</div>
-          <span class="result-count">${isNative ? "Android APK · v20260906-10" : "PWA 網頁版 · v20260906-10"}</span>
+          <span class="result-count">${isNative ? "Android APK · v20260906-11" : "PWA 網頁版 · v20260906-11"}</span>
         </div>
         <div class="tools-update-card">
           <div class="tools-update-copy">
             <strong>${isNative ? "Android 獨立 APK 離線維護說明" : "PWA 漸進式網頁版本與離線快取說明"}</strong>
-            <p>${isNative ? "行程隨 APK 安裝。功能或內容更新時，請下載新版 APK 覆蓋安裝；私人票券需另行匯入。" : "網站會在連線時儲存離線檔案。請以上方檢查結果確認是否完成，私人票券需另行匯入。"}</p>
+            <p>${isNative ? "行程與票券隨 APK 安裝，不必另外匯入。功能或內容更新時，請下載新版 APK 覆蓋安裝。" : "網站已附上票券，連線時會儲存離線檔案。請以上方檢查結果確認是否完成。"}</p>
             <ul>
               ${isNative ? `
                 <li><strong>安裝新版 APK 後快取異常</strong>：點擊「清除快取並重啟 App」，清除 WebView 暫存並重啟（保留行李勾選與設定）。</li>

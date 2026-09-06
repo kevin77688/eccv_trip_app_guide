@@ -1,6 +1,22 @@
-const CACHE_NAME = 'eccv-guide-v20260906-10';
+const CACHE_NAME = 'eccv-guide-v20260906-11';
+
+// Bundled encrypted tickets, generated from data.js.
+const TICKET_ASSETS = [
+  "./assets/tickets/arc-de-triomphe.enc",
+  "./assets/tickets/church-our-saviour.enc",
+  "./assets/tickets/ek367-boarding-pass.enc",
+  "./assets/tickets/emirates-flights.enc",
+  "./assets/tickets/first-camp.enc",
+  "./assets/tickets/k7-pass.enc",
+  "./assets/tickets/louvre.enc",
+  "./assets/tickets/ryanair-fr9267.enc",
+  "./assets/tickets/sainte-chapelle.enc",
+  "./assets/tickets/stromma-canal-tour.enc",
+  "./assets/tickets/versailles.enc"
+];
 
 const STATIC_ASSETS = [
+  ...TICKET_ASSETS,
   './',
   './index.html',
   './logistics.html',

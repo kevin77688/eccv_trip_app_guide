@@ -42,7 +42,7 @@
         status('[data-offline-tickets]', async () => {
           const files = await window.ECCV_TICKET_STORE.availability();
           const ready = files.filter(file => file.ready).length;
-          return `${ready} / ${files.length} 份已在這台裝置${ready < files.length ? '，請匯入缺少的票券' : '，出示時仍需密碼'}`;
+          return `${ready} / ${files.length} 份可離線使用${ready < files.length ? '，請連線後重試或更新 App' : '，出示時仍需密碼'}`;
         }),
         status('[data-offline-languages]', async () => {
           const translator = window.ECCV_ANDROID?.getOfflineTranslator();

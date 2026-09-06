@@ -3,6 +3,11 @@ const path = require('node:path');
 const version = process.argv[2];
 if (!/^\d{8}-\d{2}$/.test(version || '')) throw new Error('Usage: node scripts/sync-version.cjs YYYYMMDD-NN');
 const site = path.join(__dirname, '../site');
+const vm = require('node:vm');
+const dataContext = { window: {} };
+vm.createContext(dataContext);
+vm.runInContext(fs.readFileSync(path.join(site, 'js/data.js'), 'utf8'), dataContext);
+const ticketAssets = Object.keys(dataContext.window.TRIP.ticketDigests || {}).map(name => `./assets/tickets/${name}`);
 for (const directory of [site, path.join(site, 'days')]) {
   for (const name of fs.readdirSync(directory).filter(name => name.endsWith('.html'))) {
     const file = path.join(directory, name);
@@ -23,6 +28,11 @@ for (const directory of [site, path.join(site, 'days')]) {
 for (const relative of ['sw.js', 'js/core.js', 'js/pages/tools.js']) {
   const file = path.join(site, relative);
   let text = fs.readFileSync(file, 'utf8').replace(/v\d{8}-\d{2}/g, `v${version}`);
+  if (relative === 'sw.js') {
+    const ticketList = `// Bundled encrypted tickets, generated from data.js.\nconst TICKET_ASSETS = ${JSON.stringify(ticketAssets, null, 2)};`;
+    if (text.includes('const TICKET_ASSETS =')) text = text.replace(/\/\/ Bundled encrypted tickets, generated from data.js\.\nconst TICKET_ASSETS = \[[\s\S]*?\];/, ticketList);
+    else text = text.replace('const STATIC_ASSETS = [', `${ticketList}\n\nconst STATIC_ASSETS = [\n  ...TICKET_ASSETS,`);
+  }
   if (relative === 'sw.js' && !text.includes("'./css/ux.css'")) text = text.replace("'./css/styles.css',", "'./css/styles.css',\n  './css/ux.css',");
   if (relative === 'sw.js' && !text.includes("'./js/journey.js'")) text = text.replace("'./js/core.js',", "'./js/core.js',\n  './js/journey.js',");
   for (const module of ['ticket-store', 'essentials', 'offline']) if (relative === 'sw.js' && !text.includes(`'./js/${module}.js'`) && fs.existsSync(path.join(site, `js/${module}.js`))) text = text.replace("'./js/app.js',", `'./js/app.js',\n  './js/${module}.js',`);

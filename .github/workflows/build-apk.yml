@@ -41,6 +41,10 @@ jobs:
       - name: Sync web assets to Android project
         run: npx cap sync android
 
+      - name: Verify native selection popup themes
+        working-directory: android
+        run: ./gradlew :app:testDebugUnitTest --tests com.kevin.eccvtrip.SelectionThemeTest --console=plain
+
       - name: Build Android Debug APK
         run: |
           cd android
@@ -70,7 +74,7 @@ jobs:
 
           - 14 天行程提供「現在的安排／接下來」、日期切換，以及票券和導航捷徑；時間依各地時區顯示。
           - 「隨身資訊」集中放票券、住宿與緊急聯絡；行李清單有 67 項，預設顯示還沒收的物品。
-          - 行程內建於 APK。私人票券不附在安裝檔，請到「交通 → 票券」匯入自己的 .enc 檔，出示時仍需密碼。
+          - 行程與加密票券內建於 APK，不必另外匯入；出示票券時仍需密碼或已設定的指紋。
           - 「小工具 → 設定」可檢查離線準備。離線翻譯由 [Google Translate](https://translate.google.com/) 提供技術支援，請先連上 Wi-Fi，在「翻譯」下載約 180 MB 語言包。
 
           **下載方式**：點擊下方 Assets 中的 `ECCV-2026-Guide.apk` 即可直接在 Android 手機上下載並安裝。

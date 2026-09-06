@@ -22,7 +22,7 @@ const fs = require('node:fs');
     await page.evaluate(async () => { await navigator.serviceWorker.ready; });
     await page.locator('.tools-quick-links a[href="#tools-update"]').click();
     await page.waitForFunction(() => document.querySelector('[data-offline-itinerary]')?.textContent.includes('已儲存'));
-    assert.match(await page.locator('[data-offline-tickets]').textContent(), /0 \/ 10/);
+    await page.waitForFunction(() => document.querySelector('[data-offline-tickets]')?.textContent.includes('10 / 10'));
     assert.match(await page.locator('[data-offline-languages]').textContent(), /Android App/);
     await page.screenshot({ path: `${output}/phone-readiness.png`, animations: 'disabled' });
     await context.setOffline(true);
@@ -32,6 +32,7 @@ const fs = require('node:fs');
       assert.ok(await page.locator('.page-shell').innerText());
     }
     await page.waitForFunction(() => document.querySelector('[data-offline-itinerary]')?.textContent.includes('已儲存'));
+    assert.equal(await page.evaluate(async () => (await window.ECCV_TICKET_STORE.availability()).every(file => file.ready)), true);
     const result = await page.evaluate(() => window.ECCV_CORE.checkPwaUpdate());
     assert.match(result.message, /無法確認/);
     await page.locator('.tools-quick-links a[href="#tools-translate"]').click();

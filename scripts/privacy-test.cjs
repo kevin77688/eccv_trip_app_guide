@@ -5,14 +5,18 @@ const { execFileSync } = require('node:child_process');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
 const tracked = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8' }).split('\0');
-assert.equal(tracked.some(file => file.startsWith('pdf/') || file.endsWith('.pdf') || /^site\/assets\/tickets\/.*\.enc$/.test(file)), false, 'Private booking files must not be tracked');
+assert.equal(tracked.some(file => file.startsWith('pdf/') || file.endsWith('.pdf')), false, 'Original booking PDFs must not be tracked');
 const context = { window: {} }; vm.createContext(context);
 const source = fs.readFileSync(path.join(root, 'site/js/data.js'), 'utf8');
 vm.runInContext(source, context);
+const crypto = require('node:crypto');
+const encryptedPaths = Object.keys(context.window.TRIP.ticketDigests).map(name => `site/assets/tickets/${name}`);
+assert.deepEqual(tracked.filter(file => file.endsWith('.enc')).sort(), encryptedPaths.sort(), 'Only the explicitly authorized encrypted ticket bundle must be tracked');
+for (const [name, hash] of Object.entries(context.window.TRIP.ticketDigests)) assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'site/assets/tickets', name))).digest('hex'), hash, 'Bundled ticket must match its expected checksum');
 for (const flight of context.window.TRIP.flights) for (const passenger of flight.passengers || []) assert.match(passenger.name, /^同行者 \d+$/, 'Passenger names must be masked');
 for (const ticket of context.window.TRIP.tickets) {
   assert.match(context.window.TRIP.ticketDigests[ticket.encFile], /^[0-9a-f]{64}$/, 'Every ticket needs an import checksum');
   for (const detail of ticket.details || []) if (/姓名|票號|訂位代號|預訂編號/.test(detail.label)) assert.equal(detail.value, '已遮蔽', 'Booking identifiers must be masked');
 }
 for (const text of [source, fs.readFileSync(path.join(root, 'trip.md'), 'utf8')]) assert.equal(/\bPIN(?:\s*碼)?\s*[:：]\s*`?\d+/i.test(text), false, 'Booking PIN must be masked');
-console.log('Privacy checks passed: private files excluded, identifiers masked, and import checksums present.');
+console.log('Privacy checks passed: original PDFs excluded, encrypted bundle verified, and identifiers masked.');

@@ -336,7 +336,7 @@
 
         <div class="ticket-modal-body" id="ticket-modal-body">
           <div class="ticket-prompt-view" id="ticket-prompt-view">
-            <section class="ticket-import-box"><p data-ticket-availability role="status">正在確認這台裝置的票券…</p><label class="button button-secondary ticket-import-label">匯入票券檔<input type="file" accept=".enc" data-ticket-import data-ticket-expected="${esc(ticket.encFile)}" /></label><small>選擇 ${esc(ticket.encFile)}，只會儲存在這台裝置。</small><p data-ticket-import-status role="status"></p></section>
+            <section class="ticket-import-box"><p data-ticket-availability role="status">正在載入內建票券…</p><details data-ticket-import-options hidden><summary>備用匯入</summary><label class="button button-secondary ticket-import-label">選擇票券檔<input type="file" accept=".enc" data-ticket-import data-ticket-expected="${esc(ticket.encFile)}" /></label><small>選擇 ${esc(ticket.encFile)}，只會儲存在這台裝置。</small><p data-ticket-import-status role="status"></p></details></section>
             <div class="ticket-biometric-card" id="ticket-biometric-card" hidden>
               <div class="ticket-biometric-icon" id="ticket-bio-icon" aria-hidden="true">👆</div>
               <div class="ticket-biometric-info">
@@ -399,9 +399,12 @@
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleModalKeydown);
     window.ECCV_TICKET_STORE.get(ticket.encFile).then(() => {
-      if (modal.isConnected) modal.querySelector('[data-ticket-availability]').textContent = '票券已在這台裝置，可離線出示。';
+      if (modal.isConnected) modal.querySelector('[data-ticket-availability]').textContent = '票券已載入，輸入密碼或使用指紋即可出示。';
     }).catch(() => {
-      if (modal.isConnected) modal.querySelector('[data-ticket-availability]').textContent = '尚未匯入此票券，請先選擇下方檔案。';
+      if (modal.isConnected) {
+        modal.querySelector('[data-ticket-availability]').textContent = '票券暫時無法載入，請連線後重試，或使用備用匯入。';
+        modal.querySelector('[data-ticket-import-options]').hidden = false;
+      }
     });
 
     function setModalMaximized(maximized) {
