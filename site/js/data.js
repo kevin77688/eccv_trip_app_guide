@@ -808,14 +808,17 @@ window.TRIP = {
   },
   days: {
     "09-06": {
-      date: "2026/09/06", weekday: "週日", city: "台北 → 杜拜", cityKey: "travel", title: "深夜啟程，飛往杜拜", summary: "晚上到桃園機場 T2 辦理報到、托運與安檢出境，23:50 搭乘阿聯酋航空 EK 367 跨夜飛往杜拜。", stay: "機上", tone: "coral",
+      date: "2026/09/06", weekday: "週日", city: "台北 → 杜拜", cityKey: "travel", title: "深夜啟程，飛往杜拜", summary: "晚上從古亭捷運站出發至北門轉乘機捷直達車，20:50 抵達桃機 T2 辦理報到、托運與安檢出境，23:50 搭乘阿聯酋航空 EK 367 跨夜飛往杜拜。", stay: "機上", tone: "coral",
       schedule: [
+        { time: "19:25 - 19:40", icon: "🚆", title: "古亭捷運站 → 松山新店線 → 北門站", detail: "19:25 於古亭站刷卡進站，搭乘松山新店線（往松山方向，車程約 7 分鐘）直達北門站。", tag: "捷運" },
+        { time: "19:40 - 20:00", icon: "🚶", title: "北門站地下連通道 → 機捷 A1 台北車站", detail: "從北門站經地下連通道步行約 7 分鐘抵達機捷 A1 站，刷卡進站並於直達車月台候車。", tag: "轉乘" },
+        { time: "20:00 - 20:45", icon: "🚆", title: "機捷 A1 → 直達車 → 桃園機場 T2 (A13)", detail: "搭乘 20:00 發車之機捷直達車（車程 39 分鐘），20:39 抵達 A13，搭電梯上 3 樓出境大廳。", tag: "機捷" },
         { time: "20:50 - 22:20", icon: "✈", title: "抵達桃機 T2、阿聯酋報到與行李托運", detail: "20:50 抵達第二航廈，辦理報到手續與 20 kg 行李托運；托運櫃檯截止時間為 22:20。", tag: "報到", ticketId: "ek367-boarding-pass" },
         { time: "22:20 - 22:50", icon: "⌁", title: "安全檢查與證照查驗", detail: "完成出境安檢與通關，安檢截止時間為 22:50；提前前往登機門準備。", tag: "通關" },
         { time: "23:05 - 23:50", icon: "✈", title: "登機門開放與登機 (EK 367)", detail: "登機門 23:05 開放，出示電子登機證條碼登機；座位 49C（經濟艙 Preferred seat），23:50 準時起飛。", tag: "航班", ticketId: "ek367-boarding-pass" },
         { time: "飛行中", icon: "☾", title: "台北 TPE → 杜拜 DXB 跨夜飛行", detail: "飛行時間約 8 小時 45 分，機上休息；預計杜拜時間 09/07 04:35 抵達。", tag: "機上" }
       ],
-      transport: { duration: "跨夜飛行約 8 小時 45 分", steps: ["桃園機場 T2", "阿聯酋航空 EK 367", "杜拜機場 T3"], note: "航點時間為當地時間；登機證條碼離線存於 App。" }, places: [], note: "登機證 49C 已入庫；第一段行程以長途飛行休息為主。"
+      transport: { duration: "市區至機場約 1 小時 20 分；跨夜飛行約 8 小時 45 分", steps: ["古亭捷運站", "松山新店線 → 北門站", "地下連通道 → 機捷 A1", "機捷直達車 → 桃機 T2", "阿聯酋航空 EK 367", "杜拜機場 T3"], note: "機捷直達車每 15 分鐘一班；登機證條碼離線存於 App。" }, places: [], note: "19:25 古亭出發，搭 20:00 機捷直達車直達桃機 T2；登機證 49C 已入庫。"
     },
     "09-07": {
       date: "2026/09/07", weekday: "週一", city: "杜拜 → 哥本哈根 → Malmö", cityKey: "malmo", title: "抵達北歐，入住 Malmö", summary: "杜拜轉機後搭乘 EK 151 抵達哥本哈根，直接搭火車跨海前往 Malmö，搭 Bus 9 入住 First Camp Sibbarp。", stay: "First Camp Sibbarp-Malmö", tone: "teal",
@@ -1416,15 +1419,31 @@ window.TRIP.placeVisuals = {
 
 window.TRIP.routeMaps = {
   "09-06": {
-    defaultGroup: "flight",
-    groups: [{
-      id: "flight", label: "跨夜飛行", note: "航線為示意弧線；機場動線以現場登機門為準。",
-      stops: [
-        { time: "23:50", label: "桃園機場 T2", detail: "EK 367 起飛", lat: 25.0797, lng: 121.2342, status: "fixed" },
-        { time: "09/07 04:35", label: "杜拜機場 T3", detail: "抵達並轉機", lat: 25.2532, lng: 55.3657, status: "transfer" }
-      ],
-      legs: [{ mode: "flight", label: "EK 367・約 8 小時 45 分" }]
-    }]
+    defaultGroup: "transit",
+    groups: [
+      {
+        id: "transit", label: "古亭至桃機 T2", note: "松山新店線至北門站，走地下連通道至機捷 A1 搭直達車。",
+        stops: [
+          { time: "19:25", label: "古亭捷運站", detail: "松山新店線進站", lat: 25.0264, lng: 121.5229, status: "start" },
+          { time: "19:35", label: "北門站", detail: "地下連通道轉乘", lat: 25.0494, lng: 121.5113, status: "transfer" },
+          { time: "19:45", label: "機捷 A1 台北車站", detail: "直達車月台候車", lat: 25.0480, lng: 121.5135, status: "transfer" },
+          { time: "20:39", label: "桃園機場 T2 (A13)", detail: "出站前往 3F 出境大廳", lat: 25.0797, lng: 121.2342, status: "fixed" }
+        ],
+        legs: [
+          { mode: "metro", label: "松山新店線・約 7 分" },
+          { mode: "walk", label: "地下連通道・約 7 分" },
+          { mode: "train", label: "機捷直達車・約 39 分" }
+        ]
+      },
+      {
+        id: "flight", label: "跨夜飛行", note: "航線為示意弧線；機場動線以現場登機門為準。",
+        stops: [
+          { time: "23:50", label: "桃園機場 T2", detail: "EK 367 起飛", lat: 25.0797, lng: 121.2342, status: "fixed" },
+          { time: "09/07 04:35", label: "杜拜機場 T3", detail: "抵達並轉機", lat: 25.2532, lng: 55.3657, status: "transfer" }
+        ],
+        legs: [{ mode: "flight", label: "EK 367・約 8 小時 45 分" }]
+      }
+    ]
   },
   "09-07": {
     defaultGroup: "arrival",
@@ -1994,7 +2013,7 @@ window.TRIP.ticketDigests = {
 };
 
 window.TRIP.scheduleTiming = {
-  '09-06': { 3: { start: '2026-09-06T23:50:00+08:00', end: '2026-09-07T04:35:00+04:00', timezone: 'Asia/Taipei' } },
+  '09-06': { 6: { start: '2026-09-06T23:50:00+08:00', end: '2026-09-07T04:35:00+04:00', timezone: 'Asia/Taipei' } },
   '09-07': { 0: { timezone: 'Asia/Dubai' } },
   '09-18': { 4: { start: '2026-09-18T15:35:00+02:00', end: '2026-09-19T01:10:00+04:00', timezone: 'Europe/Paris' } },
   '09-19': {
