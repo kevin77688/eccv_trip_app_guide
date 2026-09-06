@@ -11,7 +11,7 @@ window.TRIP = {
     bags: [
       {
         id: "tiny",
-        number: "①",
+        number: "👜",
         label: "隨身小包",
         shortLabel: "小包",
         headline: "每天出門隨身攜帶，重要證件與隨時取用品",
@@ -26,16 +26,17 @@ window.TRIP = {
           { id: "phone", group: "隨身 3C", name: "手機" },
           { id: "power-bank", group: "隨身 3C", name: "行動電源" },
           { id: "pocket-tissues", group: "個人日用", name: "袖珍包衛生紙 ×2" },
-          { id: "umbrella", group: "個人日用", name: "摺疊傘" },
+          { id: "umbrella", group: "個人日用", name: "摺疊傘 (登機要放行李箱)" },
           { id: "thermos", group: "個人日用", name: "保溫瓶" },
           { id: "pen", group: "個人日用", name: "原子筆" },
           { id: "mask", group: "個人日用", name: "口罩" },
-          { id: "reusable-cutlery", group: "個人日用", name: "環保餐具" }
+          { id: "reusable-cutlery", group: "個人日用", name: "環保餐具 (登機要放行李箱)" },
+          { id: "selfie-stick", group: "個人日用", name: "自拍棒 (登機要放行李箱)" }
         ]
       },
       {
         id: "backpack",
-        number: "②",
+        number: "🎒",
         label: "後背包",
         shortLabel: "後背包",
         headline: "飛機、機場、火車、飯店使用，或貴重不可托運物品",
@@ -46,23 +47,26 @@ window.TRIP = {
           { id: "ipad", group: "3C／電器", name: "iPad" },
           { id: "xm6", group: "3C／電器", name: "Sony WH-1000XM6 耳機" },
           { id: "airplane-cable", group: "3C／電器", name: "3.5 mm 飛機耳機線" },
-          { id: "gan-charger", group: "3C／電器", name: "多孔 GaN 充電器" },
+          { id: "gan-charger", group: "3C／電器", name: "GaN 充電器" },
+          { id: "charging-cables", group: "3C／電器", name: "C-C & A-C 充電線" },
           { id: "eu-adapter-one", group: "3C／電器", name: "轉接頭" },
           { id: "pain-fever", group: "藥品／工具", name: "普拿疼" },
           { id: "allergy-medicine", group: "藥品／工具", name: "過敏藥" },
           { id: "medicine-gi", group: "藥品／工具", name: "腸胃藥" },
           { id: "scissors", group: "藥品／工具", name: "剪刀" },
+          { id: "nail-clipper-backpack", group: "藥品／工具", name: "指甲剪" },
+          { id: "luggage-scale", group: "藥品／工具", name: "行李電子秤" },
           { id: "neck-pillow", group: "機上／保暖", name: "旅行頸枕" },
           { id: "eye-mask", group: "機上／保暖", name: "遮光眼罩" },
           { id: "thermal-wear-cabin", group: "機上／保暖", name: "發熱衣 ×1" },
           { id: "warm-coat", group: "機上／保暖", name: "保暖外套" },
           { id: "glasses", group: "個人備援", name: "備用眼鏡" },
-          { id: "backup-card", group: "個人備援", name: "備用信用卡" }
+          { id: "backup-card", group: "個人備援", name: "備用信用卡 & 行李箱鑰匙" }
         ]
       },
       {
         id: "suitcase",
-        number: "③",
+        number: "🧳",
         label: "托運行李箱",
         shortLabel: "行李箱",
         headline: "衣物、生活用品、電器集中處",
@@ -76,7 +80,7 @@ window.TRIP = {
           { id: "underwear", group: "衣物", name: "內褲 ×5" },
           { id: "socks", group: "衣物", name: "襪子 ×7" },
           { id: "sleepwear", group: "衣物", name: "睡衣 ×3" },
-          { id: "rain-shell", group: "衣物", name: "防風防水外套" },
+          { id: "rain-shell", group: "衣物", name: "Goretex 外套" },
           { id: "blue-slippers", group: "衣物", name: "藍白拖" },
           { id: "toothbrush", group: "盥洗", name: "牙刷" },
           { id: "toothpaste", group: "盥洗", name: "牙膏" },
@@ -101,12 +105,10 @@ window.TRIP = {
           { id: "insurance-copy", group: "文件／備援", name: "保險影本" },
           { id: "id-copy", group: "文件／備援", name: "身分證影本" },
           { id: "passport-photos", group: "文件／備援", name: "2 寸照片" },
-          { id: "nail-clipper", group: "行李／其他", name: "指甲剪" },
-          { id: "luggage-scale", group: "行李／其他", name: "行李電子秤" },
           { id: "luggage-strap", group: "行李／其他", name: "行李束帶" },
-          { id: "luggage-tag", group: "行李／其他", name: "姓名牌" },
           { id: "clock", group: "行李／其他", name: "時鐘" },
-          { id: "selfie-stick", group: "行李／其他", name: "自拍棒" }
+          { id: "instant-noodles", group: "食品／零食", name: "泡麵(碗) x4" },
+          { id: "snacks", group: "食品／零食", name: "小零食" }
         ]
       }
     ],

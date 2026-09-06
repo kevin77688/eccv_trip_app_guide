@@ -361,9 +361,9 @@
 
             <div class="packing-bag-pills" role="tablist" aria-label="按包篩選行李清單">
               <button class="packing-bag-pill is-active" type="button" data-bag-filter="all">全部 <small><span data-bag-filter-count="all">0</span> 項</small></button>
-              <button class="packing-bag-pill" type="button" data-bag-filter="tiny">小包 <small data-bag-filter-count="tiny">0/0</small></button>
-              <button class="packing-bag-pill" type="button" data-bag-filter="backpack">後背包 <small data-bag-filter-count="backpack">0/0</small></button>
-              <button class="packing-bag-pill" type="button" data-bag-filter="suitcase">行李箱 <small data-bag-filter-count="suitcase">0/0</small></button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="tiny">👜 小包 <small data-bag-filter-count="tiny">0/0</small></button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="backpack">🎒 後背包 <small data-bag-filter-count="backpack">0/0</small></button>
+              <button class="packing-bag-pill" type="button" data-bag-filter="suitcase">🧳 行李箱 <small data-bag-filter-count="suitcase">0/0</small></button>
             </div>
 
             <details class="packing-options"><summary>編輯與備份</summary><div class="packing-toolbar-actions">

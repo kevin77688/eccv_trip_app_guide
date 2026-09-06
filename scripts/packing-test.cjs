@@ -40,7 +40,7 @@ const fs = require('node:fs');
       assert.equal(await page.locator('[data-packing-empty]').isVisible(), true);
       assert.equal(await page.locator('#bag-tiny .packing-group:visible').count(), 0);
       await page.locator('[data-packing-filter="all"]').click();
-      assert.equal(await page.locator('#bag-tiny [data-packing-item]:visible').count(), 13);
+      assert.equal(await page.locator('#bag-tiny [data-packing-item]:visible').count(), 14);
       assert.deepEqual(errors, []);
       await context.close();
     }

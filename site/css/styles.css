@@ -356,26 +356,35 @@ html[data-theme="dark"] .places-view-btn.is-active { background: #b64d37; color:
 .place-compact-map-btn:hover { background: #0e5a52; transform: scale(1.04); }
 .place-compact-map-btn:active { transform: scale(0.96); }
 .place-compact-expand-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--muted);
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(24, 48, 56, .22);
+  background: var(--surface-soft);
+  color: var(--ink);
   display: grid;
   place-items: center;
   cursor: pointer;
-  font-size: 13px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
   transition: all .15s ease;
 }
-.place-compact-expand-btn:hover { color: var(--ink); border-color: var(--teal); }
+.place-compact-expand-btn:hover { color: var(--teal); border-color: var(--teal); background: var(--surface); box-shadow: 0 2px 6px rgba(23, 109, 100, .18); }
 .place-browser.is-compact-mode .place-card:not(.is-expanded) .place-detail-section { display: none; }
 .place-browser.is-compact-mode .place-card.is-expanded {
   border-color: var(--teal);
   box-shadow: 0 4px 18px rgba(0,0,0,.08);
 }
+.place-browser.is-compact-mode .place-card.is-expanded .place-compact-expand-btn {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
 .place-browser.is-compact-mode .place-card.is-expanded .expand-icon {
   transform: rotate(180deg);
+}
+.expand-icon {
+  display: block;
+  transition: transform .2s ease;
 }
 .place-browser.is-compact-mode .place-card.is-expanded .place-detail-section {
   display: block;
@@ -1765,7 +1774,7 @@ a.schedule-card { cursor: pointer; }
 .packing-bags-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .packing-bag-nav-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: var(--shadow-soft); display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px; transition: transform .18s ease, border-color .18s ease; }
 .packing-bag-nav-card:hover { transform: translateY(-2px); border-color: var(--coral); }
-.bag-nav-number { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; font-size: 12px; font-weight: 900; flex-shrink: 0; color: #fff; }
+.bag-nav-number { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; font-size: 18px; line-height: 1; flex-shrink: 0; color: #fff; }
 .bag-nav-tiny .bag-nav-number { background: var(--coral); }
 .bag-nav-backpack .bag-nav-number { background: var(--teal); }
 .bag-nav-suitcase .bag-nav-number { background: var(--plum); }
@@ -1829,7 +1838,7 @@ html[data-theme="dark"] .packing-bag-pill.is-active { background: #b64d37; color
 .packing-bag-heading:hover .packing-bag-caret { border-color: var(--teal); color: var(--teal); }
 .packing-bag-section.is-collapsed .packing-bag-body { display: none; }
 .packing-bag-section.is-collapsed .packing-bag-heading { margin-bottom: 0; }
-.packing-bag-number { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 15px; background: var(--control-bg); color: var(--control-text); font-size: 12px; font-weight: 900; }
+.packing-bag-number { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 15px; background: var(--control-bg); color: var(--control-text); font-size: 24px; line-height: 1; }
 .packing-bag-heading h2 { margin: 5px 0 4px; font-size: 30px; line-height: 1.2; letter-spacing: -.025em; }
 .packing-bag-heading p { max-width: 760px; margin: 0; color: var(--muted); font-size: 13px; }
 .packing-bag-heading .packing-bag-headline { margin-bottom: 3px; color: var(--ink); font-size: 15px; font-weight: 850; }
@@ -2041,6 +2050,8 @@ html[data-theme="dark"] .ticket-button { background: #b64d37; color: #fff; }
 html[data-theme="dark"] .ticket-button:hover { background: #a84430; }
 html[data-theme="dark"] .map-button { background: #1d5f57; color: #fff; }
 html[data-theme="dark"] .map-button:hover { background: #26796f; }
+html[data-theme="dark"] .place-compact-expand-btn { border-color: rgba(255, 255, 255, .18); background: var(--surface-soft); color: #fff; }
+html[data-theme="dark"] .place-compact-expand-btn:hover { border-color: var(--teal); background: rgba(255, 255, 255, .12); color: #53b9aa; }
 html[data-theme="dark"] .passenger-manifest { background: var(--surface-soft); }
 html[data-theme="dark"] .day-kicker span,
 html[data-theme="dark"] .day-date-badge { background: rgba(255,255,255,.08); }
@@ -2686,7 +2697,7 @@ html[data-theme="dark"] .packing-view-tabs { background: var(--surface-soft); bo
   .packing-bags { margin-top: 36px; gap: 40px; }
   .packing-bag-section { scroll-margin-top: 132px; }
   .packing-bag-heading { grid-template-columns: 42px minmax(0, 1fr) auto; gap: 11px; padding: 6px 8px; margin-left: -8px; margin-right: -8px; }
-  .packing-bag-number { width: 42px; height: 42px; font-size: 11px; border-radius: 12px; }
+  .packing-bag-number { width: 42px; height: 42px; font-size: 20px; border-radius: 12px; }
   .packing-bag-heading h2 { font-size: 23px; }
   .packing-bag-heading p { font-size: 12.5px; }
   .packing-bag-heading .packing-bag-headline { font-size: 13.5px; }

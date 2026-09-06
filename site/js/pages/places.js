@@ -75,7 +75,7 @@
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
             <button class="place-compact-expand-btn" type="button" aria-expanded="false" aria-controls="place-details-${esc(id)}" aria-label="展開 ${esc(place.local || place.title)}" title="展開詳細資訊">
-              <span class="expand-icon" aria-hidden="true">▾</span>
+              <svg class="expand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </button>
           </div>
         </div>
