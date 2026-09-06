@@ -31,7 +31,8 @@ window.TRIP = {
           { id: "pen", group: "個人日用", name: "原子筆" },
           { id: "mask", group: "個人日用", name: "口罩" },
           { id: "reusable-cutlery", group: "個人日用", name: "環保餐具 (登機要放行李箱)" },
-          { id: "selfie-stick", group: "個人日用", name: "自拍棒 (登機要放行李箱)" }
+          { id: "selfie-stick", group: "個人日用", name: "自拍棒 (登機要放行李箱)" },
+          { id: "drink-carrier", group: "個人日用", name: "飲料提袋" }
         ]
       },
       {
@@ -53,8 +54,6 @@ window.TRIP = {
           { id: "pain-fever", group: "藥品／工具", name: "普拿疼" },
           { id: "allergy-medicine", group: "藥品／工具", name: "過敏藥" },
           { id: "medicine-gi", group: "藥品／工具", name: "腸胃藥" },
-          { id: "scissors", group: "藥品／工具", name: "剪刀" },
-          { id: "nail-clipper-backpack", group: "藥品／工具", name: "指甲剪" },
           { id: "luggage-scale", group: "藥品／工具", name: "行李電子秤" },
           { id: "neck-pillow", group: "機上／保暖", name: "旅行頸枕" },
           { id: "eye-mask", group: "機上／保暖", name: "遮光眼罩" },
@@ -108,6 +107,8 @@ window.TRIP = {
           { id: "passport-photos", group: "文件／備援", name: "2 寸照片" },
           { id: "luggage-strap", group: "行李／其他", name: "行李束帶" },
           { id: "clock", group: "行李／其他", name: "時鐘" },
+          { id: "scissors", group: "行李／其他", name: "剪刀" },
+          { id: "nail-clipper-suitcase", group: "行李／其他", name: "指甲剪" },
           { id: "instant-noodles", group: "食品／零食", name: "泡麵(碗) x4" },
           { id: "snacks", group: "食品／零食", name: "小零食" }
         ]
