@@ -1818,6 +1818,13 @@ a.schedule-card { cursor: pointer; }
 .packing-filters button { min-height: 34px; padding: 6px 11px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 800; cursor: pointer; }
 .packing-filters button.is-active { background: var(--control-bg); color: var(--control-text); }
 
+.packing-toolbar-controls { display: flex; align-items: center; gap: 8px; }
+.packing-quick-clear-btn { min-height: 34px; padding: 6px 13px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-soft); color: var(--ink); font-size: 11.5px; font-weight: 850; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all .16s ease; white-space: nowrap; }
+.packing-quick-clear-btn:hover { border-color: var(--coral); color: var(--coral-dark); }
+.packing-quick-clear-btn.is-revert { background: var(--coral); color: #fff; border-color: var(--coral); box-shadow: 0 2px 8px rgba(216, 93, 67, .25); font-weight: 900; }
+.packing-quick-clear-btn.is-revert:hover { background: var(--coral-dark); }
+html[data-theme="dark"] .packing-quick-clear-btn { background: var(--surface-soft); border-color: var(--line); color: var(--ink); }
+html[data-theme="dark"] .packing-quick-clear-btn.is-revert { background: #b64d37; color: #fff; border-color: #b64d37; }
 .packing-bag-pills { display: flex; align-items: center; gap: 7px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 2px; }
 .packing-bag-pill { min-height: 36px; padding: 6px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font-size: 12.5px; font-weight: 850; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all .15s ease; }
 .packing-bag-pill:hover { border-color: var(--teal); color: var(--teal); }

@@ -353,9 +353,12 @@
                 <strong><span data-packing-completed>0</span> / <span data-packing-total>0</span> 已完成</strong>
                 <small data-packing-visible>顯示 0 項</small>
               </div>
-              <div class="packing-filters" role="group" aria-label="篩選行李狀態">
-                <button class="is-active" type="button" data-packing-filter="all">全部</button>
-                <button type="button" data-packing-filter="todo">還沒收</button>
+              <div class="packing-toolbar-controls">
+                <div class="packing-filters" role="group" aria-label="篩選行李狀態">
+                  <button class="is-active" type="button" data-packing-filter="all">全部</button>
+                  <button type="button" data-packing-filter="todo">還沒收</button>
+                </div>
+                <button class="packing-quick-clear-btn" type="button" data-packing-quick-clear title="清空所有勾選">清空</button>
               </div>
             </div>
 
@@ -468,10 +471,19 @@
     const editToggleBtn = document.querySelector("[data-packing-edit-toggle]");
     const resetBtn = document.querySelector("[data-packing-reset]");
     const revertBtn = document.querySelector("[data-packing-revert]");
+    const quickClearBtn = document.querySelector("[data-packing-quick-clear]");
     const filterButtons = document.querySelectorAll("[data-packing-filter]");
     const bagFilterButtons = document.querySelectorAll("[data-bag-filter]");
     const collapseToggleBtn = document.querySelector("[data-packing-collapse-toggle]");
+    let clearedChecksBackup = null;
 
+    function resetQuickClearBtn() {
+      if (!quickClearBtn || !clearedChecksBackup) return;
+      clearedChecksBackup = null;
+      quickClearBtn.textContent = "清空";
+      quickClearBtn.classList.remove("is-revert");
+      quickClearBtn.setAttribute("title", "清空所有勾選");
+    }
     let selectedBag = ['all', 'tiny', 'backpack', 'suitcase'].includes(savedView.bag) ? savedView.bag : 'all';
     const collapsedBags = { tiny: Boolean(savedView.collapsed?.tiny), backpack: Boolean(savedView.collapsed?.backpack), suitcase: Boolean(savedView.collapsed?.suitcase) };
     const workspace = document.querySelector('.packing-workspace');
@@ -701,6 +713,7 @@
         bagsContainer.querySelectorAll("[data-packing-check]").forEach((check) => {
           check.checked = savedChecks.has(check.value);
           check.addEventListener("change", () => {
+            resetQuickClearBtn();
             const checks = getSavedChecks();
             if (check.checked) {
               checks.add(check.value);
@@ -715,7 +728,6 @@
 
       updateCounters();
     }
-
     editToggleBtn?.addEventListener("click", () => {
       isEditing = !isEditing;
       editToggleBtn.classList.toggle("is-active", isEditing);
@@ -743,6 +755,32 @@
       } catch (_) {}
       currentBags = getPackingBags();
       renderBags();
+    });
+
+    quickClearBtn?.addEventListener("click", () => {
+      if (isEditing) return;
+      if (clearedChecksBackup) {
+        saveChecks(clearedChecksBackup);
+        clearedChecksBackup = null;
+        quickClearBtn.textContent = "清空";
+        quickClearBtn.classList.remove("is-revert");
+        quickClearBtn.setAttribute("title", "清空所有勾選");
+        renderBags();
+        core.toast("已還原勾選狀態");
+      } else {
+        const currentChecks = getSavedChecks();
+        if (currentChecks.size === 0) {
+          core.toast("目前沒有已勾選的項目");
+          return;
+        }
+        clearedChecksBackup = new Set(currentChecks);
+        saveChecks(new Set());
+        quickClearBtn.textContent = "還原";
+        quickClearBtn.classList.add("is-revert");
+        quickClearBtn.setAttribute("title", "還原剛才清空的勾選");
+        renderBags();
+        core.toast("已清空，點擊「還原」可復原");
+      }
     });
 
     filterButtons.forEach((btn) => {
