@@ -860,7 +860,7 @@
     const parseImageTranslation = (rawText) => {
       if (!rawText || typeof rawText !== "string") return { scene: "", content: "" };
       const cleaned = rawText.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
-      const sceneRegex = /(?:^|\n)(?:[#*]*\s*【?場景[簡簡]述】?[*:]*)\s*([\s\S]*?)(?=(?:\n\s*[#*]*\s*【?(?:完整)?翻譯】?[*:]*)|$)/i;
+      const sceneRegex = /(?:^|\n)(?:[#*]*\s*【?(?:場景[簡簡]述|圖片[簡簡]述|場景說明|圖片說明)】?[*:]*)\s*([\s\S]*?)(?=(?:\n\s*[#*]*\s*【?(?:完整)?翻譯】?[*:]*)|$)/i;
       const transRegex = /(?:^|\n)(?:[#*]*\s*【?(?:完整)?翻譯】?[*:]*)\s*([\s\S]*)$/i;
 
       const sceneMatch = cleaned.match(sceneRegex);
@@ -874,7 +874,7 @@
         }
       }
 
-      const splitMatch = cleaned.match(/^[\s\S]*?【?(?:場景[簡簡]述|圖片簡述)】?[:\s]*([\s\S]*?)【?(?:完整)?翻譯】?[:\s]*([\s\S]*)$/i);
+      const splitMatch = cleaned.match(/^[\s\S]*?【?(?:場景[簡簡]述|圖片[簡簡]述|場景說明|圖片說明)】?[:\s]*([\s\S]*?)【?(?:完整)?翻譯】?[:\s]*([\s\S]*)$/i);
       if (splitMatch && splitMatch[1].trim() && splitMatch[2].trim()) {
         return { scene: splitMatch[1].trim(), content: splitMatch[2].trim() };
       }
@@ -1002,6 +1002,7 @@ Exhaustively translate ALL readable text into ${target.label} (${target.code}) i
       selectedImage = file || null;
       if (previewUrl) URL.revokeObjectURL(previewUrl);
       previewUrl = "";
+      if (sceneCard) sceneCard.hidden = true;
       if (selectedImage && preview && previewWrap) {
         previewUrl = URL.createObjectURL(selectedImage);
         preview.src = previewUrl;
@@ -1471,7 +1472,7 @@ Exhaustively translate ALL readable text into ${target.label} (${target.code}) i
             if (core.toast) core.toast("發現新版本，正在套用更新…");
             setTimeout(() => window.location.reload(), 800);
           } else {
-            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260907-01）");
+            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260907-02）");
           }
         } catch (_) {
           if (core.toast) core.toast("檢查更新失敗，請確認網路連線");
@@ -2047,7 +2048,7 @@ Exhaustively translate ALL readable text into ${target.label} (${target.code}) i
       <section class="tools-block content-section tools-update-section" id="tools-update">
         <div class="section-heading-row">
           <div>${sectionHeading(isNative ? "APP MAINTENANCE" : "PWA MAINTENANCE", isNative ? "Android 獨立 App 版本與維護" : "PWA 網頁版更新與離線維護", isNative ? "App 頁面內建於安裝檔中；若有最新修改可在此更新或清除舊快取。" : "支援 Service Worker 離線快取；若 GitHub 有發布更新可在此檢查或重整。")}</div>
-          <span class="result-count">${isNative ? "Android APK · v20260907-01" : "PWA 網頁版 · v20260907-01"}</span>
+          <span class="result-count">${isNative ? "Android APK · v20260907-02" : "PWA 網頁版 · v20260907-02"}</span>
         </div>
         <div class="tools-update-card">
           <div class="tools-update-copy">
