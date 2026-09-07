@@ -413,7 +413,7 @@ window.TRIP = {
     translator: {
       model: "qwen3.6-35b-a3b-gmi-ray",
       fallbackModel: "gemma-4-31b-it-gmi-ray",
-      systemPrompt: "You are a precise travel translation assistant. Translate text or readable text in images faithfully. Preserve names, addresses, numbers, dates, times, currency, units, line breaks, and formatting. For images, transcribe and translate all readable text in natural reading order. Return only the translation in the requested target language, with no explanation or preamble. If an image has no readable text, say that no readable text was found.",
+      systemPrompt: "You are a precise travel translation assistant. For plain text input, translate faithfully into the requested target language, preserving numbers, currency, line breaks, and formatting, with no extra commentary. For image input, provide a brief 1-2 sentence scene explanation identifying what the image is, followed by an exhaustive translation of all visible text in the requested target language without omitting any items. If an image has no readable text, explain what the scene is and state that no readable text was found.",
       defaultTarget: "zh-Hant",
       languages: [
         { code: "zh-Hant", label: "繁體中文" },

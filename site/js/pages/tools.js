@@ -653,6 +653,8 @@
     const resultNode = document.querySelector("[data-translate-result]");
     const resultModel = document.querySelector("[data-translate-model]");
     const googleAttribution = document.querySelector("[data-google-translate-attribution]");
+    const sceneCard = document.querySelector("[data-translate-scene]");
+    const sceneTextNode = document.querySelector("[data-translate-scene-text]");
     const status = document.querySelector("[data-translate-status]");
     const count = document.querySelector("[data-translate-count]");
     const previewWrap = document.querySelector("[data-translate-preview-wrap]");
@@ -855,8 +857,45 @@
       if (status && label) status.textContent = label;
       updateControls();
     };
+    const parseImageTranslation = (rawText) => {
+      if (!rawText || typeof rawText !== "string") return { scene: "", content: "" };
+      const cleaned = rawText.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+      const sceneRegex = /(?:^|\n)(?:[#*]*\s*【?場景[簡簡]述】?[*:]*)\s*([\s\S]*?)(?=(?:\n\s*[#*]*\s*【?(?:完整)?翻譯】?[*:]*)|$)/i;
+      const transRegex = /(?:^|\n)(?:[#*]*\s*【?(?:完整)?翻譯】?[*:]*)\s*([\s\S]*)$/i;
+
+      const sceneMatch = cleaned.match(sceneRegex);
+      const transMatch = cleaned.match(transRegex);
+
+      if (sceneMatch && transMatch) {
+        const scene = sceneMatch[1].trim();
+        const content = transMatch[1].trim();
+        if (scene && content) {
+          return { scene, content };
+        }
+      }
+
+      const splitMatch = cleaned.match(/^[\s\S]*?【?(?:場景[簡簡]述|圖片簡述)】?[:\s]*([\s\S]*?)【?(?:完整)?翻譯】?[:\s]*([\s\S]*)$/i);
+      if (splitMatch && splitMatch[1].trim() && splitMatch[2].trim()) {
+        return { scene: splitMatch[1].trim(), content: splitMatch[2].trim() };
+      }
+
+      return { scene: "", content: cleaned };
+    };
     const showTranslation = (response, kind) => {
-      resultNode.textContent = response.text;
+      if (kind === "image" && !response.offline) {
+        const parsed = parseImageTranslation(response.text);
+        if (parsed.scene && sceneCard && sceneTextNode) {
+          sceneTextNode.textContent = parsed.scene;
+          sceneCard.hidden = false;
+          resultNode.textContent = parsed.content;
+        } else {
+          if (sceneCard) sceneCard.hidden = true;
+          resultNode.textContent = response.text;
+        }
+      } else {
+        if (sceneCard) sceneCard.hidden = true;
+        resultNode.textContent = response.text;
+      }
       if (resultModel) {
         if (response.offline) {
           resultModel.textContent = response.fallbackReason
@@ -906,11 +945,13 @@
     const runTranslation = async (kind, messages, payload, target) => {
       if (busy) return;
       setBusy(true, kind === "image" ? "正在讀取圖片並翻譯…" : "正在翻譯…");
+      if (sceneCard) sceneCard.hidden = true;
       try {
         const response = await translateSmart(kind, messages, payload, target);
         showTranslation(response, kind);
       } catch (_) {
         if (googleAttribution) googleAttribution.hidden = true;
+        if (sceneCard) sceneCard.hidden = true;
         resultNode.textContent = offlineTranslator && !offlineReady
           ? "離線語言包尚未準備完成。請先連上 Wi-Fi，按下方按鈕下載一次。"
           : "翻譯暫時失敗，請稍後再試。";
@@ -925,12 +966,20 @@
       if (!selectedImage || busy) return;
       const target = targetLanguage();
       setBusy(true, "正在讀取圖片並翻譯…");
+      if (sceneCard) sceneCard.hidden = true;
       try {
         const imageDataUrl = await imageFileDataUrl(selectedImage);
+        const promptText = `Analyze this image and format your response in exactly two sections:
+
+【場景簡述】
+In 1 to 2 concise sentences in ${target.label} (${target.code}), briefly state what this image is (for example: 餐廳菜單、地鐵站方向指標、超市收據、公車時刻表、店面營業須知).
+
+【完整翻譯】
+Exhaustively translate ALL readable text into ${target.label} (${target.code}) in natural reading order. Translate every item, dish, price, note, and instruction completely. Do not summarize or skip any content. If there is no readable text, state that clearly here.`;
         const messages = [
           { role: "system", content: translator.systemPrompt },
           { role: "user", content: [
-            { type: "text", text: `Read all visible text in this image and translate it into ${target.label} (${target.code}). Preserve the reading order and return only the translation.` },
+            { type: "text", text: promptText },
             { type: "image_url", image_url: { url: imageDataUrl } }
           ] }
         ];
@@ -938,6 +987,7 @@
         showTranslation(response, "image");
       } catch (_) {
         if (googleAttribution) googleAttribution.hidden = true;
+        if (sceneCard) sceneCard.hidden = true;
         resultNode.textContent = offlineTranslator && !offlineReady
           ? "離線語言包尚未準備完成。請先連上 Wi-Fi，按下方按鈕下載一次。"
           : "圖片翻譯暫時失敗，請換一張圖片或稍後再試。";
@@ -1229,8 +1279,10 @@
     copyButton?.addEventListener("click", async () => {
       const text = resultNode.textContent || "";
       if (!text || text === "結果會顯示在這裡。" || text === "翻譯暫時失敗，請稍後再試。") return;
+      const scene = (sceneCard && !sceneCard.hidden && sceneTextNode?.textContent) ? sceneTextNode.textContent.trim() : "";
+      const copyPayload = scene ? `【場景簡述】\n${scene}\n\n【翻譯結果】\n${text}` : text;
       try {
-        await navigator.clipboard.writeText(text);
+        await navigator.clipboard.writeText(copyPayload);
         if (core.toast) core.toast("已複製翻譯結果至剪貼簿！");
         else alert("已複製翻譯結果！");
       } catch (_) {
@@ -1419,7 +1471,7 @@
             if (core.toast) core.toast("發現新版本，正在套用更新…");
             setTimeout(() => window.location.reload(), 800);
           } else {
-            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260906-18）");
+            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260907-01）");
           }
         } catch (_) {
           if (core.toast) core.toast("檢查更新失敗，請確認網路連線");
@@ -1947,6 +1999,12 @@
                 </div>
                 <button class="translate-copy-btn" type="button" data-translate-copy title="複製翻譯結果" aria-label="複製翻譯結果">📋 複製</button>
               </div>
+              <div class="translate-scene-card" data-translate-scene hidden>
+                <div class="translate-scene-header">
+                  <span class="translate-scene-tag">💡 場景簡述</span>
+                </div>
+                <p class="translate-scene-text" data-translate-scene-text></p>
+              </div>
               <div class="translate-result-body">
                 <pre data-translate-result>結果會顯示在這裡。</pre>
               </div>
@@ -1989,7 +2047,7 @@
       <section class="tools-block content-section tools-update-section" id="tools-update">
         <div class="section-heading-row">
           <div>${sectionHeading(isNative ? "APP MAINTENANCE" : "PWA MAINTENANCE", isNative ? "Android 獨立 App 版本與維護" : "PWA 網頁版更新與離線維護", isNative ? "App 頁面內建於安裝檔中；若有最新修改可在此更新或清除舊快取。" : "支援 Service Worker 離線快取；若 GitHub 有發布更新可在此檢查或重整。")}</div>
-          <span class="result-count">${isNative ? "Android APK · v20260906-18" : "PWA 網頁版 · v20260906-18"}</span>
+          <span class="result-count">${isNative ? "Android APK · v20260907-01" : "PWA 網頁版 · v20260907-01"}</span>
         </div>
         <div class="tools-update-card">
           <div class="tools-update-copy">
