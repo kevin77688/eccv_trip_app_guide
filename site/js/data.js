@@ -821,15 +821,17 @@ window.TRIP = {
       transport: { duration: "市區至機場約 1 小時 15 分；跨夜飛行約 8 小時 45 分", steps: ["古亭捷運站", "松山新店線 → 北門站", "地下連通道 → 機捷 A1", "機捷直達車 → 桃機 T2", "阿聯酋航空 EK 367", "杜拜機場 T3"], note: "機捷直達車每 15 分鐘一班；登機證條碼離線存於 App。" }, places: [], note: "20:00 古亭出發，搭 20:30 機捷直達車直達桃機 T2；登機證 49C 已入庫。"
     },
     "09-07": {
-      date: "2026/09/07", weekday: "週一", city: "杜拜 → 哥本哈根 → Malmö", cityKey: "malmo", title: "抵達北歐，入住 Malmö", summary: "杜拜轉機後搭乘 EK 151 抵達哥本哈根，直接搭火車跨海前往 Malmö，搭 Bus 9 入住 First Camp Sibbarp。", stay: "First Camp Sibbarp-Malmö", tone: "teal",
+      date: "2026/09/07", weekday: "週一", city: "杜拜 → 哥本哈根 → Malmö", cityKey: "malmo", title: "抵達北歐，入住 Malmö", summary: "杜拜轉機後抵達哥本哈根，於 T3 咖啡店等候友人會合後，搭跨海火車前往 Malmö，轉 Bus 9 入住 First Camp Sibbarp。", stay: "First Camp Sibbarp-Malmö", tone: "teal",
       schedule: [
         { time: "04:35 - 08:20", icon: "✈", title: "杜拜 T3 轉機 (EK 151)", detail: "抵達杜拜 T3 後過轉機安檢，08:20 搭乘 EK 151 飛往哥本哈根；座位 25H（走道，Group 4，07:20 登機），出示電子登機證條碼登機。", tag: "轉機", ticketId: "ek367-boarding-pass" },
-        { time: "13:15 - 14:15", icon: "⌖", title: "抵達哥本哈根機場 T3、入境與領行李", detail: "抵達 CPH T3 後辦理入境查驗並領取 20 kg 托運行李，順指標前往火車站月台。", tag: "入境" },
-        { time: "14:15 - 14:35", icon: "🚆", title: "CPH Airport → Hyllie Station", detail: "使用 Skånetrafiken 購買跨境車票，搭乘 Øresundståg 跨越厄勒海峽大橋抵達瑞典 Hyllie。", tag: "跨海" },
-        { time: "14:35 - 15:30", icon: "🚌", title: "Hyllie → Bus 9 → First Camp 周邊", detail: "Hyllie 車站外轉乘 Bus 9 直達營區附近（Götgatan），可先採買未來數日小木屋料理食材與生活用品。", tag: "公車" },
-        { time: "18:00 - 19:00", icon: "⌂", title: "辦理入住與領取小木屋鑰匙 (First Camp)", detail: "已約定 18:00 - 19:00 抵達辦理入住（15:00 起開放接待）；出示預訂憑證領取小木屋鑰匙，安頓行李並熟悉廚房設施，傍晚可在 Sibbarp 水岸散步放鬆。", tag: "入住", ticketId: "first-camp" }
+        { time: "13:15 - 14:15", icon: "⌖", title: "抵達哥本哈根機場 T3、入境與領行李", detail: "抵達 CPH T3 後辦理入境查驗並領取 20 kg 托運行李，出關至接機大廳。", tag: "入境" },
+        { time: "14:15 - 17:30", icon: "☕", title: "T3 咖啡店休憩充電與等候友人會合", detail: "於 T3 出境/入境大廳咖啡店（如 Espresso House）休息充電、連機場 Wi-Fi、預先設定 Skånetrafiken 購票；友人班機 16:55 抵達，最快約 17:30 領完行李出關會合。", tag: "會合" },
+        { time: "17:30 - 18:15", icon: "🚆", title: "友人會合 ➔ CPH Airport ➔ Hyllie Station", detail: "全員會合後前往 T3 火車站第 1 月台（Spor 1），使用 Skånetrafiken 購買跨境車票，搭乘 Øresundståg 跨越厄勒海峽大橋抵達瑞典 Hyllie（備妥護照抽檢）。", tag: "跨海" },
+        { time: "18:15 - 18:50", icon: "🚌", title: "Hyllie Station → Bus 9 → Götgatan", detail: "Hyllie 車站外轉乘 Bus 9 直達營區周邊（Götgatan），下車後沿 Strandgatan 步行約 7 分鐘前往營地。", tag: "公車" },
+        { time: "18:50 - 19:30", icon: "⌂", title: "辦理入住與領取小木屋鑰匙 (First Camp)", detail: "抵達接待處辦理入住手續並領取小木屋鑰匙（原約定 18:00 - 19:00，若稍晚可電話 +46 40 15 51 65 告知）；安頓行李並熟悉廚房設施，傍晚可在 Sibbarp 水岸散步放鬆。", tag: "入住", ticketId: "first-camp" },
+        { time: "19:30 後", icon: "🍴", title: "營區安頓、周邊採買與晚餐休息", detail: "安頓行李與小木屋設施，可於周邊超市採買食材或就近晚餐，早點休息調整時差。", tag: "休息" }
       ],
-      transport: { duration: "轉機、飛行與跨海交通約 15 小時", steps: ["杜拜 T3 轉機", "EK 151 → 哥本哈根 T3", "Øresundståg → Hyllie", "Bus 9 → First Camp Sibbarp"], note: "跨海火車班次密集，出站後以 Skånetrafiken App 購票最方便。" }, places: [], note: "抵達日不排密集景點，以順利入住與調整時差為主。"
+      transport: { duration: "轉機、機場等候會合與跨海交通約 19 小時", steps: ["杜拜 T3 轉機", "EK 151 → 哥本哈根 T3", "T3 咖啡店等候會合", "Øresundståg → Hyllie", "Bus 9 → First Camp Sibbarp"], note: "跨海火車班次密集（約 20 分鐘一班），出發前先以手機 Skånetrafiken App 購票最方便。" }, places: [], note: "抵達日重點為機場與友人會合、順利入住小木屋與調整時差。"
     },
     "09-08": {
       date: "2026/09/08", weekday: "週二", city: "Malmö", cityKey: "malmo", title: "馬爾默城堡、水族館與科技海事館", summary: "上午 09:50 出發，使用 K7 通行證與一日聯票參觀 Malmöhus Castle 與科技海事館，下午逛市場與城堡花園。", stay: "First Camp Sibbarp-Malmö", tone: "plum",
@@ -1448,12 +1450,12 @@ window.TRIP.routeMaps = {
   "09-07": {
     defaultGroup: "arrival",
     groups: [{
-      id: "arrival", label: "抵達北歐", note: "跨海後以 Hyllie 為轉乘中繼站。",
+      id: "arrival", label: "抵達北歐", note: "機場會合後跨海，以 Hyllie 為轉乘中繼站。",
       stops: [
         { time: "04:35", label: "杜拜機場 T3", detail: "EK 151 轉機", lat: 25.2532, lng: 55.3657, status: "transfer" },
-        { time: "13:15", label: "Copenhagen Airport T3", detail: "領行李後前往火車站", lat: 55.6181, lng: 12.6561, status: "fixed" },
-        { time: "約 14:35", label: "Hyllie Station", detail: "轉搭 Bus 9", lat: 55.5627, lng: 12.9759, status: "transfer" },
-        { time: "15:00 後", label: "First Camp Sibbarp", detail: "入住與休息", lat: 55.5718, lng: 12.9087, status: "stay" }
+        { time: "13:15", label: "Copenhagen Airport T3", detail: "領行李後在咖啡店等候友人會合", lat: 55.6181, lng: 12.6561, status: "fixed" },
+        { time: "約 18:15", label: "Hyllie Station", detail: "轉搭 Bus 9", lat: 55.5627, lng: 12.9759, status: "transfer" },
+        { time: "18:50 後", label: "First Camp Sibbarp", detail: "入住與休息", lat: 55.5718, lng: 12.9087, status: "stay" }
       ],
       legs: [
         { mode: "flight", label: "EK 151" },
