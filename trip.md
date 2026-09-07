@@ -25,6 +25,13 @@
   - **Tivoli 取向**：重視歷史花園氛圍、復古燈光、拍照與餐飲，而非刺激型遊樂設施。
   - **餐飲偏好**：肉類優先（牛排、牛肉、豬肉），海鮮次之；平時輕鬆吃，全趟安排 1 到 2 餐精緻聚餐即可；餐廳必須支援感應式 Visa／Mastercard 刷卡，不依賴現金或冷門在地支付系統。
 
+## 景點庫擴充與 09/09 備選方案收錄（2026-09-07）
+
+- 依使用者對科技互動、古老精密機械、北歐設計與悠閒咖啡之偏好，將以下景點納入 `site/places.html` 與 `site/js/data.js` 景點庫，作為 09/09 獨旅決策之備選清單（目前標記為「未排入每日行程」）：
+  - **Lund Cathedral & Astronomical Clock（隆德大教堂與 1424 天文機械鐘，`lund`）**：位於瑞典隆德，距 Malmö C 僅 10 分鐘火車；大教堂內建於 1424 年的古老木造天文機械鐘每天 12:00 與 15:00 啟動木偶報時與齒輪運轉，免跨國且體能負擔極低，為 09/10 發表前最合適的充電行程。
+  - **Form/Design Center（北歐設計中心 ＋ Lilla Torg 咖啡，`formdesign`）**：位於馬爾默老城小廣場（Lilla Torg）Hedmanska gården 歷史半木造建築內，免費參觀北歐工業與家具人體工學設計展，庭院設有咖啡座享受 Fika，零交通轉乘與極低體力消耗。
+- 原有景點庫中之 **Experimentarium**（互動科技）與 **ENIGMA Museum of Communication**（通訊與密碼博物館，Enigma 密碼機破譯與復古大型街機遊戲廳）完整保留並保持線上／離線可查狀態。
+
 ## 09/07 抵達日行程微調：機場咖啡店等候友人會合與入住時間更新（2026-09-07）
 
 - **機場會合時間調整**：
@@ -638,7 +645,7 @@
 - 景點依個人每日行程日期排序；已排入行程的卡片顯示日期並連結對應 `site/days/*` 頁，同一景點跨兩天會顯示兩個日期。未排入個人行程的景點統一放在最後並標示「未排入每日行程」。
 - 個人正式行程只由 `site/js/data.js` 的 `days` 與 `site/days/*` 顯示；景點總覽不建立替代行程。
 - 景點卡保留「為什麼推薦」、票務狀態、官方票務入口與 Google Maps；票務資訊集中在 `site/js/data.js` 的 `placeDetails`，畫面由 `site/js/app.js` 產生。
-- Copenhagen 景點資料包含 DAC @ BLOX、Christiansborg、Rundetaarn、Strøget、Tivoli、Amalienborg、Marmorkirken、Nyhavn、Kongens Nytorv、運河遊船、救主堂與已排入 09/09 個人行程的 Experimentarium；Rosenborg、Torvehallerne 與 ENIGMA 保留作未排入每日行程的參考。Paris 景點資料包含 Sainte-Chapelle、Pont de Bir-Hakeim、Sacré-Cœur／Montmartre、Grand Palais、Le Marais、Le Bon Marché。
+- Malmö / 瑞典境內景點資料包含 Malmöhus Castle、Teknikens och Sjöfartens hus、Malmö Saluhall、Lilla Torg、Disgusting Food Museum、Turning Torso & Västra Hamnen、ECCV 2026，以及新增之 Lund Cathedral & Astronomical Clock（隆德大教堂與 1424 天文機械鐘）與 Form/Design Center（北歐設計中心 ＋ Lilla Torg 咖啡），保留作未排入每日行程的備選參考。Copenhagen 景點資料包含 DAC @ BLOX、Christiansborg、Rundetaarn、Strøget、Tivoli、Amalienborg、Marmorkirken、Nyhavn、Kongens Nytorv、運河遊船、救主堂與已排入 09/09 個人行程的 Experimentarium；Rosenborg、Torvehallerne 與 ENIGMA 保留作未排入每日行程的參考。Paris 景點資料包含 Sainte-Chapelle、Pont de Bir-Hakeim、Sacré-Cœur／Montmartre、Grand Palais、Le Marais、Le Bon Marché。
 - Disneyland 已從網站資料、景點頁、9/17 每日頁說明與圖片資產完全移除；不再作為備選。
 - 票務優先級：Eiffel Tower、Louvre、Sainte-Chapelle 與 Versailles 指定時段優先處理（Palais Garnier 暫時取消）；Rosenborg、Tivoli、Stromma 運河遊船、Musée de l’Armée 與 Musée Rodin 建議日期確定後先買；Experimentarium 可先買線上票；Rundetaarn、Marmorkirken 教堂本體與 Sacré-Cœur 圓頂適合現場處理。
 - Notre-Dame 教堂本體免費，官方免費時段接近參觀日才釋出；不購買第三方普通入場票。Amalienborg 廣場與衛兵交接免費，博物館需票。Marmorkirken 教堂本體免費，圓頂最多 15 人且不可預訂。

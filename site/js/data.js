@@ -766,6 +766,8 @@ window.TRIP = {
     disgusting: { region: "Malmö", title: "Disgusting Food Museum", local: "噁心食物博物館", kicker: "特殊體驗・飲食文化", intro: "以世界各地特殊食物為主題，探討不同文化對味道與食物的感受。展覽偏重互動，包含聞氣味與試吃體驗。", stay: "約 1 到 1.5 小時", accent: "plum" },
     turning: { region: "Malmö", title: "Turning Torso & Västra Hamnen", local: "旋轉大樓與西港區", kicker: "現代建築・城市設計・海港景觀", intro: "Turning Torso 是 Malmö 醒目的地標建築，外觀逐層旋轉。周邊 Västra Hamnen 為濱水新興社區，適合散步看建築與海港景致。", stay: "約 1 到 2 小時", accent: "teal" },
     eccv: { region: "Malmö", title: "ECCV 2026", local: "歐洲電腦視覺會議", kicker: "學術會議・展覽・海報發表", intro: "ECCV 2026 會議場地，位於 Hyllie 車站旁，包含 Malmö Arena 與 Malmömässan。", stay: "依議程而定", accent: "coral" },
+    formdesign: { region: "Malmö", title: "Form/Design Center", local: "北歐設計中心 ＋ Lilla Torg 咖啡", kicker: "北歐設計・工藝家具・歷史庭院咖啡", intro: "位於馬爾默小廣場（Lilla Torg）Hedmanska gården 歷史半木造老屋建築內，展出當代北歐工業設計、家具人體工學、材質結構與永續設計；內院設有庭院咖啡座，適合悠閒享受 Fika（瑞典咖啡甜點時光）。", stay: "約 1 到 1.5 小時", accent: "teal" },
+    lund: { region: "Malmö / Lund", title: "Lund Cathedral & Astronomical Clock", local: "隆德大教堂與 1424 天文機械鐘", kicker: "中世紀大教堂・1424 天文鐘・大學城", intro: "建於 12 世紀的羅曼式大教堂，內部藏有 1424 年建造的木造天文機械鐘（Horologium Mirabile Lundense），每日中午 12:00 與 15:00 啟動機械木偶演奏報時。教堂外為隆德大學林蔭校區與鵝卵石老城街道，適合悠閒散步。", stay: "約 2 到 3 小時", accent: "gold" },
     experimentarium: { region: "Copenhagen", title: "Experimentarium", local: "互動科學中心", kicker: "互動科技・物理體驗・動手操作", intro: "動手操作為主的互動科學中心，包含光學迷宮、身體探索、泡泡實驗室與頂樓互動展區，適合保留充足時間體驗。", stay: "約 4 到 5 小時", accent: "teal" },
     enigma: { region: "Copenhagen", title: "ENIGMA Museum of Communication", local: "通訊博物館", kicker: "通訊・科技史・互動展", intro: "展示通訊、郵政、電信與數位科技發展的互動博物館，展品精巧，適合輕鬆參觀。", stay: "約 1.5 到 2 小時", accent: "plum" },
     nyhavn: { region: "Copenhagen", title: "Nyhavn", local: "新港", kicker: "經典街景・運河港區・拍照", intro: "哥本哈根經典運河港區，兩側為彩色街屋與木造帆船，也是運河遊船的出發點。", stay: "約 1 到 1.5 小時", accent: "gold" },
@@ -1050,6 +1052,8 @@ window.TRIP.placeDetails = {
   disgusting: { why: "將互動體驗、飲食文化與話題性結合，展覽形式特別。", booking: { state: "recommended", label: "門票・可先線上購票", note: "官方提供線上票，非強制預約，可現場或線上購買。", url: "https://disgustingfoodmuseum.com/buy-tickets-2/", cta: "官方線上購票" } },
   turning: { why: "以濱水散步欣賞 Malmö 當代地標建築與工業轉型社區。", booking: { state: "free", label: "外觀免費", note: "此行欣賞外觀與 Västra Hamnen 社區，不安排進塔。" } },
   eccv: { why: "本次旅程核心會議；9/10 專注主會議、Expo 與 Poster Session 發表。", booking: { state: "confirmed", label: "Registration: Paid", note: "Full Passport / Author Registration；實體 badge 於會場領取。" } },
+  formdesign: { why: "隱身於市中心歷史小廣場的安靜設計展館，能親身觸摸體驗北歐工業與家具設計結構；出門即是露天咖啡座，步行距離極短，完全無體能壓力。", booking: { state: "free", label: "免費入場・免預約", note: "週二至週日開放 11:00-17:00（週一休館）；免費入場，內部展覽與中庭咖啡座自由進出。", url: "https://formdesigncenter.com/en", cta: "官方展覽與參觀資訊" } },
+  lund: { why: "建於 1424 年的天文機械鐘極具歷史工程價值，每天 12:00/15:00 齒輪帶動木偶報時演出；隆德距 Malmö C 僅 10 分鐘火車，免跨國且體能負擔低，是 09/10 發表前最合適的充電行程。", booking: { state: "free", label: "大教堂免費入場", note: "大教堂開放自由參觀（週一至週五 08:00-18:00）；建議於 11:45 或 14:45 前就座觀看天文鐘機械人偶報時演示。", url: "https://www.lundsdomkyrka.se/english/", cta: "官方開放時間與導覽" } },
   experimentarium: { why: "以動手操作與互動科學為核心，展區範圍較大，適合保留半天時間參觀。", booking: { state: "recommended", label: "門票・線上購票省 10%", note: "每日 09:30-17:00 開放；線上購票省 10%，指定日期有效，亦可現場購買。", url: "https://www.experimentarium.dk/plan-your-visit/", cta: "官方購票／開放時間" } },
   enigma: { why: "通訊、電信與數位社會主題集中，規模適合輕鬆參觀。", booking: { state: "onsite", label: "門票・可現場購票", note: "一般參觀無需事先預約，現場購票即可。", url: "https://www.enigma.dk/en/visit-enigma", cta: "官方票務資訊" } },
   nyhavn: { why: "容易與 Strøget、王宮區與運河遊船串接的哥本哈根經典地標。", booking: { state: "free", label: "免費・免預約", note: "港區散步免費；遊船搭乘請參考運河遊船票券。" } },
@@ -1099,6 +1103,8 @@ window.TRIP.placeSearchNames = {
   disgusting: ["噁心食物博物館", "馬爾默噁心食物博物館", "Museum of Disgusting Food"],
   turning: ["旋轉大樓", "西港區", "Turning Torso", "Västra Hamnen"],
   eccv: ["歐洲電腦視覺會議", "歐洲計算機視覺會議", "ECCV 2026", "Malmömässan", "Malmö Arena"],
+  formdesign: ["北歐設計中心", "Form/Design Center", "Form Design Center", "Hedmanska gården", "小廣場咖啡", "Fika", "設計中心"],
+  lund: ["隆德大教堂", "天文鐘", "天文機械鐘", "隆德大學", "隆德", "Lund Cathedral", "Horologium Mirabile Lundense", "Lunds domkyrka", "Lund"],
   experimentarium: ["互動科學中心", "哥本哈根科學館", "Experimentarium"],
   enigma: ["通訊博物館", "恩尼格瑪博物館", "ENIGMA Museum of Communication"],
   nyhavn: ["新港", "新港運河", "Nyhavn"],
@@ -1182,6 +1188,18 @@ window.TRIP.placeVisuals = {
     credit: "https://commons.wikimedia.org/wiki/File:Malm%C3%B6m%C3%A4ssan,_Malm%C3%B6.jpg",
     creditLabel: "Wikimedia Commons",
     mapQuery: "Malmömässan, Mässgatan 6, Malmö"
+  },
+  formdesign: {
+    image: "assets/places/formdesign.jpg",
+    credit: "https://commons.wikimedia.org/wiki/File:Form-Design_Center.jpg",
+    creditLabel: "Wikimedia Commons",
+    mapQuery: "Form/Design Center, Lilla Torg 9, Malmö"
+  },
+  lund: {
+    image: "assets/places/lund.jpg",
+    credit: "https://commons.wikimedia.org/wiki/File:Lunds_astronomiska_ur-2.jpg",
+    creditLabel: "Wikimedia Commons",
+    mapQuery: "Lund Cathedral, Kyrkogatan 4, Lund"
   },
   experimentarium: {
     image: "assets/places/experimentarium.jpg",

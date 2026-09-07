@@ -102,7 +102,7 @@
     });
 
     const totalPlaces = sortedPlaceIds.length;
-    const malmoCount = sortedPlaceIds.filter((id) => trip.places[id].region === "Malmö").length;
+    const malmoCount = sortedPlaceIds.filter((id) => /Malmö|Lund/.test(trip.places[id].region)).length;
     const cphCount = sortedPlaceIds.filter((id) => trip.places[id].region === "Copenhagen").length;
     const parisCount = sortedPlaceIds.filter((id) => /Paris/.test(trip.places[id].region)).length;
     const scheduledCount = sortedPlaceIds.filter((id) => Object.values(trip.days || {}).some((d) => d.places.includes(id))).length;
@@ -138,7 +138,7 @@
 
         <div class="places-filter-toolbar" role="group" aria-label="依地點與國家篩選景點">
           <button class="places-filter-pill is-active" type="button" data-place-filter="all">全部 (${totalPlaces})</button>
-          <button class="places-filter-pill" type="button" data-place-filter="malmo">瑞典 · Malmö (${malmoCount})</button>
+          <button class="places-filter-pill" type="button" data-place-filter="malmo">瑞典 · Malmö / 隆德 (${malmoCount})</button>
           <button class="places-filter-pill" type="button" data-place-filter="copenhagen">丹麥 · 哥本哈根 (${cphCount})</button>
           <button class="places-filter-pill" type="button" data-place-filter="paris">法國 · 巴黎 (${parisCount})</button>
           <button class="places-filter-pill" type="button" data-place-filter="scheduled">已排入行程 (${scheduledCount})</button>
@@ -210,7 +210,7 @@
         const isScheduled = Object.values(trip.days || {}).some((d) => d.places.includes(id));
         let categoryMatch = false;
         if (activeFilter === "all") categoryMatch = true;
-        else if (activeFilter === "malmo") categoryMatch = place.region === "Malmö";
+        else if (activeFilter === "malmo") categoryMatch = /Malmö|Lund/.test(place.region);
         else if (activeFilter === "copenhagen") categoryMatch = place.region === "Copenhagen";
         else if (activeFilter === "paris") categoryMatch = /Paris/.test(place.region);
         else if (activeFilter === "scheduled") categoryMatch = isScheduled;
