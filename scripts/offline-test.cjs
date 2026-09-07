@@ -22,7 +22,7 @@ const fs = require('node:fs');
     await page.evaluate(async () => { await navigator.serviceWorker.ready; });
     await page.locator('.tools-quick-links a[href="#tools-update"]').click();
     await page.waitForFunction(() => document.querySelector('[data-offline-itinerary]')?.textContent.includes('已儲存'));
-    await page.waitForFunction(() => document.querySelector('[data-offline-tickets]')?.textContent.includes('10 / 10'));
+    await page.waitForFunction(() => document.querySelector('[data-offline-tickets]')?.textContent.includes('11 / 11'));
     assert.match(await page.locator('[data-offline-languages]').textContent(), /Android App/);
     await page.screenshot({ path: `${output}/phone-readiness.png`, animations: 'disabled' });
     await context.setOffline(true);

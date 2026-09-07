@@ -650,6 +650,25 @@ window.TRIP = {
       ]
     },
     {
+      id: "ter-c17-beauvais-paris",
+      title: "SNCF TER 車票 (C17)",
+      subtitle: "博韋 Beauvais → 巴黎北站 Paris Nord (4 人車票)",
+      category: "transit",
+      badge: "火車車票",
+      dateLabel: "09/13 09:40 發車",
+      targetDays: ["09-13"],
+      encFile: "ter-c17-beauvais-paris.enc",
+      qrHint: "進出車站閘門或車長查票時出示官方 QR 碼掃描",
+      details: [
+        { label: "車次代號", value: "TER C17 (TER Hauts-de-France)" },
+        { label: "乘客人數", value: "4 位旅客" },
+        { label: "起訖車站", value: "Beauvais (09:40) → Paris Nord (10:59)" },
+        { label: "乘車姓名", value: "已遮蔽" },
+        { label: "車票代號", value: "已遮蔽" },
+        { label: "票券格式", value: "4 頁官方 E-Ticket PDF (含驗證 QR 碼)" }
+      ]
+    },
+    {
       id: "sainte-chapelle",
       title: "聖徒禮拜堂 4 人預約門票",
       subtitle: "Sainte-Chapelle 官方指定時段門票",
@@ -919,7 +938,7 @@ window.TRIP = {
       schedule: [
         { time: "08:30 - 09:05", icon: "☼", title: "退房與叫車出發", detail: "08:30 起床整理隨身物品並退房，09:05 叫車前往 Beauvais SNCF 火車站。", tag: "出發" },
         { time: "09:05 - 09:25", icon: "↗", title: "計程車 → Beauvais SNCF 車站", detail: "車程約 10 到 15 分鐘，09:25 前抵達月台準備搭車。", tag: "交通" },
-        { time: "09:40 - 10:59", icon: "🚆", title: "TER C17 直達 Paris Nord (巴黎北站)", detail: "搭乘已購 09:40 直達 TER 火車進巴黎，約 1 小時 19 分抵達巴黎北站。", tag: "火車" },
+        { time: "09:40 - 10:59", icon: "🚆", title: "TER C17 直達 Paris Nord (巴黎北站)", detail: "搭乘已購 09:40 直達 TER 火車進巴黎，約 1 小時 19 分抵達巴黎北站。", tag: "火車", ticketId: "ter-c17-beauvais-paris" },
         { time: "11:00 - 11:25", icon: "⌂", title: "巴黎飯店寄放行李／若有空房先入住", detail: "步行至 Sure Hotel 寄放四件行李，若房間已備妥則先辦理入住。", tag: "住宿" },
         { time: "11:30 - 13:00", icon: "🍴", title: "La Chapelle → M2 → Anvers 或周邊法式午餐", detail: "搭乘 M2 至 Anvers 站或於蒙馬特山腳／飯店周邊餐廳享用法式午餐，悠閒開啟巴黎首日行程。", tag: "午餐" },
         { time: "13:00 - 14:30", icon: "♧", title: "愛牆、穿牆人雕塑與小丘廣場畫家村", detail: "從 Abbesses 站旁愛牆（Le Mur des Je t'aime）漫步，走訪小丘廣場（Place du Tertre）街頭畫家村與藝術氛圍。", tag: "街區" },
@@ -2029,6 +2048,7 @@ window.TRIP.ticketDigests = {
   "ryanair-fr9267.enc": "bf2902a318fc57ce3565afb0fa93401c123fd48316ea5df216b5a4080f062557",
   "sainte-chapelle.enc": "12aa851c0e7308a1068146161357e6515f584c454adba8b2889975cedb52b9eb",
   "stromma-canal-tour.enc": "a0c81657aa4e234f0e0ebed5683e9e8fa83e4cb29d1c5d647959e66b6b2bf6c0",
+  "ter-c17-beauvais-paris.enc": "348860c771b32b931eaf5a869b8fe19591e9e9cbcaa15022adcab98bd3962db7",
   "versailles.enc": "e19943cce11bc3e6303d52fc25a75c3315afd57e62e0f4d289eb154c433482e5"
 };
 

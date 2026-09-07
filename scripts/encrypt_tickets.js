@@ -83,6 +83,12 @@ const TICKET_DEFINITIONS = [
     encFile: 'first-camp.enc',
     sourcePdf: '2026-09-07_to_09-12_First-Camp-Sibbarp-Malmo_reservation.pdf',
     title: 'First Camp Sibbarp-Malmö 訂房確認單'
+  },
+  {
+    id: 'ter-c17-beauvais-paris',
+    encFile: 'ter-c17-beauvais-paris.enc',
+    sourcePdf: '2026-09-13_09-40_TER-C17_Beauvais-Paris-Nord_QR-tickets.pdf',
+    title: 'TER C17 博韋至巴黎北站車票'
   }
 ];
 
@@ -135,12 +141,15 @@ function run() {
       process.exit(1);
     }
 
-    const encrypted = encryptPdfBuffer(rawBuffer, PASSWORD);
     const outPath = path.join(OUT_DIR, t.encFile);
-    fs.writeFileSync(outPath, encrypted);
-
-    console.log('  ✓ Encrypted ' + t.title + ' (' + sourceFilename + ') -> ' + t.encFile + ' [' + rawBuffer.length + ' bytes -> ' + encrypted.length + ' bytes]');
-    count++;
+    if (fs.existsSync(outPath) && process.env.RECRYPT_ALL !== '1') {
+      console.log('  - Skipped (already exists): ' + t.encFile);
+    } else {
+      const encrypted = encryptPdfBuffer(rawBuffer, PASSWORD);
+      fs.writeFileSync(outPath, encrypted);
+      console.log('  ✓ Encrypted ' + t.title + ' (' + sourceFilename + ') -> ' + t.encFile + ' [' + rawBuffer.length + ' bytes -> ' + encrypted.length + ' bytes]');
+      count++;
+    }
   }
 
   const digests = Object.fromEntries(fs.readdirSync(OUT_DIR).filter(name => name.endsWith('.enc')).map(name => [name, crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT_DIR, name))).digest('hex')]));

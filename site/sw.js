@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260907-03';
+const CACHE_NAME = 'eccv-guide-v20260907-04';
 
 // Bundled encrypted tickets, generated from data.js.
 const TICKET_ASSETS = [
@@ -12,6 +12,7 @@ const TICKET_ASSETS = [
   "./assets/tickets/ryanair-fr9267.enc",
   "./assets/tickets/sainte-chapelle.enc",
   "./assets/tickets/stromma-canal-tour.enc",
+  "./assets/tickets/ter-c17-beauvais-paris.enc",
   "./assets/tickets/versailles.enc"
 ];
 

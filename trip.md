@@ -237,6 +237,20 @@
   - 於交通頁（`logistics.html`）與 09/07 入住日、09/12 退房日行程中整合「🎫 First Camp Sibbarp 住宿確認單」一鍵出示彈窗。
 - **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260905-18`，全站 19 份 HTML 檔案、`site/sw.js` 與工具頁版本資訊同步更新。
 
+## 09/13 TER C17 官方電子車票合併加密與憑證上線（2026-09-07）
+
+- **4 人車票合併與排序**：
+  - 將 4 位同行旅客的 Beauvais 至 Paris Nord 09:40 TER C17 車票 PDF 依指定順序合併（KAIWEN > CHIAHUI > ZIMING > KOWEI）為單一 4 頁官方憑證 `pdf/2026-09-13_09-40_TER-C17_Beauvais-Paris-Nord_QR-tickets.pdf`。
+- **AES-256-GCM 加密與安全保護**：
+  - 使用專案統一金鑰（PBKDF2 600,000 次疊代計算衍生 256 位元金鑰）加密產出 `site/assets/tickets/ter-c17-beauvais-paris.enc`。
+  - 根目錄未加密的 4 份原始 PDF 全數刪除，原始憑證僅留存於 Git 忽略之本機 `pdf/` 目錄。
+  - 嚴格遮蔽真實姓名與訂票序號，完全符合隱私安全要求。
+- **網站與每日行程整合**：
+  - 在 `site/js/data.js` 加入 `ter-c17-beauvais-paris` 票券定義並關聯 09/13 當日行程。
+  - 09/13 當日頁面頂部新增「🎫 SNCF TER 車票 (C17)」票券捷徑 Chip，並於 09:40 TER 時間軸行程卡內整合「出示票券」按鈕。
+  - 交通頁（`site/logistics.html`）票券清單同步納入。
+- **全站快取升級**：PWA 快取版本提升至 `eccv-guide-v20260907-04`，全站 HTML 與 Service Worker 快取清單同步更新。
+
 ## 09/13 TER 09:40 改點與蒙馬特高地深度慢遊（2026-09-05）
 
 - **確認改搭 09:40 直達 TER 進巴黎**：
@@ -839,7 +853,7 @@
 - 09/11 Malmö 到 Copenhagen 的 Øresundståg 工程、取消班次與替代路線；DAC 建築中心 4 層樓 BLOX Slide 溜滑梯開放狀況、克里斯蒂安堡宮接待廳 K7 入場須知與 Tivoli 18:30 入園 QR code。
 - 09/12 CPH P4／P7A 行李寄存的當日可用櫃位、尺寸、支付方式與價格；主方案是機場寄放（方案 B），若四件 20 kg 行李無法相容，再改用 [DSB København H Bagagecenter](https://www.dsb.dk/find-produkter-og-services/bagagecenter/)；參考 [CPH 行李寄存](https://www.cph.dk/en/practical/baggage/baggage-deposit)。
 - 09/11 出發前確認 Tivoli 18:30 入園票的 QR code 已載入手機，並於 18:25 左右抵達入口；若要看 22:00 Friday Rock，需重新確認離園與返 Malmö 班次。09/12 Stromma Nyhavn 15:00 班次是否已購買；救主堂 16:30 時段是否預約，並於 17:15 前離塔銜接 M2。
-- 09/13 Beauvais → Paris Nord 已確認訂購 09:40 到 10:59 的直達 TER C17，出發前一日複查班次準點狀況，並向 Paris 飯店確認上午 11:20 可先寄放行李。
+- 09/13 Beauvais → Paris Nord 已確認訂購 09:40 到 10:59 的直達 TER C17（4 人車票已合併加密納入 App/網站憑證庫 `ter-c17-beauvais-paris.enc`），出發前一日複查班次準點狀況，並向 Paris 飯店確認上午 11:20 可先寄放行李。
 - Paris Metro／RER 工程，尤其 09/13 與 09/18。
 - 各景點當日營業時間、入場時段與是否已購票；優先確認 09/14 15:00 Sainte-Chapelle（A 組聯票／B 組單館票）、09/14 16:30 左右 Notre-Dame 官方免費預約、Eiffel Tower、Louvre 與 Versailles 的指定時段（Palais Garnier 暫時取消）。
 - 航班航廈、登機門、報到截止時間及最新行李／電池規則。
