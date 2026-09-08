@@ -868,20 +868,20 @@ window.TRIP = {
       transport: { duration: "市區參觀與交通約 8 小時；市區步行約 4 到 5 公里", steps: ["First Camp", "Bus 9 → Malmö C", "步行 → Malmöhus Castle", "步行 → Saluhall 午餐", "步行 → 科技海事館", "步行 → 城堡花園", "Bus 9 回住宿"], note: "Malmöhus 與科技館步行僅 5 分鐘，同一張聯票當日皆可進入。" }, places: ["malmohus", "tekniken", "saluhall", "lilla"], note: "18 到 27 歲可直接使用 K7 通行證免費入場，同行者現場購買 100 SEK 聯票。"
     },
     "09-09": {
-      date: "2026/09/09", weekday: "週三", city: "Malmö → Copenhagen → Malmö", cityKey: "transfer", title: "Experimentarium 互動科學中心與西港區", summary: "個人主行程：上午跨海前往哥本哈根 Experimentarium 體驗互動科學，傍晚返回 Malmö 在旋轉大樓與西港區會合。", stay: "First Camp Sibbarp-Malmö", tone: "teal",
+      date: "2026/09/09", weekday: "週三", city: "Malmö → Copenhagen → Malmö", cityKey: "transfer", title: "Experimentarium 互動科學中心與西港區", summary: "個人主行程：09:00 搭 Bolt 出發至 Hyllie，跨海前往哥本哈根 Experimentarium 體驗互動科學並享用精選午餐，傍晚返回 Malmö 在旋轉大樓與西港區會合。", stay: "First Camp Sibbarp-Malmö", tone: "teal",
       schedule: [
-        { time: "07:50 - 08:30", icon: "▸", title: "First Camp → Bus 9 → Hyllie Station", detail: "從住宿出發搭 Bus 9 前往 Hyllie 車站。", tag: "出發" },
-        { time: "08:30 - 09:15", icon: "🚆", title: "Hyllie → Øresundståg → København H", detail: "搭乘跨海列車抵達哥本哈根中央車站。", tag: "跨海" },
-        { time: "09:15 - 09:40", icon: "↔", title: "København H → S-tog → Hellerup Station", detail: "在中央車站轉乘 S-tog 前往 Hellerup。", tag: "S-tog" },
-        { time: "09:40 - 09:55", icon: "🚌", title: "Hellerup → Bus 164／步行 → Experimentarium", detail: "轉乘公車或步行抵達互動科學中心。", tag: "接駁" },
-        { time: "09:55 - 15:45", icon: "🔬", title: "Experimentarium 互動科技體驗", detail: "包含港口物流模擬、光之迷宮、人體探索、泡泡館與頂樓展區，中午於館內用餐。", tag: "體驗" },
+        { time: "09:00 - 09:15", icon: "▸", title: "First Camp → Bolt 叫車 → Hyllie Station", detail: "09:00 用完早餐出發，搭乘 Bolt 計程車直達 Hyllie 車站，免除步行與候車時間。", tag: "出發" },
+        { time: "09:20 - 10:05", icon: "🚆", title: "Hyllie → Øresundståg → København H", detail: "搭乘跨海列車直達哥本哈根中央車站（約 35-40 分鐘）。", tag: "跨海" },
+        { time: "10:05 - 10:25", icon: "↔", title: "København H → S-tog → Hellerup Station", detail: "中央車站轉乘 S-tog（A/C/E 線約 12 分鐘）前往 Hellerup。", tag: "S-tog" },
+        { time: "10:25 - 10:35", icon: "🚌", title: "Hellerup → Bus 164／步行 → Experimentarium", detail: "出站轉搭 Bus 164 直達館前（約 5 分鐘）或悠閒步行 15 分鐘抵達。", tag: "接駁" },
+        { time: "10:35 - 15:45", icon: "🔬", title: "Experimentarium 互動科技體驗 ＆ 午餐", detail: "參觀港口物流模擬、光之迷宮、泡泡館等；中午至隔壁 Waterfront 享用 Halifax Burgers 美味漢堡或館內 SMASK 用餐。", tag: "體驗" },
         { time: "15:45 - 17:15", icon: "🚆", title: "Hellerup → København H → Malmö C", detail: "搭乘 S-tog 與跨海列車返回瑞典 Malmö C。", tag: "跨海" },
         { time: "17:30 - 18:15", icon: "🏙", title: "Turning Torso 旋轉大樓", detail: "在西港區與朋友會合，欣賞地標建築外觀。", tag: "會合" },
         { time: "18:15 - 19:00", icon: "🌊", title: "Västra Hamnen 濱水散步", detail: "沿海港長堤散步，欣賞當代住宅設計與夕陽海景。", tag: "散步" },
         { time: "19:00 - 20:30", icon: "🍴", title: "Malmö 市區晚餐", detail: "市區挑選餐廳聚餐，支持感應刷卡支付。", tag: "晚餐" },
         { time: "20:30 後", icon: "⌂", title: "返回 First Camp Sibbarp", detail: "搭乘公車或計程車返回營地，準備明日 ECCV 主會議。", tag: "回程" }
       ],
-      transport: { duration: "跨國交通與市區移動約 13 小時", steps: ["Bus 9 → Hyllie", "Øresundståg → København H", "S-tog → Hellerup", "Bus 164 → Experimentarium", "原路返回 Malmö C", "步行至 Turning Torso／西港", "公車回住宿"], note: "出發前以 Skånetrafiken 複查跨海班次；Hellerup 到科學館步行約 15 分鐘。" }, places: ["experimentarium", "turning"], note: "此日為個人科學館主行程，傍晚接回團體步調節奏。"
+      transport: { duration: "跨國交通與市區移動約 11.5 小時", steps: ["Bolt → Hyllie", "Øresundståg → København H", "S-tog → Hellerup", "Bus 164 → Experimentarium", "原路返回 Malmö C", "步行至 Turning Torso／西港", "公車回住宿"], note: "09:00 搭 Bolt 直達車站免起早；出發前以 Skånetrafiken 複查跨海班次；午餐推薦隔壁 Halifax Burgers。" }, places: ["experimentarium", "turning"], note: "此日為個人科學館主行程，傍晚接回團體步調節奏。"
     },
     "09-10": {
       date: "2026/09/10", weekday: "週四", city: "Malmö", cityKey: "malmo", title: "ECCV 2026：Poster #137 主會議日", summary: "今日重心為 ECCV 主會議、Expo 展區與 10:30 Poster Session 1 海報發表；早晨前往 Hyllie 領取實體識別證。", stay: "First Camp Sibbarp-Malmö", tone: "coral",
@@ -1073,7 +1073,7 @@ window.TRIP.placeDetails = {
   eccv: { why: "本次旅程核心會議；9/10 專注主會議、Expo 與 Poster Session 發表。", booking: { state: "confirmed", label: "Registration: Paid", note: "Full Passport / Author Registration；實體 badge 於會場領取。" } },
   formdesign: { why: "隱身於市中心歷史小廣場的安靜設計展館，能親身觸摸體驗北歐工業與家具設計結構；出門即是露天咖啡座，步行距離極短，完全無體能壓力。", booking: { state: "free", label: "免費入場・免預約", note: "週二至週日開放 11:00-17:00（週一休館）；免費入場，內部展覽與中庭咖啡座自由進出。", url: "https://formdesigncenter.com/en", cta: "官方展覽與參觀資訊" } },
   lund: { why: "建於 1424 年的天文機械鐘極具歷史工程價值，每天 12:00/15:00 齒輪帶動木偶報時演出；隆德距 Malmö C 僅 10 分鐘火車，免跨國且體能負擔低，是 09/10 發表前最合適的充電行程。", booking: { state: "free", label: "大教堂免費入場", note: "大教堂開放自由參觀（週一至週五 08:00-18:00）；建議於 11:45 或 14:45 前就座觀看天文鐘機械人偶報時演示。", url: "https://www.lundsdomkyrka.se/english/", cta: "官方開放時間與導覽" } },
-  experimentarium: { why: "以動手操作與互動科學為核心，展區範圍較大，適合保留半天時間參觀。", booking: { state: "recommended", label: "門票・線上購票省 10%", note: "每日 09:30-17:00 開放；線上購票省 10%，指定日期有效，亦可現場購買。", url: "https://www.experimentarium.dk/plan-your-visit/", cta: "官方購票／開放時間" } },
+  experimentarium: { why: "以動手操作與互動科學為核心，展區範圍較大，適合保留半天時間參觀。", booking: { state: "recommended", label: "門票・線上購票省 10%", note: "每日 09:30-17:00 開放；線上購票省 10%，指定日期有效，亦可現場購買。午餐推薦隔壁商場 1 樓 Halifax Burgers 美味牛肉漢堡或館內 1 樓 SMASK 用餐。", url: "https://www.experimentarium.dk/plan-your-visit/", cta: "官方購票／開放時間" } },
   enigma: { why: "通訊、電信與數位社會主題集中，規模適合輕鬆參觀。", booking: { state: "onsite", label: "門票・可現場購票", note: "一般參觀無需事先預約，現場購票即可。", url: "https://www.enigma.dk/en/visit-enigma", cta: "官方票務資訊" } },
   nyhavn: { why: "容易與 Strøget、王宮區與運河遊船串接的哥本哈根經典地標。", booking: { state: "free", label: "免費・免預約", note: "港區散步免費；遊船搭乘請參考運河遊船票券。" } },
   kongensnytorv: { why: "鄰近新港，將午餐、皇家劇院與地鐵轉乘集中於同一節點。", booking: { state: "free", label: "免費・免預約", note: "公共廣場；周邊店家與地鐵依各自時間運作。" } },
@@ -1525,23 +1525,21 @@ window.TRIP.routeMaps = {
   "09-09": {
     defaultGroup: "personal",
     groups: [{
-      id: "personal", label: "Experimentarium 個人路線", note: "早上跨海到 Hellerup，下午返回 Malmö C，傍晚在 Turning Torso 與西港區會合。",
+      id: "personal", label: "Experimentarium 個人路線", note: "09:00 搭 Bolt 出發跨海至 Hellerup，下午返回 Malmö C，傍晚在 Turning Torso 與西港區會合。",
       stops: [
-        { time: "07:50", label: "First Camp Sibbarp", detail: "出發，步行至 Götgatan", lat: 55.5718, lng: 12.9087, status: "start" },
-        { time: "08:05", label: "Götgatan", detail: "搭乘 Bus 9", lat: 55.5763, lng: 12.9260, status: "transfer" },
-        { time: "08:30", label: "Hyllie Station", detail: "確認車票與月台", lat: 55.5627, lng: 12.9759, status: "transfer" },
-        { time: "09:15", label: "København H", detail: "抵達後轉乘 S-tog", lat: 55.6728, lng: 12.5647, status: "transfer" },
-        { time: "09:40", label: "Hellerup Station", detail: "轉乘 Bus 164 或步行", lat: 55.7306, lng: 12.5669, status: "transfer" },
-        { time: "09:55", label: "Experimentarium", detail: "互動科學中心", lat: 55.7265, lng: 12.5800, status: "ticket" },
+        { time: "09:00", label: "First Camp Sibbarp", detail: "出發，搭乘 Bolt 計程車", lat: 55.5718, lng: 12.9087, status: "start" },
+        { time: "09:15", label: "Hyllie Station", detail: "抵達車站，搭乘跨海列車", lat: 55.5627, lng: 12.9759, status: "transfer" },
+        { time: "10:05", label: "København H", detail: "抵達後轉乘 S-tog", lat: 55.6728, lng: 12.5647, status: "transfer" },
+        { time: "10:25", label: "Hellerup Station", detail: "轉乘 Bus 164 或步行", lat: 55.7306, lng: 12.5669, status: "transfer" },
+        { time: "10:35", label: "Experimentarium", detail: "互動科學中心 ＆ Halifax 午餐", lat: 55.7265, lng: 12.5800, status: "ticket" },
         { time: "16:00", label: "København H", detail: "回程轉乘", lat: 55.6728, lng: 12.5647, status: "transfer" },
         { time: "17:15", label: "Malmö C", detail: "抵達後前往西港會合", lat: 55.6091, lng: 13.0007, status: "transfer" },
         { time: "17:30", label: "Turning Torso", detail: "與大家會合", lat: 55.6133, lng: 12.9763, status: "planned" },
         { time: "18:15", label: "Västra Hamnen", detail: "濱水區散步", lat: 55.6130, lng: 12.9745, status: "planned" },
-        { time: "21:00 前", label: "First Camp Sibbarp", detail: "公車或計程車回住宿", lat: 55.5718, lng: 12.9087, status: "stay" }
+        { time: "20:30 後", label: "First Camp Sibbarp", detail: "公車或計程車回住宿", lat: 55.5718, lng: 12.9087, status: "stay" }
       ],
       legs: [
-        { mode: "walk", label: "步行 15 分" },
-        { mode: "bus", label: "Bus 9" },
+        { mode: "transit", label: "Bolt 車程 12 分" },
         { mode: "train", label: "Øresundståg" },
         { mode: "train", label: "S-tog" },
         { mode: "bus", label: "Bus 164／步行" },

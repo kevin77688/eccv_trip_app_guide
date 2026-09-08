@@ -1,7 +1,20 @@
 # ECCV 2026 旅程簡報
 
-> 給後續 agent 的精簡背景資料。最後同步：2026-09-07。
+> 給後續 agent 的精簡背景資料。最後同步：2026-09-09。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
+
+## 09/09 行程更新：延後至 09:00 出發、改搭 Bolt 計程車接駁與 Experimentarium 午餐精選（2026-09-09）
+
+- **出發時間延後與接駁調整**：
+  - 原定 07:50 步行至公車站改為 09:00 在 First Camp Sibbarp 營地用畢早餐後出發，以手機 Bolt App 叫車直達 Hyllie Station（車程約 10-15 分鐘，免除早起、清晨 15 分鐘步行及候車負擔）。
+  - 09:20 於 Hyllie Station 搭乘 Øresundståg 跨海列車前往哥本哈根中央車站（København H，車程約 35-40 分鐘）。
+  - 10:05 於 København H 轉乘 S-tog（A/C/E 線約 12 分鐘）直達 Hellerup Station，出站搭乘 Bus 164 直達館前（約 5 分鐘）或悠閒步行 15 分鐘抵達 Experimentarium（約 10:35 抵達）。此接駁方式最為順暢且兼顧價格與便利性。
+- **午餐推薦（肉類偏好與順向無負擔）**：
+  - 推薦前往 Experimentarium 緊鄰之 **Waterfront Shopping**（步行僅 1 分鐘）1 樓 **Halifax Burgers Waterfront**，享用丹麥高品質厚切牛肉漢堡與薯條，全店支援信用卡感應支付，符合肉類優先與舒適放鬆原則。
+  - 館內 1 樓之 **SMASK** 亦提供漢堡與熱食簡餐作為雨天／不想出館時的備選。
+- **午後與傍晚動線維持**：
+  - 15:45 結束科學館參觀，原路經 Hellerup ➔ København H 搭跨海列車返回 Malmö C（17:15 抵達）。
+  - 17:30 於 Turning Torso 旋轉大樓與朋友會合，漫步 Västra Hamnen 水岸長堤欣賞夕陽，市區享用晚餐後返回營區，儲備 09/10 ECCV 發表體力。
 
 ## 旅程偏好與規劃決策準則同步（2026-09-07）
 
@@ -615,7 +628,7 @@
 - 首頁操作列提供共同筆記連結，標示為「ECCV 行程筆記（HackMD）」並開新分頁：<https://hackmd.io/vrq7Y5dQT7-yv2MgBgezgg>。
 - 地圖線條代表旅程先後與交通類型，不宣稱是即時道路或軌道幾何；精確月台、道路、臨時改道與即時班次以官方 App／Google Maps 當下導航為準。
 - 09/08 購買 Malmö Museum 一日 Kombibiljett，當天完成 Malmöhus Castle／Aquarium／Art Museum 與 Teknikens och Sjöfartens hus；2026/09/08 週二官方開放 11:00 到 17:00，一日聯票成人 100 SEK、學生 50 SEK；出發時間順延至 09:50，約 10:55 抵達吻合 11:00 開館。
-- 09/09 為同行者的個人主行程：First Camp → Götgatan → Hyllie → København H → Hellerup → Experimentarium（約 5 小時）→ Malmö C → Turning Torso／Västra Hamnen 與朋友會合；Disgusting Food Museum 與 Malmö Saluhall 不放進個人當日路線。
+- 09/09 為同行者的個人主行程：09:00 出發搭 Bolt → Hyllie → København H → Hellerup → Experimentarium（約 5 小時，午餐推薦隔壁商場 Halifax Burgers）→ Malmö C → Turning Torso／Västra Hamnen 與朋友會合；Disgusting Food Museum 與 Malmö Saluhall 不放進個人當日路線。
 - 09/11 改為 Malmö C → 09:15-10:00 København H → 10:00-11:30 水岸 DAC @ BLOX（體驗 4 層樓 BLOX Slide 巨型溜滑梯，憑 K7 免費）→ 11:45-13:00 克里斯蒂安堡宮皇家接待廳（憑 K7 免費）→ 13:00-14:15 老城區午餐（Slotskælderen 百年三明治或 Paludan 咖啡館）→ 14:30-15:30 圓塔登頂（憑 K7 免費）→ 15:30-17:30 Strøget 購物街（HAY House、Illums、LEGO 旗艦店）→ 17:30-18:30 市政廳廣場周邊晚餐／小歇 → 18:30-21:45 Tivoli 花園（已購票，賞復古夜景與週五 Fredagsrock）→ 22:00 中央車站搭火車回 Malmö。DAC、克里斯蒂安堡宮與圓塔三館青年均憑 K7 文化通行證免費入場（0 元）。
 - 09/12 改為退房 → Malmö C → CPH P4／P7A 機場寄放（方案 B，主方案）→ Marmorkirken → 12:00 Amalienborg 衛兵交接 → Nyhavn／Kongens Nytorv 午餐 → 15:00 到 16:00 Stromma Classic Canal Tour → 16:00 到 16:30 前往 Christianshavn → 16:30 到 17:15 救主堂螺旋塔 → 17:15 到 18:00 搭 M2 直達 CPH 取行李 → 18:00 前完成 bag drop → FR9267。ENIGMA 保留在景點總覽供參考；Experimentarium 已移到 09/09 個人主行程；機場櫃位尺寸／容量、15:00 船班與 Metro 狀況仍需出發前確認，中央站方案 A 作為備援。
 - 09/13 的「Check-in」定義為先到 Paris 飯店寄行李／若房間已準備好就入住；正式入住時間為 15:00 後。已確認訂購 09/13 09:40 從 Beauvais 出發的直達 TER C17，預計 10:59 抵達 Paris Nord。因抵達時間較晚，加尼葉歌劇院內部參觀暫時取消，當日改採蒙馬特高地深度漫遊（愛牆、小丘廣場、聖心堂與後山葡萄園）。
@@ -732,7 +745,7 @@
 | 09/06 | 台北 → 杜拜 | 20:00 古亭出發，松山新店線至北門轉機捷直達車至桃機 T2；21:15 報到托運，23:50 搭 EK 367，純移動日 |
 | 09/07 | Copenhagen → Malmö | 13:15 抵達；CPH → Hyllie → First Camp 周邊；18:00-19:00 辦理入住；不排景點 |
 | 09/08 | Malmö | 09:50 出發 → Malmöhus Castle／Aquarium／Art Museum（11:00 開館）→ 午餐 → Teknikens och Sjöfartens hus → Slottsträdgården；使用一日聯票 |
-| 09/09 | Malmö → Copenhagen → Malmö | 個人 Experimentarium 全日 → Malmö C → Turning Torso／Västra Hamnen 與朋友會合 |
+| 09/09 | Malmö → Copenhagen → Malmö | 09:00 Bolt 出發 ➔ 個人 Experimentarium ＆ Halifax 漢堡午餐 ➔ Malmö C ➔ Turning Torso／Västra Hamnen 與朋友會合 |
 | 09/10 | Malmö | ECCV 2026 主會議、Expo；10:30 Poster Session 1／Poster #137 |
 | 09/11 | Copenhagen | Malmö C → 09:15-10:00 København H → 水岸散步至 DAC @ BLOX (溜滑梯) → 克里斯蒂安堡宮 → 老城午餐 → 圓塔 → Strøget 購物街 → 市政廳廣場晚餐 → 18:30-21:45 Tivoli 花園 → 22:00 火車回 Malmö |
 | 09/12 | Copenhagen → Beauvais | 退房 → Malmö C → CPH P4／P7A 寄行李（方案 B）→ Marmorkirken → 12:00 Amalienborg 衛兵交接 → Nyhavn／Kongens Nytorv 午餐 → 15:00-16:00 運河遊船 → 16:30-17:15 救主堂螺旋塔 → 17:15-18:00 M2 → CPH 取行李 → 18:00 前 bag drop → FR9267 |
@@ -758,7 +771,7 @@
 - First Camp 的日常軸線：步行至 Götgatan → Bus 9 → Hyllie。
 - Hyllie 是 Malmö 市區、ECCV、Copenhagen 與 CPH Airport 之間的核心轉運點。
 - 09/08 09:50 從 First Camp 出發，步行至 Götgatan 搭 Bus 9 轉火車至 Malmö C，約 10:55 步行到 Malmöhus 吻合 11:00 開館；一日聯票先走 Castle／Aquarium／Art Museum，再到相鄰的 Teknikens och Sjöfartens hus，閉館後逛 Slottsträdgården。
-- 09/09 個人主線為 First Camp → Götgatan → Bus 9 → Hyllie → Øresundståg → København H → S-tog → Hellerup → Experimentarium；下午原路回 København H → Malmö C，17:30 在 Turning Torso 與朋友會合，再走 Västra Hamnen。Hellerup → Experimentarium 優先搭 Bus 164，步行是備援；不再加 Copenhagen 市中心觀光。
+- 09/09 個人主線為 09:00 從 First Camp 搭 Bolt 計程車直達 Hyllie → Øresundståg → København H → S-tog → Hellerup → Bus 164／步行 → Experimentarium（午餐於隔壁商場 Halifax Burgers 或館內 SMASK）；下午原路回 København H → Malmö C，17:30 在 Turning Torso 與朋友會合，再走 Västra Hamnen。Hellerup → Experimentarium 優先搭 Bus 164，步行是備援；不再加 Copenhagen 市中心觀光。
 - 09/10 搭 Bus 9 到 Hyllie，再步行至 Malmö Arena／Malmömässan。
 - 09/11 以 Malmö C → København H 的 09:15 到 10:00 Øresundståg 為主；出站沿水岸散步 12 分鐘至 BLOX 大樓，10:00 參觀丹麥建築中心（DAC，體驗 4 層樓 BLOX Slide 溜滑梯，憑 K7 免費），11:45 步行 5 分鐘過橋參觀克里斯蒂安堡宮皇家接待廳（憑 K7 免費），13:00 老城區享用傳統三明治午餐（如 Slotskælderen hos Gitte Kik 百年老店），14:30 登圓塔（憑 K7 免費），15:30 沿 Strøget 徒步街逛設計名店並漫步走向市政廳廣場，17:30 廣場周邊晚餐，18:30 入 Tivoli 花園（已購票），22:00 從 København H 搭火車約 35 分鐘回 Malmö。實際價格、末班車與工程仍需用 Skånetrafiken 複查。
 - 09/11 Tivoli 本次票面抓 18:30 入園，可欣賞傍晚至夜晚 10 萬盞復古燈景；9/11 另有 Friday Rock（Dizzy Mizz Lizzy 22:00）與 22:30 Illuminations，目前時間軸預定 21:45 離園搭 22:00 火車，若要看完整演出必須主動延後回程並重新確認跨海列車。
