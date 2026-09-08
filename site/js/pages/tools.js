@@ -1472,7 +1472,7 @@ Exhaustively translate ALL readable text into ${target.label} (${target.code}) i
             if (core.toast) core.toast("發現新版本，正在套用更新…");
             setTimeout(() => window.location.reload(), 800);
           } else {
-            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260909-01）");
+            if (core.toast) core.toast(res.message || "目前已是最新版本（v20260909-03）");
           }
         } catch (_) {
           if (core.toast) core.toast("檢查更新失敗，請確認網路連線");
@@ -2048,7 +2048,7 @@ Exhaustively translate ALL readable text into ${target.label} (${target.code}) i
       <section class="tools-block content-section tools-update-section" id="tools-update">
         <div class="section-heading-row">
           <div>${sectionHeading(isNative ? "APP MAINTENANCE" : "PWA MAINTENANCE", isNative ? "Android 獨立 App 版本與維護" : "PWA 網頁版更新與離線維護", isNative ? "App 頁面內建於安裝檔中；若有最新修改可在此更新或清除舊快取。" : "支援 Service Worker 離線快取；若 GitHub 有發布更新可在此檢查或重整。")}</div>
-          <span class="result-count">${isNative ? "Android APK · v20260909-01" : "PWA 網頁版 · v20260909-01"}</span>
+          <span class="result-count">${isNative ? "Android APK · v20260909-03" : "PWA 網頁版 · v20260909-03"}</span>
         </div>
         <div class="tools-update-card">
           <div class="tools-update-copy">

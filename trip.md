@@ -6,15 +6,27 @@
 ## 09/09 行程更新：延後至 09:00 出發、改搭 Bolt 計程車接駁與 Experimentarium 午餐精選（2026-09-09）
 
 - **出發時間延後與接駁調整**：
-  - 原定 07:50 步行至公車站改為 09:00 在 First Camp Sibbarp 營地用畢早餐後出發，以手機 Bolt App 叫車直達 Hyllie Station（車程約 10-15 分鐘，免除早起、清晨 15 分鐘步行及候車負擔）。
-  - 09:20 於 Hyllie Station 搭乘 Øresundståg 跨海列車前往哥本哈根中央車站（København H，車程約 35-40 分鐘）。
-  - 10:05 於 København H 轉乘 S-tog（A/C/E 線約 12 分鐘）直達 Hellerup Station，出站搭乘 Bus 164 直達館前（約 5 分鐘）或悠閒步行 15 分鐘抵達 Experimentarium（約 10:35 抵達）。此接駁方式最為順暢且兼顧價格與便利性。
+  - 原定 07:50 步行至公車站改為 09:00 在 First Camp Sibbarp 營地用畢早餐後出發，08:55 以手機 Bolt App 叫車直達 Hyllie Station（車程約 10-15 分鐘，免除早起、清晨 15 分鐘步行及候車負擔）。
+  - **購票防罰要點**：於瑞典 **Skånetrafiken App** 購買跨國單程票時，目的地**務必直接設定為 `Hellerup st`（不要只買到 København H）**；系統將出一張涵蓋「Øresundståg 跨海火車 ＋ 丹麥 S-tog ＋ 丹麥 Bus 164」的全程聯票（一票到底），避免跨入哥本哈根 Zone 2 時因無效車票遭丹麥查票員罰款 750 DKK。
+  - 09:20 於 Hyllie Station 搭乘 Øresundståg 跨海列車前往哥本哈根中央車站（København H，車程約 35-40 分鐘，隨身攜帶護照因應抽檢）。
+  - 10:05 抵達 København H 後免出站，站內走至 **S-tog 月台（9–12 月台）**搭乘 **A 線、C 線或 E 線** 直達 Hellerup Station（車程約 12 分鐘，班次密集）。
+  - 10:25 出 Hellerup 車站於站前搭乘 **Bus 164**（往 Tuborg Havn 方向，搭 2 站約 4 分鐘直達館前）或沿 Tuborg Boulevard 平路步行約 15 分鐘抵達 Experimentarium（約 10:35 抵達）。
+- **Experimentarium 精選展區攻略（停留約 5 小時，10:35 - 15:45）**：
+  - 入館打卡象徵 DNA 雙螺旋結構之中央巨型銅梯。
+  - **重點必玩 5 大展區**：
+    1. **港口物流模擬（The Port / Havnen）**：操作巨型起重機吊掛貨櫃、操控水流幫浦導航模型貨輪，體驗現代港口分流與機械工程。
+    2. **光之迷宮與光學探索（The Light / Lys）**：動手調整雷射光反射軌道路線、稜鏡折射、紅外線動態捕捉與影子互動牆。
+    3. **泡泡實驗室（Bubblearium / Bobleriet）**：拉出直徑超過 2 公尺可套住全身的巨型肥皂薄膜、灌入白霧吹出煙霧泡泡。
+    4. **人體機能與反應力挑戰（Under Huden / The Body）**：感應踏板即時視覺化心率血流、多項全身燈光速度反應力測試。
+    5. **頂樓互動活動場（Rooftop / Tagterrassen）**：人體動能驅動力學裝置、眺望厄勒海峽水岸風光。
+    *(兒童工地區搬遷關閉兩週、互動影院整修中，直接略過)*
 - **午餐推薦（肉類偏好與順向無負擔）**：
-  - 推薦前往 Experimentarium 緊鄰之 **Waterfront Shopping**（步行僅 1 分鐘）1 樓 **Halifax Burgers Waterfront**，享用丹麥高品質厚切牛肉漢堡與薯條，全店支援信用卡感應支付，符合肉類優先與舒適放鬆原則。
-  - 館內 1 樓之 **SMASK** 亦提供漢堡與熱食簡餐作為雨天／不想出館時的備選。
-- **午後與傍晚動線維持**：
-  - 15:45 結束科學館參觀，原路經 Hellerup ➔ København H 搭跨海列車返回 Malmö C（17:15 抵達）。
-  - 17:30 於 Turning Torso 旋轉大樓與朋友會合，漫步 Västra Hamnen 水岸長堤欣賞夕陽，市區享用晚餐後返回營區，儲備 09/10 ECCV 發表體力。
+  - **首選**：科學館隔壁 **Waterfront Shopping 商場 1 樓**（出館右轉步行 1 分鐘）**Halifax Burgers Waterfront**，享用丹麥高品質厚切牛肉漢堡與薯條，全店支援信用卡感應支付，符合肉類優先與舒適放鬆原則。
+  - **備選**：館內 1 樓 **SMASK** 餐廳（提供漢堡與熱食簡餐作為雨天／不想出館時的備選）。
+- **午後返程與 Turning Torso 會合（15:45 - 20:30）**：
+  - 15:45 結束科學館參觀，原路經 Bus 164／步行至 Hellerup ➔ S-tog 至 København H ➔ Øresundståg 返回 Malmö C（約 17:15 抵達）。
+  - **Turning Torso 旋轉大樓背景與會合**：高 190 公尺、54 層樓，為大師 Santiago Calatrava 設計之全北歐最高摩天大樓，整座建築旋轉 90 度；座落於西港（Västra Hamnen）100% 綠能生態社區。內部為私人住宅不開放，17:30 於大樓下方廣場與朋友會合拍照，漫步海港長堤欣賞夕陽海景並遠眺跨海大橋。
+  - 19:00 市區享用晚餐（支援感應刷卡），餐後返回營地休息，儲備 09/10 ECCV 發表體力。
 
 ## 旅程偏好與規劃決策準則同步（2026-09-07）
 
@@ -771,7 +783,7 @@
 - First Camp 的日常軸線：步行至 Götgatan → Bus 9 → Hyllie。
 - Hyllie 是 Malmö 市區、ECCV、Copenhagen 與 CPH Airport 之間的核心轉運點。
 - 09/08 09:50 從 First Camp 出發，步行至 Götgatan 搭 Bus 9 轉火車至 Malmö C，約 10:55 步行到 Malmöhus 吻合 11:00 開館；一日聯票先走 Castle／Aquarium／Art Museum，再到相鄰的 Teknikens och Sjöfartens hus，閉館後逛 Slottsträdgården。
-- 09/09 個人主線為 09:00 從 First Camp 搭 Bolt 計程車直達 Hyllie → Øresundståg → København H → S-tog → Hellerup → Bus 164／步行 → Experimentarium（午餐於隔壁商場 Halifax Burgers 或館內 SMASK）；下午原路回 København H → Malmö C，17:30 在 Turning Torso 與朋友會合，再走 Västra Hamnen。Hellerup → Experimentarium 優先搭 Bus 164，步行是備援；不再加 Copenhagen 市中心觀光。
+- 09/09 個人主線為 09:00 從 First Camp 搭 Bolt 計程車直達 Hyllie（08:55 叫車）；Skånetrafiken 目的地直接設 `Hellerup st` 一票到底防罰 750 DKK → Øresundståg 跨海至 København H 站內轉 S-tog（A/C/E 線）直達 Hellerup → Bus 164／步行 → Experimentarium（玩港口物流、光之迷宮、泡泡館、人體挑戰與頂樓；午餐於隔壁商場 1 樓 Halifax Burgers）；下午原路回 København H → Malmö C，17:30 在北歐最高旋轉大樓 Turning Torso 與朋友會合，漫步 Västra Hamnen 西港長堤賞夕陽海景，市區晚餐後回營地。不再加 Copenhagen 市中心觀光。
 - 09/10 搭 Bus 9 到 Hyllie，再步行至 Malmö Arena／Malmömässan。
 - 09/11 以 Malmö C → København H 的 09:15 到 10:00 Øresundståg 為主；出站沿水岸散步 12 分鐘至 BLOX 大樓，10:00 參觀丹麥建築中心（DAC，體驗 4 層樓 BLOX Slide 溜滑梯，憑 K7 免費），11:45 步行 5 分鐘過橋參觀克里斯蒂安堡宮皇家接待廳（憑 K7 免費），13:00 老城區享用傳統三明治午餐（如 Slotskælderen hos Gitte Kik 百年老店），14:30 登圓塔（憑 K7 免費），15:30 沿 Strøget 徒步街逛設計名店並漫步走向市政廳廣場，17:30 廣場周邊晚餐，18:30 入 Tivoli 花園（已購票），22:00 從 København H 搭火車約 35 分鐘回 Malmö。實際價格、末班車與工程仍需用 Skånetrafiken 複查。
 - 09/11 Tivoli 本次票面抓 18:30 入園，可欣賞傍晚至夜晚 10 萬盞復古燈景；9/11 另有 Friday Rock（Dizzy Mizz Lizzy 22:00）與 22:30 Illuminations，目前時間軸預定 21:45 離園搭 22:00 火車，若要看完整演出必須主動延後回程並重新確認跨海列車。
