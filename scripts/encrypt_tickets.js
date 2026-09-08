@@ -89,6 +89,12 @@ const TICKET_DEFINITIONS = [
     encFile: 'ter-c17-beauvais-paris.enc',
     sourcePdf: '2026-09-13_09-40_TER-C17_Beauvais-Paris-Nord_QR-tickets.pdf',
     title: 'TER C17 博韋至巴黎北站車票'
+  },
+  {
+    id: 'experimentarium',
+    encFile: 'experimentarium.enc',
+    sourcePdf: '2026-09-09_10-35_Experimentarium_QR-tickets.pdf',
+    title: 'Experimentarium 互動科學中心門票'
   }
 ];
 

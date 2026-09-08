@@ -23,7 +23,7 @@ const fs = require('node:fs');
         const files = await Promise.all(names.map(name => window.ECCV_TICKET_STORE.get(name)));
         return { count: files.length, allPresent: files.every(file => file.byteLength > 44) };
       });
-      assert.deepEqual(loaded, { count: 12, allPresent: true });
+      assert.deepEqual(loaded, { count: 13, allPresent: true });
       await context.setOffline(true);
       assert.equal(await page.evaluate(async () => (await window.ECCV_TICKET_STORE.availability()).every(file => file.ready)), true);
       assert.deepEqual(errors, []);
@@ -51,6 +51,6 @@ const fs = require('node:fs');
     }, password);
     assert.deepEqual(result, { mime: 'image/png', length: png.length });
     await context.close();
-    console.log(JSON.stringify({ result: 'passed', screenshots: output, checks: 'all 12 bundled files, direct opening without import, offline persistence and authenticated decryption' }));
+    console.log(JSON.stringify({ result: 'passed', screenshots: output, checks: 'all 13 bundled files, direct opening without import, offline persistence and authenticated decryption' }));
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

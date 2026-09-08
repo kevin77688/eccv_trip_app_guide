@@ -3,6 +3,17 @@
 > 給後續 agent 的精簡背景資料。最後同步：2026-09-09。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
 
+## 09/09 票券更新：納入 Experimentarium 官方加密門票並綁定時間軸（2026-09-09）
+
+- **票券確認與加密打包**：
+  - 已確認取得 09/09 Experimentarium 2 位成人入場門票（Entré Voksen x2，指定日 09/09 有效）。
+  - 原始憑證歸檔於 `pdf/2026-09-09_10-35_Experimentarium_QR-tickets.pdf`（不追蹤於 Git）。
+  - 以 AES-256-GCM 完成門票加密打包為 `site/assets/tickets/experimentarium.enc`，並更新驗證檢查碼至網站資料庫。
+  - 全站加密票券由 12 份擴增為 13 份，離線票券由 11 份擴增為 12 份。
+- **行程與畫面連動**：
+  - 09/09 每日行程之 Experimentarium 項目綁定 `experimentarium` 票券 ID，時間軸卡片直出「出示門票」快捷按鈕。
+  - 景點總覽中 Experimentarium 狀態更新為「已購・官方 QR 門票」，可於閘門直接出示掃描。
+
 ## 09/09 行程更新：延後至 09:00 出發、改搭 Bolt 計程車接駁與 Experimentarium 午餐精選（2026-09-09）
 
 - **出發時間延後與接駁調整**：
@@ -686,7 +697,7 @@
 - 景點卡保留「為什麼推薦」、票務狀態、官方票務入口與 Google Maps；票務資訊集中在 `site/js/data.js` 的 `placeDetails`，畫面由 `site/js/app.js` 產生。
 - Malmö / 瑞典境內景點資料包含 Malmöhus Castle、Teknikens och Sjöfartens hus、Malmö Saluhall、Lilla Torg、Disgusting Food Museum、Turning Torso & Västra Hamnen、ECCV 2026，以及新增之 Lund Cathedral & Astronomical Clock（隆德大教堂與 1424 天文機械鐘）與 Form/Design Center（北歐設計中心 ＋ Lilla Torg 咖啡），保留作未排入每日行程的備選參考。Copenhagen 景點資料包含 DAC @ BLOX、Christiansborg、Rundetaarn、Strøget、Tivoli、Amalienborg、Marmorkirken、Nyhavn、Kongens Nytorv、運河遊船、救主堂與已排入 09/09 個人行程的 Experimentarium；Rosenborg、Torvehallerne 與 ENIGMA 保留作未排入每日行程的參考。Paris 景點資料包含 Sainte-Chapelle、Pont de Bir-Hakeim、Sacré-Cœur／Montmartre、Grand Palais、Le Marais、Le Bon Marché。
 - Disneyland 已從網站資料、景點頁、9/17 每日頁說明與圖片資產完全移除；不再作為備選。
-- 票務優先級：Eiffel Tower、Louvre、Sainte-Chapelle 與 Versailles 指定時段優先處理（Palais Garnier 暫時取消）；Rosenborg、Tivoli、Stromma 運河遊船、Musée de l’Armée 與 Musée Rodin 建議日期確定後先買；Experimentarium 可先買線上票；Rundetaarn、Marmorkirken 教堂本體與 Sacré-Cœur 圓頂適合現場處理。
+- 票務優先級：Eiffel Tower、Louvre、Sainte-Chapelle 與 Versailles 指定時段優先處理（Palais Garnier 暫時取消）；Rosenborg、Tivoli、Stromma 運河遊船、Musée de l’Armée 與 Musée Rodin 建議日期確定後先買；Experimentarium 已購買 09/09 入場門票；Rundetaarn、Marmorkirken 教堂本體與 Sacré-Cœur 圓頂適合現場處理。
 - Notre-Dame 教堂本體免費，官方免費時段接近參觀日才釋出；不購買第三方普通入場票。Amalienborg 廣場與衛兵交接免費，博物館需票。Marmorkirken 教堂本體免費，圓頂最多 15 人且不可預訂。
 - Cité des sciences 的 Argonaute 潛水艇在 **2026/09/01 到 09/30** 關閉；09/17 已改排 Versailles，因此科學館只保留為未排入的景點資料。
 - 景點卡底部動作區固定貼齊卡片底部，確保 Google Maps 按鈕在同一列對齊；需購票的景點在地圖按鈕上方顯示官方票務按鈕。景點頁的說明、日期、票務與按鈕文字整體放大；「票務」區塊的狀態與說明採 17px、較深文字色、1.75 行距與 18px 內距，桌機與手機皆以易讀為優先。

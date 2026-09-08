@@ -598,6 +598,24 @@ window.TRIP = {
       ]
     },
     {
+      id: "experimentarium",
+      title: "Experimentarium 入場門票",
+      subtitle: "哥本哈根互動科學中心 2 人門票",
+      category: "attraction",
+      badge: "入場門票",
+      dateLabel: "09/09 09:30 - 17:00 (指定日有效)",
+      targetDays: ["09-09"],
+      encFile: "experimentarium.enc",
+      qrHint: "進場時於入口閘門出示官方 QR 碼掃描",
+      details: [
+        { label: "參觀日期", value: "2026/09/09 (Visit date: 09/09/2026)" },
+        { label: "預約人數", value: "2 位成人 (Entré Voksen x2)" },
+        { label: "景點地址", value: "Tuborg Havnevej 7, Hellerup" },
+        { label: "開放時間", value: "09:30 - 17:00" },
+        { label: "票券格式", value: "2 頁官方電子票 PDF (含驗證 QR 碼)" }
+      ]
+    },
+    {
       id: "stromma-canal-tour",
       title: "哥本哈根經典運河遊船",
       subtitle: "Stromma Classic Canal Tour 門票",
@@ -874,7 +892,7 @@ window.TRIP = {
         { time: "09:20 - 10:05", icon: "🚆", title: "Hyllie → Øresundståg → København H", detail: "Skånetrafiken App 購票目的地直接設「Hellerup st」一票到底（含後續 S-tog 與公車，防越區被罰 750 DKK），搭跨海火車至中央車站。", tag: "跨海" },
         { time: "10:05 - 10:25", icon: "↔", title: "København H → S-tog → Hellerup Station", detail: "站內免出站至月台 9–12 轉乘 S-tog（A/C/E 線約 12 分鐘）直達 Hellerup 車站。", tag: "S-tog" },
         { time: "10:25 - 10:35", icon: "🚌", title: "Hellerup → Bus 164／步行 → Experimentarium", detail: "站前轉乘 Bus 164（2 站約 4 分鐘直達門口）或平路直行約 15 分鐘抵達科學館。", tag: "接駁" },
-        { time: "10:35 - 15:45", icon: "🔬", title: "Experimentarium 互動科技 ＆ Halifax 漢堡", detail: "打卡雙螺旋銅梯；體驗港口物流起重機、光之迷宮、人體挑戰與泡泡館；中午至隔壁 Waterfront 1 樓 Halifax Burgers 享用厚切牛肉漢堡。", tag: "體驗" },
+        { time: "10:35 - 15:45", icon: "🔬", title: "Experimentarium 互動科技 ＆ Halifax 漢堡", detail: "打卡雙螺旋銅梯；體驗港口物流起重機、光之迷宮、人體挑戰與泡泡館；中午至隔壁 Waterfront 1 樓 Halifax Burgers 享用厚切牛肉漢堡。", tag: "體驗", ticketId: "experimentarium" },
         { time: "15:45 - 17:15", icon: "🚆", title: "Hellerup → København H → Malmö C", detail: "搭乘 Bus 164 或步行至 Hellerup，轉 S-tog 與跨海列車 Øresundståg 返回瑞典 Malmö C。", tag: "跨海" },
         { time: "17:30 - 18:15", icon: "🏙", title: "Turning Torso 地標會合", detail: "北歐最高 190 公尺旋轉摩天樓下與朋友會合，欣賞大師 Calatrava 建築外觀與拍照。", tag: "會合" },
         { time: "18:15 - 19:00", icon: "🌊", title: "Västra Hamnen 濱水散步", detail: "漫步西港綠能生態示範區水岸長堤，欣賞當代住宅設計、夕陽海景並眺望跨海大橋。", tag: "散步" },
@@ -1073,7 +1091,7 @@ window.TRIP.placeDetails = {
   eccv: { why: "本次旅程核心會議；9/10 專注主會議、Expo 與 Poster Session 發表。", booking: { state: "confirmed", label: "Registration: Paid", note: "Full Passport / Author Registration；實體 badge 於會場領取。" } },
   formdesign: { why: "隱身於市中心歷史小廣場的安靜設計展館，能親身觸摸體驗北歐工業與家具設計結構；出門即是露天咖啡座，步行距離極短，完全無體能壓力。", booking: { state: "free", label: "免費入場・免預約", note: "週二至週日開放 11:00-17:00（週一休館）；免費入場，內部展覽與中庭咖啡座自由進出。", url: "https://formdesigncenter.com/en", cta: "官方展覽與參觀資訊" } },
   lund: { why: "建於 1424 年的天文機械鐘極具歷史工程價值，每天 12:00/15:00 齒輪帶動木偶報時演出；隆德距 Malmö C 僅 10 分鐘火車，免跨國且體能負擔低，是 09/10 發表前最合適的充電行程。", booking: { state: "free", label: "大教堂免費入場", note: "大教堂開放自由參觀（週一至週五 08:00-18:00）；建議於 11:45 或 14:45 前就座觀看天文鐘機械人偶報時演示。", url: "https://www.lundsdomkyrka.se/english/", cta: "官方開放時間與導覽" } },
-  experimentarium: { why: "以動手操作與互動科學為核心，必看 DNA 雙螺旋銅梯，必玩港口物流起重機、光學迷宮、泡泡實驗室與頂樓展區。", booking: { state: "recommended", label: "門票・線上購票省 10%", note: "每日 09:30-17:00 開放；線上購票省 10%，指定日期有效，亦可現場購買。午餐推薦隔壁商場 1 樓 Halifax Burgers 美味牛肉漢堡或館內 1 樓 SMASK 用餐。", url: "https://www.experimentarium.dk/plan-your-visit/", cta: "官方購票／開放時間" } },
+  experimentarium: { why: "以動手操作與互動科學為核心，必看 DNA 雙螺旋銅梯，必玩港口物流起重機、光學迷宮、泡泡實驗室與頂樓展區。", booking: { state: "confirmed", label: "已購・官方 QR 門票", note: "已購買 09/09 指定日 2 位成人入場門票（Entré Voksen x2）；09:30-17:00 開放，直接至入口閘門出示電子票 QR 碼入場。午餐推薦隔壁商場 1 樓 Halifax Burgers 美味牛肉漢堡或館內 1 樓 SMASK 用餐。", url: "https://www.experimentarium.dk/plan-your-visit/", cta: "官方參觀資訊" } },
   enigma: { why: "通訊、電信與數位社會主題集中，規模適合輕鬆參觀。", booking: { state: "onsite", label: "門票・可現場購票", note: "一般參觀無需事先預約，現場購票即可。", url: "https://www.enigma.dk/en/visit-enigma", cta: "官方票務資訊" } },
   nyhavn: { why: "容易與 Strøget、王宮區與運河遊船串接的哥本哈根經典地標。", booking: { state: "free", label: "免費・免預約", note: "港區散步免費；遊船搭乘請參考運河遊船票券。" } },
   kongensnytorv: { why: "鄰近新港，將午餐、皇家劇院與地鐵轉乘集中於同一節點。", booking: { state: "free", label: "免費・免預約", note: "公共廣場；周邊店家與地鐵依各自時間運作。" } },
@@ -2040,6 +2058,7 @@ window.TRIP.ticketDigests = {
   "church-our-saviour.enc": "ec8ace8d563dd8fc59e6dc9019052626f19df829436826d89fcee50c8dc749f2",
   "ek367-boarding-pass.enc": "feeade13eee739347031ba3d2dea7989818ab889dda31512c3ba40963d756963",
   "emirates-flights.enc": "0ea0c116b6e11bbf76fc9e34469654aafcb6435ec6422dcf46139e16a9fd2895",
+  "experimentarium.enc": "6e0a14835223a9696fc9df73cc37507c1ac38e315fd1babdd271a2edb67ce97a",
   "first-camp.enc": "ee39682d3345e27cc4592c8bd58cdffe56772a3c7b3259f275ca48dadb624cf6",
   "k7-pass.enc": "a626901ecea63d363597ff3cfc8ea9bf6944ab30b3fa7d5588c6e076d1540a06",
   "louvre.enc": "aaef5837fcd8bef43f7b29e1622d9d56716aef1f6d4be5765a055d4cb4bd8a2a",
