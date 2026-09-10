@@ -1998,8 +1998,18 @@ html[data-theme="dark"] .packing-bag-pill.is-active { background: #b64d37; color
 .souvenir-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
 .souvenir-card { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow-soft); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
 .souvenir-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.08); border-color: var(--teal); }
+.souvenir-card.is-office { border-top: 3px solid var(--gold); }
 .souvenir-card.is-premium { border-top: 3px solid var(--teal); }
+.souvenir-card.is-budget { border-top: 3px solid var(--coral); }
 .souvenir-card.is-shared { border-top: 3px solid var(--coral); }
+
+/* Souvenirs Country Filter Bar */
+.souvenirs-filter-section { margin-top: 20px; }
+.souvenirs-filter-bar { display: flex; gap: 8px; padding: 8px 10px; border-radius: 16px; background: var(--surface-soft); border: 1px solid var(--line); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.souvenirs-filter-bar::-webkit-scrollbar { display: none; }
+.souvenirs-filter-pill { flex-shrink: 0; min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: 13.5px; font-weight: 850; cursor: pointer; transition: all .16s ease; display: inline-flex; align-items: center; gap: 6px; }
+.souvenirs-filter-pill:hover { color: var(--ink); border-color: var(--teal); }
+.souvenirs-filter-pill.is-active { background: var(--teal); border-color: var(--teal); color: #fff; box-shadow: 0 4px 12px rgba(43, 69, 62, 0.25); }
 
 .souvenir-media-frame { position: relative; width: 100%; aspect-ratio: 16 / 10; background: var(--surface-soft); overflow: hidden; }
 .souvenir-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
@@ -2073,6 +2083,12 @@ html[data-theme="dark"] .day-date-badge { background: rgba(255,255,255,.08); }
 html[data-theme="dark"] .registration-panel { background: linear-gradient(120deg, #523b57 0%, #302a34 100%); }
 html[data-theme="dark"] .flight-wear { background: #4d3852; }
 html[data-theme="dark"] .packing-item:has(.packing-checkbox:checked) { border-color: #28554d; background: var(--teal-soft); }
+html[data-theme="dark"] .souvenirs-filter-bar { background: #142328; border-color: rgba(255,255,255,.08); }
+html[data-theme="dark"] .souvenirs-filter-pill { background: #1a2c32; border-color: rgba(255,255,255,.1); color: #cbd5e1; }
+html[data-theme="dark"] .souvenirs-filter-pill.is-active { background: var(--teal); border-color: var(--teal); color: #fff; }
+html[data-theme="dark"] .souvenir-alert-box { background: rgba(217, 119, 6, 0.12); border-color: rgba(245, 158, 11, 0.3); border-left-color: #f59e0b; }
+html[data-theme="dark"] .souvenir-alert-text strong { color: #f59e0b; }
+html[data-theme="dark"] .souvenir-alert-text p { color: #fcd34d; }
 html[data-theme="dark"] .button-primary { border-color: #b64d37; background: #b64d37; }
 html[data-theme="dark"] .button-primary:hover { background: #a84430; }
 html[data-theme="dark"] .button-success { border-color: #53b9aa; background: #1c5b52; color: #fff; }
@@ -2737,6 +2753,18 @@ html[data-theme="dark"] .packing-view-tabs { background: var(--surface-soft); bo
   .packing-safety h2 { font-size: 25px; }
   .packing-safety p { font-size: 14px; }
   .packing-source-links a { min-height: 33px; display: flex; align-items: center; font-size: 11px; }
+
+  .souvenirs-hero-banner { padding: 22px 18px; }
+  .souvenirs-hero-copy h2 { font-size: 24px; }
+  .souvenirs-filter-bar { padding: 6px 8px; gap: 6px; }
+  .souvenirs-filter-pill { font-size: 12.5px; padding: 7px 13px; min-height: 40px; }
+  .souvenir-cards-grid { grid-template-columns: 1fr; gap: 18px; }
+  .souvenir-content { padding: 16px; gap: 12px; }
+  .souvenir-title { font-size: 17px; }
+  .souvenir-meta-row { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 12px; }
+  .souvenir-meta-label { font-size: 9.5px; }
+  .souvenir-price-chip strong { font-size: 12.5px; }
+  .souvenir-place-chip p { font-size: 11.5px; }
 
   .site-footer { margin-bottom: 0; }
   .footer-inner { min-height: 142px; padding: 24px 0 34px; align-items: start; flex-direction: column; gap: 12px; }

@@ -165,13 +165,15 @@
       </div>`;
   }
 
-  function souvenirCardMarkup(item, type, esc) {
-    const isPremium = type === "premium";
+  function souvenirCardMarkup(item, esc) {
+    const isOffice = item.category === "office";
+    const isPremium = item.tier === "premium";
+    const cardClass = isOffice ? "is-office" : (isPremium ? "is-premium" : "is-budget");
     return `
-      <article class="souvenir-card ${isPremium ? "is-premium" : "is-shared"}" id="souvenir-${esc(item.id)}">
+      <article class="souvenir-card ${cardClass}" id="souvenir-${esc(item.id)}" data-souvenir-country="${esc(item.country)}">
         <div class="souvenir-media-frame">
           <img class="souvenir-img" src="${esc(item.image)}" alt="${esc(item.name)}" loading="eager" />
-          <span class="souvenir-badge">${esc(item.theme || item.tag)}</span>
+          <span class="souvenir-badge">${esc(item.badge || item.theme)}</span>
         </div>
         <div class="souvenir-content">
           <div class="souvenir-header">
@@ -181,7 +183,7 @@
           </div>
           <div class="souvenir-meta-row">
             <div class="souvenir-price-chip">
-              <span class="souvenir-meta-label">參考預算</span>
+              <span class="souvenir-meta-label">建議售價</span>
               <strong>${esc(item.budget)}</strong>
             </div>
             <div class="souvenir-place-chip">
@@ -227,21 +229,47 @@
     const packing = trip.packing || { bags: [], sources: [] };
     const sourceLinks = (packing.sources || []).map((source) => `<a href="${esc(source.url)}" target="_blank" rel="noreferrer">${esc(source.label)} <span aria-hidden="true">↗</span></a>`).join("");
 
-    const souvenirsData = trip.souvenirs || { premium: [], shared: [] };
-    const premiumCards = (souvenirsData.premium || []).map((item) => souvenirCardMarkup(item, "premium", esc)).join("");
-    const sharedCards = (souvenirsData.shared || []).map((item) => souvenirCardMarkup(item, "shared", esc)).join("");
+    const souvenirsData = trip.souvenirs || { items: [] };
+    const allSouvenirItems = souvenirsData.items || [];
+    const swedenItems = allSouvenirItems.filter((item) => item.country === "sweden");
+    const denmarkItems = allSouvenirItems.filter((item) => item.country === "denmark");
+    const franceItems = allSouvenirItems.filter((item) => item.country === "france");
+
+    const swedenCards = swedenItems.map((item) => souvenirCardMarkup(item, esc)).join("");
+    const denmarkCards = denmarkItems.map((item) => souvenirCardMarkup(item, esc)).join("");
+    const franceCards = franceItems.map((item) => souvenirCardMarkup(item, esc)).join("");
 
     const souvenirsPaneMarkup = `
       <section class="souvenirs-hero-banner">
         <div class="souvenirs-hero-copy">
           <span class="eyebrow light">SOUVENIRS & GIFTS GUIDE · 採買推薦</span>
           <h2>精選伴手禮採買指南</h2>
-          <p>整理北歐與法國代表性選品，分為一人一份的主題禮包與辦公室公用桌分享零食，附參考預算與採買地點。</p>
+          <p>整理瑞典、丹麥、法國三國精選伴手禮，包含辦公室千元分享禮盒與朋友專屬小禮物，附實物相片、建議售價、採買地點與隨身／託運建議。</p>
         </div>
         <div class="souvenirs-hero-chips">
-          <span class="souvenir-stat-chip">🎁 4 款精選主題禮包</span>
-          <span class="souvenir-stat-chip">🍬 4 款團隊分享零食</span>
+          <span class="souvenir-stat-chip">🇸🇪 瑞典 (2)</span>
+          <span class="souvenir-stat-chip">🇩🇰 丹麥 (3)</span>
+          <span class="souvenir-stat-chip">🇫🇷 法國 (5)</span>
+          <span class="souvenir-stat-chip">🏢 2 款辦公室禮盒</span>
+          <span class="souvenir-stat-chip">🎁 8 款朋友選品</span>
           <span class="souvenir-stat-chip">⚖️ 留意 20kg 託運限額</span>
+        </div>
+      </section>
+
+      <section class="souvenirs-filter-section content-section">
+        <div class="souvenirs-filter-bar" role="tablist" aria-label="依國家篩選伴手禮">
+          <button class="souvenirs-filter-pill is-active" type="button" role="tab" aria-selected="true" data-souvenir-filter="all">
+            🌍 全部選品 (10)
+          </button>
+          <button class="souvenirs-filter-pill" type="button" role="tab" aria-selected="false" data-souvenir-filter="sweden">
+            🇸🇪 瑞典 · Malmö (2)
+          </button>
+          <button class="souvenirs-filter-pill" type="button" role="tab" aria-selected="false" data-souvenir-filter="denmark">
+            🇩🇰 丹麥 · 哥本哈根 (3)
+          </button>
+          <button class="souvenirs-filter-pill" type="button" role="tab" aria-selected="false" data-souvenir-filter="france">
+            🇫🇷 法國 · 巴黎 (5)
+          </button>
         </div>
       </section>
 
@@ -253,28 +281,40 @@
         </div>
       </section>
 
-      <section class="souvenir-group-section">
+      <section class="souvenir-group-section" data-souvenir-section="sweden">
         <div class="souvenir-group-heading">
           <div>
-            <span class="eyebrow">THEME GIFT PACKS · 一人一份</span>
-            <h2>精選主題風格禮包</h2>
-            <p>單人預算約 NT$1,000～1,500（約 200～350 DKK / SEK），包裝與代表性完整，適合送給重要朋友或合作夥伴。</p>
+            <span class="eyebrow">SWEDEN · MALMÖ · 09/07 - 09/12</span>
+            <h2>🇸🇪 瑞典 · Malmö 經典選品</h2>
+            <p>以日常 Fika 甜點可可與北歐極簡工藝為主，超市與市集極易採買，分量輕巧無行李負擔。</p>
           </div>
-          <span class="souvenir-group-count">4 款選品</span>
+          <span class="souvenir-group-count">2 款選品</span>
         </div>
-        <div class="souvenir-cards-grid">${premiumCards}</div>
+        <div class="souvenir-cards-grid">${swedenCards}</div>
       </section>
 
-      <section class="souvenir-group-section">
+      <section class="souvenir-group-section" data-souvenir-section="denmark">
         <div class="souvenir-group-heading">
           <div>
-            <span class="eyebrow">OFFICE & TEAM PANTRY · 零食公用桌</span>
-            <h2>團隊零食分享包</h2>
-            <p>總預算約 NT$400～500（約 140 SEK），可直接放辦公室公用桌分食。以大眾喜愛的瑞典國民零食為主，搭配一款特色鹹甘草糖。</p>
+            <span class="eyebrow">DENMARK · COPENHAGEN · 09/09, 09/11 - 09/12</span>
+            <h2>🇩🇰 丹麥 · 哥本哈根 經典選品</h2>
+            <p>涵蓋辦公室首選精品巧克力甘草球、星級主廚指名手工柴燒海鹽，以及世界冠軍淺焙莊園咖啡豆。</p>
           </div>
-          <span class="souvenir-group-count">4 款選品</span>
+          <span class="souvenir-group-count">3 款選品</span>
         </div>
-        <div class="souvenir-cards-grid">${sharedCards}</div>
+        <div class="souvenir-cards-grid">${denmarkCards}</div>
+      </section>
+
+      <section class="souvenir-group-section" data-souvenir-section="france">
+        <div class="souvenir-group-heading">
+          <div>
+            <span class="eyebrow">FRANCE · PARIS · 09/13 - 09/18</span>
+            <h2>🇫🇷 法國 · 巴黎 經典選品</h2>
+            <p>旅程採購主力國，涵蓋百年老店奶油酥餅鐵盒、法式第戎芥末醬、古典香氛植物皂、瑪黑茶與羅浮宮文創托特包。</p>
+          </div>
+          <span class="souvenir-group-count">5 款選品</span>
+        </div>
+        <div class="souvenir-cards-grid">${franceCards}</div>
       </section>
 
       <section class="souvenir-luggage-tips content-section">
@@ -286,9 +326,9 @@
           </div>
         </div>
         <ul class="souvenir-tips-list">
-          <li><strong>瑞典馬爾默段（09/07 - 09/12）</strong>：可在 ICA Maxi 超市一次購足車車軟糖、Marabou 巧克力、Ballerina 餅乾與鹹甘草糖，總重控制在 1.5 kg 內。</li>
-          <li><strong>丹麥哥本哈根段（09/11 - 09/12）</strong>：在中央車站、Strøget 街或 CPH 機場免稅店採買精品甘草球、Læsø 海鹽、木偶或冠軍咖啡豆，體積小巧好收納。</li>
-          <li><strong>巴黎段（09/12 - 09/18）</strong>：若北歐零食擔心超重，可保留部分額度在巴黎樂蓬馬歇美食館或 Monoprix 超市補齊法國經典點心。</li>
+          <li><strong>瑞典馬爾默段（09/07 - 09/12）</strong>：可在 ICA Maxi 超市一次購足巧克力磚與生活選物，總重控制在 1 kg 內。</li>
+          <li><strong>丹麥哥本哈根段（09/11 - 09/12）</strong>：在中央車站、Strøget 街或 CPH 機場免稅店採買精品甘草球雙罐禮盒、Læsø 海鹽與冠軍咖啡豆，體積小巧好收納。</li>
+          <li><strong>巴黎段（09/12 - 09/18）</strong>：主力採買巴黎奶油餅乾鐵盒、芥末醬、瑪黑茶與香氛皂；注意芥末醬等膏狀調味品必須放托運行李箱。</li>
         </ul>
       </section>
     `;
@@ -1295,6 +1335,24 @@
 
     viewTabs.forEach((tab) => {
       tab.addEventListener("click", () => switchPackingView(tab.dataset.packingView));
+    });
+
+    const souvenirPills = document.querySelectorAll("[data-souvenir-filter]");
+    const souvenirSections = document.querySelectorAll("[data-souvenir-section]");
+
+    souvenirPills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        const selectedCountry = pill.dataset.souvenirFilter;
+        souvenirPills.forEach((p) => {
+          const active = p.dataset.souvenirFilter === selectedCountry;
+          p.classList.toggle("is-active", active);
+          p.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        souvenirSections.forEach((section) => {
+          const secCountry = section.dataset.souvenirSection;
+          section.hidden = selectedCountry !== "all" && secCountry !== selectedCountry;
+        });
+      });
     });
 
     if (window.location.hash === "#souvenirs") {
