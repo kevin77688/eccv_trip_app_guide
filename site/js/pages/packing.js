@@ -169,6 +169,9 @@
     const isOffice = item.category === "office";
     const isPremium = item.tier === "premium";
     const cardClass = isOffice ? "is-office" : (isPremium ? "is-premium" : "is-budget");
+    const decisionTagsMarkup = (item.decisionTags && item.decisionTags.length > 0)
+      ? `<div class="souvenir-decision-tags">${item.decisionTags.map((t) => `<span class="souvenir-tag-chip">${esc(t)}</span>`).join("")}</div>`
+      : "";
     return `
       <article class="souvenir-card ${cardClass}" id="souvenir-${esc(item.id)}" data-souvenir-country="${esc(item.country)}">
         <div class="souvenir-media-frame">
@@ -181,6 +184,7 @@
             <h3 class="souvenir-title">${esc(item.name)}</h3>
             <p class="souvenir-local-name">${esc(item.localName)}</p>
           </div>
+          ${decisionTagsMarkup}
           <div class="souvenir-meta-row">
             <div class="souvenir-price-chip">
               <span class="souvenir-meta-label">建議售價</span>
@@ -235,23 +239,55 @@
     const denmarkItems = allSouvenirItems.filter((item) => item.country === "denmark");
     const franceItems = allSouvenirItems.filter((item) => item.country === "france");
 
+    const totalCount = allSouvenirItems.length;
+    const swedenCount = swedenItems.length;
+    const denmarkCount = denmarkItems.length;
+    const franceCount = franceItems.length;
+
+    const officeCount = allSouvenirItems.filter((item) => item.category === "office").length;
+    const friendCount = allSouvenirItems.filter((item) => item.category === "friend").length;
+
     const swedenCards = swedenItems.map((item) => souvenirCardMarkup(item, esc)).join("");
     const denmarkCards = denmarkItems.map((item) => souvenirCardMarkup(item, esc)).join("");
     const franceCards = franceItems.map((item) => souvenirCardMarkup(item, esc)).join("");
 
+    const notRecommendedMarkup = (souvenirsData.notRecommended && souvenirsData.notRecommended.length > 0)
+      ? `
+      <section class="souvenir-not-recommended-section content-section">
+        <div class="section-heading-row">
+          <div>
+            <span class="eyebrow light">LOCAL ONLY · NOT RECOMMENDED FOR LONG HAUL</span>
+            <h2>⚠️ 適合當地享用，不建議長途帶回台灣之品項</h2>
+            <p>考量長達一週跨洲行程無冷鏈保護、易碎特性與台灣嚴格海關檢疫，以下品項請在當地品嚐即可：</p>
+          </div>
+        </div>
+        <div class="not-recommended-grid">
+          ${souvenirsData.notRecommended.map((nr) => `
+            <div class="not-recommended-card">
+              <div class="not-recommended-header">
+                <span class="not-recommended-country">${esc(nr.flag)} ${esc(nr.countryName)}</span>
+                <h4>${esc(nr.name)}</h4>
+              </div>
+              <p class="not-recommended-reason">${esc(nr.reason)}</p>
+            </div>
+          `).join("")}
+        </div>
+      </section>`
+      : "";
+
     const souvenirsPaneMarkup = `
       <section class="souvenirs-hero-banner">
         <div class="souvenirs-hero-copy">
-          <span class="eyebrow light">SOUVENIRS & GIFTS GUIDE · 採買推薦</span>
+          <span class="eyebrow light">SOUVENIRS & GIFTS GUIDE · 採買選購指南</span>
           <h2>精選伴手禮採買指南</h2>
-          <p>整理瑞典、丹麥、法國三國精選伴手禮，包含辦公室千元分享禮盒與朋友專屬小禮物，附實物相片、建議售價、採買地點與隨身／託運建議。</p>
+          <p>以下為候選伴手禮清單，實際旅途中依看到的商品、價格與剩餘行李重量挑選即可，不需要全部購買。整理瑞典（${swedenCount} 款）、丹麥（${denmarkCount} 款）、法國（${franceCount} 款）共 ${totalCount} 款代表性選品，涵蓋辦公室多人分享禮盒與朋友專屬小禮物，附實物相片、建議售價、採買地點、特色與行李打包建議。</p>
         </div>
         <div class="souvenirs-hero-chips">
-          <span class="souvenir-stat-chip">🇸🇪 瑞典 (2)</span>
-          <span class="souvenir-stat-chip">🇩🇰 丹麥 (3)</span>
-          <span class="souvenir-stat-chip">🇫🇷 法國 (5)</span>
-          <span class="souvenir-stat-chip">🏢 2 款辦公室禮盒</span>
-          <span class="souvenir-stat-chip">🎁 8 款朋友選品</span>
+          <span class="souvenir-stat-chip">🇸🇪 瑞典 (${swedenCount})</span>
+          <span class="souvenir-stat-chip">🇩🇰 丹麥 (${denmarkCount})</span>
+          <span class="souvenir-stat-chip">🇫🇷 法國 (${franceCount})</span>
+          <span class="souvenir-stat-chip">🏢 ${officeCount} 款辦公室分享</span>
+          <span class="souvenir-stat-chip">🎁 ${friendCount} 款朋友選品</span>
           <span class="souvenir-stat-chip">⚖️ 留意 20kg 託運限額</span>
         </div>
       </section>
@@ -259,16 +295,16 @@
       <section class="souvenirs-filter-section content-section">
         <div class="souvenirs-filter-bar" role="tablist" aria-label="依國家篩選伴手禮">
           <button class="souvenirs-filter-pill is-active" type="button" role="tab" aria-selected="true" data-souvenir-filter="all">
-            🌍 全部選品 (10)
+            🌍 全部選品 (${totalCount})
           </button>
           <button class="souvenirs-filter-pill" type="button" role="tab" aria-selected="false" data-souvenir-filter="sweden">
-            🇸🇪 瑞典 · Malmö (2)
+            🇸🇪 瑞典 · Malmö (${swedenCount})
           </button>
           <button class="souvenirs-filter-pill" type="button" role="tab" aria-selected="false" data-souvenir-filter="denmark">
-            🇩🇰 丹麥 · 哥本哈根 (3)
+            🇩🇰 丹麥 · 哥本哈根 (${denmarkCount})
           </button>
           <button class="souvenirs-filter-pill" type="button" role="tab" aria-selected="false" data-souvenir-filter="france">
-            🇫🇷 法國 · 巴黎 (5)
+            🇫🇷 法國 · 巴黎 (${franceCount})
           </button>
         </div>
       </section>
@@ -277,7 +313,7 @@
         <div class="souvenir-alert-icon" aria-hidden="true">⚠️</div>
         <div class="souvenir-alert-text">
           <strong>重要提醒：瑞典魚卵牙膏抹醬（Kalles Kaviar）不建議帶回台灣</strong>
-          <p>官方保存條件載明需全程 2～8°C 冷藏。9/12 離開瑞典後還需在巴黎待至 9/18，常溫攜帶極易發酵變質爆管；且膏狀物 190g 超過 100ml 須託運，在貨艙與常溫下難以保鮮。若想體驗，建議在瑞典 First Camp 小木屋廚房配白煮蛋享用，或回台至台灣 IKEA 瑞典食品超市購買冷藏進口品。</p>
+          <p>Kalles Kaviar 魚卵抹醬官方保存條件為 2～8°C 冷藏。我們 9/12 離開瑞典後還會在巴黎待到 9/18，之後才搭長途航班回台灣，長時間無法維持 2～8°C 冷藏，食品安全風險較高。建議只在瑞典當地小木屋早餐買來配水煮蛋享用，不建議作為伴手禮帶回台灣（回台可至台灣 IKEA 食品超市購買冷藏進口品）。</p>
         </div>
       </section>
 
@@ -286,9 +322,9 @@
           <div>
             <span class="eyebrow">SWEDEN · MALMÖ · 09/07 - 09/12</span>
             <h2>🇸🇪 瑞典 · Malmö 經典選品</h2>
-            <p>以日常 Fika 甜點可可與北歐極簡工藝為主，超市與市集極易採買，分量輕巧無行李負擔。</p>
+            <p>以民俗傳統木馬、國民汽車軟糖、威化巧克力、在地黑巧、文化挑戰鹹甘草與百年薄荷糖為主，超市與市集極易採買，分量輕巧無負擔。</p>
           </div>
-          <span class="souvenir-group-count">2 款選品</span>
+          <span class="souvenir-group-count">${swedenCount} 款選品</span>
         </div>
         <div class="souvenir-cards-grid">${swedenCards}</div>
       </section>
@@ -298,9 +334,9 @@
           <div>
             <span class="eyebrow">DENMARK · COPENHAGEN · 09/09, 09/11 - 09/12</span>
             <h2>🇩🇰 丹麥 · 哥本哈根 經典選品</h2>
-            <p>涵蓋辦公室首選精品巧克力甘草球、星級主廚指名手工柴燒海鹽，以及世界冠軍淺焙莊園咖啡豆。</p>
+            <p>涵蓋經典藍盒純牛油奶油餅乾、辦公室首選精品巧克力甘草球、皇室杏仁膏黑巧、丹麥國寶 LEGO 積木人偶與經典生活設計品。</p>
           </div>
-          <span class="souvenir-group-count">3 款選品</span>
+          <span class="souvenir-group-count">${denmarkCount} 款選品</span>
         </div>
         <div class="souvenir-cards-grid">${denmarkCards}</div>
       </section>
@@ -310,14 +346,29 @@
           <div>
             <span class="eyebrow">FRANCE · PARIS · 09/13 - 09/18</span>
             <h2>🇫🇷 法國 · 巴黎 經典選品</h2>
-            <p>旅程採購主力國，涵蓋百年老店奶油酥餅鐵盒、法式第戎芥末醬、古典香氛植物皂、瑪黑茶與羅浮宮文創托特包。</p>
+            <p>旅程採購主力國，涵蓋百年老店綜合奶油酥餅大鐵盒、名廚工坊夾心巧克力、瑪黑兄弟法茶、宮廷第戎芥末、頂級鹽之花、古法植物皂與羅浮宮文創小物。</p>
           </div>
-          <span class="souvenir-group-count">5 款選品</span>
+          <span class="souvenir-group-count">${franceCount} 款選品</span>
         </div>
         <div class="souvenir-cards-grid">${franceCards}</div>
       </section>
 
+      ${notRecommendedMarkup}
+
       <section class="souvenir-luggage-tips content-section">
+        <div class="section-heading-row">
+          <div>
+            <span class="eyebrow light">LUGGAGE ALLOCATION</span>
+            <h2>伴手禮行李配置建議</h2>
+            <p>避免在哥本哈根飛巴黎段（Ryanair 託運上限 20 kg）超重。</p>
+          </div>
+        </div>
+        <ul class="souvenir-tips-list">
+          <li><strong>瑞典馬爾默段（09/07 - 09/12）</strong>：可在 ICA Maxi 超市一次購足汽車軟糖、威化餅乾與生活選物，總重控制在 1 kg 內。</li>
+          <li><strong>丹麥哥本哈根段（09/11 - 09/12）</strong>：在中央車站、Strøget 街或 CPH 機場免稅店採買精品甘草球雙罐禮盒、藍盒奶油餅乾或 LEGO 人偶，體積小巧好收納。</li>
+          <li><strong>巴黎段（09/12 - 09/18）</strong>：主力採買巴黎奶油餅乾鐵盒、精品巧克力、瑪黑茶、鹽之花與香氛皂；注意芥末醬等膏狀調味品必須放託運行李箱。</li>
+        </ul>
+      </section>
         <div class="section-heading-row">
           <div>
             <span class="eyebrow light">LUGGAGE ALLOCATION</span>

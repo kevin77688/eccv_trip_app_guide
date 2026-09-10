@@ -23,18 +23,34 @@ const fs = require('node:fs');
       const bodyText = await page.textContent('body');
       assert.equal(bodyText.includes('男友'), false, 'Page must not contain word 男友');
 
-      // Check all 10 cards exist
+      // Check all 19 cards exist
       const totalCards = await page.locator('.souvenir-card').count();
-      assert.equal(totalCards, 10, `Expected 10 souvenir cards, got ${totalCards}`);
+      assert.equal(totalCards, 19, `Expected 19 souvenir cards, got ${totalCards}`);
+
+      // Check cards by country
+      const swedenCardCount = await page.locator('[data-souvenir-section="sweden"] .souvenir-card').count();
+      const denmarkCardCount = await page.locator('[data-souvenir-section="denmark"] .souvenir-card').count();
+      const franceCardCount = await page.locator('[data-souvenir-section="france"] .souvenir-card').count();
+      assert.equal(swedenCardCount, 6, `Expected 6 Sweden cards, got ${swedenCardCount}`);
+      assert.equal(denmarkCardCount, 6, `Expected 6 Denmark cards, got ${denmarkCardCount}`);
+      assert.equal(franceCardCount, 7, `Expected 7 France cards, got ${franceCardCount}`);
 
       // Check images loaded
       const images = page.locator('.souvenir-img');
       const imgCount = await images.count();
-      assert.equal(imgCount, 10, `Expected 10 souvenir images, got ${imgCount}`);
+      assert.equal(imgCount, 19, `Expected 19 souvenir images, got ${imgCount}`);
       for (let i = 0; i < imgCount; i++) {
         const naturalWidth = await images.nth(i).evaluate((img) => img.naturalWidth);
         assert.ok(naturalWidth > 0, `Image #${i} failed to load (naturalWidth = 0)`);
       }
+
+      // Check Not Recommended section items
+      const notRecommendedCount = await page.locator('.not-recommended-card').count();
+      assert.equal(notRecommendedCount, 6, `Expected 6 not recommended items, got ${notRecommendedCount}`);
+
+      // Check decision tags exist
+      const tagCount = await page.locator('.souvenir-tag-chip').count();
+      assert.ok(tagCount >= 19, `Expected at least 19 decision tag chips, got ${tagCount}`);
 
       // Check Country filter pills
       const allPill = page.locator('[data-souvenir-filter="all"]');
@@ -46,6 +62,12 @@ const fs = require('node:fs');
       assert.equal(await swedenPill.count(), 1);
       assert.equal(await denmarkPill.count(), 1);
       assert.equal(await francePill.count(), 1);
+
+      // Verify dynamic counts in pill text
+      assert.ok((await allPill.textContent()).includes('(19)'), 'All pill must include (19)');
+      assert.ok((await swedenPill.textContent()).includes('(6)'), 'Sweden pill must include (6)');
+      assert.ok((await denmarkPill.textContent()).includes('(6)'), 'Denmark pill must include (6)');
+      assert.ok((await francePill.textContent()).includes('(7)'), 'France pill must include (7)');
 
       // Filter Sweden
       await swedenPill.click();
@@ -71,6 +93,11 @@ const fs = require('node:fs');
       assert.equal(await page.locator('[data-souvenir-section="denmark"]').isVisible(), true);
       assert.equal(await page.locator('[data-souvenir-section="france"]').isVisible(), true);
 
+      // Test Dark Mode
+      await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dark'));
+      const isDark = await page.evaluate(() => document.documentElement.getAttribute('data-theme') === 'dark');
+      assert.equal(isDark, true);
+
       // Horizontal overflow check (especially for phone 390px)
       const overflow = await page.evaluate(() => {
         return document.documentElement.scrollWidth > document.documentElement.clientWidth + 1;
@@ -86,7 +113,7 @@ const fs = require('node:fs');
     console.log(JSON.stringify({
       result: 'passed',
       screenshots: output,
-      checks: '10 souvenir cards, 3 country sections, interactive filter pills, valid image loading, zero horizontal overflow, and privacy copy compliance'
+      checks: '19 souvenir cards, 3 country sections, 6 not recommended items, interactive filter pills, valid image loading, dark mode, zero horizontal overflow, and privacy copy compliance'
     }));
   } finally {
     await browser.close();

@@ -2022,6 +2022,9 @@ html[data-theme="dark"] .packing-bag-pill.is-active { background: #b64d37; color
 .souvenir-title { margin: 0; font-size: 18px; font-weight: 900; line-height: 1.35; color: var(--ink); }
 .souvenir-local-name { margin: 0; font-size: 12px; color: var(--muted); font-family: inherit; }
 
+.souvenir-decision-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.souvenir-tag-chip { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 750; background: var(--surface-soft); color: var(--ink); border: 1px solid var(--line); line-height: 1.3; }
+
 .souvenir-meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--surface-soft); border: 1px solid var(--line); }
 .souvenir-meta-label { display: block; font-size: 10px; font-weight: 850; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
 .souvenir-price-chip strong { font-size: 13.5px; color: var(--teal); font-weight: 900; line-height: 1.35; display: block; }
@@ -2032,6 +2035,14 @@ html[data-theme="dark"] .packing-bag-pill.is-active { background: #b64d37; color
 
 .souvenir-card-footer { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line); display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
 .souvenir-bag-tip { display: inline-flex; align-items: center; gap: 6px; font-weight: 750; color: var(--muted); }
+
+.souvenir-not-recommended-section { margin-top: 40px; padding: 24px 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-soft); }
+.not-recommended-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 18px; }
+.not-recommended-card { padding: 14px 16px; border-radius: 12px; background: var(--surface-soft); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+.not-recommended-header { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.not-recommended-country { font-size: 11px; font-weight: 850; color: var(--coral-dark); text-transform: uppercase; }
+.not-recommended-header h4 { margin: 0; font-size: 14.5px; font-weight: 850; color: var(--ink); }
+.not-recommended-reason { margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
 
 .souvenir-luggage-tips { margin-top: 44px; padding: 28px 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-soft); }
 .souvenir-tips-list { margin: 18px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.6; color: var(--ink); }
@@ -2256,8 +2267,11 @@ html[data-theme="dark"] .souvenir-alert-box { background: #261d0f; border-color:
 html[data-theme="dark"] .souvenir-alert-text strong { color: #fde68a; }
 html[data-theme="dark"] .souvenir-alert-text p { color: #fef3c7; }
 html[data-theme="dark"] .souvenir-card { background: var(--surface); border-color: var(--line); }
+html[data-theme="dark"] .souvenir-tag-chip { background: #1a2c32; border-color: rgba(255,255,255,.1); color: #cbd5e1; }
 html[data-theme="dark"] .souvenir-meta-row { background: var(--surface-soft); border-color: var(--line); }
 html[data-theme="dark"] .souvenir-place-chip p { color: var(--ink); }
+html[data-theme="dark"] .souvenir-not-recommended-section { background: var(--surface); border-color: var(--line); }
+html[data-theme="dark"] .not-recommended-card { background: var(--surface-soft); border-color: var(--line); }
 html[data-theme="dark"] .souvenir-luggage-tips { background: var(--surface); border-color: var(--line); }
 html[data-theme="dark"] .packing-view-tabs { background: var(--surface-soft); border-color: var(--line); }
 
@@ -2395,6 +2409,8 @@ html[data-theme="dark"] .packing-view-tabs { background: var(--surface-soft); bo
   .souvenir-cards-grid { grid-template-columns: 1fr; gap: 14px; }
   .souvenir-content { padding: 16px; gap: 12px; }
   .souvenir-meta-row { grid-template-columns: 1fr; gap: 8px; }
+  .not-recommended-grid { grid-template-columns: 1fr; gap: 10px; }
+  .souvenir-not-recommended-section { padding: 18px 16px; margin-top: 28px; }
   .souvenir-luggage-tips { padding: 20px 18px; margin-top: 30px; }
   .packing-header-dashboard { margin-top: 14px; gap: 14px; }
   .packing-dashboard-top { flex-direction: column; align-items: stretch; gap: 12px; }

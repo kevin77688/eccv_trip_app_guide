@@ -121,16 +121,129 @@ window.TRIP = {
   },
   souvenirs: {
     lastUpdated: "2026/09/11",
-    intro: "精選北歐與法國代表性伴手禮，分為「瑞典 (2)」、「丹麥 (3)」、「法國 (5)」三大國家專區，包含辦公室千元分享禮盒與朋友專屬小禮物，附實物相片、建議售價、採買地點與隨身／託運建議。",
-    notice: "⚠️ 提醒：瑞典牙膏型魚子醬（Kalles Kaviar）官方保存條件為 2～8°C，9/12 離開瑞典後還需在巴黎待至 9/18，常溫攜帶極易變質爆管，強烈不建議作為長途伴手禮帶回台灣（建議在瑞典小木屋早餐品嚐，或回台至 IKEA 瑞典食品超市購買冷藏版）。",
+    intro: "以下為候選伴手禮清單，實際旅途中依看到的商品、價格與剩餘行李重量挑選即可，不需要全部購買。精選瑞典（6 款）、丹麥（6 款）、法國（7 款）共 19 款候選，涵蓋在地代表紀念品、辦公室多人分享零食、朋友精選點心、生活設計品、料理調味與博物館文創。",
+    notice: "⚠️ 重要提醒：瑞典魚卵牙膏抹醬（Kalles Kaviar）官方保存條件為 2～8°C 冷藏。我們 9/12 離開瑞典後還會在巴黎待到 9/18，之後才搭長途航班回台灣，長時間無法維持 2～8°C 冷藏，食品安全風險較高。建議只在瑞典當地買來吃，不建議作為伴手禮帶回台灣。",
+    notRecommended: [
+      {
+        country: "sweden",
+        countryName: "瑞典",
+        flag: "🇸🇪",
+        name: "Kalles Kaviar 魚卵抹醬",
+        reason: "官方保存條件為 2～8°C 冷藏，長途跨洲無法維持冷鏈，食品安全風險高（建議在瑞典小木屋早餐現吃）。"
+      },
+      {
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        name: "新鮮馬卡龍（Macaron）",
+        reason: "賞味期僅 2～3 天，外殼極脆易碎，夏秋常溫極易受潮出油軟化，建議在巴黎甜點店現買現吃。"
+      },
+      {
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        name: "可頌與新鮮法式麵包（Croissant / Baguette）",
+        reason: "出爐當天酥脆香濃，隔天即受潮韌化失去層次，不耐長途跨洲攜帶。"
+      },
+      {
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        name: "新鮮生乳起司（Brie / Camembert 等軟質乳酪）",
+        reason: "需要全程低溫冷藏，且台灣入境檢疫對生乳及未熟成軟質起司限制嚴格。"
+      },
+      {
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        name: "頂級鮮奶油與發酵奶油（Beurre de Baratte）",
+        reason: "需全程 2～6°C 冷藏，常溫跨洲飛行必融化油水分離。"
+      },
+      {
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        name: "熟肉火腿與香腸肉製品（Saucisson / Rillettes）",
+        reason: "台灣海關動植物防疫檢疫法規嚴禁攜帶任何豬肉、牛羊禽肉製品入境，違者重罰最高 NT$1,000,000。"
+      }
+    ],
     countries: [
-      { id: "all", name: "全部", flag: "🌍", count: 10 },
-      { id: "sweden", name: "瑞典", flag: "🇸🇪", count: 2, city: "Malmö" },
-      { id: "denmark", name: "丹麥", flag: "🇩🇰", count: 3, city: "哥本哈根" },
-      { id: "france", name: "法國", flag: "🇫🇷", count: 5, city: "巴黎" }
+      { id: "all", name: "全部", flag: "🌍" },
+      { id: "sweden", name: "瑞典", flag: "🇸🇪", city: "Malmö" },
+      { id: "denmark", name: "丹麥", flag: "🇩🇰", city: "哥本哈根" },
+      { id: "france", name: "法國", flag: "🇫🇷", city: "巴黎" }
     ],
     items: [
-      // 🇸🇪 Sweden (2 items)
+      // 🇸🇪 Sweden (6 items)
+      {
+        id: "dalahast",
+        country: "sweden",
+        countryName: "瑞典",
+        flag: "🇸🇪",
+        category: "friend",
+        tier: "budget",
+        badge: "🇸🇪 經典代表",
+        decisionTags: ["✅ 很推薦", "🎁 適合朋友", "🧳 好攜帶"],
+        theme: "民間藝術・彩繪木馬",
+        name: "Dalahäst 達拉木馬（小尺寸工藝擺飾）",
+        localName: "Dalahäst / Dalecarlian Dala Horse",
+        origin: "🇸🇪 瑞典 達拉納／馬爾默",
+        budget: "約 100–300 SEK（約 NT$310–930）",
+        place: "瑞典紀念品店、設計商店、Malmö 市區 souvenir shop",
+        image: "assets/souvenirs/dalahast.webp",
+        bagTip: "隨身或託運皆可，建議以衣物妥善包覆避免彩繪刮傷",
+        features: [
+          "瑞典最具代表性的百年傳統象徵，經典亮橘紅彩繪辨識度極高。",
+          "純木雕手工繪製、非食品，常溫保存與跨洲攜帶極為容易。",
+          "建議選購 5～7 cm 小尺寸木馬，精巧輕便、不佔行李重量。"
+        ]
+      },
+      {
+        id: "ahlgrens-bilar",
+        country: "sweden",
+        countryName: "瑞典",
+        flag: "🇸🇪",
+        category: "office",
+        tier: "budget",
+        badge: "🏢 辦公室分享",
+        decisionTags: ["🏢 適合 Team 分享", "💰 平價", "🧳 好攜帶"],
+        theme: "國民零食・汽車軟糖",
+        name: "Ahlgrens Bilar 瑞典經典汽車造型棉花軟糖",
+        localName: "Ahlgrens Bilar Original (125g / 160g)",
+        origin: "🇸🇪 瑞典",
+        budget: "約 20–35 SEK / 包（約 NT$60–110）",
+        place: "ICA Maxi、Coop、Willy:s 等瑞典各大超市",
+        image: "assets/souvenirs/ahlgrens-bilar.webp",
+        bagTip: "常溫耐放，隨身或託運皆可，包裝輕盈耐壓",
+        features: [
+          "瑞典無人不知的國民糖果，號稱「瑞典銷量第一的汽車」，特色三色小車造型。",
+          "口感介於棉花糖與軟糖之間微帶彈性，果香清爽不甜膩。",
+          "價格平實且份量輕盈，買 2-3 包即可供辦公室 16 人 Team 輕鬆抓取分享。"
+        ]
+      },
+      {
+        id: "kexchoklad",
+        country: "sweden",
+        countryName: "瑞典",
+        flag: "🇸🇪",
+        category: "office",
+        tier: "budget",
+        badge: "🏢 辦公室分享",
+        decisionTags: ["🏢 適合 Team 分享", "💰 平價", "✅ 很推薦"],
+        theme: "國民威化・香濃可可",
+        name: "Cloetta Kexchoklad 經典牛奶巧克力威化夾心餅",
+        localName: "Cloetta Kexchoklad (60g / 多片分享包)",
+        origin: "🇸🇪 瑞典",
+        budget: "約 10–30 SEK（約 NT$30–95）",
+        place: "ICA Maxi、Coop、Willy:s 等瑞典各大超市",
+        image: "assets/souvenirs/kexchoklad.webp",
+        bagTip: "常溫陰涼處保存，手提或託運皆宜，避免受重物擠壓壓碎",
+        features: [
+          "自 1938 年問世至今的瑞典標誌性紅黃格紋零食，全民登山滑雪必備小點。",
+          "三層酥脆威化餅乾包裹香濃牛奶巧克力，甜度適中、大眾接受度極高。",
+          "可作為辦公室的安全牌點心，能完美平衡 Salmiak 鹹甘草的特殊衝擊感。"
+        ]
+      },
       {
         id: "malmo-chokladfabrik",
         country: "sweden",
@@ -138,7 +251,8 @@ window.TRIP = {
         flag: "🇸🇪",
         category: "friend",
         tier: "budget",
-        badge: "💰 朋友・平價小品",
+        badge: "💰 平價",
+        decisionTags: ["🎁 適合朋友", "💰 平價", "🧳 好攜帶"],
         theme: "在地工藝・純黑可可",
         name: "Malmö Chokladfabrik 有機純黑巧克力磚",
         localName: "Malmö Chokladfabrik 70% Mörk Choklad (80g)",
@@ -154,29 +268,76 @@ window.TRIP = {
         ]
       },
       {
-        id: "form-design-opener",
+        id: "djungelvral",
+        country: "sweden",
+        countryName: "瑞典",
+        flag: "🇸🇪",
+        category: "office",
+        tier: "budget",
+        badge: "😈 挑戰系",
+        decisionTags: ["😈 挑戰系", "💡 看到再決定", "🏢 適合 Team 分享"],
+        theme: "文化體驗・鹹甘草糖",
+        name: "Malaco Djungelvrål 經典猴子超鹹甘草糖",
+        localName: "Malaco Djungelvrål Salmiaklakrits (80g)",
+        origin: "🇸🇪 瑞典",
+        budget: "約 20–40 SEK（約 NT$65–125）",
+        place: "ICA Maxi、Coop、Willy:s 等瑞典各大超市",
+        image: "assets/souvenirs/djungelvral.webp",
+        bagTip: "常溫耐放，隨身或託運皆可",
+        features: [
+          "北歐最具話題性的重度 Salmiak 鹹甘草，外層覆蓋高純度氯化銨鹹鹽粉。",
+          "入口強烈鹹嗆後轉為微甘軟糖，是北歐人從小吃到大的硬核童年味覺。",
+          "文化體驗與破冰首選，適合帶到辦公室讓大家輪流挑戰試吃，充滿互動話題。"
+        ]
+      },
+      {
+        id: "polkagris",
         country: "sweden",
         countryName: "瑞典",
         flag: "🇸🇪",
         category: "friend",
-        tier: "premium",
-        badge: "✨ 朋友・質感選品",
-        theme: "極簡工業・隨身開瓶器",
-        name: "Form/Design Center 北歐極簡金屬隨身開瓶器",
-        localName: "Form/Design Center Stainless Bottle Opener",
-        origin: "🇸🇪 瑞典 Malmö",
-        budget: "約 180 SEK（約 NT$580）",
-        place: "馬爾默老城 Lilla Torg 旁 Form/Design Center 設計選品店",
-        image: "assets/souvenirs/form-design-opener.webp",
-        bagTip: "金屬隨身器物，建議放入託運行李箱避免安檢抽查",
+        tier: "budget",
+        badge: "🎁 朋友",
+        decisionTags: ["🎁 適合朋友", "💰 平價", "⚠️ 易碎／液體"],
+        theme: "傳統甜食・薄荷拐杖糖",
+        name: "Polkagris 瑞典百年傳統紅白薄荷手工糖",
+        localName: "Äkta Polkagrisar från Gränna (Stång / Karamel)",
+        origin: "🇸🇪 瑞典 格倫納（Gränna）",
+        budget: "約 30–80 SEK（約 NT$95–250）",
+        place: "瑞典糖果老舖、傳統紀念品店、大型超市糖果區",
+        image: "assets/souvenirs/polkagris.webp",
+        bagTip: "常溫乾燥陰涼處保存，糖棒質脆，攜帶需避免擠壓折斷",
         features: [
-          "馬爾默當代設計重鎮 Form/Design Center 官方選物，體現斯堪地那維亞俐落美學。",
-          "實心不銹鋼霧面拉絲打磨，重磅扎實手感，線條簡潔耐看。",
-          "兼具開瓶實用性與桌面擺飾美感，耐用長青且充滿北歐工業設計感。"
+          "源自 1859 年瑞典 Gränna 鎮的百年手工拉糖，紅白螺旋條紋極具傳統視覺辨識度。",
+          "純天然薄荷油與糖漿拉花製成，口感沁涼爽口、微甜不膩。",
+          "比普通超市巧克力更具傳統文化氛圍，常溫耐久放，適合送給喜愛復古糖果的好友。"
         ]
       },
 
-      // 🇩🇰 Denmark (3 items: 1 office + 2 friend)
+      // 🇩🇰 Denmark (6 items)
+      {
+        id: "royal-dansk",
+        country: "denmark",
+        countryName: "丹麥",
+        flag: "🇩🇰",
+        category: "office",
+        tier: "budget",
+        badge: "🏢 辦公室分享",
+        decisionTags: ["🏢 適合 Team 分享", "💰 平價", "✅ 很推薦"],
+        theme: "經典藍盒・純牛油餅乾",
+        name: "Royal Dansk 經典藍色鐵盒丹麥奶油餅乾",
+        localName: "Royal Dansk Danish Butter Cookies (454g / 500g)",
+        origin: "🇩🇰 丹麥 赫爾辛格",
+        budget: "約 50–100 DKK（約 NT$230–460）",
+        place: "哥本哈根大型超市（Netto / Føtex / Meny）或哥本哈根機場免稅店",
+        image: "assets/souvenirs/royal-dansk.webp",
+        bagTip: "鐵盒堅固耐壓，建議放入託運行李箱以衣物包覆避免金屬盒磕碰凹陷",
+        features: [
+          "全球知名的丹麥藍罐奶油餅乾經典原廠，純牛油烘焙、完全無添加人造脂肪。",
+          "內含香草圈、椒鹽捲、方糖酥等 5 種經典傳統造型，奶香濃郁、酥鬆爽口。",
+          "大容量鐵盒適合辦公室多人分食，大家接受度極高，空盒還能留作收納紀念。"
+        ]
+      },
       {
         id: "lakrids-bulow",
         country: "denmark",
@@ -185,66 +346,115 @@ window.TRIP = {
         category: "office",
         tier: "premium",
         badge: "🏢 辦公室禮盒首選",
+        decisionTags: ["✅ 很推薦", "🏢 適合 Team 分享", "✨ Premium"],
         theme: "極黑工藝・精品甘草",
         name: "Lakrids by Bülow 頂級巧克力甘草球雙罐禮盒",
-        localName: "Lakrids by Bülow (Dark & Sea Salt / Passion Fruit)",
+        localName: "Lakrids by Bülow (Dark & Sea Salt / Passion Fruit 2x295g)",
         origin: "🇩🇰 丹麥 哥本哈根",
         budget: "約 230 DKK（約 NT$1,050，雙罐組）",
         place: "哥本哈根中央車站專櫃、Strøget 旗艦店或哥本哈根機場（CPH 免稅店）",
         image: "assets/souvenirs/lakrids-bulow.webp",
         bagTip: "隨身或託運皆可（常溫陰涼處保存）",
         features: [
-          "丹麥知名精品甘草品牌，黑金霧面高雅雙罐禮盒包裝。",
+          "丹麥知名精品甘草品牌，黑金霧面高雅雙罐禮盒包裝，約千元預算體面大方。",
           "外層為比利時頂級黑巧克力與焦糖海鹽，內層為微甜軟甘草，完全不刺鼻。",
-          "體面大方且單顆方便分食，極適合放在辦公室公用桌作為特色伴手禮。"
+          "單顆便於衛生分食，顛覆傳統甘草刻板印象，放在辦公室公用桌極具質感話題。"
         ]
       },
       {
-        id: "laeso-salt",
+        id: "anthon-berg",
         country: "denmark",
         countryName: "丹麥",
         flag: "🇩🇰",
         category: "friend",
         tier: "budget",
-        badge: "💰 朋友・平價小品",
-        theme: "主廚工藝・天然海鹽",
-        name: "Læsø Salt 萊斯島百年柴燒手工海鹽禮袋",
-        localName: "Læsø Salt (Håndsyndet Salt i lærredspose 200g)",
-        origin: "🇩🇰 丹麥 萊斯島",
-        budget: "約 65 DKK（約 NT$300）",
-        place: "哥本哈根 Torvehallerne 美食市集或伴手禮選品店",
-        image: "assets/souvenirs/laeso-salt.webp",
-        bagTip: "需防潮封口，建議放入託運行李箱",
+        badge: "💰 平價",
+        decisionTags: ["🎁 適合朋友", "🏢 適合 Team 分享", "💰 平價"],
+        theme: "百年皇室・杏仁膏巧克",
+        name: "Anthon Berg 丹麥皇室御用杏仁膏／黑巧克力禮盒",
+        localName: "Anthon Berg Marzipan / Dark Chocolate Selection",
+        origin: "🇩🇰 丹麥 哥本哈根",
+        budget: "約 40–100 DKK（約 NT$185–460）",
+        place: "哥本哈根超市（Føtex / Magasin du Nord 百貨食品館）或機場免稅店",
+        image: "assets/souvenirs/anthon-berg.webp",
+        bagTip: "常溫陰涼乾燥存放，手提或託運皆宜",
         features: [
-          "傳承中世紀古法柴燒蒸發結晶，北歐星級主廚指名愛用純淨海鹽。",
-          "復古麻布袋封裝，海鹽薄脆且帶淡淡微燻香氣。",
-          "搭配牛排、炙烤肉類或沙拉調味極佳，下廚愛好者的升級逸品。"
+          "創立於 1884 年的丹麥皇室認證老牌，以傳統杏仁膏（Marzipan）與黑巧聞名。",
+          "濃郁可可與天然地中海杏仁果仁香氣結合，口感細膩濕潤，充滿歐風傳統底蘊。",
+          "常溫攜帶非常穩定方便，與甘草味道截然不同，大幅豐富伴手禮選擇多樣性。"
         ]
       },
       {
-        id: "coffee-collective",
+        id: "lego-minifigure",
+        country: "denmark",
+        countryName: "丹麥",
+        flag: "🇩🇰",
+        category: "friend",
+        tier: "budget",
+        badge: "🇩🇰 Danish Design",
+        decisionTags: ["🇩🇰 Danish Design", "🎁 適合朋友", "🧳 好攜帶"],
+        theme: "丹麥國寶・經典積木人偶",
+        name: "LEGO 哥本哈根限定或城市旅行小型人偶套組",
+        localName: "LEGO Minifigures / Copenhagen Travel Set",
+        origin: "🇩🇰 丹麥 比隆（Billund）",
+        budget: "約 40–200 DKK（約 NT$185–920）",
+        place: "LEGO Store Copenhagen 旗艦店（Strøget 步行街）或哥本哈根機場店",
+        image: "assets/souvenirs/lego-minifigure.webp",
+        bagTip: "體積極為精巧輕便，隨身後背包或行李箱夾層皆能輕鬆裝入",
+        features: [
+          "LEGO 源自丹麥，文化辨識度世界第一，非食品且完全不受保存期限限制。",
+          "優先選購 Copenhagen 限定、城市旅行紀念款或盲袋 Minifigure 人偶。",
+          "體積小巧不佔行李重量與空間，非常適合作為朋友的特色收藏禮物。"
+        ]
+      },
+      {
+        id: "georg-jensen",
         country: "denmark",
         countryName: "丹麥",
         flag: "🇩🇰",
         category: "friend",
         tier: "premium",
-        badge: "✨ 朋友・質感選品",
-        theme: "世界冠軍・精品咖啡",
-        name: "The Coffee Collective 世界冠軍產地淺焙咖啡豆",
-        localName: "The Coffee Collective (Specialty Coffee Beans 250g)",
+        badge: "✨ Premium",
+        decisionTags: ["🇩🇰 Danish Design", "✨ Premium", "🧳 好攜帶"],
+        theme: "百年銀工・經典工藝配件",
+        name: "Georg Jensen 北歐極簡金屬隨身選品（開瓶器／鑰匙圈）",
+        localName: "Georg Jensen Stainless Steel Design Accessories",
         origin: "🇩🇰 丹麥 哥本哈根",
-        budget: "約 135 DKK（約 NT$620）",
-        place: "哥本哈根中央車站外帶吧、Torvehallerne 分店或市區門市",
-        image: "assets/souvenirs/coffee-collective.webp",
-        bagTip: "單向排氣閥原裝袋，常溫乾燥存放，隨身或託運皆可",
+        budget: "約 200 DKK 起（約 NT$920+）",
+        place: "哥本哈根 Strøget 旗艦店、Illum 百貨或 CPH 機場專門店",
+        image: "assets/souvenirs/georg-jensen.webp",
+        bagTip: "金屬隨身器具建議放置於託運行李箱，隨附原裝黑色禮盒便於保護",
         features: [
-          "WBC 世界咖啡師冠軍與世界杯測賽雙料冠軍創立之北歐標竿名廠。",
-          "標誌性北歐極淺焙風格，突出產區乾淨明亮的水果酸甜與細緻花香。",
-          "適合平常喜愛手沖、濾壓或黑咖啡的朋友品嚐極致風味。"
+          "成立於 1904 年的丹麥國寶級設計品牌，有機流線型不鏽鋼鏡面拋光工藝。",
+          "精選小尺寸實用生活物件（如經典象形鑰匙圈、極簡開瓶器），免買昂貴大件銀器。",
+          "低調奢華、手感沉穩溫潤，完整傳遞純粹俐落的斯堪地那維亞設計語彙。"
+        ]
+      },
+      {
+        id: "royal-copenhagen",
+        country: "denmark",
+        countryName: "丹麥",
+        flag: "🇩🇰",
+        category: "friend",
+        tier: "premium",
+        badge: "✨ Premium",
+        decisionTags: ["✨ Premium", "💡 看到再決定", "⚠️ 易碎／液體"],
+        theme: "皇室唐草・手繪名瓷",
+        name: "Royal Copenhagen 皇家哥本哈根小尺寸藍白手繪瓷碟",
+        localName: "Royal Copenhagen Blue Fluted Small Dish / Ornament",
+        origin: "🇩🇰 丹麥 哥本哈根",
+        budget: "約 200 DKK 起（約 NT$920+）",
+        place: "Royal Copenhagen Strøget 總店、Illum 百貨專櫃",
+        image: "assets/souvenirs/royal-copenhagen.webp",
+        bagTip: "陶瓷易碎品！強烈建議隨身手提上機，並以原廠泡棉與防撞盒完整防護",
+        features: [
+          "1775 年創立的丹麥皇室御用瓷廠，經典藍色唐草（Blue Fluted）手繪圖騰。",
+          "僅推薦小尺寸醬料碟、杯墊或年度紀念掛飾，非主力採買，預算充裕時的精緻選項。",
+          "每件背面皆有三條藍色水波紋手繪廠印，工藝價值非凡，適合特別留念。"
         ]
       },
 
-      // 🇫🇷 France (5 items: 1 office + 4 friend)
+      // 🇫🇷 France (7 items)
       {
         id: "angelina-biscuits",
         country: "france",
@@ -253,6 +463,7 @@ window.TRIP = {
         category: "office",
         tier: "premium",
         badge: "🏢 辦公室禮盒首選",
+        decisionTags: ["✅ 很推薦", "🏢 適合 Team 分享", "✨ Premium"],
         theme: "百年經典・法式酥餅",
         name: "Angelina / La Grande Épicerie 精選法式綜合奶油餅乾大鐵盒",
         localName: "Angelina Paris Biscuits Assortis Traditionnels (350g)",
@@ -260,55 +471,34 @@ window.TRIP = {
         budget: "約 30 EUR（約 NT$1,080）",
         place: "巴黎樂蓬馬歇百貨（La Grande Épicerie 食品館）或 Angelina 專門門市",
         image: "assets/souvenirs/angelina-biscuits.webp",
-        bagTip: "鐵盒具保護性，托運或手提皆宜（建議衣物包覆防磕碰）",
+        bagTip: "鐵盒保護性佳，手提或託運皆宜（託運建議以柔軟衣物包覆防磕碰）",
         features: [
-          "巴黎 1903 年百年甜點老店經典鐵盒，印花燙金典雅大器。",
-          "內含頂級純奶油牛油脆餅、巧克力酥餅與蕾絲脆餅，獨立小包裝便於取用。",
+          "巴黎 1903 年百年甜點老店經典鐵盒，印花燙金典雅大器，千元辦公室公用桌首選。",
+          "內含頂級純奶油牛油脆餅、巧克力酥餅與蕾絲脆餅，獨立小包裝便於同事取用。",
           "純法式發酵奶油烘焙香氣濃郁，公用桌人氣首選，人人皆喜愛。"
         ]
       },
       {
-        id: "maille-mustard",
+        id: "alain-ducasse",
         country: "france",
         countryName: "法國",
         flag: "🇫🇷",
         category: "friend",
-        tier: "budget",
-        badge: "💰 朋友・平價佐餐",
-        theme: "法式經典・第戎芥末",
-        name: "Maille 巴黎限定第戎芥末醬小罐（松露／白酒風味）",
-        localName: "Moutarde Maille au Vin Blanc & Truffe Noire (108g)",
+        tier: "premium",
+        badge: "🇫🇷 Paris Culture",
+        decisionTags: ["🇫🇷 Paris Culture", "🎁 適合朋友", "✨ Premium"],
+        theme: "名廚工坊・法式精品巧克",
+        name: "Le Chocolat Alain Ducasse 法式工坊精品夾心巧克力盒",
+        localName: "Le Chocolat Alain Ducasse Coffret Découverte",
         origin: "🇫🇷 法國 巴黎",
-        budget: "約 6 EUR（約 NT$210）",
-        place: "巴黎 Monoprix 超市或瑪黑區 Maille 皇家芥末專門店",
-        image: "assets/souvenirs/maille-mustard.webp",
-        bagTip: "⚠️ 膏狀醬料超過隨身 100ml 限制，必須放托運行李箱",
+        budget: "約 15–35 EUR（約 NT$540–1,260）",
+        place: "巴黎專門店（聖日耳曼、瑪黑區）或老佛爺百貨食品專櫃",
+        image: "assets/souvenirs/alain-ducasse.webp",
+        bagTip: "常溫陰涼處保存，避免陽光直射或高溫悶熱環境導致油脂融化",
         features: [
-          "法國皇家御用品牌，白酒或黑松露調和傳統第戎芥末籽，辛香層次細膩。",
-          "黑金復古陶罐/玻璃罐小巧精緻，擺在廚房極具巴黎餐酒館氛圍。",
-          "搭配炙烤牛排、煎肉排或法式三明治滋味絕佳，下廚佐酒皆合宜。"
-        ]
-      },
-      {
-        id: "buly-soap",
-        country: "france",
-        countryName: "法國",
-        flag: "🇫🇷",
-        category: "friend",
-        tier: "budget",
-        badge: "💰 朋友・平價日常",
-        theme: "復古香氛・植萃潔膚",
-        name: "Officine Universelle Buly 1803 經典香氛植物皂",
-        localName: "Buly 1803 Savon Superfin (Mousse de Cèdre 150g)",
-        origin: "🇫🇷 法國 巴黎",
-        budget: "約 14 EUR（約 NT$500）",
-        place: "Buly 1803 巴黎專門店（聖日耳曼/瑪黑）或樂蓬馬歇百貨專櫃",
-        image: "assets/souvenirs/buly-soap.webp",
-        bagTip: "固態香皂無液體限制，後背包或行李箱皆可輕鬆收納",
-        features: [
-          "自 1803 年傳承至今的巴黎香氛老牌，古典雕刻插畫紙盒包裝。",
-          "中性沉穩木質調（雪松苔蘚），洗感溫和潤澤且留香低調內斂。",
-          "無脂粉厚重感，體面雅緻且極具巴黎古典情調的男士日常選品。"
+          "法國世紀九星名廚 Alain Ducasse 於巴黎親自烘焙可可豆之純手工工坊代表作。",
+          "極簡工業風格牛皮紙盒包裝，內含產地單品黑巧或濃郁杏仁榛果果仁夾心（Praliné）。",
+          "法式頂級工藝代表，口感層次分明、純淨洗鍊，適合送給品味要求極高的好友。"
         ]
       },
       {
@@ -318,41 +508,112 @@ window.TRIP = {
         flag: "🇫🇷",
         category: "friend",
         tier: "premium",
-        badge: "✨ 朋友・質感品飲",
-        theme: "法茶鼻祖・馬可波羅",
-        name: "Mariage Frères 瑪黑兄弟經典黑罐茶葉（Marco Polo 馬可波羅）",
-        localName: "Mariage Frères Thé Marco Polo Boîte Noire (100g)",
+        badge: "🇫🇷 Paris Culture",
+        decisionTags: ["🇫🇷 Paris Culture", "🎁 適合朋友", "🧳 好攜帶"],
+        theme: "法茶鼻祖・經典薰香茶",
+        name: "Mariage Frères 瑪黑兄弟經典黑罐茶葉（Marco Polo 或精選款）",
+        localName: "Mariage Frères Thé Noir en Boîte Métal Noire (100g)",
         origin: "🇫🇷 法國 巴黎",
-        budget: "約 20 EUR（約 NT$720）",
+        budget: "約 15–30 EUR（約 NT$540–1,080）",
         place: "巴黎瑪黑區旗艦店、老佛爺百貨或樂蓬馬歇百貨專櫃",
         image: "assets/souvenirs/mariage-freres.webp",
-        bagTip: "經典黑鐵罐密封性極佳，隨身或托運皆不易受潮破損",
+        bagTip: "經典黑鐵罐密封性極佳且重量輕，隨身或託運皆不易受潮破損",
         features: [
-          "法國國寶級茶葉名門代表作，沉穩霧黑金屬罐配金色古典字樣。",
-          "東方神秘花果薰香與精選紅茶基底，茶湯甘醇順口、香氣高雅誘人。",
-          "放在書房或辦公桌極具格調，喜愛品茗與沉靜時光的好友首選。"
+          "自 1854 年傳承至今的法國國寶級茶葉名門，沉穩霧黑金屬罐配金色古典字樣。",
+          "經典熱銷首選 Marco Polo（馬可波羅花果薰香紅茶），亦可現場依喜好聞香挑選。",
+          "茶葉常溫耐放、重量極輕，擺在書房或辦公桌極具法式生活情調。"
         ]
       },
       {
-        id: "louvre-totebag",
+        id: "maille-mustard",
         country: "france",
         countryName: "法國",
         flag: "🇫🇷",
         category: "friend",
-        tier: "premium",
-        badge: "✨ 朋友・質感文創",
-        theme: "地標幾何・重磅帆布",
-        name: "羅浮宮／凡爾賽宮官方極簡建築結構帆布托特包",
-        localName: "Musée du Louvre Tote Bag en Coton Bio - Pyramide",
-        origin: "🇫🇷 法國 巴黎",
-        budget: "約 22 EUR（約 NT$800）",
-        place: "羅浮宮金字塔地庫官方書店禮品部或凡爾賽宮商店",
-        image: "assets/souvenirs/louvre-totebag.webp",
-        bagTip: "純布料無重量負擔，可折疊平放於背包或托運箱",
+        tier: "budget",
+        badge: "🧑‍🍳 料理系",
+        decisionTags: ["🧑‍🍳 料理系", "💰 平價", "⚠️ 易碎／液體"],
+        theme: "皇家御用・第戎芥末",
+        name: "Maille 法國皇室御用第戎芥末醬小罐（傳統籽醬／白酒風味）",
+        localName: "Moutarde Maille au Vin Blanc / Traditionnelle (108g)",
+        origin: "🇫🇷 法國 巴黎／第戎",
+        budget: "約 4–12 EUR（約 NT$140–430）",
+        place: "巴黎 Monoprix 超市、瑪黑區 Maille 專門店或 La Grande Épicerie",
+        image: "assets/souvenirs/maille-mustard.webp",
+        bagTip: "⚠️ 膏狀調味品超過隨身 100ml 限制，必須放託運行李箱；玻璃罐需衣物加厚包覆",
         features: [
-          "羅浮宮官方設計，將貝聿銘經典玻璃金字塔鋼構幾何以極簡線條俐落呈現。",
-          "厚磅純棉有機帆布，承重力佳且版型挺立，純黑或米白中性低調。",
-          "耐磨實裝，適合日常外出攜帶筆電、書籍與雜物，實用又有紀念意義。"
+          "創立於 1747 年的法國宮廷御用醬料老牌，以白酒調和第戎傳統芥末籽，微酸辛香不嗆口。",
+          "小巧黑金玻璃罐造型精美，價格親民，是法國家家必備的靈魂調味品。",
+          "搭配煎牛排、烤豬排、香腸或法式三明治滋味絕佳，下廚朋友首選。"
+        ]
+      },
+      {
+        id: "fleur-de-sel",
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        category: "friend",
+        tier: "budget",
+        badge: "🧑‍🍳 料理系",
+        decisionTags: ["🧑‍🍳 料理系", "💰 平價", "🧳 好攜帶"],
+        theme: "料理瑰寶・天然鹽之花",
+        name: "Fleur de Sel 經典法國鹽之花手工海鹽（小盒裝）",
+        localName: "Fleur de Sel de Guérande / Camargue (125g / 250g)",
+        origin: "🇫🇷 法國 蓋朗德／卡馬格",
+        budget: "約 4–10 EUR（約 NT$140–360）",
+        place: "巴黎 Monoprix、Carrefour 超市、La Grande Épicerie 或市集香料店",
+        image: "assets/souvenirs/fleur-de-sel.webp",
+        bagTip: "常溫極度耐放、不怕高溫融化，託運或隨身皆可（注意防潮密封）",
+        features: [
+          "在大西洋鹽田水面自然漂浮凝結的極稀有薄脆鹽花，由鹽農手工撈取，含豐富天然礦物質。",
+          "鹹味柔潤微甘且帶細緻紫羅蘭香氣，牛排或烤蔬菜起鍋撒上一撮即有畫龍點睛之效。",
+          "高 CP 值、體積重量小、保存期長，喜愛烹飪的朋友收到絕對稱讚。"
+        ]
+      },
+      {
+        id: "french-soap",
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        category: "friend",
+        tier: "budget",
+        badge: "🎁 朋友",
+        decisionTags: ["🎁 適合朋友", "💰 平價", "🧳 好攜帶"],
+        theme: "法式植萃・古法植物皂／護手霜",
+        name: "Savon de Marseille 法國古法馬賽皂／植萃香氛護手霜",
+        localName: "Savon de Marseille à l'Huile d'Olive / Crème Mains",
+        origin: "🇫🇷 法國 普羅旺斯／巴黎",
+        budget: "約 5–20 EUR（約 NT$180–720）",
+        place: "巴黎各大連鎖藥妝店（Citypharma）、Monoprix、Buly 1803 或百貨",
+        image: "assets/souvenirs/french-soap.webp",
+        bagTip: "固態香皂最方便，無任何液體限制隨處可塞；護手霜若隨身須低於 100ml",
+        features: [
+          "跳脫全都是吃的伴手禮框架，72% 純橄欖油天然古法冷壓，溫和滋潤洗感極佳。",
+          "或挑選乳油木果脂法式植萃護手霜，體積小、質地輕盈、實用耐耗。",
+          "法系日常保養經典，男女通用，無性別負擔且方便長途收納攜帶。"
+        ]
+      },
+      {
+        id: "louvre-boutique",
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        category: "friend",
+        tier: "budget",
+        badge: "🎨 博物館文創",
+        decisionTags: ["🎨 博物館文創", "🎁 適合朋友", "🧳 好攜帶"],
+        theme: "地標文創・藝術生活小物",
+        name: "羅浮宮 Museum Shop 官方文創小物（托特包／書籤／筆記本）",
+        localName: "Musée du Louvre Boutique Librairie (Tote Bag / Papeterie)",
+        origin: "🇫🇷 法國 巴黎",
+        budget: "約 5–30 EUR（約 NT$180–1,080）",
+        place: "羅浮宮金字塔地庫 Hall Napoléon 官方書店與禮品部",
+        image: "assets/souvenirs/louvre-boutique.webp",
+        bagTip: "多數為紙本、帆布或小型配件，重量極輕，可平放於隨身包中",
+        features: [
+          "09/16 參觀羅浮宮本館時順路選購，旅行親歷紀念感最強，遠勝一般街頭紀念品店。",
+          "推薦金字塔幾何純棉帆布托特包、藝術名畫金屬書籤、精品筆記本或藝術長襪。",
+          "無須事先預設品項，現場依預算與眼緣挑選輕量小件即可，體面又有文化格調。"
         ]
       }
     ]

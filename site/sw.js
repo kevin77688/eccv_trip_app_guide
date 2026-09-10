@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260911-01';
+const CACHE_NAME = 'eccv-guide-v20260911-02';
 
 // Bundled encrypted tickets, generated from data.js.
 const TICKET_ASSETS = [
@@ -115,16 +115,25 @@ const STATIC_ASSETS = [
   './assets/places/tuileries.jpg',
   './assets/places/turning.jpg',
   './assets/places/versailles.jpg',
+  './assets/souvenirs/dalahast.webp',
   './assets/souvenirs/malmo-chokladfabrik.webp',
-  './assets/souvenirs/form-design-opener.webp',
+  './assets/souvenirs/ahlgrens-bilar.webp',
+  './assets/souvenirs/djungelvral.webp',
+  './assets/souvenirs/polkagris.webp',
+  './assets/souvenirs/kexchoklad.webp',
+  './assets/souvenirs/royal-dansk.webp',
   './assets/souvenirs/lakrids-bulow.webp',
-  './assets/souvenirs/laeso-salt.webp',
-  './assets/souvenirs/coffee-collective.webp',
+  './assets/souvenirs/anthon-berg.webp',
+  './assets/souvenirs/lego-minifigure.webp',
+  './assets/souvenirs/royal-copenhagen.webp',
+  './assets/souvenirs/georg-jensen.webp',
   './assets/souvenirs/angelina-biscuits.webp',
-  './assets/souvenirs/maille-mustard.webp',
-  './assets/souvenirs/buly-soap.webp',
+  './assets/souvenirs/alain-ducasse.webp',
   './assets/souvenirs/mariage-freres.webp',
-  './assets/souvenirs/louvre-totebag.webp'
+  './assets/souvenirs/maille-mustard.webp',
+  './assets/souvenirs/fleur-de-sel.webp',
+  './assets/souvenirs/french-soap.webp',
+  './assets/souvenirs/louvre-boutique.webp'
 ];
 
 self.addEventListener('install', (event) => {
