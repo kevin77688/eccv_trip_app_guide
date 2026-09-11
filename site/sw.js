@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260911-02';
+const CACHE_NAME = 'eccv-guide-v20260911-03';
 
 // Bundled encrypted tickets, generated from data.js.
 const TICKET_ASSETS = [
