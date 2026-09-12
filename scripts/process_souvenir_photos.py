@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Downloads and processes authentic product and packaging photographs for the 19 souvenirs
+Downloads and processes authentic product and packaging photographs for the 20 souvenirs
 from official sources and Wikimedia Commons into 800x500 16:10 WebP images.
 """
 import io
@@ -62,33 +62,42 @@ IMAGE_SOURCES = {
         'mode': 'contain',
         'bg': (245, 245, 245)
     },
-    'angelina-biscuits': {
-        'url': 'https://cdn.shopify.com/s/files/1/0966/0180/1042/files/ANGELINA_ESHOP_2025_PATISSERIES__MARY_DEVINAT_36_2.jpg?v=1759397221',
+    'st-michel': {
+        'url': 'https://images.openfoodfacts.net/images/products/302/347/000/1015/front_fr.306.full.jpg',
         'mode': 'contain',
         'bg': (255, 255, 255)
     },
-    'alain-ducasse': {
-        'url': 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Le_chocolat_alain_ducasse_%2839907775693%29.jpg',
+    'gavottes': {
+        'url': 'https://images.openfoodfacts.net/images/products/343/141/000/1023/front_fr.117.full.jpg',
+        'mode': 'contain',
+        'bg': (255, 255, 255)
+    },
+    'lu-biscuits': {
+        'url': 'https://images.openfoodfacts.net/images/products/762/221/042/1968/front_fr.146.full.jpg',
+        'mode': 'contain',
+        'bg': (255, 255, 255)
+    },
+    'la-mere-poulard': {
+        'url': 'https://images.openfoodfacts.net/images/products/347/286/000/1454/front_fr.20.full.jpg',
+        'mode': 'contain',
+        'bg': (255, 255, 255)
+    },
+    'valrhona': {
+        'url': 'https://images.openfoodfacts.net/images/products/339/532/834/8987/front_fr.17.full.jpg',
+        'mode': 'contain',
+        'bg': (255, 255, 255)
+    },
+    'malongo': {
+        'url': 'https://images.openfoodfacts.net/images/products/318/757/001/5508/front_fr.34.full.jpg',
+        'mode': 'contain',
+        'bg': (255, 255, 255)
+    },
+    'pierre-herme': {
+        'url': 'https://upload.wikimedia.org/wikipedia/commons/5/50/Ispahan_macaroon_with_raspberry_and_petal.jpg',
         'mode': 'cover'
     },
-    'mariage-freres': {
-        'url': 'https://upload.wikimedia.org/wikipedia/commons/3/34/Interior_of_Mariage_Fr%C3%A8res%2C_Covent_Garden%2C_London_01_2025-05-12.jpg',
-        'mode': 'cover'
-    },
-    'maille-mustard': {
-        'url': 'https://upload.wikimedia.org/wikipedia/commons/6/67/Moutarde_Maille_Dijon_0001.jpg',
-        'mode': 'cover'
-    },
-    'fleur-de-sel': {
-        'url': 'https://upload.wikimedia.org/wikipedia/commons/8/80/Fleur_de_Sel_de_Gu%C3%A9rande_2026.jpg',
-        'mode': 'cover'
-    },
-    'french-soap': {
-        'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Marseiller_Seife.jpg',
-        'mode': 'cover'
-    },
-    'louvre-boutique': {
-        'url': 'https://upload.wikimedia.org/wikipedia/commons/1/19/Louvre_Pyramid_Staircase.jpg',
+    'foie-gras': {
+        'url': 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Foie_gras_de_canard_entier_du_sud-ouest_IGP.JPG',
         'mode': 'cover'
     }
 }

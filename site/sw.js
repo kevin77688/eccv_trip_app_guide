@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eccv-guide-v20260911-03';
+const CACHE_NAME = 'eccv-guide-v20260912-01';
 
 // Bundled encrypted tickets, generated from data.js.
 const TICKET_ASSETS = [
@@ -127,13 +127,14 @@ const STATIC_ASSETS = [
   './assets/souvenirs/lego-minifigure.webp',
   './assets/souvenirs/royal-copenhagen.webp',
   './assets/souvenirs/georg-jensen.webp',
-  './assets/souvenirs/angelina-biscuits.webp',
-  './assets/souvenirs/alain-ducasse.webp',
-  './assets/souvenirs/mariage-freres.webp',
-  './assets/souvenirs/maille-mustard.webp',
-  './assets/souvenirs/fleur-de-sel.webp',
-  './assets/souvenirs/french-soap.webp',
-  './assets/souvenirs/louvre-boutique.webp'
+  './assets/souvenirs/st-michel.webp',
+  './assets/souvenirs/gavottes.webp',
+  './assets/souvenirs/lu-biscuits.webp',
+  './assets/souvenirs/la-mere-poulard.webp',
+  './assets/souvenirs/valrhona.webp',
+  './assets/souvenirs/malongo.webp',
+  './assets/souvenirs/pierre-herme.webp',
+  './assets/souvenirs/foie-gras.webp'
 ];
 
 self.addEventListener('install', (event) => {

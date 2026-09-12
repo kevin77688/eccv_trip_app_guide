@@ -120,8 +120,8 @@ window.TRIP = {
     ]
   },
   souvenirs: {
-    lastUpdated: "2026/09/11",
-    intro: "以下為候選伴手禮清單，實際旅途中依看到的商品、價格與剩餘行李重量挑選即可，不需要全部購買。精選瑞典（6 款）、丹麥（6 款）、法國（7 款）共 19 款候選，涵蓋在地代表紀念品、辦公室多人分享零食、朋友精選點心、生活設計品、料理調味與博物館文創。",
+    lastUpdated: "2026/09/12",
+    intro: "以下為候選伴手禮清單，實際旅途中依看到的商品、價格與剩餘行李重量挑選即可，不需要全部購買。精選瑞典（6 款）、丹麥（6 款）、法國（8 款）共 20 款候選，涵蓋在地代表紀念品、辦公室多人分享零食、朋友精選點心、生活設計品、料理調味與博物館文創。",
     notice: "⚠️ 重要提醒：瑞典魚卵牙膏抹醬（Kalles Kaviar）官方保存條件為 2～8°C 冷藏。我們 9/12 離開瑞典後還會在巴黎待到 9/18，之後才搭長途航班回台灣，長時間無法維持 2～8°C 冷藏，食品安全風險較高。建議只在瑞典當地買來吃，不建議作為伴手禮帶回台灣。",
     notRecommended: [
       {
@@ -136,7 +136,7 @@ window.TRIP = {
         countryName: "法國",
         flag: "🇫🇷",
         name: "新鮮馬卡龍（Macaron）",
-        reason: "賞味期僅 2～3 天，外殼極脆易碎，夏秋常溫極易受潮出油軟化，建議在巴黎甜點店現買現吃。"
+        reason: "賞味期僅 2～3 天，外殼極脆易碎，夏秋常溫極易受潮出油軟化，建議在巴黎甜點店現買現吃（若選購 Pierre Hermé 帶回台灣，務必於最後一天 09/18 購買並手提上機護送）。"
       },
       {
         country: "france",
@@ -164,7 +164,7 @@ window.TRIP = {
         countryName: "法國",
         flag: "🇫🇷",
         name: "熟肉火腿與香腸肉製品（Saucisson / Rillettes）",
-        reason: "台灣海關動植物防疫檢疫法規嚴禁攜帶任何豬肉、牛羊禽肉製品入境，違者重罰最高 NT$1,000,000。"
+        reason: "台灣海關動植物防疫檢疫法規嚴禁攜帶任何豬肉、牛羊禽肉製品入境，違者重罰最高 NT$1,000,000（鵝肝醬需認明為高溫高壓商業滅菌之純密封常溫罐頭，嚴禁含生鮮肉塊）。"
       }
     ],
     countries: [
@@ -454,166 +454,191 @@ window.TRIP = {
         ]
       },
 
-      // 🇫🇷 France (7 items)
+      // 🇫🇷 France - 辦公室多人分享（4 items）
       {
-        id: "angelina-biscuits",
+        id: "st-michel",
         country: "france",
         countryName: "法國",
         flag: "🇫🇷",
         category: "office",
-        tier: "premium",
-        badge: "🏢 辦公室禮盒首選",
-        decisionTags: ["✅ 很推薦", "🏢 適合 Team 分享", "✨ Premium"],
-        theme: "百年經典・法式酥餅",
-        name: "Angelina / La Grande Épicerie 精選法式綜合奶油餅乾大鐵盒",
-        localName: "Angelina Paris Biscuits Assortis Traditionnels (350g)",
-        origin: "🇫🇷 法國 巴黎",
-        budget: "約 30 EUR（約 NT$1,080）",
-        place: "巴黎樂蓬馬歇百貨（La Grande Épicerie 食品館）或 Angelina 專門門市",
-        image: "assets/souvenirs/angelina-biscuits.webp",
-        bagTip: "鐵盒保護性佳，手提或託運皆宜（託運建議以柔軟衣物包覆防磕碰）",
+        tier: "budget",
+        badge: "🏢 辦公室首選",
+        decisionTags: ["✅ 很推薦", "🏢 適合 Team 分享", "💰 平價"],
+        theme: "百年烘焙・金黃奶油酥餅",
+        name: "St Michel 法國金黃奶油餅（Galettes / 瑪德蓮蛋糕）",
+        localName: "St Michel Galettes Roudor / Madeleines",
+        origin: "🇫🇷 法國 羅亞爾河地區／巴黎各大超市",
+        budget: "約 1.6–3.0 EUR（約 NT$60–110）",
+        place: "巴黎 Monoprix、Carrefour、Franprix 等各大超市",
+        image: "assets/souvenirs/st-michel.webp",
+        bagTip: "獨立小包裝多且紙盒輕巧，手提或託運皆宜，不怕高溫融化",
         features: [
-          "巴黎 1903 年百年甜點老店經典鐵盒，印花燙金典雅大器，千元辦公室公用桌首選。",
-          "內含頂級純奶油牛油脆餅、巧克力酥餅與蕾絲脆餅，獨立小包裝便於同事取用。",
-          "純法式發酵奶油烘焙香氣濃郁，公用桌人氣首選，人人皆喜愛。"
+          "法國百年國民點心老牌，放牧雞蛋與布列塔尼奶油烘焙，大眾接受度極高。",
+          "經典圓形金黃薄脆酥餅或獨立小包瑪德蓮，擺放於辦公室公用桌方便同事取用。",
+          "超市價格極為親民且重量輕巧，採購多盒不佔行李重量額度。"
         ]
       },
       {
-        id: "alain-ducasse",
+        id: "gavottes",
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        category: "office",
+        tier: "budget",
+        badge: "🏢 辦公室首選",
+        decisionTags: ["✅ 很推薦", "🏢 適合 Team 分享", "✨ 精緻體面"],
+        theme: "布列塔尼・經典薄脆千層捲餅",
+        name: "Gavottes 法式薄脆捲餅（經典原味／黑巧裹層）",
+        localName: "Gavottes Crêpes Dentelle de Bretagne (125g)",
+        origin: "🇫🇷 法國 布列塔尼／巴黎各大超市",
+        budget: "約 2.0–7.0 EUR（約 NT$70–250）",
+        place: "巴黎 Monoprix、Carrefour 超市或老佛爺食品館",
+        image: "assets/souvenirs/gavottes.webp",
+        bagTip: "捲餅外殼薄脆易碎，託運時務必以衣物厚實包覆或建議手提上機",
+        features: [
+          "百年傳統工藝製作，金箔紙獨立雙捲包裝，精緻氣派且衛生。",
+          "多層次輕薄酥脆口感散發焦糖奶香，甜度適中，分給同事體面有格調。",
+          "除經典原味金盒，亦有黑巧裹層款，搭配辦公室黑咖啡或紅茶非常契合。"
+        ]
+      },
+      {
+        id: "lu-biscuits",
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        category: "office",
+        tier: "budget",
+        badge: "🏢 辦公室首選",
+        decisionTags: ["✅ 很推薦", "🏢 適合 Team 分享", "💰 平價"],
+        theme: "法式童年・巧克力夾心餅乾",
+        name: "LU 餅乾（Petit Écolier 小學生巧克力夾心餅）",
+        localName: "LU Petit Écolier Chocolat Lait / Noir",
+        origin: "🇫🇷 法國 南特／巴黎各大超市",
+        budget: "約 1.5–2.8 EUR（約 NT$55–100）",
+        place: "巴黎各大連鎖超市（Monoprix / Carrefour）",
+        image: "assets/souvenirs/lu-biscuits.webp",
+        bagTip: "常溫陰涼處保存即可，夏季回國避免陽光直曬巧克力軟化",
+        features: [
+          "創立於 1846 年的法國最具代表性餅乾，法國人從小吃到大的點心首選。",
+          "經典奶油餅乾上方鑲嵌整塊香濃牛奶或黑巧克力浮雕，雙重口感超滿足。",
+          "超市常有一組 2～3 盒促銷包裝，採買成本低、份量充足，茶水間零食首選。"
+        ]
+      },
+      {
+        id: "la-mere-poulard",
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        category: "office",
+        tier: "budget",
+        badge: "🏢 經典鐵盒",
+        decisionTags: ["🏢 適合 Team 分享", "✨ 精緻體面", "🧳 好攜帶"],
+        theme: "世界遺產・聖米歇爾山酥餅",
+        name: "La Mère Poulard 普拉夫人傳統奶油酥餅（紅鐵盒款／紙盒）",
+        localName: "La Mère Poulard Sablés Pur Beurre Tradition (Mont-Saint-Michel)",
+        origin: "🇫🇷 法國 諾曼第／聖米歇爾山",
+        budget: "約 2.0–14.0 EUR（約 NT$70–500）",
+        place: "巴黎大型超市、La Grande Épicerie 或老佛爺百貨食品部",
+        image: "assets/souvenirs/la-mere-poulard.webp",
+        bagTip: "鐵盒款防撞性絕佳，適合直接放入託運行李箱防護保護",
+        features: [
+          "源自聖米歇爾山百年老店，依循百年古法純發酵奶油烘焙，奶香醇厚酥脆。",
+          "首推印有聖米歇爾山圖樣的招牌紅色復古鐵盒，開蓋擺在會議桌典雅大方。",
+          "亦有超市平價紙盒裝可選，送禮體面，同事讚不絕口。"
+        ]
+      },
+
+      // 🇫🇷 France - 朋友精選與在地品味（4 items）
+      {
+        id: "valrhona-chocolate",
         country: "france",
         countryName: "法國",
         flag: "🇫🇷",
         category: "friend",
         tier: "premium",
-        badge: "🇫🇷 Paris Culture",
-        decisionTags: ["🇫🇷 Paris Culture", "🎁 適合朋友", "✨ Premium"],
-        theme: "名廚工坊・法式精品巧克",
-        name: "Le Chocolat Alain Ducasse 法式工坊精品夾心巧克力盒",
-        localName: "Le Chocolat Alain Ducasse Coffret Découverte",
-        origin: "🇫🇷 法國 巴黎",
-        budget: "約 15–35 EUR（約 NT$540–1,260）",
-        place: "巴黎專門店（聖日耳曼、瑪黑區）或老佛爺百貨食品專櫃",
-        image: "assets/souvenirs/alain-ducasse.webp",
-        bagTip: "常溫陰涼處保存，避免陽光直射或高溫悶熱環境導致油脂融化",
+        badge: "🎁 朋友首選",
+        decisionTags: ["🎁 適合朋友", "✨ Premium", "🧳 好攜帶"],
+        theme: "頂級名廚御用・產地單品黑巧",
+        name: "Valrhona 法芙娜頂級巧克力（產地精選黑巧排塊／排裝禮盒）",
+        localName: "Valrhona Grands Crus Tablettes & Coffrets",
+        origin: "🇫🇷 法國 坦恩／巴黎專櫃及高級食品館",
+        budget: "約 4.0–25.0 EUR（約 NT$145–900）",
+        place: "巴黎樂蓬馬歇（La Grande Épicerie）、老佛爺食品館或 Monoprix 精品區",
+        image: "assets/souvenirs/valrhona.webp",
+        bagTip: "常溫陰涼處保存即可，行李箱內避免與重物擠壓",
         features: [
-          "法國世紀九星名廚 Alain Ducasse 於巴黎親自烘焙可可豆之純手工工坊代表作。",
-          "極簡工業風格牛皮紙盒包裝，內含產地單品黑巧或濃郁杏仁榛果果仁夾心（Praliné）。",
-          "法式頂級工藝代表，口感層次分明、純淨洗鍊，適合送給品味要求極高的好友。"
+          "世界名廚與高級法式甜點指定用巧克力，首創以單一產區可可豆製作。",
+          "推薦 Guanaja 70% 苦甜或 Caraïbe 66% 圓潤果香黑巧排塊，價格比台灣專櫃實惠很多。",
+          "包裝精美簡練、體積小不佔空間，是送給品味好友的絕佳選擇。"
         ]
       },
       {
-        id: "mariage-freres",
-        country: "france",
-        countryName: "法國",
-        flag: "🇫🇷",
-        category: "friend",
-        tier: "premium",
-        badge: "🇫🇷 Paris Culture",
-        decisionTags: ["🇫🇷 Paris Culture", "🎁 適合朋友", "🧳 好攜帶"],
-        theme: "法茶鼻祖・經典薰香茶",
-        name: "Mariage Frères 瑪黑兄弟經典黑罐茶葉（Marco Polo 或精選款）",
-        localName: "Mariage Frères Thé Noir en Boîte Métal Noire (100g)",
-        origin: "🇫🇷 法國 巴黎",
-        budget: "約 15–30 EUR（約 NT$540–1,080）",
-        place: "巴黎瑪黑區旗艦店、老佛爺百貨或樂蓬馬歇百貨專櫃",
-        image: "assets/souvenirs/mariage-freres.webp",
-        bagTip: "經典黑鐵罐密封性極佳且重量輕，隨身或託運皆不易受潮破損",
-        features: [
-          "自 1854 年傳承至今的法國國寶級茶葉名門，沉穩霧黑金屬罐配金色古典字樣。",
-          "經典熱銷首選 Marco Polo（馬可波羅花果薰香紅茶），亦可現場依喜好聞香挑選。",
-          "茶葉常溫耐放、重量極輕，擺在書房或辦公桌極具法式生活情調。"
-        ]
-      },
-      {
-        id: "maille-mustard",
+        id: "malongo-coffee",
         country: "france",
         countryName: "法國",
         flag: "🇫🇷",
         category: "friend",
         tier: "budget",
-        badge: "🧑‍🍳 料理系",
-        decisionTags: ["🧑‍🍳 料理系", "💰 平價", "⚠️ 易碎／液體"],
-        theme: "皇家御用・第戎芥末",
-        name: "Maille 法國皇室御用第戎芥末醬小罐（傳統籽醬／白酒風味）",
-        localName: "Moutarde Maille au Vin Blanc / Traditionnelle (108g)",
-        origin: "🇫🇷 法國 巴黎／第戎",
-        budget: "約 4–12 EUR（約 NT$140–430）",
-        place: "巴黎 Monoprix 超市、瑪黑區 Maille 專門店或 La Grande Épicerie",
-        image: "assets/souvenirs/maille-mustard.webp",
-        bagTip: "⚠️ 膏狀調味品超過隨身 100ml 限制，必須放託運行李箱；玻璃罐需衣物加厚包覆",
-        features: [
-          "創立於 1747 年的法國宮廷御用醬料老牌，以白酒調和第戎傳統芥末籽，微酸辛香不嗆口。",
-          "小巧黑金玻璃罐造型精美，價格親民，是法國家家必備的靈魂調味品。",
-          "搭配煎牛排、烤豬排、香腸或法式三明治滋味絕佳，下廚朋友首選。"
-        ]
-      },
-      {
-        id: "fleur-de-sel",
-        country: "france",
-        countryName: "法國",
-        flag: "🇫🇷",
-        category: "friend",
-        tier: "budget",
-        badge: "🧑‍🍳 料理系",
-        decisionTags: ["🧑‍🍳 料理系", "💰 平價", "🧳 好攜帶"],
-        theme: "料理瑰寶・天然鹽之花",
-        name: "Fleur de Sel 經典法國鹽之花手工海鹽（小盒裝）",
-        localName: "Fleur de Sel de Guérande / Camargue (125g / 250g)",
-        origin: "🇫🇷 法國 蓋朗德／卡馬格",
-        budget: "約 4–10 EUR（約 NT$140–360）",
-        place: "巴黎 Monoprix、Carrefour 超市、La Grande Épicerie 或市集香料店",
-        image: "assets/souvenirs/fleur-de-sel.webp",
-        bagTip: "常溫極度耐放、不怕高溫融化，託運或隨身皆可（注意防潮密封）",
-        features: [
-          "在大西洋鹽田水面自然漂浮凝結的極稀有薄脆鹽花，由鹽農手工撈取，含豐富天然礦物質。",
-          "鹹味柔潤微甘且帶細緻紫羅蘭香氣，牛排或烤蔬菜起鍋撒上一撮即有畫龍點睛之效。",
-          "高 CP 值、體積重量小、保存期長，喜愛烹飪的朋友收到絕對稱讚。"
-        ]
-      },
-      {
-        id: "french-soap",
-        country: "france",
-        countryName: "法國",
-        flag: "🇫🇷",
-        category: "friend",
-        tier: "budget",
-        badge: "🎁 朋友",
+        badge: "🎁 朋友首選",
         decisionTags: ["🎁 適合朋友", "💰 平價", "🧳 好攜帶"],
-        theme: "法式植萃・古法植物皂／護手霜",
-        name: "Savon de Marseille 法國古法馬賽皂／植萃香氛護手霜",
-        localName: "Savon de Marseille à l'Huile d'Olive / Crème Mains",
-        origin: "🇫🇷 法國 普羅旺斯／巴黎",
-        budget: "約 5–20 EUR（約 NT$180–720）",
-        place: "巴黎各大連鎖藥妝店（Citypharma）、Monoprix、Buly 1803 或百貨",
-        image: "assets/souvenirs/french-soap.webp",
-        bagTip: "固態香皂最方便，無任何液體限制隨處可塞；護手霜若隨身須低於 100ml",
+        theme: "公平貿易・尼斯百年烘焙咖啡",
+        name: "Malongo 有機公平貿易咖啡（研磨咖啡粉／咖啡豆 250g）",
+        localName: "Malongo Café Moulu Bio & Équitable Pur Arabica",
+        origin: "🇫🇷 法國 尼斯／巴黎各大超市有機區",
+        budget: "約 3.8–6.5 EUR（約 NT$135–235）",
+        place: "巴黎各大超市（Monoprix / Carrefour）有機咖啡專區",
+        image: "assets/souvenirs/malongo.webp",
+        bagTip: "真空金屬罐或密封袋包裝，隨身或託運皆方便，重量輕且不易破損",
         features: [
-          "跳脫全都是吃的伴手禮框架，72% 純橄欖油天然古法冷壓，溫和滋潤洗感極佳。",
-          "或挑選乳油木果脂法式植萃護手霜，體積小、質地輕盈、實用耐耗。",
-          "法系日常保養經典，男女通用，無性別負擔且方便長途收納攜帶。"
+          "源自南法尼斯的法國家傳戶曉咖啡名廠，倡導生態有機與公平貿易認證。",
+          "選用 100% 高海拔阿拉比卡純豆緩慢烘焙，香氣醇厚柔和、酸度平衡。",
+          "超市價格親民且外罐設計充滿法式生活感，適合喜愛自己沖煮咖啡的朋友。"
         ]
       },
       {
-        id: "louvre-boutique",
+        id: "pierre-herme",
         country: "france",
         countryName: "法國",
         flag: "🇫🇷",
         category: "friend",
-        tier: "budget",
-        badge: "🎨 博物館文創",
-        decisionTags: ["🎨 博物館文創", "🎁 適合朋友", "🧳 好攜帶"],
-        theme: "地標文創・藝術生活小物",
-        name: "羅浮宮 Museum Shop 官方文創小物（托特包／書籤／筆記本）",
-        localName: "Musée du Louvre Boutique Librairie (Tote Bag / Papeterie)",
-        origin: "🇫🇷 法國 巴黎",
-        budget: "約 5–30 EUR（約 NT$180–1,080）",
-        place: "羅浮宮金字塔地庫 Hall Napoléon 官方書店與禮品部",
-        image: "assets/souvenirs/louvre-boutique.webp",
-        bagTip: "多數為紙本、帆布或小型配件，重量極輕，可平放於隨身包中",
+        tier: "premium",
+        badge: "✨ 甜點愛馬仕",
+        decisionTags: ["✨ Premium", "💡 建議巴黎現吃", "⚠️ 易碎短效"],
+        theme: "甜點界愛馬仕・傳奇馬卡龍",
+        name: "Pierre Hermé 經典馬卡龍（推薦招牌 Ispahan 玫瑰荔枝覆盆子）",
+        localName: "Pierre Hermé Paris Macarons (Incomparable Ispahan)",
+        origin: "🇫🇷 法國 巴黎專門店",
+        budget: "約 2.8–26.0 EUR（約 NT$100–940）",
+        place: "巴黎香榭麗舍大道旗艦店、聖日耳曼總店或老佛爺專櫃",
+        image: "assets/souvenirs/pierre-herme.webp",
+        bagTip: "⚠️ 強烈建議手提上機！外殼極度脆弱易碎，賞味期僅 2～4 天，可買回飯店現吃或回台當天採買",
         features: [
-          "09/16 參觀羅浮宮本館時順路選購，旅行親歷紀念感最強，遠勝一般街頭紀念品店。",
-          "推薦金字塔幾何純棉帆布托特包、藝術名畫金屬書籤、精品筆記本或藝術長襪。",
-          "無須事先預設品項，現場依預算與眼緣挑選輕量小件即可，體面又有文化格調。"
+          "甜點界愛馬仕稱號，首推招牌 Ispahan 口味（天然大馬士革玫瑰、荔枝與覆盆子完美交織）。",
+          "外殼酥脆、內餡豐潤飽滿不死甜，層次極為細膩優雅。",
+          "因效期短且易碎，若帶回台灣務必安排在旅程最後一天（09/18）起飛前購買並手提護送。"
+        ]
+      },
+      {
+        id: "foie-gras",
+        country: "france",
+        countryName: "法國",
+        flag: "🇫🇷",
+        category: "friend",
+        tier: "premium",
+        badge: "🧑‍🍳 經典風味",
+        decisionTags: ["🧑‍🍳 料理系", "✨ Premium", "⚠️ 檢疫限制"],
+        theme: "法式經典前菜・整塊頂級肥肝醬",
+        name: "鵝肝醬 / 鴨肝醬罐頭（Foie Gras Entier 純肥肝抹醬）",
+        localName: "Foie Gras d'Oie / Canard Entier en Bocaux",
+        origin: "🇫🇷 法國 西南部產區／巴黎食品館",
+        budget: "約 6.0–50.0 EUR+（約 NT$215–1,800+）",
+        place: "巴黎拉法葉美食館、La Grande Épicerie 或 Monoprix 超市",
+        image: "assets/souvenirs/foie-gras.webp",
+        bagTip: "⚠️ 罐頭屬膏狀超過 100ml 必須放託運行李；入境台灣務必確認為高溫高壓商業滅菌鐵罐／玻璃罐，嚴禁含生鮮肉塊！",
+        features: [
+          "法式奢華料理精華，口感絲滑如奶油，塗抹於烤脆長棍麵包或吐司上風味絕佳。",
+          "挑選時可選純肝抹醬（Bloc）或完整原塊（Entier），後者口感最為頂級奢華。",
+          "若要帶回台灣，必須嚴格遵守動植物防疫檢疫規範，挑選商業密封常溫滅菌罐頭。"
         ]
       }
     ]
