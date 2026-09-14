@@ -1,7 +1,12 @@
 # ECCV 2026 旅程簡報
 
-> 給後續 agent 的精簡背景資料。最後同步：2026-09-12。
+> 給後續 agent 的精簡背景資料。最後同步：2026-09-15。
 > 旅程日期為 2026-09-06 至 2026-09-19；網站介面使用繁體中文。
+
+## 09/15 CI 維護：GitHub Actions Artifact 保存期限縮短（2026-09-15）
+
+- **建置產物保存期限縮短至 1 天**：修改 `.github/workflows/build-apk.yml`，在 `actions/upload-artifact@v4` 加入 `retention-days: 1`，避免 APK 產物（每次約 87 MB）以預設 90 天長期留存而耗盡 Actions 0.5 GB 儲存空間配額。
+- **正式發布不受影響**：`latest` Release 與 Tag 發布之 APK 仍直接上傳至 GitHub Releases，不消耗 Actions 儲存空間。
 
 ## 09/12 法國伴手禮升級：納入 Messi × PSG 30 號傳奇收藏、全站 21 款動態架構（2026-09-12）
 
