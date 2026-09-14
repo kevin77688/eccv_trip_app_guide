@@ -631,14 +631,14 @@ window.TRIP = {
         name: "鵝肝醬 / 鴨肝醬罐頭（Foie Gras Entier 純肥肝抹醬）",
         localName: "Foie Gras d'Oie / Canard Entier en Bocaux",
         origin: "🇫🇷 法國 西南部產區／巴黎食品館",
-        budget: "約 6.0–50.0 EUR+（約 NT$215–1,800+）",
-        place: "巴黎拉法葉美食館、La Grande Épicerie 或 Monoprix 超市",
+        budget: "約 32.0–34.5 EUR 起（推薦整塊款）",
+        place: "La Grande Épicerie de Paris（樂蓬馬歇食品館）、拉法葉美食館",
         image: "assets/souvenirs/foie-gras.webp",
-        bagTip: "⚠️ 罐頭屬膏狀超過 100ml 必須放託運行李；入境台灣務必確認為高溫高壓商業滅菌鐵罐／玻璃罐，嚴禁含生鮮肉塊！",
+        bagTip: "⚠️ 罐頭屬膏狀超過 100ml 須放託運；入境台灣務必認明標記 conserve / stérilisé / température ambiante 之常溫商業滅菌罐，嚴禁購買需冷藏之 mi-cuit / semi-conserve！",
         features: [
-          "法式奢華料理精華，口感絲滑如奶油，塗抹於烤脆長棍麵包或吐司上風味絕佳。",
-          "挑選時可選純肝抹醬（Bloc）或完整原塊（Entier），後者口感最為頂級奢華。",
-          "若要帶回台灣，必須嚴格遵守動植物防疫檢疫規範，挑選商業密封常溫滅菌罐頭。"
+          "首選推薦：La Grande Épicerie 法國西南 IGP 整塊鴨肝醬（Foie gras de canard entier du Sud-Ouest IGP，130g，€34.50）。",
+          "備選推薦：Georges Bruck 整塊鴨肝（Foie gras de canard, 100% de morceaux，75g，€32）；暫不推薦 Rougié。",
+          "檢疫安全核心：購買前務必確認包裝標示 conserve、stérilisé、température ambiante（常溫保存）；若標示 mi-cuit、semi-conserve、à conserver au réfrigérateur（需冷藏）則切勿購買。"
         ]
       },
       {
@@ -1235,7 +1235,7 @@ window.TRIP = {
     latin: { region: "Paris", title: "Latin Quarter & Luxembourg", local: "拉丁區與盧森堡公園", kicker: "花園・先賢祠・大學區", intro: "巴黎左岸的歷史文教區，聚集盧森堡公園、先賢祠、索邦大學與各類書店、咖啡館。", stay: "約 2 到 3 小時", accent: "teal" },
     army: { region: "Paris", title: "Musée de l’Armée & Les Invalides", local: "軍事博物館與榮軍院", kicker: "軍事史・拿破崙墓・金色圓頂", intro: "位於榮軍院內，展示法國歷代軍事裝備與武器史料，圓頂教堂下安葬拿破崙一世。", stay: "約 2 到 2.5 小時", accent: "coral" },
     rodin: { region: "Paris", title: "Musée Rodin", local: "羅丹美術館", kicker: "沉思者・雕塑花園", intro: "展示羅丹雕塑作品的美術館，戶外花園內座落《沉思者》與《地獄之門》等代表作。", stay: "約 1.5 到 2 小時", accent: "plum" },
-    eiffel: { region: "Paris", title: "Eiffel Tower", local: "艾菲爾鐵塔", kicker: "巴黎地標・城市全景", intro: "巴黎地標艾菲爾鐵塔，登塔可俯瞰戰神廣場與巴黎全景。", stay: "約 2 到 2.5 小時", accent: "teal" },
+    eiffel: { region: "Paris", title: "Eiffel Tower", local: "艾菲爾鐵塔", kicker: "巴黎地標・鋼構細節・合照", intro: "巴黎標誌性鋼構地標；地面仰望欣賞巨型鋼構力學細節並拍攝全員合照，不登塔免排隊安檢。", stay: "約 30 到 45 分鐘", accent: "teal" },
     birhakeim: { region: "Paris", title: "Pont de Bir-Hakeim", local: "比爾哈凱姆橋", kicker: "鋼構・高架地鐵・鐵塔視角", intro: "跨越塞納河的雙層鋼構橋樑，上層為地鐵 6 號線，下層為車道與人行步道，也是眺望鐵塔的絕佳視角。", stay: "約 30 到 45 分鐘", accent: "teal" },
     arc: { region: "Paris", title: "Arc de Triomphe", local: "凱旋門", kicker: "城市全景・歷史地標", intro: "座落於戴高樂星形廣場中央，十二條大道以此為中心呈放射狀延伸，登頂可欣賞巴黎城市軸線。", stay: "約 1 到 1.5 小時", accent: "coral" },
     champs: { region: "Paris", title: "Champs-Élysées", local: "香榭麗舍大道", kicker: "經典大道・購物・城市氣氛", intro: "從凱旋門延伸至協和廣場的林蔭大道，沿途聚集旗艦店、咖啡館與劇院。", stay: "約 1 到 2 小時", accent: "gold" },
@@ -1252,8 +1252,10 @@ window.TRIP = {
     trocadero: { region: "Paris", title: "Place du Trocadéro", local: "特羅卡德羅廣場與夏樂宮露台", kicker: "鐵塔全景・大理石露台・華沙噴泉", intro: "位於艾菲爾鐵塔正對岸的高地廣場，中央大理石露台與夏樂宮花園階梯是眺望與拍攝艾菲爾鐵塔全貌的經典視角。", stay: "約 45 到 60 分鐘", accent: "gold" },
     cygnes: { region: "Paris", title: "Île aux Cygnes & Statue de la Liberté", local: "天鵝島與自由女神像", kicker: "塞納河中島・林蔭漫步・青銅自由女神", intro: "塞納河中央長達 850 公尺的狹長人工島嶼，中央為雙排林蔭步道（Allée des Cygnes），西南端矗立 1889 年法國贈予的原版縮小青銅自由女神像，面朝紐約方向。", stay: "約 45 到 60 分鐘", accent: "teal" },
     beaugrenelle: { region: "Paris", title: "Beaugrenelle Paris & Fnac", local: "博格內爾現代商場與 Fnac", kicker: "現代鋼構商場・Fnac 旗艦店・冷氣休憩", intro: "塞納河左岸的雙棟鋼構商場，設有採光天井、大型 Fnac（3C 與文化商品店）以及多家餐廳，適合作為午後採買與休息點。", stay: "約 1 到 1.5 小時", accent: "coral" },
-    ballon: { region: "Paris", title: "Ballon de Paris Generali (Parc André Citroën)", local: "雪鐵龍公園・巴黎大氣球", kicker: "繫留氦氣球・150M 空中全景・空氣科學實驗室", intro: "雪鐵龍公園內的繫留式氦氣球，垂直升空至 150 公尺（約 50 層樓高），可於空中俯瞰巴黎市景；氣球同時搭載監測設備記錄空氣品質。免預約，現場視天候風速購票升空。", stay: "約 1 小時", accent: "teal" },
-    francette: { region: "Paris", title: "Francette", local: "法蘭賽特水上餐廳", kicker: "塞納河船上餐廳・鐵塔景觀", intro: "停泊於艾菲爾鐵塔旁塞納河畔的景觀餐廳，可在水上近距離欣賞鐵塔夜景。", stay: "約 2 小時", accent: "coral" }
+    ballon: { region: "Paris", title: "Ballon de Paris Generali (Parc André Citroën)", local: "雪鐵龍公園・巴黎大氣球", kicker: "繫留氦氣球・150M 空中全景・彈性景點", intro: "雪鐵龍公園內的繫留式氦氣球，垂直升空至 150 公尺（約 50 層樓高），空中 360 度俯瞰巴黎市景與遠眺鐵塔。免預約，現場視天候風速購票，為高優先彈性景點。", stay: "約 45 分鐘", accent: "teal" },
+    francette: { region: "Paris", title: "Francette", local: "法蘭賽特水上餐廳", kicker: "塞納河船上餐廳・鐵塔景觀・預約晚餐", intro: "固定泊靠於艾菲爾鐵塔旁塞納河畔的水上景觀餐廳，可在河畔近距離欣賞鐵塔夜景與品嚐特色法式料理。已預約 19:00（4 位）。", stay: "約 2 小時", accent: "coral" },
+    coutume: { region: "Paris", title: "Coutume Babylone", local: "Coutume 咖啡館（左岸店）", kicker: "精品咖啡・原味鬆餅・悠閒早餐", intro: "巴黎知名精品咖啡代表品牌之一，Babylone 分店氛圍悠閒舒適，供應優質手沖咖啡、原味楓糖鬆餅與冰拿鐵。", stay: "約 45 分鐘", accent: "gold" },
+    pariseven: { region: "Paris", title: "Pariseven", local: "Pariseven 烘焙熟食坊", kicker: "法式三明治・新鮮沙拉・經典甜點", intro: "位於第 7 區的質感烘焙與外帶熟食店，供應現做雞肉三明治、雞肉沙拉與精緻法式甜點，是戰神廣場草地野餐的理想採買點。", stay: "約 25 分鐘", accent: "coral" }
   },
   days: {
     "09-06": {
@@ -1421,20 +1423,72 @@ window.TRIP = {
       transport: { duration: "市區步行約 5 到 6 公里；去回程皆搭乘 RER B", steps: ["Gare du Nord → RER B → Luxembourg", "步行 → 盧森堡公園 → 先賢祠 → 索邦大學", "拉丁區午餐 → 聖米歇爾 → 西岱島", "A：古監獄／B：島上咖啡 → 14:30 集合", "15:00 聖徒禮拜堂 → 16:30 巴黎聖母院", "Saint-Michel-Notre-Dame → RER B → 巴黎北站"], note: "由南向北單向步行；13:00 到 14:30 分流，14:30 集合後行程一致。" }, places: ["latin", "sainte", "notre"], note: "Sainte-Chapelle 目標 15:00 時段；聖母院 16:30 免費預約前一兩天確認。"
     },
     "09-15": {
-      date: "2026/09/15", weekday: "週二", city: "Paris", cityKey: "paris", title: "軍事博物館分流、艾菲爾鐵塔全員合照、天鵝島與雪鐵龍公園熱氣球", summary: "上午分流：同行者參觀軍事博物館與拿破崙墓，個人逛樂蓬馬歇百貨；中午全員會合享用肉類午餐，午後同遊艾菲爾鐵塔、特羅卡德羅露台拍鐵塔全景，漫步鋼構橋至天鵝島看自由女神，逛博格內爾商場並搭乘雪鐵龍公園熱氣球，19:00 享用 Francette 景觀晚餐。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "teal",
+      date: "2026/09/15", weekday: "週二", city: "Paris", cityKey: "paris", title: "上午分流（軍博 vs 早餐採買）、戰神廣場野餐、鐵塔天鵝島與熱氣球、Francette 景觀晚餐", summary: "08:15 上午分流：同行者參觀軍事博物館與拿破崙墓，Kevin 享用 Coutume 早餐、逛樂蓬馬歇採買薄棉巾與常溫鴨肝醬並外帶 Pariseven 午餐；12:30 École Militaire 四人會合於戰神廣場野餐；午後同遊艾菲爾鐵塔地面合照、特羅卡德羅露台拍鐵塔全景、漫步天鵝島看自由女神、逛博格內爾商場 Fnac，17:00 搭乘雪鐵龍公園熱氣球，19:00 準時赴約 Francette 景觀晚餐。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "teal",
       schedule: [
-        { time: "08:45 - 09:45", icon: "▸", title: "飯店 → 分流出發（軍博組 M4＋M8／百貨組 M4）", detail: "同行者搭 M4 轉 M8 前往榮軍院（La Tour-Maubourg 站）；個人搭 M4 直達 Saint-Placide 站步行至樂蓬馬歇百貨。", tag: "出發" },
-        { time: "10:00 - 12:15", icon: "♜", title: "分流時段：軍事博物館拿破崙墓 vs 樂蓬馬歇百貨鋼構中庭", detail: "同行者參觀軍事博物館古代盔甲與拿破崙一世陵墓；個人於樂蓬馬歇百貨欣賞 Eiffel 操刀的鋼構玻璃中庭、吹冷氣逛 La Grande Épicerie 頂級食品館。", tag: "分流" },
-        { time: "12:30 - 13:45", icon: "🍴", title: "戰神廣場周邊全員會合與法式牛排午餐", detail: "兩組搭車至 École Militaire 站會合，於周邊法式餐館享用炙烤牛排／肉類排餐，避開海鮮，補充體力。", tag: "午餐" },
-        { time: "13:45 - 15:15", icon: "✦", title: "Eiffel Tower 鐵塔地面合照 ➔ Place du Trocadéro 景觀露台", detail: "四人穿過戰神廣場，於鐵塔正下方仰拍鋼構力學細節（不登塔免排隊）；隨後步行穿過耶拿橋登上特羅卡德羅觀景露台，拍下無遮蔽的經典鐵塔全景大合照。", tag: "景點" },
-        { time: "15:15 - 16:30", icon: "→", title: "Pont de Bir-Hakeim 鋼構橋 ➔ 天鵝島自由女神像", detail: "從特羅卡德羅向西南漫步至比爾哈凱姆雙層鋼架橋，走下天鵝島中央林蔭步道（Allée des Cygnes），散步至島端與 1889 年原版青銅自由女神像合照。", tag: "散步" },
-        { time: "16:30 - 17:30", icon: "◎", title: "Beaugrenelle Paris 現代商場 ＋ Fnac 旗艦店", detail: "過格勒納勒橋直達現代綠能鋼構商場，全員於室內吹冷氣小憩，逛大型 Fnac 旗艦店挑選 3C 科技配件與設計選品。", tag: "商場" },
-        { time: "17:30 - 18:30", icon: "✦", title: "Parc André Citroën・搭乘 Ballon de Paris 升空熱氣球", detail: "步行或搭 RER C 1 站前往雪鐵龍公園，搭乘全球最大繫留氦氣球垂直升空 150 公尺（約 50 層樓高），空中俯瞰巴黎全景與遠眺鐵塔（現場視天候風速購票，每人約 20 歐元）。", tag: "體驗" },
-        { time: "18:30 - 19:00", icon: "🚆", title: "Pont du Garigliano → RER C → Champ de Mars（碼頭集合）", detail: "搭乘 RER C 直達 Champ de Mars Eiffel Tower 站（車程僅 6 分鐘），步行 5 分鐘抵達 Port de Suffren 碼頭。", tag: "交通" },
-        { time: "19:00 - 21:00", icon: "🍴", title: "Francette 水上景觀餐廳晚餐", detail: "停泊於鐵塔旁的塞納河船上餐廳，已預訂 4 位，近距離欣賞鐵塔點燈夜景與塞納河水岸風光。", tag: "預約" },
-        { time: "21:00 後", icon: "↗", title: "返回巴黎北站住宿", detail: "搭乘計程車或地鐵返回飯店休息。", tag: "回程" }
+        { time: "08:15 - 09:00", icon: "▸", title: "飯店 → 分流出發（Kevin 08:15／同行者 08:45）", detail: "Kevin 08:15 出發：步行至 Gare du Nord 搭 Metro M4（往 Bagneux 方向）直達 Saint-Placide 前往 Coutume 早餐；同行者約 08:45 出發：搭 M4 轉 M8 前往軍事博物館。", tag: "出發" },
+        { time: "09:00 - 10:00", icon: "☕", title: "Kevin 早餐 Coutume Babylone ＆ 同行者前往軍博", detail: "Kevin 於 Coutume 享用原味 Pancake 配楓糖漿（€9）＋冰拿鐵（€5.5），預估 €14.5（熱飲備選卡布奇諾 €5，不選鹹焦糖避免太鹹）；同行者 08:45 出發搭 M4 轉 M8 前往榮軍院準備 10:00 入場。", tag: "早餐" },
+        { time: "10:00 - 12:30", icon: "⑂", title: "上午分流：同行者軍事博物館拿破崙墓 vs Kevin 樂蓬馬歇採買", detail: "【同行者】10:00 入場 Musée de l'Armée 參觀古代盔甲與拿破崙一世陵墓；【Kevin】10:00 逛 Le Bon Marché 找薄棉巾野餐墊 ➔ 10:30 La Grande Épicerie 採買常溫西南 IGP 鴨肝醬（€34.50）與檢疫防護 ➔ 11:10 搭 Bus 86 ➔ 11:45 Pariseven 外帶野餐午餐（雞肉三明治／沙拉與檸檬塔，避開重鹹肉品）。", tag: "分流" },
+        { time: "12:30 - 13:30", icon: "🍴", title: "École Militaire 四人會合 ➔ Champ de Mars 戰神廣場草地野餐", detail: "12:30 於 École Militaire 地鐵站出口重新會合，步行至戰神廣場草地享用 Pariseven 午餐。有買 fouta 則作野餐墊，也可用乾燥草皮；午後氣溫預計破 30°C，優先找樹蔭、強調補水防曬與避免曝曬。", tag: "午餐" },
+        { time: "13:40 - 14:10", icon: "✦", title: "Eiffel Tower 艾菲爾鐵塔地面合照", detail: "漫步穿過戰神廣場至鐵塔正下方，仰望巨型鋼構與鉚釘力學工藝細節，四人合照打卡（地面參觀不登塔、免排隊安檢曝曬）。", tag: "景點" },
+        { time: "14:15 - 14:55", icon: "◎", title: "Place du Trocadéro 特羅卡德羅景觀露台", detail: "穿過耶拿橋登上夏樂宮高地露台，午後順光拍攝四人與艾菲爾鐵塔經典無遮蔽全景大合照，保留居高臨下的拍攝視野。", tag: "景觀" },
+        { time: "15:00 - 15:25", icon: "→", title: "Pont de Bir-Hakeim 比爾哈凱姆雙層鋼構橋", detail: "向西南漫步至比爾哈凱姆橋，欣賞雙層經典鉚接鋼構與地鐵 6 號線高架列車穿梭的工程建築視角，走中央階梯下天鵝島。", tag: "散步" },
+        { time: "15:25 - 16:05", icon: "🚶", title: "Allée des Cygnes 天鵝島 ➔ 巴黎自由女神像", detail: "沿塞納河中島林蔭步道單向漫步約 850 公尺（保持單向不折返），通風遮陽，抵達島端與 1889 年原版青銅自由女神像合照。", tag: "地標" },
+        { time: "16:10 - 16:45", icon: "❄", title: "Beaugrenelle Paris 商場冷氣小憩 ＆ 順逛 Fnac", detail: "過格勒納勒橋進入現代綠能商場室內吹冷氣、補水短暫休息；順便逛大型 3C／書籍／影音連鎖店 Fnac 約 30 分鐘。熱氣球優先級高於逛店，16:40-16:45 準時離開。", tag: "休息" },
+        { time: "17:00 - 17:45", icon: "🎈", title: "Parc André Citroën・搭乘 Ballon de Paris 熱氣球", detail: "約 17:00 抵達（成人 €20/人，4 人 €80）。高優先級但受天候影響的彈性景點：垂直升至 150m 俯瞰巴黎全景與遠眺鐵塔，飛行約 10 分鐘，免預約現場視風況售票。因 19:00 有已預約晚餐，最晚 18:00-18:05 硬性離場。", tag: "體驗" },
+        { time: "18:05 - 18:50", icon: "🚆", title: "Pont du Garigliano ➔ RER C ➔ Champ de Mars 碼頭", detail: "約 18:05 前往 Pont du Garigliano 搭乘 RER C 直達 Champ de Mars Eiffel Tower 站，步行至 Port de Suffren 碼頭，目標 18:35-18:50 抵達 Francette 附近保留充足緩衝。", tag: "交通" },
+        { time: "19:00 - 21:00", icon: "🍴", title: "Francette 水上景觀餐廳晚餐（已預約 4 位）", detail: "1 Port de Suffren。全日硬性時間點，已預約 4 位，24 小時內取消或 no-show 收取 €30/人！前菜推薦自製酪梨醬（€9）、炸蝦天婦羅（€14.5）；Kevin 主餐首選鴨胸配豌豆胡蘿蔔（€29，Francette 特色）、備選烤雞（€27）；甜點首選巧克力慕斯（€11）、備選起司蛋糕（€10）。避免過鹹（不推醃肉起司盤、魚卵抹醬）；實用法文：Pas trop salé, s'il vous plaît.（麻煩不要太鹹）。", tag: "預約" },
+        { time: "21:00 後", icon: "☾", title: "艾菲爾鐵塔夜景 ➔ 返回巴黎北站住宿", detail: "餐後欣賞艾菲爾鐵塔夜間整點閃燈夜景，不再安排硬性景點，視體力搭乘地鐵或計程車返回 Sure Hotel 休息。", tag: "回程" }
       ],
-      transport: { duration: "市區漫步約 5 到 6 公里；搭配 RER C 與地鐵串聯", steps: ["巴黎北站出發分流（軍博組 M4+M8 / 百貨組 M4）", "12:30 戰神廣場周邊會合午餐", "步行 → 艾菲爾鐵塔 ➔ 特羅卡德羅露台（四人合照）", "步行 → 比爾哈凱姆橋 ➔ 天鵝島自由女神", "步行 → 博格內爾商場（Fnac 科技選品）", "步行／RER C → 雪鐵龍公園熱氣球", "RER C 直達 → Champ de Mars → 碼頭", "19:00 Francette 晚餐 → 計程車／地鐵回飯店"], note: "上午分流、中午會合；下午四人全程同行，由特羅卡德羅向西南一路延伸至雪鐵龍公園，19:00 Francette 晚餐為終點。" }, places: ["army", "bonmarche", "eiffel", "trocadero", "birhakeim", "cygnes", "beaugrenelle", "ballon", "francette"], note: "Francette 為固定泊靠於 Port de Suffren 的餐廳，已預約 19:00（4 位）。"
+      splitPlan: {
+        title: "上午各自行動，12:30 École Militaire 會合",
+        detail: "同行者參觀軍事博物館與拿破崙陵墓；Kevin 享用 Coutume 早餐、逛 Le Bon Marché 找野餐墊薄棉巾、採買常溫鴨肝醬與 Pariseven 野餐午餐。12:30 兩組於 École Militaire 站會合一同野餐。",
+        duration: "08:15 → 12:30",
+        ariaLabel: "上午同行者／Kevin 分流路線",
+        meeting: "12:30・École Militaire 地鐵站出口（四人重新會合）",
+        branches: [
+          {
+            id: "invalides", label: "同行者路線", title: "Musée de l’Armée 軍事博物館與榮軍院", badge: "依原行程", tone: "coral",
+            steps: [
+              { time: "08:45 - 09:45", title: "飯店出發 ➔ M4 轉 M8 ➔ 榮軍院", detail: "從 Sure Hotel 步行至巴黎北站，搭 Metro M4 至 Strasbourg-Saint-Denis 轉 M8 至 La Tour-Maubourg 或 Invalides 站。" },
+              { time: "10:00 - 12:15", title: "Musée de l’Armée 參觀", detail: "約 10:00 入場，依原定計畫參觀古代武器盔甲館、近代軍事展與金色圓頂下的拿破崙一世陵墓（約 2 至 2.5 小時）。" },
+              { time: "12:15 - 12:30", title: "步行至 École Militaire 會合", detail: "參觀結束後沿 Avenue de Tourville 步行約 10-12 分鐘抵達 École Militaire 站出口，12:30 與 Kevin 會合。" }
+            ],
+            note: "保留原本古代盔甲、軍事史料與拿破崙一世陵墓參觀；現場或預售門票。",
+            url: "https://www.musee-armee.fr/en/your-visit/opening-times-and-prices-1.html", cta: "軍博官方資訊"
+          },
+          {
+            id: "kevin", label: "Kevin 個人路線", title: "Coutume 早餐・左岸採買・Pariseven 午餐", badge: "個人最新", tone: "teal",
+            steps: [
+              { time: "08:15 - 09:00", title: "出發 ➔ Gare du Nord 搭 M4 直達 Saint-Placide", detail: "08:15 從 Sure Hotel 出發步行至巴黎北站，搭 Metro M4（往 Bagneux 方向）直達 Saint-Placide，免轉車。" },
+              { time: "09:00 - 09:45", title: "早餐：Coutume Babylone", detail: "47 Rue de Babylone。建議餐點：原味 Pancake（楓糖漿 sirop d’érable）€9 ＋ 冰拿鐵 Iced Latte €5.5（共約 €14.5；熱飲備選 Cappuccino €5；不選焦糖奶油避免太鹹）。" },
+              { time: "09:45 - 10:30", title: "Le Bon Marché Rive Gauche", detail: "24 Rue de Sèvres。欣賞 Eiffel 鋼構中庭；重要任務：找平價輕薄 fouta 薄棉巾作中午野餐墊（價格合理才買，精品毛毯太貴或找不到直接跳過）。" },
+              { time: "10:30 - 11:05", title: "La Grande Épicerie 採買伴手禮", detail: "38 Rue de Sèvres。購買送人常溫肥肝醬。首選：La Grande Épicerie 西南 IGP 整塊鴨肝醬（130g，€34.50）；備選：Georges Bruck 整塊鴨肝（75g，€32）。暫不推 Rougié。⚠️ 警示：購買前務必確認包裝標示 conserve / stérilisé / température ambiante 常溫商業滅菌；若標示 mi-cuit / semi-conserve / à conserver au réfrigérateur（需冷藏）則嚴禁購買，防台灣動物檢疫問題。" },
+              { time: "11:10 - 11:45", title: "搭 Bus 86 前往 École Militaire 方向", detail: "離開食品館搭 Bus 86 前往戰神廣場與榮軍院周邊街區。" },
+              { time: "11:45 - 12:10", title: "Pariseven 購買野餐午餐", detail: "20 Rue Jean Nicot。外帶戰神廣場野餐。推薦主食：雞肉三明治（poulet sandwich）或雞肉沙拉（salade de poulet）；甜點首選檸檬塔（tarte au citron），備選巧克力可頌（pain au chocolat）；飲料買冰水／氣泡水。餐飲提醒：避開生火腿 jambon cru、醃肉 charcuterie、saucisson、重鹹起司。" },
+              { time: "12:10 - 12:30", title: "步行至 École Militaire 會合", detail: "步行至 École Militaire 地鐵站出口，12:30 與其他三人準時會合。" }
+            ],
+            note: "上午步調悠閒舒適，室內冷氣吹飽避開晨間熱浪，順暢完成伴手禮採買與午餐準備。"
+          }
+        ]
+      },
+      transport: {
+        duration: "市區漫步約 5 到 6 公里；搭配 Metro M4、Bus 86 與 RER C",
+        steps: [
+          "上午分流：Kevin 08:15 飯店 ➔ M4 直達 Saint-Placide 早餐採買；同行者 08:45 ➔ M4 轉 M8 榮軍院",
+          "Kevin 11:10 搭 Bus 86 前往 Pariseven 外帶野餐午餐",
+          "12:30 École Militaire 四人重新會合",
+          "步行 ➔ 戰神廣場草地野餐 ➔ 艾菲爾鐵塔（地面合照）",
+          "步行 ➔ 特羅卡德羅露台（四人鐵塔全景合照）",
+          "步行 ➔ 比爾哈凱姆雙層鋼構橋 ➔ 天鵝島自由女神（單向漫步 850m）",
+          "步行 ➔ 博格內爾商場（冷氣小憩 ＆ 順逛 Fnac）",
+          "步行約 12 分鐘 ➔ 17:00 雪鐵龍公園熱氣球（高優先彈性）",
+          "Pont du Garigliano ➔ RER C ➔ Champ de Mars 碼頭",
+          "19:00 Francette 景觀晚餐 ➔ 地鐵／計程車返回飯店"
+        ],
+        note: "上午分流各自行動，12:30 École Militaire 會合；下午四人同行單向西南漫步至雪鐵龍公園，19:00 Francette 為預約硬性時間點（24H 內取消收取 €30/人）。"
+      },
+      places: ["coutume", "bonmarche", "pariseven", "army", "eiffel", "trocadero", "birhakeim", "cygnes", "beaugrenelle", "ballon", "francette"],
+      note: "Francette 為固定泊靠於 Port de Suffren 的水上餐廳，已預約 19:00（4 位，24H 內取消或 no-show 收取 €30/人）；上午 12:30 École Militaire 會合。"
     },
     "09-16": {
       date: "2026/09/16", weekday: "週三", city: "Paris", cityKey: "paris", title: "凱旋門 10:50 登頂，香榭麗舍一路進羅浮宮", summary: "上午 10:50 登頂凱旋門，漫步香榭麗舍大道、協和廣場與杜樂麗花園；16:00 抵達金字塔報到排隊，16:30 依票面參觀羅浮宮至 20:30。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "gold",
@@ -1521,7 +1575,7 @@ window.TRIP.placeDetails = {
   latin: { why: "搭乘 RER B 直達盧森堡公園，上午向北漫步花園、先賢祠與索邦大學，順路抵達西岱島分組。", booking: { state: "free", label: "街區與花園免費", note: "先賢祠維持外觀欣賞，把時間留給午後西岱島分組與禮拜堂參觀。" } },
   army: { why: "武器盔甲、近代戰爭史與拿破崙陵墓集中一處；與相鄰羅丹美術館有官方聯票。", booking: { state: "recommended", label: "門票・建議預先購買", note: "每日 10:00-18:00 開放；軍事博物館與羅丹美術館聯票目前為 26 EUR。", url: "https://www.musee-armee.fr/en/your-visit/opening-times-and-prices-1.html", cta: "官方聯票與購票" } },
   rodin: { why: "《沉思者》座落於雕塑花園，鄰近榮軍院；參觀後可直接步行穿過戰神廣場前往艾菲爾鐵塔。", booking: { state: "recommended", label: "門票・可買兩館聯票", note: "週二至週日 10:00-18:30 開放；與軍事博物館聯票目前為 26 EUR。", url: "https://www.musee-rodin.fr/en/plan-your-visit/plan-your-visit-musee-rodin", cta: "官方聯票與購票" } },
-  eiffel: { why: "由榮軍院、羅丹美術館一路向西漫步至鐵塔，登塔後銜接 19:00 Francette 晚餐，動線順暢。", booking: { state: "advance", label: "登塔指定時段・預先購票", note: "目標 09/15 15:30 登塔；電梯票通常提前 60 天開賣，依實際票面時間順移。", url: "https://ticket.toureiffel.paris/en", cta: "官方線上購票" } },
+  eiffel: { why: "由 École Militaire 穿過戰神廣場抵達鐵塔正下方，仰望巨型鋼構力學細節並拍攝全員合照，不登塔免排隊安檢曝曬。", booking: { state: "free", label: "地面欣賞・免門票", note: "地面公共區域自由參觀拍照，不登塔免預約排隊；可近距離觀察鉚接鋼構工程細節。" } },
   birhakeim: { why: "高架地鐵鋼構柱廊與鐵塔視野具備工程建築美感，鄰近鐵塔行程動線。", booking: { state: "free", label: "免費・免預約", note: "公共橋樑，散步時留意自行車動線與車流。" } },
   arc: { why: "登頂可眺望巴黎十二條放射狀大道的城市軸線，與香榭麗舍大道安排在同日最順路。", booking: { state: "confirmed", label: "已購・10:50 指定時段", note: "門票時間為 09/16 10:50；提前於地下通道入口排隊安檢，不穿越環島車道。", url: "https://www.paris-arc-de-triomphe.fr/en", cta: "官方參觀資訊" } },
   champs: { why: "由凱旋門向東單向漫步，將地標街景、林蔭大道與商店結合於同一路線。", booking: { state: "free", label: "免費・免預約", note: "公共大道，各店舖依自身營業時間運作。" } },
@@ -1538,8 +1592,10 @@ window.TRIP.placeDetails = {
   trocadero: { why: "位於艾菲爾鐵塔正對岸的高地露台，午後順光適合拍攝鐵塔全景合照，免門票免排隊。", booking: { state: "free", label: "戶外廣場・免費", note: "公共觀景露台與夏樂宮花園，24 小時自由開放。" } },
   cygnes: { why: "塞納河中島林蔭步道通風遮陽，西南端可近距離欣賞 1889 年原版青銅自由女神像。", booking: { state: "free", label: "島上步道・免費", note: "天鵝島全天免費開放散步，由比爾哈凱姆橋中段階梯進出。" } },
   beaugrenelle: { why: "設有大型 Fnac 與餐飲店家，全室內空調適合作為午後避熱與採買據點。", booking: { state: "free", label: "商場免費入場", note: "一般營業至 20:30，內部有多家肉類餐飲與咖啡館。" } },
-  ballon: { why: "繫留式氦氣球升空至 150 公尺高空俯瞰巴黎市區與鐵塔，同時具備空氣品質監測功能。", booking: { state: "onsite", label: "現場視天候購票", note: "每日 09:00-20:00；成人約 20 歐元，免事先預約，現場視當日風速天候燈號售票搭乘。", url: "https://ballondeparis.com/", cta: "官方天候與票務" } },
-  francette: { why: "餐廳座落於艾菲爾鐵塔旁塞納河畔，已確認四人晚餐預約。", booking: { state: "confirmed", label: "已預約", note: "2026/09/15 19:00（4 位）；水上景觀餐廳。" } }
+  ballon: { why: "繫留式氦氣球垂直升至 150 公尺俯瞰巴黎市區與鐵塔全景，為高優先級但受天候風速影響的彈性景點。", booking: { state: "onsite", label: "現場視天候購票", note: "約 17:00 抵達（成人 €20/人，4 人 €80）；無須預約，現場視當日即時風況售票升空。因 19:00 有已預約晚餐，最晚 18:00-18:05 硬性離場。", url: "https://ballondeparis.com/", cta: "官方天候與票務" } },
+  francette: { why: "餐廳座落於艾菲爾鐵塔旁塞納河畔水上船屋，享用精緻法式晚餐同時近距離欣賞鐵塔點燈夜景。", booking: { state: "confirmed", label: "已預約 19:00（4 位）", note: "2026/09/15 19:00（4 位，1 Port de Suffren）；全日硬性時間點，24H 內取消或 no-show 收取 €30/人！前菜推薦酪梨醬（€9）、炸蝦天婦羅（€14.5）；Kevin 主餐首選鴨胸（€29，Francette 特色）、備選烤雞（€27）；甜點首選巧克力慕斯（€11）、備選起司蛋糕（€10）；避開重鹹料理；實用法文：Pas trop salé, s'il vous plaît.（麻煩不要太鹹）。" } },
+  coutume: { why: "鄰近 Le Bon Marché，原味 Pancake 配楓糖漿甜度溫和無過鹹負擔，搭配冰拿鐵消暑提神，非常適合晨間悠閒開啟行程。", booking: { state: "free", label: "免預約・現場點餐", note: "建議 09:00 前往；原味鬆餅 €9 ＋ 冰拿鐵 €5.5（約 €14.5），熱飲備選卡布奇諾 €5；醬料選楓糖漿，避開鹽焦糖。" } },
+  pariseven: { why: "戰神廣場草地野餐外帶首選，供應清爽無重鹹負擔的雞肉三明治與雞肉沙拉，搭配法式檸檬塔與冷飲。", booking: { state: "free", label: "免預約・外帶專門", note: "主食首選雞肉三明治或沙拉；甜點推檸檬塔（備選巧克力可頌）；飲料買冰水／氣泡水；避免生火腿、醃肉與重鹹起司。" } }
 };
 
 window.TRIP.placeSearchNames = {
@@ -1590,7 +1646,9 @@ window.TRIP.placeSearchNames = {
   cygnes: ["天鵝島", "自由女神像", "巴黎自由女神", "Allée des Cygnes", "Île aux Cygnes", "Statue of Liberty Paris"],
   beaugrenelle: ["博格內爾商場", "Fnac 旗艦店", "Beaugrenelle", "Beaugrenelle Paris", "Fnac Beaugrenelle"],
   ballon: ["雪鐵龍公園熱氣球", "巴黎大氣球", "熱氣球", "Ballon de Paris", "Ballon Generali", "Parc André Citroën"],
-  francette: ["艾菲爾鐵塔旁餐廳", "塞納河餐廳", "Francette Paris"]
+  francette: ["艾菲爾鐵塔旁餐廳", "塞納河餐廳", "Francette Paris"],
+  coutume: ["Coutume", "Coutume Babylone", "早餐", "咖啡館", "Pancake", "鬆餅", "冰拿鐵"],
+  pariseven: ["Pariseven", "野餐午餐", "雞肉三明治", "雞肉沙拉", "檸檬塔", "戰神廣場午餐"]
 };
 
 window.TRIP.placeVisuals = {
@@ -1853,27 +1911,15 @@ window.TRIP.placeVisuals = {
     mapQuery: "Le Bon Marché, 24 Rue de Sèvres, Paris"
   },
   trocadero: {
-    image: "assets/places/trocadero.jpg",
-    credit: "https://commons.wikimedia.org/wiki/File:Eiffel_tower_from_trocadero.jpg",
-    creditLabel: "Wikimedia Commons",
     mapQuery: "Place du Trocadéro, Paris"
   },
   cygnes: {
-    image: "assets/places/cygnes.jpg",
-    credit: "https://commons.wikimedia.org/wiki/File:Statue_de_la_Libert%C3%A9_Paris_Pont_de_Grenelle.jpg",
-    creditLabel: "Wikimedia Commons",
     mapQuery: "Statue de la Liberté, Pont de Grenelle, Paris"
   },
   beaugrenelle: {
-    image: "assets/places/beaugrenelle.jpg",
-    credit: "https://commons.wikimedia.org/wiki/File:Centre_commercial_Beaugrenelle,_Paris_15e.jpg",
-    creditLabel: "Wikimedia Commons",
     mapQuery: "Beaugrenelle Paris, 12 Rue Linois, Paris"
   },
   ballon: {
-    image: "assets/places/ballon.jpg",
-    credit: "https://commons.wikimedia.org/wiki/File:Ballon_de_Paris_Parc_Andr%C3%A9_Citro%C3%ABn.jpg",
-    creditLabel: "Wikimedia Commons",
     mapQuery: "Ballon de Paris Generali, Parc André Citroën, Paris"
   },
   francette: {
@@ -1881,6 +1927,12 @@ window.TRIP.placeVisuals = {
     credit: "https://www.sortiraparis.com/hotel-restaurant/restaurant/articles/255122-francette-terrasse-sur-la-seine-et-caviste-sous-l-eau-le-nouveau-lieu-tendance-et-gourmand-a-paris",
     creditLabel: "Sortir à Paris",
     mapQuery: "Francette, 1 Port de Suffren, Paris"
+  },
+  coutume: {
+    mapQuery: "Coutume, 47 Rue de Babylone, Paris"
+  },
+  pariseven: {
+    mapQuery: "Pariseven, 20 Rue Jean Nicot, Paris"
   }
 };
 
@@ -2185,29 +2237,73 @@ window.TRIP.routeMaps = {
     ]
   },
   "09-15": {
-    defaultGroup: "invalides_eiffel",
-    groups: [{
-      id: "invalides_eiffel", label: "分流、鐵塔全員、天鵝島與熱氣球", note: "上午分流、中午會合；下午四人同行串聯鐵塔、特羅卡德羅露台、天鵝島與熱氣球，19:00 Francette 為晚餐終點。",
-      stops: [
-        { time: "08:45", label: "Paris 飯店", detail: "分流出發（軍博組 M4+M8 / 百貨組 M4）", lat: 48.8836, lng: 2.3594, status: "start" },
-        { time: "10:00", label: "軍博組 Invalides / 百貨組 Bon Marché", detail: "上午分流參觀與逛街", lat: 48.8570, lng: 2.3119, status: "planned" },
-        { time: "12:30", label: "戰神廣場周邊", detail: "全員會合享用牛排午餐", lat: 48.8550, lng: 2.3020, status: "planned" },
-        { time: "13:45", label: "Eiffel Tower ＆ Trocadéro", detail: "全員鐵塔合照與露台全景", lat: 48.8583, lng: 2.2945, status: "planned" },
-        { time: "15:15", label: "Pont de Bir-Hakeim ＆ 天鵝島", detail: "雙層鋼構橋與自由女神像", lat: 48.8556, lng: 2.2875, status: "planned" },
-        { time: "16:30", label: "Beaugrenelle Paris", detail: "商場冷氣小憩與 Fnac 旗艦店", lat: 48.8488, lng: 2.2828, status: "planned" },
-        { time: "17:30", label: "Parc André Citroën", detail: "搭乘 Ballon de Paris 升空熱氣球", lat: 48.8415, lng: 2.2745, status: "planned" },
-        { time: "19:00", label: "Francette", detail: "水上餐廳晚餐已預約", lat: 48.8588, lng: 2.2913, status: "fixed" }
-      ],
-      legs: [
-        { mode: "metro", label: "地鐵分流出發" },
-        { mode: "metro", label: "M8 至 École Militaire 會合" },
-        { mode: "walk", label: "步行穿過戰神廣場至鐵塔與夏樂宮" },
-        { mode: "walk", label: "步行過橋至天鵝島" },
-        { mode: "walk", label: "步行 3 分鐘至商場" },
-        { mode: "walk", label: "步行約 12 分鐘至雪鐵龍公園" },
-        { mode: "train", label: "RER C 直達 Champ de Mars" }
-      ]
-    }]
+    defaultGroup: "kevin_route",
+    groups: [
+      {
+        id: "kevin_route", label: "Kevin 路線（早餐・採買・全員同行）", note: "上午 Kevin 走早餐＋左岸伴手禮採買＋Pariseven 野餐午餐線；12:30 École Militaire 與同行者會合野餐，下午四人同遊鐵塔、天鵝島與熱氣球，19:00 Francette 晚餐。",
+        stops: [
+          { time: "08:15", label: "Paris 飯店", detail: "步行至 Gare du Nord 搭 M4 直達 Saint-Placide", lat: 48.8836, lng: 2.3594, status: "start" },
+          { time: "09:00", label: "Coutume Babylone", detail: "原味楓糖鬆餅 ＆ 冰拿鐵", lat: 48.8522, lng: 2.3204, status: "planned" },
+          { time: "10:00", label: "Le Bon Marché ＆ 食品館", detail: "鋼構中庭、找薄棉巾野餐墊、採買常溫鴨肝醬", lat: 48.8510, lng: 2.3255, status: "planned" },
+          { time: "11:45", label: "Pariseven", detail: "搭 Bus 86 抵達外帶雞肉三明治／沙拉與檸檬塔", lat: 48.8601, lng: 2.3060, status: "planned" },
+          { time: "12:30", label: "École Militaire", detail: "四人重新會合", lat: 48.8528, lng: 2.3066, status: "planned" },
+          { time: "12:35", label: "Champ de Mars", detail: "戰神廣場草地野餐（Pariseven 午餐）", lat: 48.8556, lng: 2.2986, status: "planned" },
+          { time: "13:40", label: "Eiffel Tower", detail: "地面欣賞鋼構細節與合照", lat: 48.8583, lng: 2.2945, status: "planned" },
+          { time: "14:15", label: "Place du Trocadéro", detail: "特羅卡德羅露台拍鐵塔全景", lat: 48.8624, lng: 2.2885, status: "planned" },
+          { time: "15:00", label: "Pont de Bir-Hakeim", detail: "雙層鋼構橋與 Metro 6 列車視角", lat: 48.8556, lng: 2.2875, status: "planned" },
+          { time: "15:25", label: "Allée des Cygnes 自由女神", detail: "天鵝島 850m 單向漫步至島端", lat: 48.8500, lng: 2.2797, status: "planned" },
+          { time: "16:10", label: "Beaugrenelle Paris", detail: "商場吹冷氣補水 ＆ 順逛 Fnac", lat: 48.8488, lng: 2.2828, status: "planned" },
+          { time: "17:00", label: "Parc André Citroën", detail: "搭乘 Ballon de Paris 升空熱氣球", lat: 48.8415, lng: 2.2745, status: "planned" },
+          { time: "18:05", label: "Pont du Garigliano", detail: "搭乘 RER C 直達碼頭", lat: 48.8390, lng: 2.2685, status: "transfer" },
+          { time: "19:00", label: "Francette", detail: "水上景觀餐廳晚餐（已預約 4 位）", lat: 48.8588, lng: 2.2913, status: "fixed" }
+        ],
+        legs: [
+          { mode: "metro", label: "M4 直達 Saint-Placide" },
+          { mode: "walk", label: "步行至樂蓬馬歇" },
+          { mode: "bus", label: "Bus 86" },
+          { mode: "walk", label: "步行至會合點" },
+          { mode: "walk", label: "步行至戰神廣場" },
+          { mode: "walk", label: "步行至鐵塔" },
+          { mode: "walk", label: "步行過橋至特羅卡德羅" },
+          { mode: "walk", label: "步行至比爾哈凱姆橋" },
+          { mode: "walk", label: "天鵝島單向林蔭步行 850m" },
+          { mode: "walk", label: "步行過橋至商場" },
+          { mode: "walk", label: "步行約 12 分鐘至雪鐵龍公園" },
+          { mode: "train", label: "RER C 至 Champ de Mars" },
+          { mode: "walk", label: "步行至碼頭" }
+        ]
+      },
+      {
+        id: "companions_route", label: "同行者路線（軍事博物館・全員同行）", note: "上午同行者走榮軍院軍事博物館參觀線；12:30 École Militaire 與 Kevin 會合野餐，下午四人同遊鐵塔、天鵝島與熱氣球，19:00 Francette 晚餐。",
+        stops: [
+          { time: "08:45", label: "Paris 飯店", detail: "搭乘 M4 轉 M8 出發", lat: 48.8836, lng: 2.3594, status: "start" },
+          { time: "10:00", label: "Musée de l’Armée", detail: "古代武器盔甲與拿破崙一世陵墓", lat: 48.8570, lng: 2.3119, status: "ticket" },
+          { time: "12:30", label: "École Militaire", detail: "與 Kevin 重新會合", lat: 48.8528, lng: 2.3066, status: "planned" },
+          { time: "12:35", label: "Champ de Mars", detail: "戰神廣場草地野餐（享用 Pariseven 午餐）", lat: 48.8556, lng: 2.2986, status: "planned" },
+          { time: "13:40", label: "Eiffel Tower", detail: "地面欣賞鋼構細節與合照", lat: 48.8583, lng: 2.2945, status: "planned" },
+          { time: "14:15", label: "Place du Trocadéro", detail: "特羅卡德羅露台拍鐵塔全景", lat: 48.8624, lng: 2.2885, status: "planned" },
+          { time: "15:00", label: "Pont de Bir-Hakeim", detail: "雙層鋼構橋與 Metro 6 列車視角", lat: 48.8556, lng: 2.2875, status: "planned" },
+          { time: "15:25", label: "Allée des Cygnes 自由女神", detail: "天鵝島 850m 單向漫步至島端", lat: 48.8500, lng: 2.2797, status: "planned" },
+          { time: "16:10", label: "Beaugrenelle Paris", detail: "商場吹冷氣補水 ＆ 順逛 Fnac", lat: 48.8488, lng: 2.2828, status: "planned" },
+          { time: "17:00", label: "Parc André Citroën", detail: "搭乘 Ballon de Paris 升空熱氣球", lat: 48.8415, lng: 2.2745, status: "planned" },
+          { time: "18:05", label: "Pont du Garigliano", detail: "搭乘 RER C 直達碼頭", lat: 48.8390, lng: 2.2685, status: "transfer" },
+          { time: "19:00", label: "Francette", detail: "水上餐廳晚餐（已預約 4 位）", lat: 48.8588, lng: 2.2913, status: "fixed" }
+        ],
+        legs: [
+          { mode: "metro", label: "M4 轉 M8 至榮軍院" },
+          { mode: "walk", label: "步行至 École Militaire 會合" },
+          { mode: "walk", label: "步行至戰神廣場" },
+          { mode: "walk", label: "步行至鐵塔" },
+          { mode: "walk", label: "步行過橋至特羅卡德羅" },
+          { mode: "walk", label: "步行至比爾哈凱姆橋" },
+          { mode: "walk", label: "天鵝島單向林蔭步行 850m" },
+          { mode: "walk", label: "步行過橋至商場" },
+          { mode: "walk", label: "步行約 12 分鐘至雪鐵龍公園" },
+          { mode: "train", label: "RER C 至 Champ de Mars" },
+          { mode: "walk", label: "步行至碼頭" }
+        ]
+      }
+    ]
   },
   "09-16": {
     defaultGroup: "west_to_louvre",

@@ -55,7 +55,10 @@
     if (!bilingualNamePattern) {
       const escapedKeys = keys
         .sort((left, right) => right.length - left.length)
-        .map((key) => key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+        .map((key) => {
+          const escKey = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          return /^\w+$/.test(key) ? `\\b${escKey}\\b` : escKey;
+        });
       bilingualNamePattern = new RegExp(escapedKeys.join("|"), "g");
     }
     return source.replace(bilingualNamePattern, (name) => `${name}（${names[name]}）`);
@@ -769,7 +772,7 @@
         reg.waiting.postMessage({ type: 'SKIP_WAITING' });
         return { supported: true, updated: true, message: "已找到新版，正在套用。" };
       }
-      return { supported: true, updated: false, message: "目前已是最新版本（v20260912-02）" };
+      return { supported: true, updated: false, message: "目前已是最新版本（v20260915-01）" };
     } catch (e) {
       return { supported: true, updated: false, message: "無法確認是否有新版，請連上網路後重試。" };
     }

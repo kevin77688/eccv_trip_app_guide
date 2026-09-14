@@ -558,10 +558,10 @@
         ${branch.url ? `<a class="button button-secondary split-route-action" href="${esc(branch.url)}" target="_blank" rel="noreferrer">${esc(branch.cta || "官方資訊")} <span aria-hidden="true">↗</span></a>` : ""}
       </article>`).join("");
     return `
-      <section class="day-section split-plan-section" aria-label="下午 A／B 分組路線">
+      <section class="day-section split-plan-section" aria-label="${esc(splitPlan.ariaLabel || "A／B 分組路線")}">
         <div class="split-plan-heading">
           <div>${sectionHeading("CHOOSE YOUR ROUTE", splitPlan.title, splitPlan.detail)}</div>
-          <span class="split-plan-duration">13:00 → 14:30</span>
+          <span class="split-plan-duration">${esc(splitPlan.duration || "13:00 → 14:30")}</span>
         </div>
         <div class="split-route-grid">${branches}</div>
         <div class="split-meeting-strip"><span aria-hidden="true">◎</span><div><small>兩組共同集合點</small><strong>${esc(bilingualText(splitPlan.meeting))}</strong></div></div>
