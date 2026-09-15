@@ -434,11 +434,6 @@
     [/Musée Rodin/, "13:10 從 Invalides 步行過來；14:45 離館後往 Eiffel Tower。"],
     [/Eiffel Tower 指定時段/, "15:25 前到票面入口；預留安檢與排隊，17:45 回到地面。"],
     [/Francette 晚餐/, "18:40 前走到 1 Port de Suffren；19:00 已預約 4 位。"],
-    [/Arc de Triomphe$/, "依 10:50 票面進場；12:00 離開，沿 Champs-Élysées 向東。"],
-    [/Champs-Élysées$/, "沿大道向東單向走；13:00 前到午餐地點，不折返購物。"],
-    [/Place de la Concorde/, "由西向東穿過廣場，接著從西側進 Jardin des Tuileries。"],
-    [/Jardin des Tuileries/, "沿中央軸線往 Louvre 方向走；15:30 坐下補充體力。"],
-    [/Musée du Louvre/, "依 17:00 票面入口進場；20:30 離館後到 Cour Napoléon 看夜景。"],
     [/Palace of Versailles/, "09:55 前到 10:00 指定時段隊伍；12:30 離開主宮先吃午餐。"],
     [/Gardens of Versailles/, "午餐後沿主軸往 Grand Canal；15:30 再前往 Trianon。"],
     [/Grand Trianon/, "花園距離長，累了就搭園區小火車；17:30 開始往車站回程。"]

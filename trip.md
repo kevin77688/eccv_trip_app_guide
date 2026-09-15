@@ -648,7 +648,7 @@
 - 已從 Gmail 補存正式入場憑證：09/14 Sainte-Chapelle 4 張 QR 票、09/16 Arc de Triomphe 4 張 QR 票、Emirates 官方電子機票，以及 K7 week 37 手機錢包票證。
 - 票面、座位與時間軸已正式核對同步（2026-09-04）：
   - **阿聯酋機票座位**：依官方 Manage Booking 確認，EK 367 為 49C（Preferred）、EK 151 為 25H（Regular）、EK 074 為 62C（Regular，原誤植 59C）、EK 366 為 47H（Preferred），已全數更正同步。
-  - **羅浮宮入場時間**：官方 4 人預約憑證確認為 09/16 16:30，時間軸已修正為 15:15 到 15:55 杜樂麗花園周邊咖啡甜點小憩、16:00 抵達金字塔預約隊伍報到安檢、16:30 依票面入場看展至 20:30。
+  - **羅浮宮入場時間**：官方 4 人預約憑證確認為 09/16 16:30，時間軸已優化為 15:10 到 15:50 杜樂麗花園周邊咖啡輕食休整、16:00 抵達金字塔預約隊伍報到安檢、16:30 依票面入場看展至 20:30。
   - **馬爾默城堡開館順延**：09/08 出發時間由 09:30 順延 20 分鐘至 09:50，約 10:55 抵達城堡，吻合 11:00 開館買聯票入場。
 
 ## 小工具自訂連線與 Model ID 設定（2026-09-03）
@@ -749,7 +749,7 @@
 - 09/12 改為退房 → Malmö C → CPH P4／P7A 機場寄放（方案 B，主方案）→ Marmorkirken → 12:00 Amalienborg 衛兵交接 → Nyhavn／Kongens Nytorv 午餐 → 15:00 到 16:00 Stromma Classic Canal Tour → 16:00 到 16:30 前往 Christianshavn → 16:30 到 17:15 救主堂螺旋塔 → 17:15 到 18:00 搭 M2 直達 CPH 取行李 → 18:00 前完成 bag drop → FR9267。ENIGMA 保留在景點總覽供參考；Experimentarium 已移到 09/09 個人主行程；機場櫃位尺寸／容量、15:00 船班與 Metro 狀況仍需出發前確認，中央站方案 A 作為備援。
 - 09/13 的「Check-in」定義為先到 Paris 飯店寄行李／若房間已準備好就入住；正式入住時間為 15:00 後。已確認訂購 09/13 09:40 從 Beauvais 出發的直達 TER C17，預計 10:59 抵達 Paris Nord。因抵達時間較晚，加尼葉歌劇院內部參觀暫時取消，當日改採蒙馬特高地深度漫遊（愛牆、小丘廣場、聖心堂與後山葡萄園）。
 - 09/15 上午分流（軍事博物館 vs Kevin 早餐採買），12:30 École Militaire 會合後於戰神廣場野餐；下午同遊 Eiffel Tower（地面合照）➔ Place du Trocadéro 露台全景 ➔ Pont de Bir-Hakeim ＆ 天鵝島自由女神 ➔ Beaugrenelle 商場 Fnac ➔ 17:00 雪鐵龍公園 Ballon de Paris 熱氣球 ➔ 19:00 Francette 景觀晚餐。
-- 09/16 凱旋門門票時間為 10:50、羅浮宮為 16:30 入場（16:00 報到）；採 09:40 出發 → 10:20 左右抵達入口報到 → 10:50 入場 → Champs-Élysées → Place de la Concorde → Tuileries（15:15 到 15:55 咖啡甜點小憩）→ 16:00 金字塔報到排隊 → 16:30 到 20:30 Louvre 看展 → Cour Napoléon 夜景的單向路線。
+- 09/16 凱旋門門票時間為 10:50、羅浮宮為 16:30 入場（16:00 報到）；採 08:25 飯店出發搭 M2 → 09:05-09:45 在地烘焙坊 Julambre（33 Rue Lauriston）享用可頌咖啡輕食 → 10:00 抵達走地下通道至凱旋門外觀拍照與排隊 → 10:50 門票入場登頂 284 階俯瞰放射大道 → 12:00-13:40 Champs-Élysées 向東漫步（含 PSG 旗艦店梅西紀念品尋寶、平價午餐、52 號 Monoprix 採買補水）→ 13:40-14:00 Place de la Concorde 歷史地標拍照 → 14:00-15:10 Jardin des Tuileries 水池綠椅休閒漫步（登頂後恢復）→ 15:10-15:50 花園周邊咖啡甜點小憩與輕食補給、裝滿水瓶 → 16:00 金字塔預約通道報到排隊 → 16:30 到 20:30 Louvre 參觀（B1 先取語音導覽，直取維納斯、勝利女神、蒙娜麗莎與迦拿婚禮、梅杜薩之筏三寶名作，夜間延長至 21:00，20:30 清場）→ 20:30-20:45 Cour Napoléon 金字塔點燈夜景 → 20:45 後周邊享用正式晚餐，搭 M1＋M4 回住宿。
 - 09/17 為 Versailles 全日，Palace 為 10:00 指定時段入場；Cité des sciences 降為未排入景點資料。
 
 ## 專案維護約定
@@ -868,7 +868,7 @@
 | 09/13 | Beauvais → Paris | 09:40 直達 TER → Paris Nord → 飯店寄行李／可入住就入住 → 蒙馬特高地深度漫遊（愛牆／小丘廣場／聖心堂） |
 | 09/14 | Paris | RER B → Luxembourg／Panthéon／Latin Quarter → A 古監獄／B 咖啡分流 → 15:00 Sainte-Chapelle → 16:30 Notre-Dame |
 | 09/15 | Paris | 上午分流（軍博 vs Kevin 早餐採買）➔ 12:30 會合野餐 ➔ 全員艾菲爾鐵塔 ➔ 特羅卡德羅露台 ➔ 天鵝島自由女神 ➔ 博格內爾 Fnac ➔ 17:00 熱氣球 ➔ 19:00 Francette |
-| 09/16 | Paris | 10:50 Arc de Triomphe 門票 → Champs-Élysées → Place de la Concorde → Tuileries（15:15 咖啡小憩）→ 16:00 金字塔報到排隊 → 16:30-20:30 Louvre → Cour Napoléon 夜景 |
+| 09/16 | Paris | 08:25 出發 → 09:05 Julambre 烘焙坊早餐 → 10:50 凱旋門登頂 284 階 → Champs-Élysées（PSG 梅西尋寶／午餐／Monoprix 補水）→ 13:40 協和廣場 → 14:00 杜樂麗花園 → 15:10 咖啡輕食休整 → 16:00 金字塔報到 → 16:30-20:30 羅浮宮（B1 領導覽機／鎮館名作）→ 20:30 金字塔夜景 → 20:45 正式晚餐 |
 | 09/17 | Paris | Versailles Palace → Gardens → Estate of Trianon 全日 |
 | 09/18 | Paris → CDG | 不排景點；約 10:30 離開飯店，約 12:00 抵 CDG T2C，15:35 搭 EK 74（座位 62C） |
 | 09/19 | 杜拜 → 台北 | EK 366，16:35 抵達台灣 |
@@ -902,7 +902,7 @@
 - 09/13 先到飯店寄行李／若有房就入住；歌劇院內部參觀暫時取消，中午至蒙馬特山腳或飯店周邊享用法式午餐，午後搭地鐵展開蒙馬特高地漫遊（愛牆、小丘廣場畫家村、聖心堂與後山葡萄園），最後由 Anvers 搭 M2 到 La Chapelle 回住宿。
 - 09/14 去程由 Gare du Nord 搭 RER B 直達 Luxembourg，上午從花園、Panthéon 外觀與 Sorbonne 向北走；13:00 在 Île de la Cité 分成 A 古監獄／B 咖啡，14:30 重新集合，15:00 Sainte-Chapelle、16:30 Notre-Dame，最後由 Saint-Michel-Notre-Dame 搭 RER B 直達 Gare du Nord。
 - 09/15 上午分流（軍博組 M4+M8 / Kevin 組 M4）；12:30 École Militaire 會合後於戰神廣場野餐，沿鐵塔、特羅卡德羅、比爾哈凱姆橋、天鵝島、博格內爾商場至雪鐵龍公園單向西南延伸，17:00 搭熱氣球，搭 RER C 直達 Champ de Mars 銜接 19:00 Francette。
-- 09/16 09:40 從住宿出發搭 M2 到 Charles de Gaulle-Étoile，10:20 左右走地下通道到凱旋門入口，依 10:50 門票時間入場；之後沿 Champs-Élysées、Place de la Concorde 與 Tuileries 一路向東，15:15 到 15:55 在杜樂麗花園周邊咖啡甜點小憩，16:00 到 Louvre 玻璃金字塔指定隊伍報到安檢、16:30 入館、20:30 清場後看 Cour Napoléon 夜景，再用 M1＋M4 回住宿。
+- 09/16 08:25 從住宿出發搭地鐵 M2 直達 Charles de Gaulle-Étoile，09:05 到 09:45 先至 33 Rue Lauriston 在地烘焙坊 Julambre 享用可頌與黑咖啡輕食早餐；09:45 啟程並於 10:00 抵達凱旋門，切記走地下人行通道（嚴禁橫越路面圓環），於 10:50 門票時間前拍照與排隊安檢，登頂爬 284 階旋轉梯俯瞰巴黎放射大道與鐵塔全景；12:00 到 13:40 沿香榭麗舍向東漫步（含走訪 PSG 旗艦店尋找梅西 30 號時期紀念小物、大道平價午餐、52 號 Monoprix 採買補水與點心）；13:40 到 14:00 協和廣場方尖碑與噴泉拍照；14:00 到 15:10 杜樂麗花園悠閒漫步與水池綠椅休息；15:10 到 15:50 於周邊享用咖啡與輕食墊胃並補滿飲水；16:00 準時至羅浮宮金字塔預約通道排隊安檢，16:30 依指定時段入館，先至地下負一層領取已訂購之語音導覽，專注參觀米洛的維納斯、勝利女神、蒙娜麗莎（含背後《迦拿的婚禮》）、梅杜薩之筏與拿破崙三世套房，配合週三夜間開放至 20:30 清場前逛紀念品店；離館後在拿破崙庭院拍玻璃金字塔夜景，20:45 後於周邊享用正式晚餐，搭 M1＋M4 回飯店。
 - 09/17 以 10:00 Palace 入場為時間錨點，從 Gare du Nord 搭 RER B 到 Saint-Michel-Notre-Dame，再轉 RER C 到 Versailles Château-Rive Gauche；回程原線返回，預計 19:30 前回到飯店。
 - 09/18 從 Gare du Nord 搭 RER B 到 Aéroport Charles de Gaulle 2 TGV，再走到 T2C；需買機場專用票。
 

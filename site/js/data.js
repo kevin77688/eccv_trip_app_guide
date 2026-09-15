@@ -1237,11 +1237,11 @@ window.TRIP = {
     rodin: { region: "Paris", title: "Musée Rodin", local: "羅丹美術館", kicker: "沉思者・雕塑花園", intro: "展示羅丹雕塑作品的美術館，戶外花園內座落《沉思者》與《地獄之門》等代表作。", stay: "約 1.5 到 2 小時", accent: "plum" },
     eiffel: { region: "Paris", title: "Eiffel Tower", local: "艾菲爾鐵塔", kicker: "巴黎地標・鋼構細節・合照", intro: "巴黎標誌性鋼構地標；地面仰望欣賞巨型鋼構力學細節並拍攝全員合照，不登塔免排隊安檢。", stay: "約 30 到 45 分鐘", accent: "teal" },
     birhakeim: { region: "Paris", title: "Pont de Bir-Hakeim", local: "比爾哈凱姆橋", kicker: "鋼構・高架地鐵・鐵塔視角", intro: "跨越塞納河的雙層鋼構橋樑，上層為地鐵 6 號線，下層為車道與人行步道，也是眺望鐵塔的絕佳視角。", stay: "約 30 到 45 分鐘", accent: "teal" },
-    arc: { region: "Paris", title: "Arc de Triomphe", local: "凱旋門", kicker: "城市全景・歷史地標", intro: "座落於戴高樂星形廣場中央，十二條大道以此為中心呈放射狀延伸，登頂可欣賞巴黎城市軸線。", stay: "約 1 到 1.5 小時", accent: "coral" },
-    champs: { region: "Paris", title: "Champs-Élysées", local: "香榭麗舍大道", kicker: "經典大道・購物・城市氣氛", intro: "從凱旋門延伸至協和廣場的林蔭大道，沿途聚集旗艦店、咖啡館與劇院。", stay: "約 1 到 2 小時", accent: "gold" },
-    louvre: { region: "Paris", title: "Musée du Louvre", local: "羅浮宮", kicker: "藝術博物館・歷史・建築", intro: "世界代表性博物館，館藏涵蓋古典藝術、繪畫與雕塑，以《蒙娜麗莎》、勝利女神與米洛的維納斯為代表。", stay: "約 3 到 4 小時", accent: "plum" },
+    arc: { region: "Paris", title: "Arc de Triomphe", local: "凱旋門", kicker: "城市全景・歷史地標・284階", intro: "座落於戴高樂星形廣場中央，十二條大道以此為中心呈放射狀延伸，登頂 284 階可欣賞巴黎城市軸線。", stay: "約 1 到 1.5 小時", accent: "coral" },
+    champs: { region: "Paris", title: "Champs-Élysées", local: "香榭麗舍大道", kicker: "經典大道・PSG梅西・補給漫步", intro: "從凱旋門延伸至協和廣場的歷史林蔭大道，沿途聚集 PSG 旗艦店、平價餐館與 Monoprix 超市。", stay: "約 1.5 到 2 小時", accent: "gold" },
+    louvre: { region: "Paris", title: "Musée du Louvre", local: "羅浮宮", kicker: "世界級博物館・鎮館名作・夜間開放", intro: "世界代表性博物館，館藏涵蓋古典藝術、繪畫與雕塑，以維納斯、勝利女神、《蒙娜麗莎》與《梅杜薩之筏》為核心。", stay: "約 3.5 到 4 小時", accent: "plum" },
     versailles: { region: "Paris", title: "Palace of Versailles", local: "凡爾賽宮與花園", kicker: "王宮建築・鏡廳・法式花園", intro: "法國 17 世紀宮殿建築，包含鏡廳、國王套房、廣闊運河花園與特里亞農宮苑。", stay: "約 6 到 8 小時", accent: "gold" },
-    tuileries: { region: "Paris", title: "Jardin des Tuileries", local: "杜樂麗花園", kicker: "法式花園・水池・散步", intro: "連接協和廣場與羅浮宮的對稱法式花園，林蔭步道與水池旁適合休息。", stay: "約 45 到 60 分鐘", accent: "teal" },
+    tuileries: { region: "Paris", title: "Jardin des Tuileries", local: "杜樂麗花園", kicker: "法式花園・水池躺椅・看展前休整", intro: "連接協和廣場與羅浮宮的對稱法式花園，林蔭步道、水池綠椅與周邊咖啡館適合看展前放鬆補給。", stay: "約 45 到 60 分鐘", accent: "teal" },
     palais: { region: "Paris", title: "Palais Royal", local: "巴黎皇家宮殿", kicker: "黑白條紋柱・安靜花園", intro: "鄰近羅浮宮的古典宮殿庭院，以 Buren 黑白條紋藝術圓柱與安靜拱廊聞名。", stay: "約 30 到 45 分鐘", accent: "plum" },
     sciences: { region: "Paris", title: "Cité des sciences et de l’industrie", local: "科學與工業城", kicker: "大型科學館・互動展・探索", intro: "位於拉維萊特公園的大型科學互動博物館，涵蓋太空、科技與工業主題。", stay: "約 3 到 4 小時", accent: "teal" },
     opera: { region: "Paris", title: "Palais Garnier", local: "加尼葉歌劇院", kicker: "新巴洛克・歌劇院・華麗裝飾", intro: "新巴洛克風格的巴黎歌劇院，內部裝飾細緻，大階梯與天花板壁畫為其特色。", stay: "約 1.5 到 2 小時", accent: "gold" },
@@ -1494,22 +1494,36 @@ window.TRIP = {
       note: "Francette 為固定泊靠於 Port de Suffren 的水上餐廳，已預約 19:00（4 位，24H 內取消或 no-show 收取 €30/人）；上午 12:30 École Militaire 會合。"
     },
     "09-16": {
-      date: "2026/09/16", weekday: "週三", city: "Paris", cityKey: "paris", title: "凱旋門 10:50 登頂，香榭麗舍一路進羅浮宮", summary: "上午 10:50 登頂凱旋門，漫步香榭麗舍大道、協和廣場與杜樂麗花園；16:00 抵達金字塔報到排隊，16:30 依票面參觀羅浮宮至 20:30。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "gold",
+      date: "2026/09/16", weekday: "週三", city: "Paris", cityKey: "paris", title: "凱旋門 10:50 登頂，香榭麗舍一路進羅浮宮", summary: "早晨造訪在地 Julambre 烘焙坊享用可頌咖啡，10:50 登頂凱旋門俯瞰放射大道（爬梯 284 階）；午後沿香榭麗舍向東漫步（走訪 PSG 旗艦店梅西紀念品、輕便午餐、52 號 Monoprix 採買補水），順訪協和廣場與杜樂麗花園；午後咖啡輕食充電後，16:00 抵金字塔報到、16:30 依預約參觀羅浮宮鎮館名作至 20:30，欣賞金字塔夜景後於周邊正式晚餐。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "gold",
       schedule: [
-        { time: "09:40 - 10:20", icon: "▸", title: "飯店 → M2 → Charles de Gaulle-Étoile", detail: "搭乘地鐵 M2 直達戴高樂星形廣場站，走地下通道直通凱旋門入口。", tag: "出發" },
-        { time: "10:20 - 10:50", icon: "票", title: "凱旋門地下入口報到與安檢", detail: "門票指定時間為 10:50；提前於地下入口排隊驗票與安檢。", tag: "安檢" },
-        { time: "10:50 - 12:00", icon: "⌁", title: "Arc de Triomphe 凱旋門登頂", detail: "出示票券 QR 碼入場並登上頂樓，眺望十二條放射狀大道與巴黎城市軸線。", tag: "景點", ticketId: "arc-de-triomphe" },
-        { time: "12:00 - 13:00", icon: "→", title: "Champs-Élysées 香榭麗舍大道漫步", detail: "沿大道向東漫步，欣賞經典街景與沿街旗艦店舖。", tag: "散步" },
-        { time: "13:00 - 14:00", icon: "🍴", title: "香榭麗舍周邊午餐", detail: "於大道周邊餐館享用午餐，補充體力。", tag: "午餐" },
-        { time: "14:00 - 14:30", icon: "◎", title: "Place de la Concorde 協和廣場", detail: "欣賞埃及盧克索方尖碑與噴泉，由西側進入杜樂麗花園。", tag: "地標" },
-        { time: "14:30 - 15:15", icon: "♧", title: "Jardin des Tuileries 杜樂麗花園漫步", detail: "沿中軸線漫步，於綠色躺椅旁感受法式花園的開闊悠閒。", tag: "花園" },
-        { time: "15:15 - 15:55", icon: "☕", title: "花園周邊咖啡甜點小憩", detail: "於花園或羅浮宮周邊享用咖啡與法式甜點，為晚間看展儲備體力。", tag: "休息" },
-        { time: "16:00 - 16:30", icon: "票", title: "玻璃金字塔 16:00 報到排隊與安檢", detail: "票面預約為 16:30；16:00 準時抵達玻璃金字塔指定時段專用通道排隊安檢。", tag: "報到" },
-        { time: "16:30 - 20:30", icon: "◇", title: "Musée du Louvre 羅浮宮晚間參觀", detail: "出示門票入場，週三延長開放至 21:00；參觀《蒙娜麗莎》、勝利女神、米洛維納斯與古典展廳，20:30 配合清場離館。", tag: "景點", ticketId: "louvre" },
-        { time: "20:30 - 21:00", icon: "✦", title: "Cour Napoléon 拿破崙庭院與金字塔夜景", detail: "離館後在拿破崙庭院漫步，拍攝玻璃金字塔點燈夜景。", tag: "夜景" },
-        { time: "21:00 後", icon: "↩", title: "回飯店與晚餐", detail: "搭乘地鐵 M1 到 Châtelet 轉 M4 返回巴黎北站住宿。", tag: "回程" }
+        { time: "08:25 - 09:05", icon: "▸", title: "飯店出發 → M2 直達 → 凱旋門街區", detail: "自 Sure Hotel (224 Rue du Faubourg Saint-Denis) 出發，搭乘地鐵 M2 直達 Charles de Gaulle - Étoile，無須複雜轉乘；早出發預留緩衝，09:05 左右從容抵達街區享用早餐。", tag: "出發" },
+        { time: "09:05 - 09:45", icon: "☕", title: "在地烘焙坊早餐：Boulangerie-Pâtisserie Julambre", detail: "前往 33 Rue Lauriston 在地優質法式烘焙坊，享用現烤可頌與黑咖啡。份量維持簡約清爽，為後續全日步行與凱旋門 284 階旋轉梯儲備體力；約 09:45 啟程漫步前往凱旋門。", tag: "早餐" },
+        { time: "10:00 - 10:40", icon: "票", title: "凱旋門外觀拍照與抵達排隊緩衝", detail: "於 10:50 指定時段前抵達。務必走地下人行通道（Passage du Souvenir）進入，嚴禁於地面橫越星形廣場圓環車道！入館前可在外圍近拍雄偉外觀，並預留安全檢查與驗票隊伍緩衝。", tag: "安檢" },
+        { time: "10:50 - 12:00", icon: "⌁", title: "Arc de Triomphe 凱旋門登頂全景", detail: "持 10:50 官方預約門票入場。登頂包含約 284 階旋轉石階，請依個人配速平穩攀爬。參觀無名戰士墓與不滅之火、歷史展廳及外壁《馬賽曲》浮雕；頂樓享 360° 全景，向東俯瞰香榭麗舍中軸大道、遠眺艾菲爾鐵塔、拉德芳斯與十二條放射大道。下午羅浮宮有固定時段，約 12:00 前結束不超時停留。", tag: "景點", ticketId: "arc-de-triomphe" },
+        { time: "12:00 - 13:40", icon: "→", title: "香榭麗舍大道漫步・PSG 梅西尋寶・午餐與採買", detail: "沿大道向東單向漫步，享受經典街景與城市氛圍，不走回頭路。包含三項重點：①【PSG 梅西周邊】：下凱旋門後走訪香榭麗舍大道 PSG 旗艦店，尋找梅西 30 號時期之球員卡、徽章、鑰匙圈或小海報等輕量紀念品（早期庫存有限，上限停留約 30 分鐘）；②【大道平價午餐】：於沿線平易餐館享用輕便午餐（約 45–60 分鐘），避免冗長正餐耽誤下午；③【Monoprix 採買補水】：順路至 52 號 Monoprix 超市補給飲用水與隨身小點心，提早在進入廣場與花園前備齊飲水。", tag: "漫步" },
+        { time: "13:40 - 14:00", icon: "◎", title: "Place de la Concorde 協和廣場歷史巡禮", detail: "停留約 15–20 分鐘精簡參觀拍照。重點欣賞埃及盧克索方尖碑、南北兩座噴泉，並回望通往凱旋門的香榭麗舍歷史中軸；作為法國大革命重要地標，感受開闊氛圍後自然向東步入花園。", tag: "地標" },
+        { time: "14:00 - 15:10", icon: "♧", title: "Jardin des Tuileries 杜樂麗花園放鬆漫步", detail: "由協和廣場自然步入花園朝東向羅浮宮漫步（約 45–60 分鐘，含水池畔綠椅靜坐休整）。此段也是上午攀爬凱旋門 284 階後的體能恢復期；欣賞大水池、戶外雕塑與法式對稱園林，視線一路向東迎向羅浮宮。", tag: "花園" },
+        { time: "15:10 - 15:50", icon: "☕", title: "花園周邊咖啡甜點小憩與輕食補給", detail: "於杜樂麗花園周邊或羅浮宮外圍咖啡館小坐，享用咖啡／冷飲並搭配三明治或法式甜點墊胃。羅浮宮看展長達約 4 小時，若僅靠中午簡餐撐至 20:30 之後容易飢餓體虛；務必在此補充能量並把水瓶裝滿，約 15:50 啟程走向玻璃金字塔。", tag: "休息" },
+        { time: "16:00 - 16:30", icon: "票", title: "羅浮宮玻璃金字塔預約通道報到與安檢", detail: "票面預約為 16:30；16:00 準時抵達玻璃金字塔指定時段專用通道（Timewindow Queue）排隊安檢。16:00 後不再安排其他活動；備妥 4 人電子門票與身分證明，通過安檢後於大廳索取紙本導覽地圖。", tag: "報到" },
+        { time: "16:30 - 20:30", icon: "◇", title: "Musée du Louvre 羅浮宮精選名作巡禮", detail: "週三夜間延長開放至 21:00（各展廳約 20:30 陸續清場）。【入館第一要務】：過安檢後至地下負一層（Level -1）櫃檯領取已預訂之語音導覽機；【核心精選路線】：①米洛的維納斯（古希臘鎮館三寶之一）→ ②薩莫色雷斯的勝利女神（Daru 階梯）→ ③蒙娜麗莎（德農館人潮眾多，欣賞後記得轉身回頭看正對面的巨幅《迦拿的婚禮》）→ ④梅杜薩之筏（浪漫主義代表巨作）→ ⑤選配：拿破崙三世套房（黎塞留館華麗第二帝國宮廷裝潢，視當日開放狀況）→ ⑥館內紀念品店挑選托特包、書籤或筆記本。4 小時切勿貪多，按高效率動線參觀；展廳內食物請收妥於包內。", tag: "景點", ticketId: "louvre" },
+        { time: "20:30 - 20:45", icon: "✦", title: "Cour Napoléon 拿破崙庭院與金字塔夜景", detail: "配合清場步出展廳來到拿破崙庭院，停留約 15 分鐘拍攝打燈點亮的玻璃金字塔與羅浮宮宮殿夜景，為全日經典藝術行程畫下完美句點。", tag: "夜景" },
+        { time: "20:45 後", icon: "↩", title: "周邊正式晚餐與返回飯店", detail: "參觀結束後於羅浮宮周邊或回程地鐵沿線挑選氣氛餐館享用正式晚餐，無需提早趕急；餐後自 Palais Royal - Musée du Louvre 搭乘地鐵 M1 到 Châtelet 轉 M4 返回巴黎北站飯店休息。", tag: "回程" }
       ],
-      transport: { duration: "日間單向步行約 5 到 6 公里；晚間搭地鐵回程", steps: ["M2 → 凱旋門 (10:50 門票)", "步行 → 香榭麗舍大道", "步行 → 協和廣場 → 杜樂麗花園", "步行 → 羅浮宮 (16:30 門票)", "M1 轉 M4 回飯店"], note: "從凱旋門一路向東單向漫步至羅浮宮，不走回頭路。" }, places: ["arc", "champs", "tuileries", "louvre"], note: "凱旋門 10:50、羅浮宮 16:30 門票皆已確認，週三羅浮宮開放至 21:00。"
+      transport: {
+        duration: "日間單向漫步約 5 到 6 公里（不走回頭路）；晚間搭地鐵返回",
+        steps: [
+          "飯店 → M2 直達凱旋門街區",
+          "Julambre 烘焙坊 (33 Rue Lauriston) 早餐",
+          "地下通道 → 凱旋門 (10:50 門票)",
+          "步行 → 香榭麗舍大道 (PSG／午餐／Monoprix)",
+          "步行 → 協和廣場 → 杜樂麗花園",
+          "步行 → 羅浮宮金字塔 (16:30 門票)",
+          "晚餐後 M1 轉 M4 回飯店"
+        ],
+        note: "全日採西向東單向動線，凱旋門登頂 284 階後以平緩步行為主；門票時段（10:50 凱旋門、16:30 羅浮宮）均已確認固定。"
+      },
+      places: ["arc", "champs", "tuileries", "louvre"],
+      note: "凱旋門 10:50、羅浮宮 16:30 門票皆已確認，週三羅浮宮開放至 21:00。"
     },
     "09-17": {
       date: "2026/09/17", weekday: "週四", city: "Versailles", cityKey: "paris", title: "凡爾賽宮全日：主宮殿、花園與特里亞農宮苑", summary: "上午 10:00 依指定時段參觀凡爾賽主宮殿鏡廳與國王套房，午後漫步阿波羅噴泉花園與特里亞農宮苑。", stay: "Sure Hotel by Best Western Paris Gare du Nord", tone: "gold",
@@ -1580,11 +1594,11 @@ window.TRIP.placeDetails = {
   rodin: { why: "《沉思者》座落於雕塑花園，鄰近榮軍院；參觀後可直接步行穿過戰神廣場前往艾菲爾鐵塔。", booking: { state: "recommended", label: "門票・可買兩館聯票", note: "週二至週日 10:00-18:30 開放；與軍事博物館聯票目前為 26 EUR。" } },
   eiffel: { why: "由 École Militaire 穿過戰神廣場抵達鐵塔周邊，仰望巨型鋼構與鉚接工藝細節並拍攝全員合照；不登塔，免登塔門票。", booking: { state: "free", label: "地面拍照・免登塔票", note: "若只在鐵塔外圍近距離拍照不需進入安檢區；若想進入正下方 Esplanade 雖免門票但須接受安全檢查（建議預留約 10–20 分鐘排隊；需視排隊調整後續時間）。" } },
   birhakeim: { why: "高架地鐵鋼構柱廊與鐵塔視野具備工程建築美感，鄰近鐵塔行程動線。", booking: { state: "free", label: "免費・免預約", note: "公共橋樑，散步時留意自行車動線與車流。" } },
-  arc: { why: "登頂可眺望巴黎十二條放射狀大道的城市軸線，與香榭麗舍大道安排在同日最順路。", booking: { state: "confirmed", label: "已購・10:50 指定時段", note: "門票時間為 09/16 10:50；提前於地下通道入口排隊安檢，不穿越環島車道。" } },
-  champs: { why: "由凱旋門向東單向漫步，將地標街景、林蔭大道與商店結合於同一路線。", booking: { state: "free", label: "免費・免預約", note: "公共大道，各店舖依自身營業時間運作。" } },
-  louvre: { why: "週三夜間開放至 21:00，適合接在凱旋門與杜樂麗花園後，16:30 依票面入場參觀代表作至 20:30。", booking: { state: "confirmed", label: "已購・16:30 指定時段（16:00 報到）", note: "門票預約為 09/16 16:30；16:00 抵達玻璃金字塔專用通道排隊安檢，20:30 配合清場離館。", url: "https://ticket.louvre.fr/en", cta: "官方票務資訊" } },
+  arc: { why: "登頂可眺望巴黎十二條放射狀大道的城市軸線，與香榭麗舍大道安排在同日最順路。", booking: { state: "confirmed", label: "已購・10:50 指定時段", note: "門票時間為 09/16 10:50；提前於地下通道入口排隊安檢，不穿越環島車道；登頂約 284 階旋轉梯。" } },
+  champs: { why: "由凱旋門向東單向漫步，結合街景、PSG 旗艦店梅西紀念品尋寶、平價午餐與 Monoprix 採買補水於同一動線。", booking: { state: "free", label: "免費・免預約", note: "公共大道自由進出；PSG 專門店鎖定梅西 30 號周邊小物，Monoprix 超市位於 52 號。" } },
+  louvre: { why: "週三夜間開放至 21:00，接續香榭麗舍與杜樂麗花園東行；16:30 預約入場直取三寶鎮館名作，地下負一層先領語音導覽機至 20:30。", booking: { state: "confirmed", label: "已購・16:30 指定時段（16:00 報到）", note: "門票預約為 09/16 16:30；16:00 抵達金字塔專用通道排隊安檢，地下 B1 領取語音導覽，20:30 配合清場離館。", url: "https://ticket.louvre.fr/en", cta: "官方票務資訊" } },
   versailles: { why: "預留整天時間可同時參觀主宮殿、鏡廳、廣闊花園與特里亞農宮苑。", booking: { state: "advance", label: "Passport＋10:00 Palace 時段", note: "主宮 09:00-18:30、特里亞農 12:00-18:30；建議選購包含 10:00 主宮時段之 Passport 全區票券。", url: "https://en.chateauversailles.fr/plan-your-visit", cta: "官方線上購票" } },
-  tuileries: { why: "從香榭麗舍向東漫步抵達，是進入羅浮宮前休息與享用咖啡點心的好去處。", booking: { state: "free", label: "免費・免預約", note: "公共花園，設有綠色躺椅與咖啡座。" } },
+  tuileries: { why: "從協和廣場向東漫步抵達，是凱旋門 284 階後的肌肉恢復區，也是進入羅浮宮前咖啡輕食墊胃的關鍵休整點。", booking: { state: "free", label: "免費・免預約", note: "公共花園，設有綠色躺椅、噴泉水池與咖啡座；進羅浮宮前務必補足飲水與輕食。" } },
   palais: { why: "鄰近羅浮宮，Buren 黑白條紋柱與安靜拱廊適合作為午後短暫散步點。", booking: { state: "free", label: "庭院免費・免預約", note: "公共庭院與花園，可自由進出。" } },
   sciences: { why: "大型科學中心，保留為未排入行程的備選參考資料。", booking: { state: "recommended", label: "未排入每日行程", note: "Argonaute 潛水艇 2026/09/01-09/30 閉館維護。", url: "https://billetterie.cite-sciences.fr/", cta: "官方票務資訊" } },
   opera: { why: "因 09/13 改搭 09:40 TER 抵達巴黎北站較晚，歌劇院內部參觀暫時取消，保留作為未來行程備選。", booking: { state: "optional", label: "暫時取消・保留備選", note: "原預約 11:30 參觀，因交通時間延後暫時取消內部參觀。", url: "https://www.operadeparis.fr/en/visits/palais-garnier", cta: "歌劇院官方資訊" } },
@@ -2311,25 +2325,29 @@ window.TRIP.routeMaps = {
   "09-16": {
     defaultGroup: "west_to_louvre",
     groups: [{
-      id: "west_to_louvre", label: "巴黎西向東單向線", note: "10:50 凱旋門門票時間；16:00 抵達金字塔報到，16:30 - 20:30 羅浮宮看展。",
+      id: "west_to_louvre", label: "巴黎西向東單向線", note: "08:25 出發早餐、10:50 凱旋門登頂 284 階；午後香榭麗舍向東漫步（PSG/午餐/補水）經協和廣場與杜樂麗花園；16:00 金字塔報到，16:30 - 20:30 羅浮宮精選看展，夜景後晚餐。",
       stops: [
-        { time: "09:40", label: "Paris 飯店", detail: "M2 出發", lat: 48.8836, lng: 2.3594, status: "start" },
-        { time: "10:50", label: "Arc de Triomphe", detail: "10:50 票面時間，提早排隊", lat: 48.8738, lng: 2.2950, status: "ticket" },
-        { time: "12:00", label: "Champs-Élysées", detail: "向東散步，13:00 午餐", lat: 48.8705, lng: 2.3049, status: "planned" },
-        { time: "14:00", label: "Place de la Concorde", detail: "協和廣場進入杜樂麗", lat: 48.8656, lng: 2.3212, status: "planned" },
-        { time: "14:30", label: "Jardin des Tuileries", detail: "15:15 咖啡甜點小憩", lat: 48.8636, lng: 2.3270, status: "planned" },
-        { time: "16:00 報到 / 16:30", label: "Musée du Louvre", detail: "16:30 入場至 20:30", lat: 48.8611, lng: 2.3380, status: "ticket" },
-        { time: "20:30", label: "Cour Napoléon", detail: "玻璃金字塔夜景", lat: 48.8619, lng: 2.3364, status: "planned" },
-        { time: "21:00 後", label: "Paris 飯店", detail: "M1＋M4 回程與晚餐", lat: 48.8836, lng: 2.3594, status: "stay" }
+        { time: "08:25", label: "Paris 飯店", detail: "M2 直達 Charles de Gaulle-Étoile", lat: 48.8836, lng: 2.3594, status: "start" },
+        { time: "09:05", label: "Boulangerie Julambre", detail: "33 Rue Lauriston 可頌咖啡早餐", lat: 48.8710, lng: 2.2930, status: "planned" },
+        { time: "10:00 報到 / 10:50", label: "Arc de Triomphe", detail: "走地下通道，10:50 門票登頂 284 階", lat: 48.8738, lng: 2.2950, status: "ticket" },
+        { time: "12:00", label: "Champs-Élysées", detail: "向東散步・PSG 梅西紀念品・午餐・Monoprix 補水", lat: 48.8708, lng: 2.3035, status: "planned" },
+        { time: "13:40", label: "Place de la Concorde", detail: "方尖碑與噴泉拍照巡禮", lat: 48.8656, lng: 2.3212, status: "planned" },
+        { time: "14:00", label: "Jardin des Tuileries", detail: "向東休閒漫步與水池綠椅休整", lat: 48.8636, lng: 2.3270, status: "planned" },
+        { time: "15:10", label: "花園周邊咖啡輕食", detail: "咖啡與輕食補充能量，水瓶裝滿", lat: 48.8630, lng: 2.3330, status: "planned" },
+        { time: "16:00 報到 / 16:30", label: "Musée du Louvre", detail: "金字塔報到・B1 領語音導覽・名作巡禮至 20:30", lat: 48.8611, lng: 2.3380, status: "ticket" },
+        { time: "20:30", label: "Cour Napoléon", detail: "玻璃金字塔點燈夜景", lat: 48.8619, lng: 2.3364, status: "planned" },
+        { time: "20:45 後", label: "Paris 飯店", detail: "周邊正式晚餐後搭 M1＋M4 返回住宿", lat: 48.8836, lng: 2.3594, status: "stay" }
       ],
       legs: [
-        { mode: "metro", label: "M2・09:40 出發，10:20 抵達" },
-        { mode: "walk", label: "步行" },
-        { mode: "walk", label: "步行" },
-        { mode: "walk", label: "步行" },
-        { mode: "walk", label: "步行" },
-        { mode: "walk", label: "步行" },
-        { mode: "metro", label: "M1＋M4" }
+        { mode: "metro", label: "M2・08:25 出發直達星形廣場並步行至烘焙坊" },
+        { mode: "walk", label: "步行經地下通道至凱旋門" },
+        { mode: "walk", label: "沿香榭麗舍向東漫步（PSG／午餐／超市）" },
+        { mode: "walk", label: "步行進入協和廣場" },
+        { mode: "walk", label: "漫步進入杜樂麗花園" },
+        { mode: "walk", label: "步行至花園周邊咖啡館小憩" },
+        { mode: "walk", label: "步行至金字塔預約通道排隊" },
+        { mode: "walk", label: "出館至拿破崙庭院欣賞夜景" },
+        { mode: "metro", label: "周邊晚餐後搭 M1＋M4 返回飯店" }
       ]
     }]
   },
